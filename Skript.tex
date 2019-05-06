@@ -37,7 +37,7 @@
 \end{flushright}}
 
 \title{Lineare Algebra II: Skript}
-\author{Nico Mexis}
+\author{Alexandr Gruber, Nico Mexis}
 \date{\today}
 
 \begin{document}
@@ -55,24 +55,24 @@ Sei \(K\) ein Körper.\\
 Sei \(V\) ein endlich dimensionaler \(K\)-Vektorraum.\\
 Sei \(\phi: V \rightarrow V\) ein Endomorphismus.
 \subsubsection{Definition}
-\begin{description}
+\begin{itemize}
 \item[\circled{a}] Ein Element \(\lambda \in K\) heißt ein \underline{Eigenwert} von \(\phi\), wenn es einen Vektor \(v \in V\ \backslash \{0\}\) gibt mit \(\phi(v)=\lambda*v\).
 \item[\circled{b}] Ist \(\lambda \in K\) ein Eigenwert von \(\phi\), so heißt jeder Vektor \(v \in V \backslash \{0\}\) mit \(\phi(v) = \lambda*v\) ein Eigenvektor von \(\phi\) zum Eigenwert \(\lambda\).
 \item[\circled{c}] Ist \(A \in Mat_n(K)\), so heißt ein \(\lambda \in K\) ein \underline{Eigenwert} von A, wenn es ein \(v \in K^n\backslash\{0\}\) gibt mit \(A*v=\lambda*v\).
-\end{description}
+\end{itemize}
 \subsubsection{Beispiel}
-\begin{description}
+\begin{itemize}
 \item[\circled{a}] Das Element \(0 \in K\) ist ein Eigenwert von \(\phi\), wenn \(\phi\) nicht injektiv ist.
 \item[\circled{b}] Das Element \(1 \in K\) ist ein Eigenwert von \(\phi\), wenn \(\phi\) einen \underline{Fixpunkt} \(v \neq 0\) hat (d.h. \(\phi(v)=v\)).
-\end{description}
+\end{itemize}
 \subsubsection{Beispiel}
 Sei \(K = \mathbb{R}, V= \mathbb{R}^2\).\\
 Sei \(\phi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) die Drehung um \(0=(0,0)\) um den Winkel \(\alpha \in [0,2\pi[\).\\
-\begin{description}
+\begin{itemize}
 \item[\circled{a}] Ist \(\alpha = 0\), so ist \(\phi = id_{\mathbb{R}^2}\) und \(\lambda = 1\) ist der einzige Eigenwert von \(\phi\).
 \item[\circled{b}] Ist \(\alpha = \pi\), so ist \(\phi = -id_{\mathbb{R}^2}\) und \(\lambda = -1\) ist der einzige Eigenwert von \(\phi\).
 \item[\circled{c}] Ist \(\alpha \notin \{0,\pi\}\), so besitzt \(\phi\) keine Eigenwerte.
-\end{description}
+\end{itemize}
 \subsubsection{Beispiel}
 Sei \(K = \mathbb{R}, V= \mathbb{R}^2\) und \(\sigma :\mathbb{R}^2 \rightarrow\mathbb{R}^2\) die Spiegelung an der Geraden \(G\) durch \(0\), die mit der x-Achse einen Winkel \(\frac{\alpha}{2}\) einschließt.\newpage
 \underline{Skizze:}\\
@@ -113,16 +113,16 @@ Ein weiterer Eigenwert ist \(\lambda=-1\) und die Menge der Eigenvektoren zum Ei
 Sei \(\lambda \in K\) ein Eigenwert von \(\phi\). Dann heißt \(Eig(\phi,\lambda)=\{v \in V | \phi (v)=\lambda *v\}\) der \underline{Eigenraum} zum Eigenwert \(\phi\).
 \subsubsection{Satz}
 Sei \(\phi:V \rightarrow V\) ein Endomorphismus.
-\begin{description}
+\begin{itemize}
 \item[\circled{a}] Ist \(\lambda \in K\) ein Eigenwert von \(\phi\), so ist \(Eig(\phi,\lambda)\) ein Untervektorraum von V.
 \item[\circled{b}] Sind \(\lambda,\mu \in K\) zwei verschiedene Eigenwerte von \(\phi\), so gilt: \(Eig(\phi,\mu)=\{0\}\).
-\end{description}
+\end{itemize}
 \newpage
 \underline{Beweis:}
-\begin{description}
+\begin{itemize}
 \item["\circled{a}"] Wegen \(\phi(0)=\lambda*0=0\) gilt \(\phi(v-w)=\phi(v)-\phi(w)=\lambda*v-\lambda*w=\lambda*(v-w)\), also \(v-w \in Eig(\phi,\lambda)\). Nach dem Untervektorraumkriterium folgt die Behauptung.
 \item["\circled{b}"] Sei \(v \in Eig(\phi,\lambda)\cap Eig(\phi,\mu)\). Dann gilt \(\lambda*v=\phi(v)=\mu*v\), also \(\underbrace{(\lambda-\mu)}_{\neq 0}*v=0\). Dies liefert \(v=0\).
-\end{description}
+\end{itemize}
 \qed
 
 \end{document}
