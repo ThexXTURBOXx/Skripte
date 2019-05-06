@@ -1,13 +1,18 @@
-\documentclass[ngerman,a4paper]{article}
+\documentclass[a4paper]{article}
 
-\usepackage{babel}
+\usepackage[ngerman]{babel}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{tikz,tkz-euclide}
 \usepackage{titlesec}
+\usepackage{textcomp}
 \usepackage[titles]{tocloft}
 \usepackage{csquotes}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
 
 \usetkzobj{all}
 \usetikzlibrary{shapes.misc}
@@ -32,9 +37,12 @@
 \settowidth\mylength{\cftsecpresnum}
 \addtolength\cftsecnumwidth{\mylength}
 
+\newcommand{\ul}{\underline}
 \renewcommand{\qed}{\begin{flushright}
-\underline{\(q.e.d.\)}
+\ul{\(q.e.d.\)}
 \end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
 
 \title{Lineare Algebra II: Skript}
 \author{Alexandr Gruber, Nico Mexis}
@@ -56,14 +64,14 @@ Sei \(V\) ein endlich dimensionaler \(K\)-Vektorraum.\\
 Sei \(\phi: V \rightarrow V\) ein Endomorphismus.
 \subsubsection{Definition}
 \begin{itemize}
-\item[\circled{a}] Ein Element \(\lambda \in K\) heißt ein \underline{Eigenwert} von \(\phi\), wenn es einen Vektor \(v \in V\ \backslash \{0\}\) gibt mit \(\phi(v)=\lambda*v\).
+\item[\circled{a}] Ein Element \(\lambda \in K\) heißt ein \ul{Eigenwert} von \(\phi\), wenn es einen Vektor \(v \in V\ \backslash \{0\}\) gibt mit \(\phi(v)=\lambda*v\).
 \item[\circled{b}] Ist \(\lambda \in K\) ein Eigenwert von \(\phi\), so heißt jeder Vektor \(v \in V \backslash \{0\}\) mit \(\phi(v) = \lambda*v\) ein Eigenvektor von \(\phi\) zum Eigenwert \(\lambda\).
-\item[\circled{c}] Ist \(A \in Mat_n(K)\), so heißt ein \(\lambda \in K\) ein \underline{Eigenwert} von A, wenn es ein \(v \in K^n\backslash\{0\}\) gibt mit \(A*v=\lambda*v\).
+\item[\circled{c}] Ist \(A \in Mat_n(K)\), so heißt ein \(\lambda \in K\) ein \ul{Eigenwert} von A, wenn es ein \(v \in K^n\backslash\{0\}\) gibt mit \(A*v=\lambda*v\).
 \end{itemize}
 \subsubsection{Beispiel}
 \begin{itemize}
 \item[\circled{a}] Das Element \(0 \in K\) ist ein Eigenwert von \(\phi\), wenn \(\phi\) nicht injektiv ist.
-\item[\circled{b}] Das Element \(1 \in K\) ist ein Eigenwert von \(\phi\), wenn \(\phi\) einen \underline{Fixpunkt} \(v \neq 0\) hat (d.h. \(\phi(v)=v\)).
+\item[\circled{b}] Das Element \(1 \in K\) ist ein Eigenwert von \(\phi\), wenn \(\phi\) einen \ul{Fixpunkt} \(v \neq 0\) hat (d.h. \(\phi(v)=v\)).
 \end{itemize}
 \subsubsection{Beispiel}
 Sei \(K = \mathbb{R}, V= \mathbb{R}^2\).\\
@@ -75,7 +83,7 @@ Sei \(\phi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) die Drehung um \(0=(0,0)\) um d
 \end{itemize}
 \subsubsection{Beispiel}
 Sei \(K = \mathbb{R}, V= \mathbb{R}^2\) und \(\sigma :\mathbb{R}^2 \rightarrow\mathbb{R}^2\) die Spiegelung an der Geraden \(G\) durch \(0\), die mit der x-Achse einen Winkel \(\frac{\alpha}{2}\) einschließt.\newpage
-\underline{Skizze:}\\
+\ul{Skizze:}\\
 \begin{tikzpicture}
   \tkzInit[ymin=0,ymax=1.11,xstep=0.1,ystep=0.1,xmin=0,xmax=1.11]
   \tkzGrid
@@ -110,7 +118,7 @@ sin(\alpha) & cos(\alpha)
 Ein Eigenwert ist \(\lambda=1\) und die Menge der Eigenvektoren zum Eigenwert \(\lambda=1\) ist \(G\backslash\{0\}\).\\
 Ein weiterer Eigenwert ist \(\lambda=-1\) und die Menge der Eigenvektoren zum Eigenwert \(\lambda=-1\) ist \(H\backslash\{0\}\), wobei \(H\) die zu \(G\) senkrechte Gerade durch 0 ist.
 \subsubsection{Definition}
-Sei \(\lambda \in K\) ein Eigenwert von \(\phi\). Dann heißt \(Eig(\phi,\lambda)=\{v \in V | \phi (v)=\lambda *v\}\) der \underline{Eigenraum} zum Eigenwert \(\phi\).
+Sei \(\lambda \in K\) ein Eigenwert von \(\phi\). Dann heißt \(Eig(\phi,\lambda)=\{v \in V | \phi (v)=\lambda *v\}\) der \ul{Eigenraum} zum Eigenwert \(\phi\).
 \subsubsection{Satz}
 Sei \(\phi:V \rightarrow V\) ein Endomorphismus.
 \begin{itemize}
@@ -118,13 +126,97 @@ Sei \(\phi:V \rightarrow V\) ein Endomorphismus.
 \item[\circled{b}] Sind \(\lambda,\mu \in K\) zwei verschiedene Eigenwerte von \(\phi\), so gilt: \(Eig(\phi,\mu)=\{0\}\).
 \end{itemize}
 \newpage
-\underline{Beweis:}
+\ul{Beweis:}
 \begin{itemize}
 \item["\circled{a}"] Wegen \(\phi(0)=\lambda*0=0\) gilt \(\phi(v-w)=\phi(v)-\phi(w)=\lambda*v-\lambda*w=\lambda*(v-w)\), also \(v-w \in Eig(\phi,\lambda)\). Nach dem Untervektorraumkriterium folgt die Behauptung.
 \item["\circled{b}"] Sei \(v \in Eig(\phi,\lambda)\cap Eig(\phi,\mu)\). Dann gilt \(\lambda*v=\phi(v)=\mu*v\), also \(\underbrace{(\lambda-\mu)}_{\neq 0}*v=0\). Dies liefert \(v=0\).
 \end{itemize}
 \qed
-
+\subsubsection{Beispiel}
+\begin{itemize}
+\item[\circled{a}] Sei \(K = \mathbb{R}\), \(V = \mathbb{R}^2\) und \(\phi:\mathbb{R}^2\rightarrow \mathbb{R}^2\) die Spiegelung an der Winkelhalbierenden. Dann gilt \(M_{\xi}^{\xi}(\phi)=\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}\) und die Eigenwerte von \(\phi\) sind \(\lambda = \pm 1\)
+\begin{itemize}
+\item[\circled{1}] \(Eig(\phi,1)=\mathbb{R}*(1,1)\)
+\item[\circled{2}] \(Eig(\phi,-1)=\mathbb{R}*(1,-1)\)
+\end{itemize}
+\item[\circled{b}] Sei \(K = \mathbb{R}\), \(V = \mathbb{R}^3\) und \(\phi:\mathbb{R}^3\rightarrow \mathbb{R}^3\) die Drehung um die z-Achse um einen Winkel \(\alpha \in ]0,\pi[\). Dann gilt \(M_{\xi}^{\xi}(\phi)=\begin{pmatrix}
+cos(\alpha) & -sin(\alpha) & 0 \\
+sin(\alpha) & cos(\alpha) & 0 \\
+0 & 0 & 1
+\end{pmatrix}\) und \(\lambda = 1\) ist der einzige Eigenwert mit \(Eig(\phi,1)=\mathbb{R}*\underbrace{(0,0,1)}_{z-Achse}\).
+\end{itemize}
+\subsubsection{Definition}
+\begin{itemize}
+\item[\circled{a}] Der Endomorphismus \(\phi:V\rightarrow V\) heißt \ul{diagonalisierbar}, wenn es eine Basis \(B\neq (v_1,...,v_d)\) von \(V\) gibt, die aus Eigenvektoren besteht.\\
+Sei \(\phi(v_i)=a_iv_i\) mit \(a_i \in K\) für \(i=1,..,d\). Dann gilt also \(M^B_B(\phi)=\begin{pmatrix}
+a_1 & 0 & \hdots & 0 \\
+0 & a_2 & \hdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \hdots & a_n
+\end{pmatrix}\) Diagonalmatrix.
+\item[\circled{b}] Eine Matrix \(A \in Mat_n(K)\) heißt \ul{diagonalisierbar}, wenn der zugehörige Endomorphismus \(\phi_A:K^n\rightarrow K^n\) diagonalisierbar ist, d.h. wenn es ein \(T \in GL_n(K)\) gibt, sodass \(TAT^{-1}\) eine Diagonalmatrix ist.
+\end{itemize}
+\subsubsection{Satz (Charakterisierung der Diagonalisierbarkeit)}
+Für einen Endomorphismus \(\phi:V\rightarrow V\) sind die folgenden Bedingungen äquivalent:
+\begin{itemize}
+\item[\circled{a}] \(\phi\) ist diagonalisierbar.
+\item[\circled{b}] Es gibt eine Basis \(B\) von \(V\), sodass \(M_B^B(\phi)\) eine Diagonalmatrix ist.
+\item[\circled{c}] Für jede Basis \(B\) von \(V\) ist \(M_B^B(\phi)\) eine diagonalisierbare Matrix.
+\item[\circled{d}] Es gibt eine Basis \(B\) von \(V\), die aus Eigenvektoren von \(\phi\) besteht.
+\end{itemize}
+\ul{Beweis:}
+\begin{itemize}
+\item["\circled{a} \textrightarrow \space\circled{b}"] Def. 18.8a
+\item["\circled{b} \textrightarrow \space\circled{c}"] Sei \(B\) eine Basis von \(V\), sodass \(M_B^B(\phi)\) eine Diagonalmatrix ist und sei \(C\) eine weitere Basis von \(V\). Dann gilt: \(M_B^B(\phi)=T_C^B*M_C^C(\phi)*(T_C^B)^{-1}\) mit \(T_C^B\in GL_n(K)\). Also ist \(M_C^C(\phi)\) diagonalisierbar.
+\item["\circled{c} \textrightarrow \space\circled{d}"] Nach Def. 18.8b gibt es \(T \in GL_n(K)\) mit \(T*M_C^C(\phi)*T^{-1}\) Diagonalmatrix. Bzgl. der transponierten Basis \(B=T*C\) ist also \(M_B^B(\phi)\) eine Diagonalmatrix, d.h. \(B\) besteht aus Eigenvektoren von \(\phi\).
+\item["\circled{d} \textrightarrow \space\circled{a}"] Nach Def.
+\end{itemize}
+\qed
+\subsubsection{Beispiel}
+Eigenwerte und Eigenvektoren spielen eine große Rolle beim Lösen von \ul{Differentialgleichungen}.\\
+Suche z.B. im \(\mathcal{C}^1(\mathbb{R})\) die Lösungen von\\
+\(f_1'(t)=f_1(t)-f_2(t)\)\\
+\(f_2'(t)=2f_1(t)+4f_2(t)\).\\
+Man macht folgenden Lösungsansatz: \(f_1(t)=c_1*e^{\lambda t}\) und \(f_2(t)=c_2*e^{\lambda t}\)\\
+\(\Rightarrow \begin{pmatrix}
+f_1'(t) \\
+f_2'(t)
+\end{pmatrix} = \begin{pmatrix}
+\lambda c_1e^{\lambda t} \\
+\lambda c_2e^{\lambda t}
+\end{pmatrix} = \lambda * \begin{pmatrix}
+f_1(t) \\
+f_2(t)
+\end{pmatrix}\).\\
+Das Differentialgleichungssystem lautet also:\\
+\(\begin{pmatrix}
+f_1'(t) \\
+f_2'(t)
+\end{pmatrix} = \lambda * \begin{pmatrix}
+f_1(t) \\
+f_2(t)
+\end{pmatrix} = \begin{pmatrix}
+1 & -1 \\
+2 & 4
+\end{pmatrix} * \begin{pmatrix}
+f_1(t) \\
+f_2(t)
+\end{pmatrix}\).\\
+Im \(\mathbb{R}\)-Vektorraum \(\mathcal{C}^1(\mathbb{R})\) ist \(\begin{pmatrix}
+f_1'(t) \\
+f_2'(t)
+\end{pmatrix}\) ein Eigenvektor der Matrix \(\begin{pmatrix}
+1 & -1 \\
+2 & 4
+\end{pmatrix}\) zum Eigenwert \(\lambda\).
+\subsubsection{Satz}
+Ist \(\lambda \in K\) ein Eigenwert von \(\phi\), so gilt: \(Eig(\phi, \lambda)=Ker(\phi-\lambda*id_V)\).\\
+\ul{Beweis:}\\
+Es gilt \(v \in Eig(\phi, \lambda) \Leftrightarrow \phi(v)=\lambda *v \Leftrightarrow(\phi-\lambda*id_V)(v)=0 \Leftrightarrow v\in Ker(\phi-v*id_V)\).
+\qed
 \end{document}
 
 
