@@ -1,6 +1,7 @@
 \documentclass[a4paper]{article}
 
 \usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -45,7 +46,7 @@
 \let\phi\varphi
 
 \title{Lineare Algebra II: Skript}
-\author{Alexandr Gruber, Nico Mexis}
+\author{Nico Mexis}
 \date{\today}
 
 \begin{document}
@@ -236,12 +237,81 @@ Sei \(\mathcal{A}=\begin{pmatrix}
 \subsubsection{Satz}
 Seien \(B,C\) zwei Basen von \(V\). Dann gilt:\\
 \(\chi_{M_B^B(\phi)}(x)=\chi_{M_C^C(\phi)}(x)\)\\
-\ul{Beweis:}
+\ul{Beweis:}\\
 Nach der Transformationsformel gilt:\\
 \(M_C^C(\phi)=T_C^B*M_B^B(\phi)*T_B^C\)\\
 Es folgt: \(\chi_{M_C^C(\phi)}(x)=det(T_C^BM_B^B(\phi)T_B^C-\underbrace{T_C^Bx\mathcal{I}_nT_B^C}_{=x\mathcal{I}_n})\\=det(T_C^B(M_B^B(\phi)-x\mathcal{I}_n)T_B^C)\\=det(T_C^B)*det(M_B^B(\phi)-x*\mathcal{I}_n)*det(T_C^B)^{-1}=\chi_{M_B^B(\phi)}(x)\).
 \qed
 \ul{Folgerung:} Das Polynom \(\chi_{M_B^B(\phi)}(x)\) hängt nur von \(\phi\), aber nicht von der Wahl der Basis \(B\) ab. Es heißt das \ul{charakteristische Polynom} von \(\phi\) und wird mit \(\chi_\phi(x)\) bezeichnet.
+\subsubsection{Satz}
+Ein Element \(\lambda \in K\) ist genau dann ein Eigenwert von \(\phi\), wenn \(\chi_{\phi}(\lambda)=0\) gilt.\\
+\ul{Beweis:}\\
+Genau dann ist \(\lambda \in K\) ein Eigenwert von \(\phi\), wenn \(Ker(\phi-\lambda id_V)\neq \{0\}\) gilt. Dies ist genau dann der Fall, wenn \(\phi-\lambda id_V\) nicht bijektiv ist. Letztere Bedingung ist äquivalent zu \(det(\phi-\lambda id_V)=0\), also zu \(\chi_\phi(\lambda)=0\).
+\qed
+\subsubsection{Beispiel}
+\begin{itemize}
+\item[\circled{a}] Sei \(\phi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) die Spiegelung an der Winkelhalbierenden \(G=\mathbb{R}*\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}\). Dann gilt: \(M_\xi^\xi(\phi)=\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}\) und  \(\chi_\phi(x)=x^2-1=(x-1)(x+1)\). Also besitzt \(\phi\) zwei Eigenwerte, nämlich \(\lambda_1=1\) und \(\lambda_2=-1\).\\
+Für \(\lambda_1=1\) gilt \(Eig(\phi,\lambda_1)=Ker(\phi-\lambda_1 id_{\mathbb{R}^2})=Ker\begin{pmatrix}
+-1 & 1 \\
+1 & -1
+\end{pmatrix} = \textless\begin{pmatrix}
+1 \\
+1
+\end{pmatrix}\textgreater = G\).\\
+Für \(\lambda_2=-1\) gilt \(Eig(\phi,\lambda_2)=Ker(\phi-\lambda_2 id_{\mathbb{R}^2})=Ker\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix} = \textless\begin{pmatrix}
+-1 \\
+1
+\end{pmatrix}\textgreater = G^\bot\).
+\item[\circled{b}] Sei \(\psi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) die Drehung um \(0\) um den Winkel \(\alpha \in ]0,\pi[\). Dann gilt \(M_\xi^\xi(\psi)=\begin{pmatrix}
+cos(\alpha) & -sin(\alpha) \\
+sin(\alpha) & cos(\alpha)
+\end{pmatrix}\).\\
+\(\chi_\psi(x)=det\begin{pmatrix}
+cos(\alpha)-x & -sin(\alpha) \\
+sin(\alpha) & cos(\alpha)-x
+\end{pmatrix}=(cos(\alpha)-x)^2+sin^2(\alpha)=x^2-2cos(\alpha)x+sin^2(\alpha)+cos^2(\alpha)=x^2-2cos(\alpha)x+1\).\\
+Dieses quadratische Polynom hat die Diskriminante \(\triangle=4cos^2(\alpha)-4=-4sin^2(\alpha)<0\). Somit besitzt \(\psi\) keine Eigenwerte.
+\end{itemize}
+\subsubsection{Bemerkung}
+Ein Polynom \(f \in K[x]\backslash K\) braucht keine Nullstelle in \(K\) zu besitzen (z.B. \(x^2+1 \in \mathbb{R}[x])\).\\
+Der \ul{Fundamentalsatz der Algebra} besagt, dass jedes Polynom \(f \in \mathbb{C} [x] \backslash \mathbb{C}\) eine Nullstelle besitzt und somit in ein Produkt von Linearfaktoren zerfällt.
+\subsubsection{Satz (Eigenschaften des charakteristischen Polynoms)}
+Sei \(\phi:V\rightarrow V\ K\)-linear und \(n=dim_K(V)\). Dann gilt:
+\begin{itemize}
+\item[\circled{a}] \(deg(\chi_\phi(x))=n\).
+\item[\circled{b}] Der Gradkoeffizient von \(\chi_\phi(x)\) ist \((-1)^n\), also \(\chi_\phi(x)=(-1)^nx^n+(Monome\ kleineren\ Grades)\)
+\item[\circled{c}] Der konstante Term von \(\chi_\phi(x)\) ist \(det(\phi)=\chi_\phi(0)\).
+\end{itemize}
+\ul{Beweis:}\\
+\begin{itemize}
+\item["\circled{a},\circled{b}"] Sei \(\mathcal{A}=(a_{ij})\in Mat_n(K)\) eine Darstellungsmatrix von \(\phi\). Dann gilt \(\chi_\phi(x)=det\begin{pmatrix}
+a_{11}-x & & * \\
+ & \ddots & \\
+ * & & a_{nn}-x
+\end{pmatrix}=(a_{11}-x)(a_{22}-x)*...*(a_{nn}-x)+(Monome\ niedriegeren\ Grades\ als\ n)=(-x)^n+(Monome\ niedriegeren\ Grades\ als\ n)\)
+\item["\circled{c}"] \(\chi_\phi(0)=det(\phi-0*id_V)=det(\phi)\).
+\end{itemize}
+\qed
+\subsubsection{Bemerkung (Der zweite Koeffizient von \(\chi_\phi(x)\))}
+Schreibe \(\chi_\phi(x)=(-1)^nx^n+c_{n-1}x^{n-1}+...+c_1x+c_0\). Dann heißt \(Spur(\phi)=\underset{"Trace"}{Tr}(\phi)=(-1)^{n-1}c_{n-1}\) die \ul{Spur} von \(\phi\).\\
+Sie hängt nicht ab von der Wahl einer Darstellungsmatrix \(\mathcal{A}=(a_{ij})\). Es gilt \(Spur(\mathcal{A})=a_{11}+a_{22}+...+a_{nn}\).\\
+\ul{Beweis:}\\
+Um einen Summanden \(c*x^{n-1}\) in \(det\begin{pmatrix}
+a_{11}-x & & & * \\
+ & a_{22}-x & & \\
+ & & \ddots & \\
+* & & & a_{nn}-x
+\end{pmatrix}\) zu erhalten, muss man genau \(n-1\)mal den Faktor \(a_{ii}-x\) wählen. Also suchen wir den Koeffizienten von \(x^{n-1}\) in \((a_{11}-x)*...*(a_{nn}-x)\). Beim Ausmultiplizieren muss man \((n-1)\)mal \(-x\) wählen und einmal \(a_{ii}\). Also gilt \(c=(-1)^{n-1}(a_{11}+a_{22}+...+a_{nn})=(-1)^{n-1} Spur(\phi)\).
+\qed
 \end{document}
 
 
