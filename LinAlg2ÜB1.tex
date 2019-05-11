@@ -1,0 +1,193 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\newcommand*\circled[1]{%
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{Kapitel }
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+
+\title{Lineare Algebra II\\Übungsblatt 1}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section*{Aufgabe 1)}
+Sei \(K\) ein Körper, sei \(V\) ein endlich-dimensionaler \(K\)-Vektorraum und sei \(\phi:V\rightarrow V\) ein nilpotenter Endomorphismus, d.h. es gebe ein \(n \geq 1\) mit \(\phi^n = 0\). Finden Sie alle Eigenwerte von \(\phi\).\\\\
+\ul{Lösung:}\\
+Sei \(\lambda\) Eigenwert von \(\phi\) mit Eigenvektor \(v\).\\
+\(\phi^n(v)=\phi^{n-1}(\phi(v))=\phi^{n-1}(\lambda\cdot v)=\lambda\cdot\phi^{n-1}(v)=...=\lambda^n\cdot v\).\\
+Demnach gilt, falls \(\phi\) nilpotent ist:\\
+\(\lambda^nv=\phi^n(v)=0\)\\
+\(\Leftrightarrow \lambda\cdot v=0 \underbrace{\Leftrightarrow}_{v\neq 0}\lambda = 0\)\\
+Somit ist \(0\) der einzige Eigenwert von \(\phi\).
+\section*{Aufgabe 2)}
+Sei \(K\) ein Körper, sei \(V\) ein endlich-dimensionaler \(K\)-Vektorraum und sei \(\phi:V\rightarrow V\) ein Endomorphismus, für den \(\phi^2+\phi\) den Eigenwert \(-1\) besitzt. Beweisen Sie, dass \(\phi^3\) dann den Eigenwert \(1\) besitzt.\\\\
+\ul{Lösung:}\\
+\(-1\cdot v=(\phi^2+\phi)(v)=\phi^2(v)+\phi(v)\\
+\Leftrightarrow \phi(\phi^2(v)+\phi(v))=\phi(-v)\\
+\Leftrightarrow \phi(\phi^2(v))+\phi(\phi(v))=-\phi(v)\\
+\Leftrightarrow \phi^3(v)+\phi^2(v)=-\phi(v)\\
+\Leftrightarrow \phi^3(v)=-\phi(v)-\phi^2(v)\\
+\Leftrightarrow \phi^3(v)=-(\phi(v)+\phi^2(v))\\
+\Leftrightarrow \phi^3(v)=-(-v)\\
+\Leftrightarrow \phi^3(v)=1\cdot v\)\\
+Also hat \(\phi^3\) den Eigenwert \(1\).
+\qed
+\section*{Aufgabe 3)}
+Sei \(K\) ein Körper, sei \(V\) ein endlich-dimensionaler \(K\)-Vektorraum und seien \(\phi,\psi:V\rightarrow V\) zwei Endomorphismen  von \(V\). Beweisen Sie folgende Aussagen:
+\subsection*{3a)}
+Ist \(\lambda \in K\) ein Eigenwert von \(\psi\circ\phi\), so ist \(v\in V\backslash\{0\}\) ein Eigenvektor zum Eigenwert \(\lambda\) von \(\psi\circ\phi\) und gilt \(\phi(v)\neq 0\), so ist \(\phi(v)\) ein Eigenvektor von \(\phi\circ\psi\) zum Eigenwert \(\lambda\).\\\\
+\ul{Lösung:}\\
+\((\psi\circ\phi)(v)=\lambda v\\
+\Leftrightarrow \phi((\psi\circ\phi)(v))=\phi(\lambda v)\\
+\Leftrightarrow (\phi\circ\psi\circ\phi)(v)=\lambda\phi(v)\\
+\Leftrightarrow (\phi\circ\psi)(\ul{\phi(v)})=\lambda\ul{\phi(v)}\).\\
+Somit ist \(\phi(v)\) Eigenvektor von \(\phi\circ\psi\) zum Eigenwert \(\lambda\).
+\qed
+\subsection*{3b)}
+Die beiden Endomorphismen \(\phi\circ\psi\) und \(\psi\circ\phi\) besitzen dieselben Eigenwerte.\\\\
+\ul{Lösung:}\\
+\((\phi\circ\psi)(v)=\lambda v\\
+\Leftrightarrow \psi((\phi\circ\psi)(v))=\psi(\lambda v)\\
+\Leftrightarrow (\psi\circ\phi\circ\psi)(v)=\lambda\psi(v)\\
+\Leftrightarrow (\psi\circ\phi)(\psi(v))=\lambda\psi(v)\\
+\Leftrightarrow (\psi\circ\phi)(w)=\lambda w\).\\
+Somit ist \(\lambda\) Eigenwert von \(\phi\circ\psi\) und \(\psi\circ\phi\).
+\qed
+\section*{Aufgabe 4)}
+Sei \(A\in Mat_2(\mathbb{R})\) eine symmetrische Matrix, d.h. es gelte \(A^{tr}=A\). Zeigen Sie, dass \(A\) einen Eigenwert besitzt.\\\\
+\ul{Lösung:}\\
+\(A=\begin{pmatrix}
+a & b \\
+b & c
+\end{pmatrix}=A^{tr}\\
+det\begin{pmatrix}
+a-x & b \\
+b & c-x
+\end{pmatrix}=(a-x)(c-x)-b^2=x^2-ax-cx+ac-b^2\\
+=x^2+(-a-c)x+(ac-b^2)\\
+x_{1/2}=\frac{a+c\pm\sqrt{(-a-c)^2-4\cdot 1\cdot (ac-b^2)}}{2\cdot 1}\\
+=\frac{a+c\pm\sqrt{a^2+2ac+c^2-4ac+4b^2}}{2}\\
+=\frac{a+c\pm\sqrt{a^2-2ac+c^2+4b^2}}{2}\\
+=\frac{a+c\pm\sqrt{(a-c)^2+4b^2}}{2}\)\\
+Die Diskriminante lautet demnach \(\triangle=\underbrace{(a-c)^2}_{\geq0}+\underbrace{4b^2}_{\geq0}\).\\
+Es existiert also ein Eigenwert genau dann, wenn der Nenner \(2\neq0\) ist, was offensichtlich gilt, und die Diskriminante \(\triangle\geq0\) ist.\\
+\((a-c)^2+4b^2\) muss \(\geq0\) sein, da \(a,b,c\in \mathbb{R}\) gilt und somit \((a-c)^2\in\mathbb{R}_{\geq0}\) und \(4b^2\in\mathbb{R}_{\geq0}\) und somit auch \((a-c)^2+4b^2\in\mathbb{R}_{\geq0}\) gilt.
+\qed
+\section*{Aufgabe 5)}
+Sei \(K\) ein Körper, sei \(A\in Mat_n(K)\), sei \(V=Mat_n(K)\), und sei \(\phi:V\rightarrow V\) der Endomorphismus, der gegeben ist durch \(\phi(B)=A\cdot B\) für jedes \(B\in V\). Beweisen Sie, dass \(\chi_\phi(z)=(\chi_A(z))^n\) gilt.\\\\
+\ul{Lösung:}\\
+\(\hspace*{212pt}j\)\\
+\(\hspace*{212pt}\downarrow\)\\
+Für die Standardbasismatrizen \(E_{ij}=\begin{pmatrix}
+0 & & & &  \\
+ & \ddots & & \mbox{\Large 0} & \\
+ & & 1 & & \\
+ & \mbox{\Large 0} & & \ddots & \\
+ & & & & 0
+\end{pmatrix}\leftarrow i\)\ \ \ gilt:\\
+\(\phi(E_{ij})=A\cdot E_{ij}=\begin{pmatrix}
+a_{11} & \hdots & \hdots & \hdots & a_{1n} \\
+\vdots & \ddots & & & \vdots \\
+\vdots & & \ddots & & \vdots \\
+\vdots & & & \ddots & \vdots \\
+a_{n1} & \hdots & \hdots & \hdots & a_{nn}
+\end{pmatrix}
+\begin{pmatrix}
+0 & & & & \\
+ & \ddots & & \mbox{\Large 0} & \\
+ & & 1 & & \\
+ & \mbox{\Large 0} & & \ddots & \\
+ & & & & 0
+\end{pmatrix}=\begin{pmatrix}
+0 & \hdots & a_{1j} & \hdots & 0 \\
+\vdots & & \vdots & & \vdots \\
+\vdots & & \vdots & & \vdots \\
+\vdots & & \vdots & & \vdots \\
+0 & \hdots & a_{1j} & \hdots & 0
+\end{pmatrix}=\sum_{k=1}^{n}a_{kj}E_{kj}\).\\
+Wir wählen die Basis \(B=(E_{11},E_{12}...,E_{nn})\) und erhalten \(M_B(\phi)=\begin{pmatrix}
+A & & 0 \\
+ & \ddots & \\
+0 & & A
+\end{pmatrix}\).
+\(\Rightarrow\chi_\phi(c)=det(\phi-x\cdot id_V)=det(M_B(\phi)-x\cdot \mathcal{I}_{n^2})=\\
+det\begin{pmatrix}
+A-x\cdot \mathcal{I}_n & & 0 \\
+ & \ddots & \\
+0 & & A-x\cdot \mathcal{I}_n
+\end{pmatrix}=det(A-x\cdot \mathcal{I}_n)^n=\chi_A(x)^n\).
+\qed
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
