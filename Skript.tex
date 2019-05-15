@@ -10,6 +10,8 @@
 \usepackage{textcomp}
 \usepackage[titles]{tocloft}
 \usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{stmaryrd}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -20,7 +22,7 @@
 
 \MakeOuterQuote{"}
 
-\newcommand*\circled[1]{%
+\newcommand*\circled[1]{
   \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
 }
 
@@ -260,17 +262,17 @@ Genau dann ist \(\lambda \in K\) ein Eigenwert von \(\phi\), wenn \(Ker(\phi-\la
 Für \(\lambda_1=1\) gilt \(Eig(\phi,\lambda_1)=Ker(\phi-\lambda_1 id_{\mathbb{R}^2})=Ker\begin{pmatrix}
 -1 & 1 \\
 1 & -1
-\end{pmatrix} = \textless\begin{pmatrix}
+\end{pmatrix} = \\<\begin{pmatrix}
 1 \\
 1
-\end{pmatrix}\textgreater = G\).\\
+\end{pmatrix}> = G\).\\
 Für \(\lambda_2=-1\) gilt \(Eig(\phi,\lambda_2)=Ker(\phi-\lambda_2 id_{\mathbb{R}^2})=Ker\begin{pmatrix}
 1 & 1 \\
 1 & 1
-\end{pmatrix} = \textless\begin{pmatrix}
+\end{pmatrix} = \\<\begin{pmatrix}
 -1 \\
 1
-\end{pmatrix}\textgreater = G^\bot\).
+\end{pmatrix}> = G^\bot\).
 \item[\circled{b}] Sei \(\psi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) die Drehung um \(0\) um den Winkel \(\alpha \in ]0,\pi[\). Dann gilt \(M_\xi^\xi(\psi)=\begin{pmatrix}
 cos(\alpha) & -sin(\alpha) \\
 sin(\alpha) & cos(\alpha)
@@ -315,74 +317,76 @@ a_{11}-x & & & * \\
 HIER FEHLT VIEL
 \setcounter{subsection}{21}
 \subsection{Verallgemeinerte Eigenräume}
-Sei K Körper, V endlich-dimensionaler K-Vektorraum, \phi \in End_K(V)\\
-\chi_\phi(v)=det/\phi-x\cdot id_V) charakteristisches Polynom\\
-\mu_\phi(x) = normiertes Polynom kleinsten Grades mit \mu_\phi (\phi) = 0 \equals Minimalpolynom von \phi.
+Sei \(K\) Körper, \(V\) endlich-dimensionaler \(K\)-Vektorraum, \(\phi \in End_K(V)\)\\
+\(\chi_\phi(v)=det(\phi-x\cdot id_V)\) charakteristisches Polynom\\
+\(\mu_\phi(x)=\) normiertes Polynom kleinsten Grades mit \(\mu_\phi (\phi) = 0 \hat{=}\) Minimalpolynom von \(\phi\).
 \subsubsection{Definition (Großer Kern und kleines Bild)}
-(a) Die Kette Ker(\phi) c_ Ker(\phi^2) c_ Ker(\phi^3) c_ ... von K-Untervektorräumen von V wird stationär. Der Untervektorraum BigKer(\phi)=Ker(\phi^i) mit i >> 0 heißt der \ul{große Kern} von \phi.
-(b) Die Kette Im(\phi) _c Im(\phi^2) _c ... wird stationär. Der Untervektorraum SmIm(\phi) = Im(\phi') mit i >> 0 heißt das \ul{kleine Bild} von \phi.
+(a) Die Kette \(Ker(\phi) \subseteq Ker(\phi^2) c_ Ker(\phi^3) c_ ...\) von \(K\)-Untervektorräumen von \(V\) wird stationär. Der Untervektorraum \(BigKer(\phi)=Ker(\phi^i)\) mit \(i >> 0\) heißt der \(\ul{große Kern}\) von \(\phi\).
+(b) Die Kette \(Im(\phi) _c Im(\phi^2) _c ...\) wird stationär. Der Untervektorraum \(SmIm(\phi) = Im(\phi')\) mit \(i >> 0\) heißt das \ul{kleine Bild} von \(\phi\).
 \subsubsection{Satz (Das Lemma von Fitting)}
-(a) Gilt Ker(\phi^m)=Ker(\phi^{m+1}) für ein m \geq 1, so gilt Ker(\phi^m)=Ker(\phi^i) für alle i \geq m und somit BigKer(\phi)=Ker(\phi^m).
-(b) Gilt Im(\phi^{m'})=Im(\phi^{m'+1}) für ein m' \geq 1, so folgt Im(\phi^{m'})=Im(\phi^i) für alle i \geq m' und somit SmIm(\phi)=Im(\phi^{m'}).
-(c) Sind m,m' in (a) und (b) minimal, so folgt m=m'.
-(d) Die Ketten {0} C_ Ker(\phi) c+ Ker(\phi^2) c+ ... c+ Ker(\phi^m)=BigKer(\phi) und V _c Im(\phi) +c Im(\phi^2) +c ... +c Im(\phi^{m'}) = SmIm(\phi) enthalten strikte Inklusionen.
-(e) V=BigKer(\phi) o+ SmIm(\phi) (TODO UMRANDEN)
+(a) Gilt \(Ker(\phi^m)=Ker(\phi^{m+1})\) für ein \(m \geq 1\), so gilt \(Ker(\phi^m)=Ker(\phi^i)\) für alle \(i \geq m\) und somit \(BigKer(\phi)=Ker(\phi^m)\).
+(b) Gilt \(Im(\phi^{m'})=Im(\phi^{m'+1})\) für ein \(m' \geq 1\), so folgt \(Im(\phi^{m'})=Im(\phi^i)\) für alle \(i \geq m'\) und somit \(SmIm(\phi)=Im(\phi^{m'})\).
+(c) Sind \(m,m'\) in (a) und (b) minimal, so folgt \(m=m'\).
+(d) Die Ketten \({0} c_ Ker(\phi) c+ Ker(\phi^2) c+ ... c+ Ker(\phi^m)=BigKer(\phi)\) und \(V _c Im(\phi) +c Im(\phi^2) +c ... +c Im(\phi^{m'}) = SmIm(\phi)\) enthalten strikte Inklusionen.
+(e) \fbox{\(V=BigKer(\phi) o+ SmIm(\phi)\)}
 \ul{Beweis:}\\
-"a" Es genügt Ker(\phi^{m+1}) =Ker(\phi^{m+2}) zu beweisen. Zeige "_c".Sei v \in Ker(\phi^{m+2}), also \phi^{m+1}(v)=0, so folgt \phi(v)\in Ker(\phi^{m+1})=Ker(\phi^m), also \phi^{m+1}(v)= \phi^m(\phi(v))=0 und somit v \in Ker(\phi^{m+1}).
-"b" Zu zeigen ist nur Im(\phi^{m+1}) c_ Im(\phi^{m+2}). Dazu sei v\in Im(\phi^{m+1}), also v=\phi^{m+1}(w) mit w\in V. Dann folgt v=\phi(v~) mit v~ = \phi^m(w)\in I(\phi^m)=Im(\phi^{m+1}). Somit gilt v~ = \phi^{m+1}(w~) mit w~ \in V und v=\phi(v~)=\phi^{m+1}(w~)\inIm(\phi^{m+1}).
-"c" Es gilt dim_K(V)=dim_K(Ker(\phi^m))+dim_K(Im(\phi^m)) und dim_K(V)=dim_K(Ker(\phi^{m+1})+dim_K(Im(\phi^{m+1}).
-Aus Ker(\phi^m)=Ker(\phi^{m+1}) folgt damit dim_K(Im(\phi^m))=dim_K(\phi^{m+1}) und daher Im(\phi^m)=Im(\phi1{m+1}).
+"a" Es genügt \(Ker(\phi^{m+1}) =Ker(\phi^{m+2})\) zu beweisen. Zeige "\(_c\)".Sei \(v \in Ker(\phi^{m+2})\), also \(\phi^{m+1}(v)=0\), so folgt \(\phi(v)\in Ker(\phi^{m+1})=Ker(\phi^m)\), also \(\phi^{m+1}(v)= \phi^m(\phi(v))=0\) und somit \(v \in Ker(\phi^{m+1})\).
+"b" Zu zeigen ist nur \(Im(\phi^{m+1}) c_ Im(\phi^{m+2})\). Dazu sei \(v\in Im(\phi^{m+1})\), also \(v=\phi^{m+1}(w)\) mit \(w\in V\). Dann folgt \(v=\phi(\overset{~}{v})\) mit \(\overset{~}{v} = \phi^m(w)\in I(\phi^m)=Im(\phi^{m+1})\). Somit gilt \(v~ = \phi^{m+1}(w~)\) mit \(w~ \in V\) und \(v=\phi(v~)=\phi^{m+1}(w~)\in Im(\phi^{m+1})\).
+"c" Es gilt \(dim_K(V)=dim_K(Ker(\phi^m))+dim_K(Im(\phi^m))\) und \(dim_K(V)=dim_K(Ker(\phi^{m+1})+dim_K(Im(\phi^{m+1})\).
+Aus \(Ker(\phi^m)=Ker(\phi^{m+1})\) folgt damit \(dim_K(Im(\phi^m))=dim_K(\phi^{m+1})\) und daher \(Im(\phi^m)=Im(\phi1{m+1})\).
 "d" folgt aus (a) und (b).
-"e" Nach (c) gilt dim_K(V)=dim_K(Ker(\phi^m))+dim_K(Im(\phi^m)) für das minimale m. (Insbesondere gilt: BigKer(\phi)=Ker(\phi^m) und SmIm(\phi)=Im(\phi^m) für dieses m).\\
-Zu zeigen ist also Ker(\phi^m) SCHNITT Im(\phi^m)={0}.\\
-Sei v = \phi^m(w)\in Ker(\phi^m) für ein w\in V. Dann gilt \phi^m(v)=\phi^{2m}(w)=0, also w\in Ker(\phi^{2m})=Ker(\phi^m) und somit v=\phi^m(w)=0.
+"e" Nach (c) gilt \(dim_K(V)=dim_K(Ker(\phi^m))+dim_K(Im(\phi^m))\) für das minimale \(m\). (Insbesondere gilt: \(BigKer(\phi)=Ker(\phi^m)\) und \(SmIm(\phi)=Im(\phi^m)\) für dieses \(m\)).\\
+Zu zeigen ist also \(Ker(\phi^m) \cap Im(\phi^m)={0}\).\\
+Sei \(v = \phi^m(w)\in Ker(\phi^m)\) für ein \(w\in V\). Dann gilt \(\phi^m(v)=\phi^{2m}(w)=0\), also \(w\in Ker(\phi^{2m})=Ker(\phi^m)\) und somit \(v=\phi^m(w)=0\).
 \qed
 \ul{Wdh.:}\\
-Sei \lambda\in K ein Eigenwert von \phi. Dann ist x-\lambda ein Eigenfaktor und Eig(\phi, \lambda)=Ker(\phi-\lambda\cdot id_V)={v\in V | \phi(v)=\lamdba v}.
+Sei \(\lambda\in K\) ein Eigenwert von \(\phi\). Dann ist \(x-\lambda\) ein Eigenfaktor und \(Eig(\phi, \lambda)=Ker(\phi-\lambda\cdot id_V)={v\in V | \phi(v)=\lambda v}\).
 \subsubsection{Definition}
-Sei \phi\in End_K(V) und \mu_\phi(x)^m_1...p_s(x)^{m_s} mit den Eigenfaktoren p_1(x),...,p_s(x) und mit m_i\geq 1.
-(a) der K-Untervektorraum Eig(\phi, p_i(x)) = Ker(p_i(\phi)) heißt der \ul{Eigenraum} von \phi bzgl. des Eigenfaktors p_i(x):
-(b) Der K-Untervektorraum Gen(\phi, p_i(x))=BigKer(p_i(\phi)) heißt der \ul{verallgemeinerte  Eigenraum} (oder \ul{Hauptraum}) von \phi bzgl. p_i(x).
+Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)^m_1...p_s(x)^{m_s}\) mit den Eigenfaktoren \(p_1(x),...,p_s(x)\) und mit \(m_i\geq 1\).
+(a) der \(K\)-Untervektorraum \(Eig(\phi, p_i(x)) = Ker(p_i(\phi))\) heißt der \ul{Eigenraum} von \(\phi\) bzgl. des Eigenfaktors \(p_i(x)\):
+(b) Der \(K\)-Untervektorraum \(Gen(\phi, p_i(x))=BigKer(p_i(\phi))\) heißt der \ul{verallgemeinerte  Eigenraum} (oder \ul{Hauptraum}) von \(\phi\) bzgl. \(p_i(x)\).
 \subsubsection{Bemerkung}
-Ist p_i(x)=x-\lambda mit \lambda\in K Eigenwert, so gilt:
-(a) Eig(\phi,p_i(x))=Ker(\phi-id_V)=Eig(\phi,\lambda).
-(b) Gen(\phi,p_i(x))=BigKer(\phi-\lambda\cdot id_V)=Ker(\phi-\lambda\cdot id_V)^m=\underset{Hom(\phi, \lambda)}{Gen(\phi, \lambda)}. TODO PFEIL m>>0 BEI m
+Ist \(p_i(x)=x-\lambda\) mit \(\lambda\in K\) Eigenwert, so gilt:
+(a) \(Eig(\phi,p_i(x))=Ker(\phi-id_V)=Eig(\phi,\lambda)\).
+(b) \(Gen(\phi,p_i(x))=BigKer(\phi-\lambda\cdot id_V)=Ker(\phi-\lambda\cdot id_V)^m=\underset{Hau(\phi, \lambda)}{Gen(\phi, \lambda)}\). TODO PFEIL m>>0 BEI m
 \subsubsection{Lemma}
-Sei p(x)\in K[x]\{0} ein Vielfaches von \mu_\phi(x). Es gelte p(x)=q_1(x)q_2(x) mit ggT(q_1(x),q_2(x))=1. Ferner sei W_1=Ker(q_1(\phi)) und W_2=Ker(q_2(\phi)). Dann gilt:
-(a) Für jedes f\in K[x] sind W_1 und W_2 f(\phi)-invariant.
-(b) Für i \neq j ist q_i(\phi)|W_j: W_j \rightarrow W_j ein Isomorphismus. TODO Einschränkung
-(c) V=W_1 o+ W_2
-(d) Ist p(x)=\mu_\phi(x), so gilt q_i(x)=\mu_{\phi|W_i}(x) für i =1,2. TODO Einschränkung
+Sei \(p(x)\in K[x]\backslash\{0\}\) ein Vielfaches von \(\mu_\phi(x)\). Es gelte \(p(x)=q_1(x)q_2(x)\) mit \(ggT(q_1(x),q_2(x))=1\). Ferner sei \(W_1=Ker(q_1(\phi))\) und \(W_2=Ker(q_2(\phi))\). Dann gilt:
+(a) Für jedes \(f\in K[x]\) sind \(W_1\) und \(W_2 f(\phi)\)-invariant.
+(b) Für \(i \neq j\) ist \(q_i(\phi)\Big|_{W_j}: W_j \rightarrow W_j\) ein Isomorphismus. TODO Einschränkung
+(c) \(V=W_1 \oplus W_2\)
+(d) Ist \(p(x)=\mu_\phi(x)\), so gilt \(q_i(x)=\mu_{\phi_{|_{W_i}}}(x)\) für \(i=1,2\). TODO Einschränkung
 \ul{Beweis:}
-"a" Da f(\phi),q_1(\phi),q_2(\phi) kommentieren, gilt für v\in W_i=Ker(q_i(\phi)) dass q_i(\phi)\underbrace{f(\phi)(v)}_{z.z.\in W_i}=f(\phi)q_i(\phi)(v)=f(\phi)(0)=0 und somit f(\phi)(v)\in Ker(q_i(\phi))=W_i.\\
-"b" Wegen ggT(q_1(x),q_2(x))=1 gibt es f_1(x),f_2(x)\in K[x] mit f_1(x)\cdot q_1(x)+f_2(x)\cdot q_2(x)=1. Für v\in V folgt damit f_1(\phi)q_1(\phi)(v)+f_2(\phi)q_2(\phi)(v)=v (*). TODO EINRAHMEN\\
-Hieraus folgt W_1 SCHNITT W_2 = Ker(q_1(\phi)) SCHNITT Ker(q_2(\phi))={0} nach (*) und dager ist q_i(\phi)|W_j:W_j\rightarrow W_j injektiv, also bijektiv. TODO Einschränkung
-"c" Es ist nur noch zu zeigen, dass V=W_1+W_2 gilt. Sei v\in V. Schreibe v=w_1+w_2 mit w_i=f_i(\phi)q_i(\phi)(v) nach (*).\\
-Dann folgt für j \neq i q_j(\phi)(w_i)=q_j(\phi)f_i(\phi)q_i(\phi)(v)=f_i(\phi)\underbrace{p(\phi)}_{=0}(v)=0 und somit w_i\in Ker(q_j(\phi))=W_j. Dies zeigt v\in W_1+W_2.
-"d" Sei q_i'(x) das Minimalpolynom von \phi|W_i. Nach Def. von W_j gilt q__i'(x)|q_i(x), denn q_i(\phi|W_i)=q_i(\phi)|W_i=0. Also sind auch q_1'(x) teilerfremd und q_1'(x)q_2'(x)=\mu_\phi(x)=q_1(x)q_2(x), also q_1'(x)=q_1(x) und q_2'(x)=q_2(x). TODO Einschränkung
+"a" Da \(f(\phi),q_1(\phi),q_2(\phi)\) kommentieren, gilt für \(v\in W_i=Ker(q_i(\phi))\) dass \(q_i(\phi)\underbrace{f(\phi)(v)}_{z.z.\in W_i}=f(\phi)q_i(\phi)(v)=f(\phi)(0)=0\) und somit \(f(\phi)(v)\in Ker(q_i(\phi))=W_i\).\\
+"b" Wegen \(ggT(q_1(x),q_2(x))=1\) gibt es \(f_1(x),f_2(x)\in K[x]\) mit \(f_1(x)\cdot q_1(x)+f_2(x)\cdot q_2(x)=1\). Für \(v\in V\) folgt damit \(f_1(\phi)q_1(\phi)(v)+f_2(\phi)q_2(\phi)(v)=v\) (*). TODO EINRAHMEN\\
+Hieraus folgt \(W_1 \cap W_2 = Ker(q_1(\phi)) \cap Ker(q_2(\phi))={0}\) nach (*) und daher ist \(q_i(\phi)|W_j:W_j\rightarrow W_j\) injektiv, also bijektiv. TODO Einschränkung
+"c" Es ist nur noch zu zeigen, dass \(V=W_1+W_2\) gilt. Sei \(v\in V\). Schreibe \(v=w_1+w_2\) mit \(w_i=f_i(\phi)q_i(\phi)(v)\) nach (*).\\
+Dann folgt für \(j \neq i q_j(\phi)(w_i)=q_j(\phi)f_i(\phi)q_i(\phi)(v)=f_i(\phi)\underbrace{p(\phi)}_{=0}(v)=0\) und somit \(w_i\in Ker(q_j(\phi))=W_j\). Dies zeigt \(v\in W_1+W_2\).
+"d" Sei \(q_i'(x)\) das Minimalpolynom von \(\phi\Big|_{W_i}\).
+Nach Def. von \(W_j\) gilt \(q_i'(x)\Big|_{q_i(x)}\), denn \(q_i(\phi\Big|_{W_i})=q_i(\phi)\Big|_{W_i}=0\).
+Also sind auch \(q_1'(x)\) teilerfremd und \(q_1'(x)q_2'(x)=\mu_\phi(x)=q_1(x)q_2(x)\), also \(q_1'(x)=q_1(x)\) und \(q_2'(x)=q_2(x)\). TODO Einschränkung
 \qed
 \subsubsection{Definition}
-Ein Endomorphismus \phi\in End_K(V) heißt \ul{nilpotent}, wen es ein m\geq 1 gibt mit \phi^m=0. In diesem Fall heißt das kleinste solche m der \ul{Nilpotenzindex} von \phi und wird mit nix(\phi).
+Ein Endomorphismus \(\phi\in End_K(V)\) heißt \ul{nilpotent}, wen es ein \(m\geq 1\) gibt mit \(\phi^m=0\). In diesem Fall heißt das kleinste solche m der \ul{Nilpotenzindex} von \(\phi\) und wird mit \(nix(\phi)\).
 \subsubsection{Beispiel}
-Sei \phi\in End_\mathbb{Q}(\mathbb{Q\^3) mit M_\xi^\xi(\phi)= TODO MATRIX. Dann golt M_\xi^\xi(\phi^2)=TODO MATRIX und \phi^3=0, also nix(\phi)=3.
+Sei \(\phi\in End_\mathbb{Q}(\mathbb{Q\^3)\) mit \(M_\xi^\xi(\phi)= TODO MATRIX\). Dann gilt \(M_\xi^\xi(\phi^2)=TODO MATRIX\) und \(\phi^3=0\), also \(nix(\phi)=3\).
 \subsubsection{Lemma}
-Seien U', U'' zwei \phi-invariante K-Untervektorräume von V mit V=U' +o U''.
-Sei \phi'=\mu_{\phi |U'} und \phi''=\mu_{\phi |U''}. Dann gilt \mu_\phi(x)=kgV(\mu_{\phi |U'}(x),\mu_{\phi |U''}(x)).\\
+Seien \(U', U''\) zwei \(\phi\)-invariante \(K\)-Untervektorräume von \(V\) mit \(V=U' +o U''\).
+Sei \(\phi'=\mu_{\phi \Big|_{U'}}\) und \(\phi''=\mu_{\phi \Big|_{U''}}\). Dann gilt \(\mu_\phi(x)=kgV(\mu_{\phi \Big|_{U'}}(x),\mu_{\phi \Big|_{U''}}(x))\).\\
 \ul{Beweis:}\\
-Es gilt \mu_\phi(\phi)=0. Also folgt \mu_\phi(\phi|U')=0 und \mu_\phi(\phi | U'')=0. Also ist \mu_\phi ein gemeinsames Vielfaches von \mu_{\phi'} und \mu_{\phi''}. Umgekehrt sei f(x)=kgV(\mu_{\phi'},\mu_{\phi''}(x)). Zu zeigen: f(\phi)=0. Betrachte f(\phi)\U'=f(\phi | U')=0 da f ein Vielfaches von \mu_{\phi'} ist. Genauso gilt f(\phi) | U''=f(\phi|U'')=0. Wegen V=U' o+ U'' folgt f(\phi)=0, also \mu_\phi |f.
+Es gilt \(\mu_\phi(\phi)=0\). Also folgt \(\mu_\phi(\phi\Big|_{U'})=0\) und \(\mu_\phi(\phi \Big|_{U''})=0\). Also ist \(\mu_\phi\) ein gemeinsames Vielfaches von \(\mu_{\phi'}\) und \(\mu_{\phi''}\). Umgekehrt sei \(f(x)=kgV(\mu_{\phi'},\mu_{\phi''}(x))\). Zu zeigen: \(f(\phi)=0\). Betrachte \(f(\phi)\backslash U'=f(\phi \Big|_{U'})=0\) da \(f\) ein Vielfaches von \(\mu_{\phi'}\) ist. Genauso gilt \(f(\phi) \Big|_{U''}=f(\phi|U'')=0\). Wegen \(V=U' o+ U''\) folgt \(f(\phi)=0\), also \(\mu_\phi \Big|_{f}\).
 \qed
 \subsubsection{Theorem (Die verallgemeinerte Eigenraumzerlegung / Die Hauptraumzerlegung / Die Primärzerlegung von \(\phi\))}
-Sei \phi\in End_K(V) und \mu_\phi(x)=p_1(x)^{m_1}...p_s(x)^{m_s} die Zerlegung in Eigenfaktoren.
-(a) V=Gen(\phi,p_1(x)) o+ ... o+ Gen(\phi, p_s(x)).
-(b) Die Einschränkung von p_i(\phi) auf \underbrace{Gen(\phi,p_i(x))}_{G_i} ist nilpotent mit nix(p_i(\phi)| G_i)=m_i.
-(c) Die Einschränkung von p_i(\phi) auf G_j mit j \neq i sind Isomorphismen.
-(d) Es gibt G_i=Gen(\phi,p_i(x))=Ker(p_i(\phi)^{m_i})=BigKer(p_i(\phi))
+Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)=p_1(x)^{m_1}...p_s(x)^{m_s}\) die Zerlegung in Eigenfaktoren.
+(a) \(V=Gen(\phi,p_1(x)) o+ ... o+ Gen(\phi, p_s(x))\).
+(b) Die Einschränkung von \(p_i(\phi)\) auf \(\underbrace{Gen(\phi,p_i(x))}_{G_i}\) ist nilpotent mit \(nix(p_i(\phi)\Big|_{G_i})=m_i\).
+(c) Die Einschränkung von \(p_i(\phi)\) auf \(G_j\) mit \(j \neq i\) sind Isomorphismen.
+(d) Es gibt \(G_i=Gen(\phi,p_i(x))=Ker(p_i(\phi)^{m_i})=BigKer(p_i(\phi))\)
 \ul{Beweis:}\\
-Wir schließen mit vollständiger Induktion nach s.\\
-\ul{s=1}: Sei \mu_\phi(x)=p_1(x)^{m_1}. Dies bedeutet p_1(\phi)^{m_1}=0, d.h. p_1(\phi) ist nilpotent und nix(p_1(\phi))=m_1 nach Def. von \mu_\phi(x). Offenbar folgt V=Ker(p_1(\phi)^{m_1})=BigKer/p_1(\phi)).\\
-\ul{s > 1}: Verwende das Lemma mit q_1(x)=p_1(x)^{m_1}...p_{s-1}(x)^{m_{s-1}} und q_2(x)=p_s(x)^{m_s}. Nach Teil (c) des Lemmas folgt V=Ker(q_1(\phi)) o+ Ker(q_2(\phi))\underset{I.V.}{=}(Ker(p_1(\phi))^{m_1} o+ ... o+ Ker(p_{s-1}(\phi)^{m_{s-1}}) o+ Ker(p_s(\phi)^{m_s}). Nach Teil (d) des Lemmas ist jeweils p_i(x)^{m_i} das Minimalpolynoom von p_i| G_i, Dies beweist (b). Teil (c) folgt aus Teil (b) des Lemmas. Teil (d) folgt aus (b).
-\qed
+Wir schließen mit vollständiger Induktion nach \(s\).\\
+\ul{\(s=1\)}: Sei \(\mu_\phi(x)=p_1(x)^{m_1}\). Dies bedeutet \(p_1(\phi)^{m_1}=0\), d.h. \(p_1(\phi)\) ist nilpotent und \(nix(p_1(\phi))=m_1\) nach Def. von \(\mu_\phi(x)\). Offenbar folgt \(V=Ker(p_1(\phi)^{m_1})=BigKer/p_1(\phi))\).\\
+\ul{\(s > 1\)}: Verwende das Lemma mit \(q_1(x)=p_1(x)^{m_1}...p_{s-1}(x)^{m_{s-1}}\) und \(q_2(x)=p_s(x)^{m_s}\). Nach Teil (c) des Lemmas folgt \(V=Ker(q_1(\phi)) o+ Ker(q_2(\phi))\underset{I.V.}{=}(Ker(p_1(\phi))^{m_1} o+ ... o+ Ker(p_{s-1}(\phi)^{m_{s-1}}) o+ Ker(p_s(\phi)^{m_s})\). Nach Teil (d) des Lemmas ist jeweils \(p_i(x)^{m_i}\) das Minimalpolynoom von \(p_i|G_i\), Dies beweist (b). Teil (c) folgt aus Teil (b) des Lemmas. Teil (d) folgt aus (b).
 TODO UNDERSET
+\qed
 \end{document}
 
 
