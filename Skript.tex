@@ -41,6 +41,7 @@
 \addtolength\cftsecnumwidth{\mylength}
 
 \newcommand{\ul}{\underline}
+\newcommand{\proof}{\ul{Beweis:}\\}
 \renewcommand{\qed}{\begin{flushright}
 \ul{\(q.e.d.\)}
 \end{flushright}}
@@ -153,7 +154,7 @@ sin(\alpha) & cos(\alpha) & 0 \\
 \end{itemize}
 \subsubsection{Definition}
 \begin{itemize}
-\item[\circled{a}] Der Endomorphismus \(\phi:V\rightarrow V\) heißt \ul{diagonalisierbar}, wenn es eine Basis \(B\neq (v_1,...,v_d)\) von \(V\) gibt, die aus Eigenvektoren besteht.\\
+\item[\circled{a}] Der Endomorphismus \(\phi:V\rightarrow V\) heißt \ul{diagonalisierbar}, wenn es eine Basis \(B\neq (v_1,\dots,v_d)\) von \(V\) gibt, die aus Eigenvektoren besteht.\\
 Sei \(\phi(v_i)=a_iv_i\) mit \(a_i \in K\) für \(i=1,..,d\). Dann gilt also \(M^B_B(\phi)=\begin{pmatrix}
 a_1 & 0 & \hdots & 0 \\
 0 & a_2 & \hdots & 0 \\
@@ -299,20 +300,20 @@ Sei \(\phi:V\rightarrow V\ K\)-linear und \(n=dim_K(V)\). Dann gilt:
 a_{11}-x & & * \\
  & \ddots & \\
  * & & a_{nn}-x
-\end{pmatrix}=(a_{11}-x)(a_{22}-x)*...*(a_{nn}-x)+(Monome\ niedriegeren\ Grades\ als\ n)=(-x)^n+(Monome\ niedriegeren\ Grades\ als\ n)\)
+\end{pmatrix}=(a_{11}-x)(a_{22}-x)*\dots*(a_{nn}-x)+(Monome\ niedriegeren\ Grades\ als\ n)=(-x)^n+(Monome\ niedriegeren\ Grades\ als\ n)\)
 \item["\circled{c}"] \(\chi_\phi(0)=det(\phi-0*id_V)=det(\phi)\).
 \end{itemize}
 \qed
 \subsubsection{Bemerkung (Der zweite Koeffizient von \(\chi_\phi(x)\))}
-Schreibe \(\chi_\phi(x)=(-1)^nx^n+c_{n-1}x^{n-1}+...+c_1x+c_0\). Dann heißt \(Spur(\phi)=\underset{"Trace"}{Tr}(\phi)=(-1)^{n-1}c_{n-1}\) die \ul{Spur} von \(\phi\).\\
-Sie hängt nicht ab von der Wahl einer Darstellungsmatrix \(\mathcal{A}=(a_{ij})\). Es gilt \(Spur(\mathcal{A})=a_{11}+a_{22}+...+a_{nn}\).\\
+Schreibe \(\chi_\phi(x)=(-1)^nx^n+c_{n-1}x^{n-1}+\dots+c_1x+c_0\). Dann heißt \(Spur(\phi)=\underset{"Trace"}{Tr}(\phi)=(-1)^{n-1}c_{n-1}\) die \ul{Spur} von \(\phi\).\\
+Sie hängt nicht ab von der Wahl einer Darstellungsmatrix \(\mathcal{A}=(a_{ij})\). Es gilt \(Spur(\mathcal{A})=a_{11}+a_{22}+\dots+a_{nn}\).\\
 \ul{Beweis:}\\
 Um einen Summanden \(c*x^{n-1}\) in \(det\begin{pmatrix}
 a_{11}-x & & & * \\
  & a_{22}-x & & \\
  & & \ddots & \\
 * & & & a_{nn}-x
-\end{pmatrix}\) zu erhalten, muss man genau \(n-1\)mal den Faktor \(a_{ii}-x\) wählen. Also suchen wir den Koeffizienten von \(x^{n-1}\) in \((a_{11}-x)*...*(a_{nn}-x)\). Beim Ausmultiplizieren muss man \((n-1)\)mal \(-x\) wählen und einmal \(a_{ii}\). Also gilt \(c=(-1)^{n-1}(a_{11}+a_{22}+...+a_{nn})=(-1)^{n-1} Spur(\phi)\).
+\end{pmatrix}\) zu erhalten, muss man genau \(n-1\)mal den Faktor \(a_{ii}-x\) wählen. Also suchen wir den Koeffizienten von \(x^{n-1}\) in \((a_{11}-x)*\dots*(a_{nn}-x)\). Beim Ausmultiplizieren muss man \((n-1)\)mal \(-x\) wählen und einmal \(a_{ii}\). Also gilt \(c=(-1)^{n-1}(a_{11}+a_{22}+\dots+a_{nn})=(-1)^{n-1} Spur(\phi)\).
 \qed
 HIER FEHLT VIEL
 \setcounter{subsection}{21}
@@ -321,13 +322,13 @@ Sei \(K\) Körper, \(V\) endlich-dimensionaler \(K\)-Vektorraum, \(\phi \in End_
 \(\chi_\phi(v)=det(\phi-x\cdot id_V)\) charakteristisches Polynom\\
 \(\mu_\phi(x)=\) normiertes Polynom kleinsten Grades mit \(\mu_\phi (\phi) = 0 \hat{=}\) Minimalpolynom von \(\phi\).
 \subsubsection{Definition (Großer Kern und kleines Bild)}
-(a) Die Kette \(Ker(\phi) \subseteq Ker(\phi^2) c_ Ker(\phi^3) c_ ...\) von \(K\)-Untervektorräumen von \(V\) wird stationär. Der Untervektorraum \(BigKer(\phi)=Ker(\phi^i)\) mit \(i >> 0\) heißt der \(\ul{große Kern}\) von \(\phi\).
-(b) Die Kette \(Im(\phi) _c Im(\phi^2) _c ...\) wird stationär. Der Untervektorraum \(SmIm(\phi) = Im(\phi')\) mit \(i >> 0\) heißt das \ul{kleine Bild} von \(\phi\).
+(a) Die Kette \(Ker(\phi) \subseteq Ker(\phi^2) c_ Ker(\phi^3) c_ \dots\) von \(K\)-Untervektorräumen von \(V\) wird stationär. Der Untervektorraum \(BigKer(\phi)=Ker(\phi^i)\) mit \(i >> 0\) heißt der \(\ul{große Kern}\) von \(\phi\).
+(b) Die Kette \(Im(\phi) _c Im(\phi^2) _c \dots\) wird stationär. Der Untervektorraum \(SmIm(\phi) = Im(\phi')\) mit \(i >> 0\) heißt das \ul{kleine Bild} von \(\phi\).
 \subsubsection{Satz (Das Lemma von Fitting)}
 (a) Gilt \(Ker(\phi^m)=Ker(\phi^{m+1})\) für ein \(m \geq 1\), so gilt \(Ker(\phi^m)=Ker(\phi^i)\) für alle \(i \geq m\) und somit \(BigKer(\phi)=Ker(\phi^m)\).
 (b) Gilt \(Im(\phi^{m'})=Im(\phi^{m'+1})\) für ein \(m' \geq 1\), so folgt \(Im(\phi^{m'})=Im(\phi^i)\) für alle \(i \geq m'\) und somit \(SmIm(\phi)=Im(\phi^{m'})\).
 (c) Sind \(m,m'\) in (a) und (b) minimal, so folgt \(m=m'\).
-(d) Die Ketten \({0} c_ Ker(\phi) c+ Ker(\phi^2) c+ ... c+ Ker(\phi^m)=BigKer(\phi)\) und \(V _c Im(\phi) +c Im(\phi^2) +c ... +c Im(\phi^{m'}) = SmIm(\phi)\) enthalten strikte Inklusionen.
+(d) Die Ketten \({0} c_ Ker(\phi) c+ Ker(\phi^2) c+ \dots c+ Ker(\phi^m)=BigKer(\phi)\) und \(V _c Im(\phi) +c Im(\phi^2) +c \dots +c Im(\phi^{m'}) = SmIm(\phi)\) enthalten strikte Inklusionen.
 (e) \fbox{\(V=BigKer(\phi) o+ SmIm(\phi)\)}
 \ul{Beweis:}\\
 "a" Es genügt \(Ker(\phi^{m+1}) =Ker(\phi^{m+2})\) zu beweisen. Zeige "\(_c\)".Sei \(v \in Ker(\phi^{m+2})\), also \(\phi^{m+1}(v)=0\), so folgt \(\phi(v)\in Ker(\phi^{m+1})=Ker(\phi^m)\), also \(\phi^{m+1}(v)= \phi^m(\phi(v))=0\) und somit \(v \in Ker(\phi^{m+1})\).
@@ -342,7 +343,7 @@ Sei \(v = \phi^m(w)\in Ker(\phi^m)\) für ein \(w\in V\). Dann gilt \(\phi^m(v)=
 \ul{Wdh.:}\\
 Sei \(\lambda\in K\) ein Eigenwert von \(\phi\). Dann ist \(x-\lambda\) ein Eigenfaktor und \(Eig(\phi, \lambda)=Ker(\phi-\lambda\cdot id_V)={v\in V | \phi(v)=\lambda v}\).
 \subsubsection{Definition}
-Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)^m_1...p_s(x)^{m_s}\) mit den Eigenfaktoren \(p_1(x),...,p_s(x)\) und mit \(m_i\geq 1\).
+Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)^m_1\dotsp_s(x)^{m_s}\) mit den Eigenfaktoren \(p_1(x),\dots,p_s(x)\) und mit \(m_i\geq 1\).
 (a) der \(K\)-Untervektorraum \(Eig(\phi, p_i(x)) = Ker(p_i(\phi))\) heißt der \ul{Eigenraum} von \(\phi\) bzgl. des Eigenfaktors \(p_i(x)\):
 (b) Der \(K\)-Untervektorraum \(Gen(\phi, p_i(x))=BigKer(p_i(\phi))\) heißt der \ul{verallgemeinerte  Eigenraum} (oder \ul{Hauptraum}) von \(\phi\) bzgl. \(p_i(x)\).
 \subsubsection{Bemerkung}
@@ -368,7 +369,7 @@ Also sind auch \(q_1'(x)\) teilerfremd und \(q_1'(x)q_2'(x)=\mu_\phi(x)=q_1(x)q_
 \subsubsection{Definition}
 Ein Endomorphismus \(\phi\in End_K(V)\) heißt \ul{nilpotent}, wen es ein \(m\geq 1\) gibt mit \(\phi^m=0\). In diesem Fall heißt das kleinste solche m der \ul{Nilpotenzindex} von \(\phi\) und wird mit \(nix(\phi)\).
 \subsubsection{Beispiel}
-Sei \(\phi\in End_\mathbb{Q}(\mathbb{Q\^3)\) mit \(M_\xi^\xi(\phi)= TODO MATRIX\). Dann gilt \(M_\xi^\xi(\phi^2)=TODO MATRIX\) und \(\phi^3=0\), also \(nix(\phi)=3\).
+Sei \(\phi\in End_\mathbb{Q}(\mathbb{Q}^3)\) mit \(M_\xi^\xi(\phi)= TODO MATRIX\). Dann gilt \(M_\xi^\xi(\phi^2)=TODO MATRIX\) und \(\phi^3=0\), also \(nix(\phi)=3\).
 \subsubsection{Lemma}
 Seien \(U', U''\) zwei \(\phi\)-invariante \(K\)-Untervektorräume von \(V\) mit \(V=U' +o U''\).
 Sei \(\phi'=\mu_{\phi \Big|_{U'}}\) und \(\phi''=\mu_{\phi \Big|_{U''}}\). Dann gilt \(\mu_\phi(x)=kgV(\mu_{\phi \Big|_{U'}}(x),\mu_{\phi \Big|_{U''}}(x))\).\\
@@ -376,28 +377,117 @@ Sei \(\phi'=\mu_{\phi \Big|_{U'}}\) und \(\phi''=\mu_{\phi \Big|_{U''}}\). Dann 
 Es gilt \(\mu_\phi(\phi)=0\). Also folgt \(\mu_\phi(\phi\Big|_{U'})=0\) und \(\mu_\phi(\phi \Big|_{U''})=0\). Also ist \(\mu_\phi\) ein gemeinsames Vielfaches von \(\mu_{\phi'}\) und \(\mu_{\phi''}\). Umgekehrt sei \(f(x)=kgV(\mu_{\phi'},\mu_{\phi''}(x))\). Zu zeigen: \(f(\phi)=0\). Betrachte \(f(\phi)\backslash U'=f(\phi \Big|_{U'})=0\) da \(f\) ein Vielfaches von \(\mu_{\phi'}\) ist. Genauso gilt \(f(\phi) \Big|_{U''}=f(\phi|U'')=0\). Wegen \(V=U' o+ U''\) folgt \(f(\phi)=0\), also \(\mu_\phi \Big|_{f}\).
 \qed
 \subsubsection{Theorem (Die verallgemeinerte Eigenraumzerlegung / Die Hauptraumzerlegung / Die Primärzerlegung von \(\phi\))}
-Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)=p_1(x)^{m_1}...p_s(x)^{m_s}\) die Zerlegung in Eigenfaktoren.
-(a) \(V=Gen(\phi,p_1(x)) o+ ... o+ Gen(\phi, p_s(x))\).
+Sei \(\phi\in End_K(V)\) und \(\mu_\phi(x)=p_1(x)^{m_1}\dotsp_s(x)^{m_s}\) die Zerlegung in Eigenfaktoren.
+(a) \(V=Gen(\phi,p_1(x)) o+ \dots o+ Gen(\phi, p_s(x))\).
 (b) Die Einschränkung von \(p_i(\phi)\) auf \(\underbrace{Gen(\phi,p_i(x))}_{G_i}\) ist nilpotent mit \(nix(p_i(\phi)\Big|_{G_i})=m_i\).
 (c) Die Einschränkung von \(p_i(\phi)\) auf \(G_j\) mit \(j \neq i\) sind Isomorphismen.
 (d) Es gibt \(G_i=Gen(\phi,p_i(x))=Ker(p_i(\phi)^{m_i})=BigKer(p_i(\phi))\)
 \ul{Beweis:}\\
 Wir schließen mit vollständiger Induktion nach \(s\).\\
 \ul{\(s=1\)}: Sei \(\mu_\phi(x)=p_1(x)^{m_1}\). Dies bedeutet \(p_1(\phi)^{m_1}=0\), d.h. \(p_1(\phi)\) ist nilpotent und \(nix(p_1(\phi))=m_1\) nach Def. von \(\mu_\phi(x)\). Offenbar folgt \(V=Ker(p_1(\phi)^{m_1})=BigKer/p_1(\phi))\).\\
-\ul{\(s > 1\)}: Verwende das Lemma mit \(q_1(x)=p_1(x)^{m_1}...p_{s-1}(x)^{m_{s-1}}\) und \(q_2(x)=p_s(x)^{m_s}\). Nach Teil (c) des Lemmas folgt \(V=Ker(q_1(\phi)) o+ Ker(q_2(\phi))\underset{I.V.}{=}(Ker(p_1(\phi))^{m_1} o+ ... o+ Ker(p_{s-1}(\phi)^{m_{s-1}}) o+ Ker(p_s(\phi)^{m_s})\). Nach Teil (d) des Lemmas ist jeweils \(p_i(x)^{m_i}\) das Minimalpolynoom von \(p_i|G_i\), Dies beweist (b). Teil (c) folgt aus Teil (b) des Lemmas. Teil (d) folgt aus (b).
+\ul{\(s > 1\)}: Verwende das Lemma mit \(q_1(x)=p_1(x)^{m_1}\dotsp_{s-1}(x)^{m_{s-1}}\) und \(q_2(x)=p_s(x)^{m_s}\). Nach Teil (c) des Lemmas folgt \(V=Ker(q_1(\phi)) o+ Ker(q_2(\phi))\underset{I.V.}{=}(Ker(p_1(\phi))^{m_1} o+ \dots o+ Ker(p_{s-1}(\phi)^{m_{s-1}}) o+ Ker(p_s(\phi)^{m_s})\). Nach Teil (d) des Lemmas ist jeweils \(p_i(x)^{m_i}\) das Minimalpolynom von \(p_i|G_i\), Dies beweist (b). Teil (c) folgt aus Teil (b) des Lemmas. Teil (d) folgt aus (b).
 TODO UNDERSET
+\qed
+\subsubsection{Beispiel}
+Sei K = \mathbb{Q} und \phi \in End_\mathbb{Q}(\mathbb{Q}^3) mit Matrix M_\chi^\chi(\phi)=\begin{pmatrix}
+e4 & e5 & e6 & e7 & e3 & e7 & e8 & e3
+\end{pmatrix}.\\
+Dann \mu_\phi(x)=x^6-x^2=x^2(x-1)(x+1)(x^2+1)\\
+\xi_\phi(x)=x^4(x-1)(x+1)(x^2+1)\\
+Nun berechnen wir: Gen(\phi, x+1)=Ker(\phi+id_V)=<(0,0,1,0,0,-1,1,-1)>\\
+Gen(\phi, x-1)=Ker(\phi-id_V)=<(0,0,-1,0,0,-1,-1,-1)>\\
+Gen(\phi, x^2+1)=Ker(\phi^2+id_V)=<(0,0,1,0,0,0,-1,0)<(0,0,0,0,0,1,0,-1)>\\
+Gen(\phi, x)=BigKer(\phi)=Ker(\phi^2)=<(0,0,0,1,0,-1,0,0),(0,0,0,0,1,0,0,-1),(1,0,-1,0,0,0,0,0),(0,1,0,0,0,0,-1,0)>\\
+Insgesamt folgt \(V=Ker(\phi+id_V)\oplus Ker(\phi-id_V) \oplus Ker(\phi^2+id_V)\oplus Ker(\phi^2)\).\\
+Beachte: \underbrace{Ker(\phi)}_{=<e_4-e_6,e_5-e_8>} c+ Ker(\phi^2).
+\subsection{Nilpotente Endomorphismen (Buch: §4.5-4.6}
+Sei K ein Körper, V ein endlich-dimensionaler K-Vektorraum und \phi\in End_K(V).
+\phi nilpotent \Leftrightarrow es gibt ein m\geq 1 mit \phi^m=0. Das minimale solche m heißt der Nilpotenzindex nix(\phi).\\
+Im Folgenden sei \phi nilpotent und m=nix(\phi).
+\subsubsection{Definition}
+(a) Die Kette {0} c+ Ker(\phi) c+ Ker(\phi^2) c+ \dots c+ Ker(\phi^m)=V heißt die \ul{kanonische Filtrierung} von V bzgl. \phi.
+(b) Für i=1,\dots,m sei \delta_i=dim_K Ker(\phi^i)-dim_K(Ker(\phi^{i-1}).
+\subsubsection{Lemma}
+Für i \geq 1 gilt: \phi(Ker(\phi^i))\subseteq Ker(\phi^{i-1})\\
+\proof
+Dies folgt aus v\in Ker(\phi^i)\Rightarrow \phi^{i-1}(\phi(v))=0\Rightarrow \phi(v)\in Ker(\phi^{i-1}).
+\qed
+\subsubsection{Bemerkung}
+Sei \phi nilpotent mit m=nix(\phi)=2.\\
+Dann gilt: \{0\}c+ Ker(\phi) c+ Ker(\phi^2) =V. Wähle ein Komplement U_2 und Ker(\phi) in V und erhalte: V = Ker(\phi)\oplus U_2.
+Nach dem Lemma gilt: \phi(Ker(\phi^1))\subseteq Ker(\phi^0)=\{0\} und \phi(U_2)=\phi(V)=\phi(Ker(\phi^2))\subseteq Ker(\phi).\\
+Wähle nun ein Komplement U_1 von \phi(U_2) in Ker(\phi) und erhalte: v=Ker(\phi)\oplus U_2=U_1\oplus U_2\oplus \phi(U_2).\\
+Wegen U_2\cap Ker(\phi)=\{0\} gilt dabei \phi EINGESCHR_{U_2} ist injektiv und somit dim_K(\phi(U-_2))=dim_K(U_2).\\
+Also folgt: \delta_1=dim_K(Ker(\phi))=dim_K(U_1)+dim_K(\phi(U_2))\\
+\delta_2=dim_K(V)-dim_K(Ker(\phi))=dim_K(U_2).
+\subsubsection{Satz (Die Jordan-Zerlegung nilpotenter Endomorphismen)}
+Sei \phi\in End_K(V) nilpotent und s=nix(\phi). Für i=1,\dots,s sei \delta_i=dim_K(Ker(\phi^i))-dim_K(Ker(\phi^{i-1})).\\
+Konstruiere Untervektorräume U_1,\dots U_s von V rekursiv wie folgt:\\
+(1) Sei U_s ein Komplement von Ker(\phi^{s-1}) in V.
+(2) Absteigend für i=s-1, s-2,\dots, 1 sei U_i ein Komplement von Ker(\phi^{i-1})+\phi^{s-i}(U_s)+\phi^{s-i-1}(U_{s-1})+\dots+\phi^1(U_{i+1}) in Ker(\phi^i).\\
+Dann gilt: (a) V=U_1\\
+\oplus U_2\oplus \phi(U_2)\\
+\oplus U_3\oplus \phi(U_3)\oplus \phi^2(U_3)\\
+\vdots\\
+\oplus U_s\oplus \phi(U_s)\oplus\dots\oplus\phi^{s-1}(U_s)\\
+Diese Darstellung heißt die \ul{Jordan-Zerlegung} von V bzgl. \phi.
+(b) Für i=1,\dots,s gilt: \delta_i=\sum_{j=i}^{s} dim_K(U_j) und \delta_1\geq\delta_2\geq\dots\geq\delta_s>0.\\
+\ul{Beweis:} Vgl. Buch S.265-267.
+\subsubsection{Korollar}
+(a) Gilt \delta_1=\dots=\delta_s=1, so folgt U_1=\dots=U_{s-1}=\{0\} und V=U_s\oplus \phi(U_s)\oplus\phi^2(U_s)\oplus\dots\oplus\phi^{s-1}(U_s).\\
+Dabei gilt: Ker(\phi^i)=\phi^{s-i}(U_s)\oplus\dots\oplus\phi^{s-1}(U_s).
+(b) Gilt \delta_1=1, so folgt \delta_2=\dots=\delta_s=1. In diesem Fall liefert jeder Vektor v\in V\backslash Ker(\phi^{s-1}) ein Basistupel B=(v,\phi(v),\phi^2(v),\dots,\phi^{s-1}(v)).\\
+In dieser Basis gilt M_B^B(\phi)=\begin{pmatrix}
+0 & 0 & & 0
+1 & 0 & \Huge 0 & \vdots
+0 & 1 & & \vdots
+\vdots & \Vdots & \ddots & 0
+0 & 0 & \hdots & 1 & 0
+\end{pmatrix}. TODO MATRIX SCHAUEN OB RICHTIG
+Eine solche Matrix heißt ein \ul{Jordan-Kästchen}.\\
+In der Basis B'=(\phi^{s-1}(v),\phi^{s-2}(v),\dots,v) gilt M_{B'}^{B'}(\phi)=TODO MATRIX (Dies ist das üblichere Jordan-Kästchen).\\
+\proof
+"(a)" Nach Teil (b) des Satzes folgt U_1=\dots=U_{s-1}=\{0\}. Damit vereinfacht sich die Jordan-Zerlegung wie angegeben.
+"(b)" folgt aus Teil (b) des Satzes und (a).
+\qed
+\subsubsection{Bemerkung}
+Sei \delta_s\geq 1 und \{v_1,\dots,v_\delta\} eine Basis von U_s. Dann ist B=\{v_1,\phi(v_1),\dotsm\phi^{s-1}(v_1)\}\caprev\dots\caprev\{v_\delta,\phi(v_\delta),\dotsm\phi^{s-1}(v_\delta)\} eine Basis von W=U_s\oplus\phi(U_s)\oplus\dots\oplus\phi^{s-1}(U_s). Die Matrix von \phi|W bzgl. B ist blockdiagonal mit \delta_s Jordan-Kästchen auf der Hauptdiagonalen M_B^B(\phi|W)=TODO MATRIX  TODO CAPREV u.\\
+\subsubsection{Satz (Die Jordansche Normalform)}
+Sei \phi\in End_K(V) mit linearen Eigenfaktoren, also mit \chi_\phi(x)=(x-\lambda_1)^{a_1}\cdot\dots\cdot(x-\lambda_s)^{a_s}. Dann gibt es eine Basis B in V, so dass gilt: M_B^B(\phi)=TODO MATRIX mit \lambda_i\cdot I_{a_i}+N_i=TODO MATRIX, wobei die Größe der \ul{Jordan-Blöcke} TODO BLOCK durch die Jordan-Zerlegung von (\phi-\lambda_iid_V)|G_i mit G_i=Gen(\phi,\lambda_i) gegeben ist.
+\subsection{Diagonalisierbarkeit und Triagonalisierbarkeit (Buch: §.4.3-4.4)}
+Sei K ein Körper, V ein endlich-dimensionaler K-Vektorraum, \phi\in End_K(V).\\
+\phi heißt diagonalisierbar \Leftrightarrow es gibt eine Basis von V bestehend aus Eigenvektoren von \phi \Leftrightarrow es gibt eine Basis B von V, so dass M_B^B(\phi) eine Diagonalmatrix ist.
+\subsubsection{Satz (Zweite Charakterisierung diagonalisierbarer Endomorphismen)}
+Die folgenden Bedingungen sind äquivalent:
+(a) \phi ist diagonalisierbar
+(b) Alle Eigenfaktoren von \phi sind linear und Eig(\phi,\lambda)=Gen(\phi,\lambda) für alle Eigenwerte \lambda von \phi
+(c) \mu_\phi(x) zerfällt in ein Produkt paarweise verschiedener Faktoren x-\lambda_i.\\
+\proof
+"(a)\Rightarrow(b)" Sei B eine Basis von V, so dass M_B^B(\phi) eine Diagonalmatrix ist. Dann ist \chi_\phi(x)=(x-\lambda_1)^{a_1}\cdot\dots\cdot(x-\lambda_s)^{a_s} mit \lambda_i\neq\lambda_j und a_i\geq 1 und M_B^B(\phi)=TODO MATRIX und B=B_1\caprevdisj\dots\caprevdisj B_s und Eig(\phi,\lambda_i)=<B_i>_K=Gen(\phi,\lambda_i)
+"(b)\Rightarrow(c)" \ul{z.z.} m_i=1 für 1,\dots,s (vgl. Übungsblatt 3, Aufgabe 7).
+"(c)\Rightarrow(a)" Schreibe \mu_\phi(x)=(x-\lambda_1)\cdot\dots\cdot(x-\lambda_s) mit \lambda_i\neq\lambda_j für i\neq j.\\
+Nach Übungsblatt 3, Aufgabe 7 gilt Eig(\phi,\lambda_i)=Gen(\phi,\lambda_i) für i=1,\dots,s.\\
+Dann folgt V=Gen(\phi,\lambda_1)\oplus\dots\oplus Gen(\phi,\lambda_s)=Eig(\phi,\lambda_1)\oplus\dots\oplus Eig(\phi,\lambda_s). Somit hat V eine Basis bestehend aus Eigenvektoren von \phi.
+\qed
+\subsubsection{Definition}
+Der Endomorphismus \phi heißt \ul{triagonalisierbar}, wenn es eine Basis von V gibt, so dass M_B^B(\phi) eine obere Dreiecksmatrix ist.
+\subsubsection{Satz (Charakterisierung triagonalisierbarer Endomorphismen)}
+Genau dann ist \phi triagonalisierbar, wenn alle Eigenfaktoren von \phi linear sind.\\
+\proof
+"\Rightarrow" Sei B eine Basis von V bzgl. der M_B^B(\phi) eine obere Dreiecksmatrix ist. Schreibe M_B^B(\phi)=TODO MATRIX und erhalte \chi_\phi(x)=det(M_B^B(\phi))-x\cdot I_n)=(-1)^n(x-\lambda_1)\cdot\dots\cdot (x-\lambda_n).
+"\Leftarrow" Dies folgt aus der Jordan-Zerlegung.
 \qed
 \end{document}
 
 
 
-TODO: \equals =^
-c_ Teilemenge _c andersrum (c+, +c)
-o+ innere Summe
-~ über Buchstaben
-SCHNITT zu umgredehtem u
-Itemize
->> "für n groß genug" d.h. es gibt ein m_0\in \mathbb{N}, sodass dies für alle m\geq m_0 gilt.
+
+
+
+
+
+
+
 
 
 
