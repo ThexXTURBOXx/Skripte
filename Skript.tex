@@ -477,6 +477,91 @@ Genau dann ist \phi triagonalisierbar, wenn alle Eigenfaktoren von \phi linear s
 "\Rightarrow" Sei B eine Basis von V bzgl. der M_B^B(\phi) eine obere Dreiecksmatrix ist. Schreibe M_B^B(\phi)=TODO MATRIX und erhalte \chi_\phi(x)=det(M_B^B(\phi))-x\cdot I_n)=(-1)^n(x-\lambda_1)\cdot\dots\cdot (x-\lambda_n).
 "\Leftarrow" Dies folgt aus der Jordan-Zerlegung.
 \qed
+\section{Bilineare Abbildungen}
+\setcounter{subsection}{24}
+\subsection{Grundlegendes zu Bilinearformen (Buch §5.1,5.4}
+Sei \(K\) ein Körper und \(V\) ein endlich-dimensionaler \(K\)-Vektorraum mit \(n=dim_K(V)\).
+\subsubsection{Definition}
+(a) Sei \(W\) ein weiterer K-Vektorraum. Eine Abbildung \Phi:VxV\rightarrow W heißt \ul{K-bilinear}, wenn für alle v,v_1,v_2,v SCHLANGE, v_1 SCHLANGE, v_2 SCHLANGE \in V und a_1, a_2\in K gilt:
+(a)\Phi(a_1v_1+a_2v_2,v SCHLANGE)=a_1\cdot\Phi(v_1,v SCHLANGE)+a_2\cdot\Phi(v_2,v SCHLANGE)
+(b) \Phi(v,a_1v_1 SCHLANGE+a_2v_2 SCHLANGE)=a_1\cdot\Phi(v,V-1 SCHLANGE)+a_2\cdot\Phi(v,v_2 SCHLANGE).
+(b) Eine bilineare Abbildung \Phi:VxV\rightarrow K heißt auch eine \ul{Bilinearform} auf V. TODO CROSS
+\subsubsection{Bemerkung (Längenmessung in \(\mathbb{R}^2\)}
+Sei v=(a_1,a_2)\in\mathbb{R}^2 mit a_1,a_2\in\mathbb{R}. Dann heißt l(v)=||v|| = \sqrt{a_1^2+a_2^2} die \ul{Länge} (oder die \ul{Norm}) von v.
+\subsubsection{Definition}
+Sei v=(a_1,a_2)\in\mathbb{R}^2\backslash\{0\}. Dann heißt e_v=\frac{v}{||v||}=(\frac{a_1}{\sqrt{a_1^2+a_2^2}},\frac{a_2}{\sqrt{a_1^2+a_2^2}}) der \ul{Einheitsvektor} in \ul{Richtung} v.
+\subsubsection{Bemerkung (Winkelmessung in \mathbb{R}^2)}
+Seien v=(a_1,a_2) und w=(b_1,b_2) zwei Vektoren in \mathbb{R}^2\backslash\{0\}.\\
+Gesucht ist eine Funktion \Phi:\mathbb{R}^2x\mathbb{R}^2\rightarrow\mathbb{R}, mit deren Hilfe wir den Winkel \alpha=\angle(v,w) zwischen v und w definieren können.
+(a) Der Winkel \alpha sollte nicht von ||v|| und ||w|| abhängen. Es gilt: cos(\alpha)=\frac{||u||}{||w||}, wobei u der Fußpunkt des Lots von w auf v ist.
+(b) Gilt w\senkrecht v (d.h. steht w senkrecht auf v), so gilt cos(\alpha)=0 und u=0.
+(c) Genauer gilt: u=||u||\cdot e_v =||w||\cdot cos(\alpha)\cdot e_v
+(d) Nach der Vektoraddition gilt w=u+u SCHLANGE\\
+Ferner gilt u SCHLANGE\senkrecht v.
+(1) Gilt \Phi(v,u+u SCHLANGE)=\Phi(v,u)+\underbrace{\Phi(v,u SCHLANGE)}_{=0 da u SCHLANGE\senkrecht v}, so folgt \Phi(v,w)=\Phi(v,u) und somit \Phi(v,w)=\Phi(||v||\cdot e_v, ||w||\cdot cos(\alpha)\cdot e_v)
+(e) Gilt (2) \Phi(\lambda v SCHLANGE, w SCHLANGE)=\Phi(v SCHLANGE,\lambda w SCHLANGE)=\lambda\Phi(v SCHLANGE,w SCHLANGE), so folgt \Phi(v,w)=||v||\cdot||w||\cdot cos(\alpha)\cdot\underbrace{\Phi(e_v,e_v)}_{Winkel 0°, cos(\alpha)=1}.
+(f) Gilt (3) \phi(v,v)=||v||^2, so folgt \Phi(e_v,e_v)=\Phi(\frac{v}{||v||},\frac{v}{||v||})\frac{1}{||v|||^2}\cdot||v||^2=1 und damit \Phi(v,w)=||v||\cdot ||w||\cdot cos(\alpha), also cos(\alpha)= \frac{\Phi(v,w)}{||v||\cdot||w||}.
+Insgesamt sollte \Phi folgende Eigenschaften erfüllen:
+(1) \Phi(v,w_1+w_2)=\Phi(v,w_1)+\Phi(v,w_2) für v,w_1,w_2\in\mathbb{R}^2
+\Phi(v_1,+v_2w)=\Phi(v_1,w)+\Phi(v_2,w) für v_1,v_2,w\in\mathbb{R}^2
+(2) \Phi(\lambda v,w)=\Phi(v,\lambda w)=\lambda\Phi(v,w) für \lambda\in\mathbb{R} und v,w\in\mathbb{R}^2
+(3) \Phi(v,w)=0 falls v SENKRECHT w
+(4) \Phi(v,v)=||v||^2 für v\in\mathbb{R}^2
+Kann man hieraus \Phi bestimmen? Für v=(a_1,a_2) und w=(b_1,b_2) folgt:
+\Phi(v+w,v+w)=||v+w||^2=||(a_1+b_1,a_2+b_2)||^2=(a_1+b_1)^2+(a_2+b_2)^2=a_1^2+a_2^2+b_1^2+b_2^2+2(a_1b_1+a_2b_2)\\
+\Phi(v+w,v+w)=\Phi(v,v)+\Phi(v,w)+\underbrace{\Phi(w,v)}_{=\Phi(v,w)}+\Phi(w,w)=||v||^2+||w||^2+2\Phi(v,w)=a_1^2+a_2^2+b_1^2+b_2^2+2\Phi(v,w) \Rightarrow \Phi(v,w)=a_1b_1+a_2b_2.
+Wie man leicht nachprüft, erfüllt dieses \phi die Eigenschaften (1)-(4).
+Der Winkel \alpha=\angle(v,w) ist dann durch cos(\alpha)=\frac{\Phi(v,w)}{||v||\cdot||w||} definiert.
+\subsubsection{Definition}
+Sei B=(v_1,v_2,\dots,v_n) ein Basistupel von V.
+Dann ist die Abbildung \Phi:\underset{VxV\rightarrow K}_{a_1v_1+\dots+a_nv_n,{b_1v_1+\dots+b_nv_n\Rightarrow a_1b_1+a_2b_2+\dots+a_nb_n} eine Bilinearform auf V. Sie heißt die \ul{Standardbilinearform} auf V bzgl. der Basis B.
+\subsubsection{Definition}
+Sei B=(v_1,\dots,v_n) ein Basistupel von V.
+(a) Ist \Phi:VxV\rightarrow K eine Bilinearform auf V, so heißt die Matrix G_B^B(\Phi)=(\phi(v_i,v_j))_{i,j}\in Mat_n(K) die \ul{Gramsche Matrix} (oder die \ul{Strukturmatrix}) von \Phi.
+(b) Die Menge aller Bilinearformen auf V wird mit Bil_K(V) bezeichnet.
+\subsubsection{Satz}
+Sei B=(v_1,\dots,v_n) ein Basistupel von V.
+(a) Zu jeder Matrix A=(a_{ij})\in Mat_n(K) definiere \Phi_A:VxV\rightarrow K durch \Phi_A(b_1v_1+\dots+b_nv_n,c_1v_1+\dots+c_nv_n)=\sum_{i=1}^{n}\sum_{j=1}^{n}b_ic_ja_{ij}. Dann ist \Phi_A eine Bilinearform auf V und G_B(\Phi_A)=A.
+(b) Die beiden Zuordnungen \Phi_A\rightarrow G_B(\Phi) und A\rightarrow \Phi_A sind invers zueinander.
+(c) Die Menge Bil_K(V) ist bzgl. (\Phi+\Psi)(v,w)=\Phi(v,w)+\Psi(v,w) und (\lambda\Phi)(v,w)=\lambda\cdot\Phi(v,w) für v,w\in v und \lambda\in K ein K-Vektorraum.
+(d) Die Abbildung \phi:\underbrace{Bil_K(V)\rightarrow Mat_n(K)}_{\Phi\Rightarrow G_B(\Phi)} ist ein Isomorphismus von K-Vektorräumen.
+(e) Die Standardbilinearform \Phi erfüllt G_B(\phi)=I_n.\\
+\proof
+"(a)" \ul{z.z.} \Phi_A ist K-bilinear. Beachtte: \Phi(b_1v_1+\dots+b_nv_n, c_1v_1+\dots+c_nv_n)=(b_1,\dots,b_n)\cdot A\cdot \begin{pmatrix}
+c_1\\
+\vdot\\
+c_n
+\end{pmatrix}.
+Gilt v=v'+v'' mit v'=b_1'v_1+\dots+b_n'v_n und v''=b_1''v_1+\dots+b_n''v_n und w=c_1v_1+\dots+c_nv_n so folgt:
+\Phi(v'+v'',w)=(b_1'+b_1'',\dots,b_n'+b_n'')\cdot A \cdot \begin{pmatrix}
+c_1\\
+\vdot\\
+c_n
+\end{pmatrix}=(b_1',\dots,b_n')\cdot A \cdot \begin{pmatrix}
+c_1\\
+\vdot\\
+c_n
+\end{pmatrix}+(b_1'',\dots,+b_n'')\cdot A \cdot \begin{pmatrix}
+c_1\\
+\vdot\\
+c_n
+\end{pmatrix}=\Phi(v',w)+\Phi(v'',w).\\
+Analog rechnet man die anderen Bedingungen nach.\\
+Die Gramsche Matrix G_B(\Phi_A) hat als (a_{ij})-Eintrag gerade \Phi(v_i,v_j)=e_i^{tr}\cdot A \cdot e_j=e_i^{tr}\cdot \underbrace{A\cdot e_j}_{j-te Spalte von A}=a_{ij} also der (i,j)-Eintrag von A.\\
+Es folgt G_B(\Phi_A)=A.
+"(b)" Soeben gezeigt ist G_B(\Phi_A)=0. Die Behauptung \Phi_{G_B(\Phi)}=\Phi folgt, wenn wir zeigen, dass für alle i,j=1,\dots,n gilt:\Phi_{G_B(\Phi)}(v_i,v_j)=\Phi(v_i,v_j). Wie gesehen ist \phi_{G_B(\Phi)}(v_i,v_j) gerade der (i,j)-Eintrag der Matrix G_B(\Phi). Dieser ist nach Definition von G_B(\Phi) gleich \Phi(v_i,v_j).
+"(c)" \ul{z.z.} \Phi+\Psi,\lambda\cdot\Phi sind Bilinearformen: Nachrechnen!\\
+\ul{z.z.} Bil_K(V) erfüllt bzgl. +,\cdot die Vektorraumaxiome: Nachrechnen!
+"(d)" Die Bijektivität von \phi folgt aus (b).\\
+\ul{z.z.} \phi ist K-linear: Seien \Phi,\Psi\in Bil_K(V) und \lambda,\mu\in K. Dann gilt \phi(\lambda\Phi+\mu\Psi)=((\lambda\Phi+\mu\Psi)(v_i,v_j))_{i,j}=(\lambda\Phi(v_i,v_j)+\mu\Psi(v_i,v_j))_{i,j}=\lambda\cdot(\Phi(v_i,v_j))_{i,j}+\mu\cdot(\Psi(v_i,v_j))_{i,j}=\lambda\phi(\Phi)+\mu\phi(\Psi).
+"(e)" Für \Phi(a_1v_1+\dots+a_nv_n,b_1v_1+\dots+b_nv_n)=a_1b_1+\dots+a_nb_n gilt \Phi(v_i,v_j)=e_i^{tr}e_j=\rho_{ij}= \{TODO BRACE 1 falls i=j 0 sonst.   also G_B(\Phi)=(\rho_{ij})=I_n.
+\qed
+\ul{Frage:} Was passiert bei einem Basiswechsel mit der Gramschen Matrix?
+\subsubsection{Satz}
+Seien B=(v_1 \dots v_n) und V=(w_1 \dots w_m) zwei Basen von V und sei T_C^B=(t_{ij})\in Mat_n(K) die Transformationsmatrix (d.h. die j-te Spalte von T_C^B enthält die Koordinaten von v_j in der Basis C). Ferner sei \Phi:VxV\rightarrow K eine Bilinearform.\\
+Dann gilt: G_B(\Phi)=(T_C^B)^{tr}\cdot G_C(\Phi)\cdot T_C^B.
+\subsubsection{Bemerkung}
+Die Transformationsmatrix für Endomorphismen \phi lautet M_B(\phi)=(T_C^B)^{-1}\cdot M_C(\phi)\cdot T_C^B.
 \end{document}
 
 
