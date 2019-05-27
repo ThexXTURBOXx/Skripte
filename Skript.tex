@@ -467,7 +467,7 @@ Sei \(K\) ein Körper und \(V\) ein endlich-dimensionaler \(K\)-Vektorraum mit \
 (a) Sei \(W\) ein weiterer K-Vektorraum. Eine Abbildung \(\Phi:V\times V\rightarrow W\) heißt \ul{\(K\)-bilinear}, wenn für alle \(v,v_1,v_2,\tilde{v}, \tilde{v_1}, \tilde{v_2} \in V\) und \(a_1, a_2\in K\) gilt:
 (a)\(\Phi(a_1v_1+a_2v_2,\tilde{v})=a_1\cdot\Phi(v_1,\tilde{v})+a_2\cdot\Phi(v_2,\tilde{v})\)
 (b) \(\Phi(v,a_1\tilde{v_1}+a_2\tilde{v_2})=a_1\cdot\Phi(v,\tilde{v_1})+a_2\cdot\Phi(v,\tilde{v_2})\).
-(b) Eine bilineare Abbildung \(\Phi:V\times V\rightarrow K\) heißt auch eine \ul{Bilinearform} auf V. TODO CROSS
+(b) Eine bilineare Abbildung \(\Phi:V\times V\rightarrow K\) heißt auch eine \ul{Bilinearform} auf V.
 \subsubsection{Bemerkung (Längenmessung in \(\mathbb{R}^2\))}
 Sei \(v=(a_1,a_2)\in\mathbb{R}^2\) mit \(a_1,a_2\in\mathbb{R}\). Dann heißt \(l(v)=||v|| = \sqrt{a_1^2+a_2^2}\) die \ul{Länge} (oder die \ul{Norm}) von \(v\).
 \subsubsection{Definition}
@@ -492,7 +492,7 @@ Insgesamt sollte \(\Phi\) folgende Eigenschaften erfüllen:
 Kann man hieraus \(\Phi\) bestimmen? Für \(v=(a_1,a_2)\) und \(w=(b_1,b_2)\) folgt:
 \(\Phi(v+w,v+w)=||v+w||^2=||(a_1+b_1,a_2+b_2)||^2=(a_1+b_1)^2+(a_2+b_2)^2=a_1^2+a_2^2+b_1^2+b_2^2+2(a_1b_1+a_2b_2)\)\\
 \(\Phi(v+w,v+w)=\Phi(v,v)+\Phi(v,w)+\underbrace{\Phi(w,v)}_{=\Phi(v,w)}+\Phi(w,w)=||v||^2+||w||^2+2\Phi(v,w)=a_1^2+a_2^2+b_1^2+b_2^2+2\Phi(v,w) \Rightarrow \Phi(v,w)=a_1b_1+a_2b_2\).
-Wie man leicht nachprüft, erfüllt dieses \(\phi\) die Eigenschaften (1)-(4).
+Wie man leicht nachprüft, erfüllt dieses \(\Phi\) die Eigenschaften (1)-(4).
 Der Winkel \(\alpha=\sphericalangle(v,w)\) ist dann durch \(cos(\alpha)=\frac{\Phi(v,w)}{||v||\cdot||w||}\) definiert.
 \subsubsection{Definition}
 Sei \(B=(v_1,v_2,\dots,v_n)\) ein Basistupel von \(V\).
@@ -544,10 +544,100 @@ Es folgt \(G_B(\Phi_A)=A\).
 \ul{Frage:} Was passiert bei einem Basiswechsel mit der Gramschen Matrix?
 \subsubsection{Satz}
 Seien \(B=(v_1 \dots v_n)\) und \(V=(w_1 \dots w_m)\) zwei Basen von \(V\) und sei \(T_C^B=(t_{ij})\in Mat_n(K)\) die Transformationsmatrix (d.h. die j-te Spalte von \(T_C^B\) enthält die Koordinaten von \(v_j\) in der Basis \(C\)). Ferner sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform.\\
-Dann gilt: \(G_B(\Phi)=(T_C^B)^{tr}\cdot G_C(\Phi)\cdot T_C^B\).
+Dann gilt: \(G_B(\Phi)=(T_C^B)^{tr}\cdot G_C(\Phi)\cdot T_C^B\).\\
+\proof
+Für \(v,w\in V\) schreibe \(v=a_1v_1+\dots+a_nv_n=a_1'w_1+\dots+a_n'w_n und w=b_1v_1+\dots+b_nv_n=b_1'w_1+\dots+b_n'w_n \) mit \(a_i,a_j',b_k,b_l'\in K\). Dann
+\(TODO MATRIX
+=T_C^B\cdot TODO MATRIX\) und \(TODO MATRIX = T_C^B\cdot TODO MATRIX\). Dann gilt: \(\Phi(v,w)=(a_1,\dots,a_n)G_B(\Phi) TODO MATRIX = (a_1',\dots,a_n')\cdot G_C(\Phi) TODO MATRIX=(a_1',\dots,a_n')=(a_1,\dots,a_n)\cdot (T_C^B)^{tr} =(a_1,\dots,a_n)(T_C^B)^{tr}\cdot G_C(\Phi)\cdot T_C^B TODO MATRIX\). Setzt man \((a_1,\dots,a_n)=e_i\) und \((b_1,\dots,b_n)=e_j\), so ist \(e_i^{tr}\underbrace{Me_j}_{j\text{-te Spalte von } M}=(i,j)-\)Eintrag von \(M\). Für alle \(i,j=1,\dots,n\) ist also der \((i,j)\)-Eintrag von \(G_B(\Phi)\) gleich dem \((i,j)\)-Eintrag von \((T_C^B)^{tr}\cdot G_C(\Phi)T_C^B\)
+\qed
 \subsubsection{Bemerkung}
-Die Transformationsmatrix für Endomorphismen \(\phi\) lautet \(M_B(\phi)=(T_C^B)^{-1}\cdot M_C(\phi)\cdot T_C^B\).
+Ist \(\phi\in End_K(V) \), so gilt \(M_B(\phi)=(T_C^B)^{-1}\cdot M_C(\phi)\cdot T_C^B\) und \(G_B(\phi)=(T_C^B)^{tr}\cdot G_C(\phi)\cdot T_C^B\).
+\subsubsection{Definition}
+(a) Eine Bilinearform \(\Phi:V\times V\rightarrow K\) heißt \ul{symmetrisch}, wenn für alle \(v,w\in V\) gilt: \(\Phi(v,w)=\Phi(w,v)\)
+(b) Eine Bilinearform \(\Phi:V\times V\rightarrow K\) heißt \ul{antisymmetrisch}, wenn für alle \(v,w\in V\) gilt: \(\Phi(v,w)=-\Phi(w,v)\)
+\subsubsection{Satz}
+Eine Bilinearform \(\Phi:V\times V\rightarrow K\) ist genau dann symmetrisch, wenn \(G_B(\Phi)\) eine symmetrische Matrix ist, d.h. wenn \(G_B(\Phi)=G_B(\Phi)^{tr}\) gilt.\\
+\proof
+"\(\Rightarrow\)" Für \(i,j=1\dots n\) gilt \(\underbrace{\Phi(v_i,v_j)}_{(i,j)\text{-Eintrag von } G_B(\Phi)}=\underbrace{\Phi(v_j,v_i)}_{(i,j)\text{-Eintrag von } G_B(\Phi)^{tr}}\).
+"\(\Leftarrow\)" Sei \(v=a_1v_1+\dots+a_nv_n\) und \(w=b_1v_1+\dots+b_nv_n\) mit \(a_i,b_j\in K\). Dann gilt \(\Phi(v,w)=\sum_{i=1}^{n}\sum_{j=i}^{n}a_ib_j\cdot\Phi(v_i,v_j)=\sum_{i=1}^{n}\sum_{j=i}^{n}a_ib_j\Phi(v_j,vi)=\Phi(w,v)\)
+\qed
+\ul{Beispiel:} Die Standardbilinearform \(\Phi\) ist symmetrisch, denn \(G_\chi(\Phi)=I_n\) ist symmetrisch.
+\subsubsection{Definition}
+Sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform.
+(a) Zwei Vektoren \(v,w\in V\) heißen \ul{orthogonal} bzgl. \(\Phi\), wenn gilt: \(\Phi(v,w)=0\). \ul{Schreibweise:} \(v\bot_\Phi w\)
+(b) Ist \(v\in V\) und \(U\subseteq V\), so heißt \(v\) \ul{orthogonal} zu \(U\), wenn für alle \(u\in U\) gilt \(v\bot_\Phi u\).
+(c) Für \(U,W\subseteq V\) sagen wir, dass \(U\) bzgl.\(\Phi\) \ul{orthogonal} ist zu \(W\), falls für alle \(u\in U, w\in W\) gilt: \(u\bot_\Phi w\). \ul{Schreibweise:} \(U\bot_\Phi W\).
+\subsubsection{Beispiel}
+Ein Vektor \(v\neq 0\) kann zu sich selbst orthogonal sein und zwar sogar bzgl. der Standardbilinearform.\\
+Betrachte z.B. \(K=\mathbb{F}_p\) mit prim und \(\Phi:\mathbb{F}_p^p\times \mathbb{F}_p^p\rightarrow \mathbb{F}_p\) Standardbilinearform. Dann gilt \(\Phi(\underbrace{(1,1,\dots,1)}_{p},\underbrace{(1,1,\dots,1)}_{p})=1\cdot 1+\dots+1\cdot 1=0\).
+\subsubsection{Beispiel}
+Ein Vektor \(v\neq 0\) kann zu ganz \(V\) orthogonal sein!\\
+Betrachte z.B. \(\Phi:K^2\times K^2\rightarrow K\) mit \(G_\chi(\Phi)=\begin{pmatrix}
+1 & -1\\
+-1 & 1
+\end{pmatrix}\).
+Für \(v=(1,1)\) und \(w=(1_1,a_2)\) gilt dann \(\Phi(v,w)=(1,1)\cdot\begin{pmatrix}
+1 & -1\\
+-1 & 1
+\end{pmatrix}\begin{pmatrix}
+a_1\\
+a_2
+\end{pmatrix}=(0,0)\cdot\begin{pmatrix}
+a_1\\
+a_2
+\end{pmatrix}=0\). Also folgt \(v\bot_\Phi K^2\).
+\subsubsection{Beispiel}
+Sei \(\Phi:\mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}\) die Standardbilinearform. Für \(v=(a_1,a_2)\) und \(w=(b_1,b_2)\) gilt \(v\bot_\Phi w\) genau dann, wenn \(a_1b_1+a_2b_2=0\) erfüllt ist. TODO SKIZZE
+O.E. sei \(a_2\neq 0\). Dann folgt \(b_2=-\frac{a_1}{a_2}b_1\). Dies liefert \((b_1,b_2)=(b_1,-\frac{a_1}{a_2}b_1)=\underbrace{a_2^{-1}b_1}_{\neq 0}\cdot(a_2,-a_1)\).
+\subsubsection{Definition}
+Eine Bilinearform \(\Phi:V\times V\rightarrow K\) heißt \ul{nicht ausgeartet}, wenn für \(v\in V\) aus \(v\bot_\Phi V\) folgt, dass \(v=0\) gilt.
+\subsubsection{Satz}
+Sei \(B=(v_1\dots v_n)\) ein Basistupel von \(V\). genau dann ist \(\Phi\) nicht ausgeartet, wenn \(det(G_B(\Phi))\neq 0\) gilt.\\
+\proof
+Sei \(v\in V\). Schreibe \(v=a_1v_1+\dots+a_nv_n\) mit \(a_i\in K\). Dann gilt: \(v\bot_\Phi V\Leftrightarrow \Phi(v,v_1)=\Phi(v,v_2)=\dots=\Phi(v,v_n)=0\Leftrightarrow \begin{cases}
+a_1\Phi(v_1,v_1)+\dots+a_n\Phi(v_n,v_1)=0\\
+\vdots\\
+a_1\Phi(v_1,v_n)+\dots+a_n\Phi(v_n,v_n)=0
+\end{cases}\)\\
+Also folgt: \(\Phi\) nicht ausgeartet \(\Leftrightarrow\) aus \(v\bot_\Phi V\) folgt \(v=0\) \(\Leftrightarrow\) das einzige Tupel \((a_1,\dots,a_n)\), das \((*)\) erfüllt ist \((a_1,\dots,a_n)=(0,\dots,0)\)\\
+\(\Leftrightarrow\) \(det(G_B(\Phi))^{tr}\neq 0\) \(\Leftrightarrow\) \(det(G_B(\Phi))\neq 0\).
+\qed
+\subsubsection{Beispiel}
+(a) Die Standardbilinearform \(\Phi:K^n\times K^n\rightarrow K\) ist nicht ausgeartet, denn \(det(G_\chi(\Phi))=det(I_n)=1\neq 0\).
+(b) Die Matrix \(\begin{pmatrix}
+	1 & -1\\
+	-1 & 1
+\end{pmatrix}\) definiert eine ausgeartete Bilinearform auf \(K^2\), da \(det\begin{pmatrix}
+1 & -1\\
+-1 & 1
+\end{pmatrix}\neq 0\).
+\subsubsection{Definition}
+Sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform und \(U\subseteq V\) ein \(K\)-Untervektorraum.
+(a) Ein Untervektorraum \(W\subseteq V\) mit \(U\bot_\Phi W\) und \(U\oplus W=V\) heißt ein \ul{orthogonales Komplement} von \(U\).
+(b) Die Menge \(U^\bot=\{v\in V|v\bot_\Phi U\}\) heißt der zu \(U\) \ul{orthogonale Raum}.
+\subsubsection{Satz (Eigenschaften des orthogonalen Untervektorraums)}
+Sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform und seien \(U,W\) \(K\)-Untervektorräume von \(V\).
+(a) \(U^\bot\) ist ein \(K\)-Untervektorraum von \(V\).
+(b) Ist \(U=<v>\) mit \(v\in V\backslash\{0\}\), so gilt \(U^\bot=<v>^\bot=<av>^\bot\) für alle \(a\in K\backslash\{0\}\),
+(c) Gilt \(U\subseteq W\), so folgt \(W^\bot\subseteq U^\bot\).
+(d) Ist \(S\subseteq V\) eine Teilmenge, so gilt \(S^\bot=\{v\in V|v\bot_\Phi S\}=<S>_K^\bot\).
+(e) Ist \(\Phi\) symmetrisch, so gilt \((U^\bot)^\bot\supseteq U\) und \(((U^\bot)^\bot)^\bot=U^\bot\).\\
+\proof
+"(a)" Seien \(v_1,v_2\in U^\bot\) und \(a_1,a_2\in K\). Für alle \(u\in U\) gilt dann \(\Phi(a_1v_1+a_2v_2,u)=a_1\Phi(v_1,u)+a_2\Phi(v_2,u)=0\) und somit \(a_1v_1+a_2v_2\in U^\bot\).
+"(b)" "\(\subseteq\)" Ist \(w\in<v>^\bot\), also \(\Phi(w,cv)=0\) für alle \(c\in K\), so folgt \(\Phi(w,b\cdot (av))=0\) für alle \(b\in K\), aso \(w\in<av>^\bot\).
+"\(\supseteq\)" ist \(w\in<av>^\bot\), also \(\Phi(w,cav)=0\) für alle \(c\in K\), so folgt (mit \(c=a^{-1}\)), dass \(\Phi(w,v)=0\) gilt. Dies liefert \(\Phi(w,bv)=0\) für alle \(b\in K\backslash\{0\}\), also \(w\in<v>^\bot\).
+"(c)" Für \(v\in W^\bot\) und \(u\subseteq W\) gilt \(\Phi(v,u)=0\) und somit \(v\in U^\bot\).
+"(d)" "\(\supseteq\)" klar "\(\subseteq\)" Sei \(v\in S^\bot\) und \(w\in<S>\). Schreibe \(w=a_1s_1+\dots+a_rs_r\) mit \(a_i\in K\) und \(s_i\in S\) und erhalte \(\Phi(v,w)=a_1\underbrace{\Phi(v,s_1)}_{=0}+\dots+a_r\underbrace{\Phi(v,s_r)}_{=0}=0\). Dies liefert \(v\in<S>^\bot\).
+"(e)" Für \(u\in U\) gilt: \(\Phi(v,u)=0\) für alle \(v\in U^\bot\), also \(\Phi(u,v)=0\) für alle \(v\in U^\bot\). Dies zeigt \(u\in(U^\bot)^\bot\), also \(U\subseteq(U^\bot)^\bot\). Nach (e) gilt \(U^\bot\subseteq ((U^\bot)^\bot)^\bot\). Mit (c) folgt aus \(U\subseteq ((U^\bot)^\bot)^\bot\subseteq U^\bot\) gilt.
+\qed
+\subsubsection{Satz (Dimensionsformel für orthogonale Untervektorräume)}
+Sei \(\Phi:V\times V\rightarrow V\) eine nicht ausgeartete Bilinearform und \(U\subseteq V\) ein \(K\)-Untervektorraum.\\
+Dann gilt: \(dim_K(U)+dim_K(U^\bot)=dim_K(V)\).\\
+(\(\lightning\) Im Allgemeinen gilt \ul{nicht} \(U\cap U^\bot=\{0\}\))
 \end{document}
+
+
+
 
 
 
