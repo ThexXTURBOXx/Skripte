@@ -435,7 +435,30 @@ In der Basis \(B'=(\phi^{s-1}(v),\phi^{s-2}(v),\dots,v)\) gilt \(M_{B'}^{B'}(\ph
 \subsubsection{Bemerkung}
 Sei \(\delta_s\geq 1\) und \(\{v_1,\dots,v_\delta\}\) eine Basis von \(U_s\). Dann ist \(B=\{v_1,\phi(v_1),\dotsm\phi^{s-1}(v_1)\}\cup\dots\cup\{v_\delta,\phi(v_\delta),\dotsm\phi^{s-1}(v_\delta)\}\) eine Basis von \(W=U_s\oplus\phi(U_s)\oplus\dots\oplus\phi^{s-1}(U_s)\). Die Matrix von \(\phi|W\) bzgl. \(B\) ist blockdiagonal mit \(\delta_s\) Jordan-Kästchen auf der Hauptdiagonalen \(M_B^B(\phi|W)\)=TODO MATRIX  TODO CAPREV u.\\
 \subsubsection{Satz (Die Jordansche Normalform)}
-Sei \(\phi\in End_K(V)\) mit linearen Eigenfaktoren, also mit \(\chi_\phi(x)=(x-\lambda_1)^{a_1}\cdot\dots\cdot(x-\lambda_s)^{a_s}\). Dann gibt es eine Basis \(B\) in \(V\), so dass gilt: \(M_B^B(\phi)=\)TODO MATRIX mit \(\lambda_i\cdot I_{a_i}+N_i=\)TODO MATRIX, wobei die Größe der \ul{Jordan-Blöcke} TODO BLOCK durch die Jordan-Zerlegung von \((\phi-\lambda_iid_V)|G_i\) mit \(G_i=Gen(\phi,\lambda_i)\) gegeben ist.
+Sei \(\phi\in End_K(V)\) mit linearen Eigenfaktoren, also mit \(\chi_\phi(x)=(x-\lambda_1)^{a_1}\cdot\dots\cdot(x-\lambda_s)^{a_s}\). Dann gibt es eine Basis \(B\) in \(V\), so dass gilt: \(M_B^B(\phi)=\begin{pmatrix}
+\lambda_1 I_{a_1}N_1 & & 0 \\
+ & \ddots & \\
+0 & & \lambda_s I_{a_s}N_s
+\end{pmatrix}\) mit \(\lambda_i\cdot I_{a_i}+N_i=\begin{pmatrix}
+\mbox{\fbox{\(\begin{matrix}
+		\lambda_i & 1 & & 0\\
+		& \ddots & \ddots & \\
+		& & \ddots & 1 \\
+		0& & & \lambda_i
+		\end{matrix}\)}} & & \mbox{\Huge0} \\
+	 & \ddots & \\
+	 \mbox{\Huge0} & & \mbox{\fbox{\(\begin{matrix}
+	 		\lambda_i & 1 & & 0\\
+	 		& \ddots & \ddots & \\
+	 		& & \ddots & 1 \\
+	 		0& & & \lambda_i
+	 		\end{matrix}\)}}
+\end{pmatrix}\), wobei die Größe der \ul{Jordan-Blöcke} \fbox{\(\begin{matrix}
+\lambda_i & 1 & & 0\\
+& \ddots & \ddots & \\
+& & \ddots & 1 \\
+0& & & \lambda_i
+\end{matrix}\)} durch die Jordan-Zerlegung von \((\phi-\lambda_iid_V)\Big|_{G_i}\) mit \(G_i=Gen(\phi,\lambda_i)\) gegeben ist.
 \subsection{Diagonalisierbarkeit und Triagonalisierbarkeit (Buch: §4.3-4.4)}
 Sei \(K\) ein Körper, \(V\) ein endlich-dimensionaler \(K\)-Vektorraum, \(\phi\in End_K(V)\).\\
 \(\phi\) heißt diagonalisierbar \(\Leftrightarrow\) es gibt eine Basis von V bestehend aus Eigenvektoren von \(\phi \Leftrightarrow\) es gibt eine Basis \(B\) von \(V\), so dass \(M_B^B(\phi)\) eine Diagonalmatrix ist.
