@@ -592,7 +592,7 @@ Sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform.
 (c) Für \(U,W\subseteq V\) sagen wir, dass \(U\) bzgl.\(\Phi\) \ul{orthogonal} ist zu \(W\), falls für alle \(u\in U, w\in W\) gilt: \(u\bot_\Phi w\). \ul{Schreibweise:} \(U\bot_\Phi W\).
 \subsubsection{Beispiel}
 Ein Vektor \(v\neq 0\) kann zu sich selbst orthogonal sein und zwar sogar bzgl. der Standardbilinearform.\\
-Betrachte z.B. \(K=\mathbb{F}_p\) mit prim und \(\Phi:\mathbb{F}_p^p\times \mathbb{F}_p^p\rightarrow \mathbb{F}_p\) Standardbilinearform. Dann gilt \(\Phi(\underbrace{(1,1,\dots,1)}_{p},\underbrace{(1,1,\dots,1)}_{p})=1\cdot 1+\dots+1\cdot 1=0\).
+Betrachte z.B. \(K=\mathbb{F}_p\) mit \(p\) prim und \(\Phi:\mathbb{F}_p^p\times \mathbb{F}_p^p\rightarrow \mathbb{F}_p\) Standardbilinearform. Dann gilt \(\Phi(\underbrace{(1,1,\dots,1)}_{p},\underbrace{(1,1,\dots,1)}_{p})=1\cdot 1+\dots+1\cdot 1=0\).
 \subsubsection{Beispiel}
 Ein Vektor \(v\neq 0\) kann zu ganz \(V\) orthogonal sein!\\
 Betrachte z.B. \(\Phi:K^2\times K^2\rightarrow K\) mit \(G_\chi(\Phi)=\begin{pmatrix}
@@ -656,7 +656,82 @@ Sei \(\Phi:V\times V\rightarrow K\) eine Bilinearform und seien \(U,W\) \(K\)-Un
 \subsubsection{Satz (Dimensionsformel für orthogonale Untervektorräume)}
 Sei \(\Phi:V\times V\rightarrow V\) eine nicht ausgeartete Bilinearform und \(U\subseteq V\) ein \(K\)-Untervektorraum.\\
 Dann gilt: \(dim_K(U)+dim_K(U^\bot)=dim_K(V)\).\\
-(\(\lightning\) Im Allgemeinen gilt \ul{nicht} \(U\cap U^\bot=\{0\}\))
+(\(\lightning\) Im Allgemeinen gilt \ul{nicht} \(U\cap U^\bot=\{0\}\))\\
+\proof
+Sei \((u_1,\dots, u_m)\) ein Basistupel für \(U\) und \(C=(w_1,\dots,w_k)\) ein Tupel von Vektoren, so dass \(B\cup C\) ein Basistupel von \(V\) ist. Sei \(v_1,\dots,v_n)\) dieses Basistupel, d.h \(v_i=u_i\) für \(i=1,\dots,m\) und \(v_{m+j}=w_j\) fpr \(j=1,\dots,k\) (mit \(m+k=n\)).\\
+\ul{z.z.:} \(dim_K(U^\bot)=k\).\\
+Fpr \(v=a_1v_1+\dots+a_nv_n=(a_1v_1+\dots+a_mv_m)+(a_{m+1}v_{m+1}+\dots+a_{m+k}v_{m+k})\) gilt: \(v\in U^\bot\) \(\Leftrightarrow\) \(\begin{cases}
+	\Phi(v,v_1)=0\\
+	\vdots\\
+	\Phi(v,v_m)=0
+	\end{cases}\) \(\Leftrightarrow\) \(\begin{cases}
+	a_1\Phi(v_1,v_1)+\dots+a_n\Phi(v_n,v_1)=0\\
+	\vdots\\
+	a_1\Phi(v_1,v_m)+\dots+a_n\Phi(v_n,v_m)=0
+	\end{cases}\)
+	Dies ist ein lineares Gleichungssystem in den Unbestimmten \(a_1,\dots,a_n\) bestehend aus \(m\) Gleichungen.\\
+	\ul{z.z.:} Der Rang der Koeffizientenmatrix ist der maximale, also \(m\).\\
+	DOe Koeffizientenmatrix besteht aus den ersten \(m\) Zeilen von \(G_B(\Phi)^{tr}\). Wegen \(det(G_B(\Phi)^{tr})=det(G_B(\Phi))\neq 0\) sind diese \(m\) Zeilen linear unabhängig.
+	\qed
+\subsubsection{Korollar}
+Ist \(\Phi:V\times V\rightarrow K\) eine nicht ausgeartete, symmetrische Bilinearform, so gilt: \((U^\bot)^\bot=U\) für jeden \(K\)-Untervektorraum \(U\) von \(V\).\\
+\proof
+Da \(\Phi\) symmetrisch ist, gilt \(U^\bot)^\bot\underset{TODO STERN KREIS}{\supset} U\). Da \(\Phi\) nicht ausgeartet ist, gilt \(dim_K(U^\bot)^\bot=dim_K(V)-dim_K(U^\bot)=dim_K(V)-(dim_K(V)-dim_K(U))=dim_K(U)\). Also ist TODO STERN KREIS eine Gleichheit.
+\qed
+\subsubsection{Beispiel}
+(a) Sei \(K=\mathbb{R}\) und \(\Phi:\underset{((a_1,a_2,a_3),(b_1,b_2,b_3))\mapsto a_1b_2+a_2b_2+a_3+b_3}{\mathbb{R}^2\times \mathbb{R}^2\rightarrow \mathbb{R}}\) die Standardbilinearform. Für eine Gerade \(G=\mathbb{R}\cdot (a,b)\) durch 0 mit \((a,b)\neq (0,0)\) gilt \(G^\bot=\mathbb{R}\cdot (-b,a)\) und \(dim_\mathbb{R}(G)=dim_\mathbb{R}(G^\bot)=1\).
+(b) Sei \(K=\mathbb{R}\) und \(V=\mathbb{R}^3\) und \(\Phi:\mathbb{R}^3\times\mathbb{R}^3\rightarrow \mathbb{R}\) die Standardbilinearform.\\
+Ist \(G=\mathbb{R}\cdot (a_1,a_2,a_3)\) mit \((a_1,a_2,a_3)\neq (0,0,0)\) eine Gerade durch \(0\), so gilt: \(G^\bot=\{(b_1,b_2,b_3)\in\mathbb{R}^3|a_1b_1+a_2b_2+a_3b_3=0\}=<(-a_2,a_1,0),(0,-a_3,a_2),(-a_3,0,a_1)>\).\\
+Falls \(a_1\neq0\), so gilt \(G^\bot=<(-\frac{a_2}{a_1},1,0),(-\frac{a_3}{a_1},0,1)>\)\\
+\(dim_\mathbb{R}(G^\bot)=2=dim\mathbb{R}(\mathbb{R}^3)-dim_\mathbb{R}(G)\)\\
+\ul{Probleme:}
+(1) Es kann ein \(v\in V\backslash\{0\}\) geben mit \(\Phi(v,v)=0\).
+(2) Es kann \(U\cap U^\bot\neq \{0\}\).
+\subsection{Skalarprodukte (vgl. Buch S. 288-299)}
+Im Folgenden sei \(K=\mathbb{R}\). Sei \(V\) ein (endlich-dimensionaler) \ul{reeller Vektorraum}, d.h. ein \(\mathbb{R}\)-Vektorraum ud sei \(n=dim_K(V)\).
+\subsubsection{Definition}
+(a) Eine Bilinearform \(\Phi:V\times V\rightarrow \mathbb{R}\) heißt \ul{positiv definit}, wenn gilt: \(\begin{cases}
+\Phi(v,v)\geq 0\text{ für alle }v\in V\\
+\Phi(v,v)=0 \Rightarrow v=0
+\end{cases}\).
+(b) Ein \ul{Skalarprodukt} auf \(V\) ist eine symmetrische, positiv definite Bilinearform \(\Phi:V\times V\rightarrow \mathbb{R}\).
+(c) Ein \(\mathbb{R}\)-Vektorraum zusammen mit einem Skalarprodukt heißt ein \ul{euklidischer Vektorraum}.
+\subsubsection{Bemerkung}
+Ein Skalarprodukt ist nicht ausgeartet: Ist \(v\in V\) mit \(v\bot_\Phi V\) so folgt \(\Phi(v,v)=0\) und somit \(v=0\). Ein euklidischer Vektorraum enthält keine \ul{isotropen} Vektoren \(\neq 0\) (also \(\Phi(v,v)=0\Rightarrow v=0\))
+\subsubsection{Beispiel}
+Die Standardbilinearform \(\underset{((a_1\dots a_n),(b_1\dots b_n))\mapsto a_1b_1+\dots a_nb_n}{\Phi:\mathbb{R}^n\times \mathbb{R}^n\rightarrow \mathbb{R}}\) ist ein Skalarprodukt:\\
+\(\Phi((a_1\dots a_n),(a_1\dots a_n))=a_1^2+\dots+a_n^2\geq 0\) und \(a_1^2+\dots+a_n^2=0\Rightarrow a_1=\dots=a_n=0\).\\
+Es heißt auch das \ul{Standardskalarprodukt}. Wir schreiben auch \(<v,w>\) statt \(\Phi(v,w)\).\\
+\ul{Fragen:} (1) Gibt es weitere Skalarprodukte auf \(\mathbb{R}^n\)?
+(2) Wie kann man anhand von \(G_B(\Phi)\) erkennen, ob \(\Phi\) positiv definiert ist?
+\subsubsection{Definition}
+Sei \(V\) ein reeller Vektorraum.
+(a) Eine \ul{Norm} auf \(V\) ist eine Abbildung \(\norm{\cdot}:V\rightarrow \mathbb{R}\) mit folgenden Eigenschaften:
+(1) \(\norm{v}\geq 0\) und aus \(\norm{v}=0\) folgt \(v=0\) für alle \(v\in V\)
+(2) Für \(a\in \mathbb{R}\) gilt \(\norm{a\cdot v}=\abs{a}\cdot \norm{v}\) für alle \(v\in V\)
+(3) \(\norm{v+w}\leq \norm{v}+\norm{w}\) für alle \(v,w\in V\) (Dreiecksungleichung)
+(b) Ein reeller Vektorraum mit einer Norm heißt ein \ul{normierter Vektorraum}.
+\subsubsection{Definition}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum. Dann heißt \(\norm{\cdot}_\Phi:\underset{v\mapsto \sqrt{\Phi(V,V)}}{V\rightarrow \mathbb{R}}\) die zu \(\Phi\) \ul{assoziierte Norm}.
+(b) Die zum Standardskalarprodukt auf \(\mathbb{R}^n\) assoziierte Norm heißt die \ul{euklidische Norm} auf \(\mathbb{R}^n\).
+\subsubsection{Satz}
+Sei \(V\) ein reeller Vektorraum und \(\Phi:V\times V\rightarrow \mathbb{R}\) ein Skalarprodukt auf \(V\).
+(a) (Cauchy-Schwarzsche Ungleichung) \(\abs{\Phi(v,w)}\leq \norm{v}_\Phi\cdot \norm{w}_\Phi\) für alle \(v,w\in V\).
+(b) Die zu \(\Phi\) assoziierte Norm \(\norm{\cdot}_\Phi\) ist eine Norm auf \(V\). Insbesondere gilt: \(\norm{v+w}\leq \norm{v}_\Phi+\norm{w}_\Phi\) für \(v,w\in V\).\\
+\proof
+"(a)" Für \(w=0\) sind beide Seiten gleich \(0\). Sei also \(w\neq 0\). Für \(a\in\mathbb{R}\) gilt \(\Phi(v-aw,v-aw)=\Phi(v,v)-a\cdot \Phi(v,w)-a\cdot \Phi(w,v)+a^2\cdot \Phi(w,w)=\Phi(v,v)-2a\cdot \Phi(v,w)+a^2\phi(w,w)\geq 0\). Wegen \(w\neq 0\) gilt \(\Phi(w,w)>0\) und wir können \(a=\frac{\Phi(v,w)}{\Phi(w,w)}\) wählen.\\
+Dann folgt: \(\Phi(v,v)=\frac{2\Phi(v,w)^2}{\phi(w,w)}+\frac{\Phi(v,w)^2}{\Phi(w,w)^2}\cdot \Phi(w,w)=\Phi(v,v)-\frac{\phi(v,w)^2}{\Phi(w,w)}\geq 0\Rightarrow \Phi(v,v)\Phi(w,w)\geq \Phi(v,w)^2\) und da beide Seiten positiv sind, folgt \(\abs{\Phi(v,w)}\leq \sqrt{\Phi(v,v)}\sqrt{\Phi(w,w)}=\norm{v}_\Phi\cdot \norm{w}_\Phi\).
+"(b)" Offenbar gilt \(\norm{v}_\Phi\geq 0\) und \(\norm{v}_\Phi=\sqrt{\Phi(v,v)}=0\Rightarrow\Phi(v,v)=0\Rightarrow v=0\).\\
+Ferner gilt für \(a\in\mathbb{R}\) und \(v\in V\) die Gleichung \(\norm{av}_\Phi=\sqrt{\Phi(av,av)}=\sqrt{a^2\cdot \Phi(v,v)}=\abs{a}\cdot \sqrt{\Phi(v,v)}=\abs{a}\cdot \norm{v}_\Phi\).\\
+FÜr \(v,w\in V\) gilt:\\
+\(\norm{v+w}_\Phi^2=\Phi(v+w,v+w)=\Phi(v+v)+2\cdot \Phi(v,w)+\Phi(w,w)\leq \norm{v}_\Phi^2+\norm{w}_\Phi^2+2\abs{\Phi(v,w)}\underset{\text{c.s.}}{\leq}\norm{v}_\Phi^2+\norm{w}_\Phi^2+2\norm{v}_\Phi\cdot \norm{w}_\Phi=(\norm{v}_\Phi+\norm{w}_\Phi)^2\).\\
+Da beide Seiten positiv sind, folgt \(\norm{v+w}_\Phi\leq \norm{v}_\Phi+\norm{w}_\Phi\)
+\qed
+\subsubsection{Definition}
+Für alle \(v,w\in V\backslash\{0\}\) gilt: \(\frac{\abs{\Phi(v,w)}}{\norm{v}_\Phi\cdot \norm{w}_\Phi}\leq 1\), also \(-1\leq \frac{\Phi(v,w)}{\norm{v}_\Phi\cdot \norm{w}_\Phi}\leq 1\).\\
+Damit ist der \ul{Winkel} \(\alpha\in[0,\pi[\) zwischen \(v\) und \(w\) eindeutig definiert durch \(cos(\alpha)=\frac{\Phi(v,w)}{\norm{v}_\Phi\cdot \norm{w}_\Phi}\)
+\subsubsection{Bemerkung}
+Mit Def. 26.7, angewandt auf das Standardskalarprodukt in \(\mathbb{R}^2\) oder \(\mathbb{R}^3\) kann man alle üblichen Sätze der euklidischen Geometrie beweisen, z.B. Sinussatz, Kosinussatz, Fasskreisbogen,\dots
 \end{document}
 
 
