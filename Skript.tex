@@ -15,6 +15,7 @@
 \usepackage{MnSymbol}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
+\usepackage{mathabx}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -720,10 +721,10 @@ Sei \(V\) ein reeller Vektorraum und \(\Phi:V\times V\rightarrow \mathbb{R}\) ei
 (b) Die zu \(\Phi\) assoziierte Norm \(\norm{\cdot}_\Phi\) ist eine Norm auf \(V\). Insbesondere gilt: \(\norm{v+w}\leq \norm{v}_\Phi+\norm{w}_\Phi\) für \(v,w\in V\).\\
 \proof
 "(a)" Für \(w=0\) sind beide Seiten gleich \(0\). Sei also \(w\neq 0\). Für \(a\in\mathbb{R}\) gilt \(\Phi(v-aw,v-aw)=\Phi(v,v)-a\cdot \Phi(v,w)-a\cdot \Phi(w,v)+a^2\cdot \Phi(w,w)=\Phi(v,v)-2a\cdot \Phi(v,w)+a^2\phi(w,w)\geq 0\). Wegen \(w\neq 0\) gilt \(\Phi(w,w)>0\) und wir können \(a=\frac{\Phi(v,w)}{\Phi(w,w)}\) wählen.\\
-Dann folgt: \(\Phi(v,v)=\frac{2\Phi(v,w)^2}{\phi(w,w)}+\frac{\Phi(v,w)^2}{\Phi(w,w)^2}\cdot \Phi(w,w)=\Phi(v,v)-\frac{\phi(v,w)^2}{\Phi(w,w)}\geq 0\Rightarrow \Phi(v,v)\Phi(w,w)\geq \Phi(v,w)^2\) und da beide Seiten positiv sind, folgt \(\abs{\Phi(v,w)}\leq \sqrt{\Phi(v,v)}\sqrt{\Phi(w,w)}=\norm{v}_\Phi\cdot \norm{w}_\Phi\).
+Dann folgt: \(\Phi(v,v)=\frac{2\Phi(v,w)^2}{\Phi(w,w)}+\frac{\Phi(v,w)^2}{\Phi(w,w)^2}\cdot \Phi(w,w)=\Phi(v,v)-\frac{\Phi(v,w)^2}{\Phi(w,w)}\geq 0\Rightarrow \Phi(v,v)\Phi(w,w)\geq \Phi(v,w)^2\) und da beide Seiten positiv sind, folgt \(\abs{\Phi(v,w)}\leq \sqrt{\Phi(v,v)}\sqrt{\Phi(w,w)}=\norm{v}_\Phi\cdot \norm{w}_\Phi\).
 "(b)" Offenbar gilt \(\norm{v}_\Phi\geq 0\) und \(\norm{v}_\Phi=\sqrt{\Phi(v,v)}=0\Rightarrow\Phi(v,v)=0\Rightarrow v=0\).\\
 Ferner gilt für \(a\in\mathbb{R}\) und \(v\in V\) die Gleichung \(\norm{av}_\Phi=\sqrt{\Phi(av,av)}=\sqrt{a^2\cdot \Phi(v,v)}=\abs{a}\cdot \sqrt{\Phi(v,v)}=\abs{a}\cdot \norm{v}_\Phi\).\\
-FÜr \(v,w\in V\) gilt:\\
+Für \(v,w\in V\) gilt:\\
 \(\norm{v+w}_\Phi^2=\Phi(v+w,v+w)=\Phi(v+v)+2\cdot \Phi(v,w)+\Phi(w,w)\leq \norm{v}_\Phi^2+\norm{w}_\Phi^2+2\abs{\Phi(v,w)}\underset{\text{c.s.}}{\leq}\norm{v}_\Phi^2+\norm{w}_\Phi^2+2\norm{v}_\Phi\cdot \norm{w}_\Phi=(\norm{v}_\Phi+\norm{w}_\Phi)^2\).\\
 Da beide Seiten positiv sind, folgt \(\norm{v+w}_\Phi\leq \norm{v}_\Phi+\norm{w}_\Phi\)
 \qed
@@ -732,8 +733,83 @@ Für alle \(v,w\in V\backslash\{0\}\) gilt: \(\frac{\abs{\Phi(v,w)}}{\norm{v}_\P
 Damit ist der \ul{Winkel} \(\alpha\in[0,\pi[\) zwischen \(v\) und \(w\) eindeutig definiert durch \(cos(\alpha)=\frac{\Phi(v,w)}{\norm{v}_\Phi\cdot \norm{w}_\Phi}\)
 \subsubsection{Bemerkung}
 Mit Def. 26.7, angewandt auf das Standardskalarprodukt in \(\mathbb{R}^2\) oder \(\mathbb{R}^3\) kann man alle üblichen Sätze der euklidischen Geometrie beweisen, z.B. Sinussatz, Kosinussatz, Fasskreisbogen,\dots
+\subsubsection{Definition}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum.
+(a) Eine Menge \(M\) von Vektoren aus \(V\) heißt \ul{paarweise orthogonal}, wenn für \(v,w\in M\) mit \(v\neq w\) gilt \(\Phi(v,w)=0\).
+(b) Eine paarweise orthogonale Menge \(M\subseteq V\) heißt \ul{orthonormal}, wenn für \(v\in M\) gilt \(\norm{v}_\Phi=1\).
+(c) Eine Basis \(B\) von \(V\) heißt \ul{Orthogonalbasis} (OGB), wenn sie aus paarweise orthogonalen Vektoren besteht.
+(d) Eine OGB von \(V\) heißt eine \ul{Orthonormalbasis} (ONB) von \(V\), wenn die Vektoren orthonormal sind.
+\subsubsection{Bemerkung}
+Ist \(B=\{v_1,\dots,v_n\}\) eine OGB von \(V\), so ist \(\tilde{B}=\{\frac{v_1}{\norm{v_1}_\Phi},\dots,\frac{v_n}{\norm{v_n}_\Phi}\}\) eine ONB von \(V\). Der Übergang von \(B\) zu \(\tilde{B}\) heißt \ul{Normieren}.
+\subsubsection{Satz (Das Schmidtsche Orthogonalisierungsverfahren)}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=\{v_1,\dots,v_n\}\) eine Basis von \(V\). Die folgenden Instruktionen definieren einen Algorithmus, der eine ONB \(C\) von \(V\) berechnet:\\
+(1) Setze \(w_1=\frac{v_1}{\norm{v_1}}\)
+(2) Für \(i=2,3,\dots,n\) berechne der Reihe nach \(\tilde{v_i}=\Phi(v_i,w_1)\cdot w_1+\dots+\Phi(v_i,w_{i-1})\cdot w_{i-1}\) und \(w_i=\frac{v_i-\tilde{v_i}}{\norm{v_i-\tilde{v_i}}}\)
+(3) Gib \(C=\{w_1,\dots,w_n\}\) aus und stoppe.\\
+\proof
+\ul{Endlichkeit:} klar\\
+\ul{Korrektheit:} Wir schließen mit Induktion nach i und zeigen, dass \(\{w_1,\dots,w_i\}\) orthonormal ist.\\
+\ul{\(i=1\):} \(\norm{w_1}=\norm{\frac{v_1}{\norm{v_1}}}=\frac{\norm{v_1}}{\norm{v_1}}=1\).\\
+\ul{\(i>1\):} Nach Konstruktion gilt \(w_i=\frac{v_i-\tilde{v_i}}{\norm{v_i-\tilde{v_i}}}\in  <v_i,w_1,\dots,w_{i-1}>\underset{\text{Induktion}}{=}<v_1,\dots,v_i>\) und es gilt \(v_i\notin <v_1,\dots,v_{i-1}>=<w_1,\dots,w_{i-1}>\). Also folgt \(v_i\neq \tilde{v_i}\) und somit \(\norm{v_i-\tilde{v_i}\neq 0\).\\
+	Für \(j=1,\dots,i-1\) gilt\\
+	\(\Phi(w_j,w_i)=\frac{1}{\norm{v_i-\tilde{v_i}}}\Phi(v_i-\tilde{v_i},w_j)=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot \left[\Phi(v_i,w_j)-\Phi(\Phi(v_i,w_1)\cdot w_1,w_j)-\dots-\Phi(\Phi(v_i,w_{i-1})w_{i-1},w_j)\right]\)\\
+	\(\frac{1}{\norm{v_i-\tilde{v_i}}}\left[\Phi(v_i,w_j)-\Phi(v_i,w_1)\cdot\underbrace{\Phi(w_1,w_j)}_{=0}-\dots-\Phi(w_i,w_{i-1})\cdot \underbrace{\Phi(w_{i-1},w_j)}_{=0}\right]=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot\left[\Phi(v_i,w_j)-\Phi(v_i,w_j)\cdot 1\right]=0\).\\
+	Somit folgt \(w_i\bot <w_1,\dots,w_{i-1}>\) und offenbar gilt \(\norm{w_i}=1\).
+	\qed
+	\subsubsection{Beispiel}
+	Sei \(V=\mathbb{R}^2\) und \(\Phi\) das Standardskalarprodukt. Ferner sei \(B=\{v_1,v_2\}\) mit \(v_1=(1,1)\) und \(v_2=(0,3)\).
+	(1) \(w_1=\frac{v_1}{\norm{v_1}}=(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})\).
+	(2) \(\tilde{v_2}=\Phi(v_2,w_1)\cdot w_1=\Phi((0,3),(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}}))\cdot (\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})=(\frac{3}{2},frac{3}{2})\).\\
+	\(w_2=\frac{v_2-\tilde{v_2}}{\norm{v_2-\tilde{v_2}}}=\frac{(\frac{3}{2},\frac{3}{2})}{\norm{(\frac{3}{2},\frac{3}{2})}}=\frac{(-\frac{3}{2},\frac{3}{2})}{\frac{3}{\sqrt{2}}}=(-\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})\).\\
+	Also ist \(\tilde{B}=\{(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\}\) eine ONB von \(\mathbb{R}^2\).
+	\subsubsection{Korollar}
+	Ist \(M=\{v_1,\dots,v_k\}\) eine orthogonale Menge von Vektoren in \(V\), so kann man \(M\) zu einer ONB \(B=\{v_1,\dots,v_k,v_{k+1},\dots,v_n\}\) von \(V\) ergänzen.\\
+	\proof
+	Ergänze \(\{v_1,\dots,v_k\}\) durch \(\{w_{k+1},\dots,w_n\}\) zu einer Basis von \(V\) und wende dann Satz 26.11 an.
+	\qed
+	\subsubsection{Definition}
+	Sei \((V,\Phi)\) ein euklidischer Vektorraum und seien \(U,W\) zwei Untervektorräume von \(V\). Gilt \(V=U\oplus W\) und \(U\bot_\Phi W\), so heißt \(V\) die \ul{orthogonale direkte Summe} von \(U\) und \(W\).\\
+	\ul{Schreibweise:} \(V=U\oplus W\) TODOOPLUS NUR OBEN STRICh
+	\subsubsection{Satz}
+	Seu \((V,\Phi)\) ein euklidischer Vektorraum und \(U\subseteq V\) ein Untervektorraum.\\
+	Dann gilt \(V=U\obot U^\bot\) und für alle \(W\subseteq V\) mit \(V=U\oplus W\) gilt \(W=U^\bot\). In diesem Fall heißt \(U^\bot\) das \ul{orthogonale Komplement} von \(U\).\\
+	\proof
+	Wegen der Dimensionsformel ist nur \(U\cap U^\bot=\{0\}\) zu zeigen. Für \(v\in U\cap U^\bot\) gilt \(\Phi(v,v)=0\Rightarrow v=0\).
+	\qed
+	\subsubsection{Bemerkung}
+	(a) In \(V=\mathbb{R}^2\) betrachte \(v=(a_1,a_2)\) und \(w=(b_1,b_2)\). Dann ist die Fläche des von \(v und w\) aufgespannten Parallelogramms gegeben durch \(Vol(v,w)=\abs{a_1b_2-a_2b_1}=\abs{det\begin{pmatrix}
+		a_1 & b_1\\
+		a_2 & b_2
+		\end{pmatrix}}\).
+	(b) In \(V=\mathbb{R}^3\) betrachte \(v=(a_1,a_2,a_3),w=(b_1,b_2,b_3),u=(c_1,c_2,c_3)\). Dann ist das Volumen des von \(v,w,u\) aufgespannten \ul{Spats} (\ul{Parallelepipeds}) gegeben durch \(Vol(v,w,u)=\abs{det\underbrace{\begin{pmatrix}
+			a_1 & b_1 & c_1\\
+			a_2 & b_2 & c_2\\
+			a_3 & b_3 & c_3
+			\end{pmatrix}}_{A}=\abs{det(A)}\)\\
+		Sei \(B=(v,w,u)\) eine Basis von \(\mathbb{R}^3\).\\
+		Die Gramsche Matrix des Standardskalarprodukts bzgl. der Basis \(B\) ist \(G_B(\Phi)=A^{tr}G_\xi(\Phi)A=A^{tr}A\) und es folgt \(det(G_B(\Phi))=det(A^{tr}A)=det(A^{tr})det(A)=det(A)^2\geq 0\). Dies liefert \(Vol(v,w,u)=\sqrt{det(G_B(\Phi))}\).
+		\subsubsection{Definition}
+		Sei \(V\) ein reeller Vektorraum und \(\Phi:V\times V\rightarrow \mathbb{R}\) eine Bilinearform auf \(V\). Ist \(B=(v_1,\dots,v_m)\) ein Tupel von Vektoren aus \(V\) mit \(G_B(\Phi)=(\Phi(v_i,v_j))_{i,j}\in Mat_m(\mathbb{R})\), so heißt \(G(v_1,\dots,v_m)=det(G_B(\Phi))\) die \ul{Gramsche Determinante} von \(\Phi\) bzgl. \(B\).
+		\subsubsection{Satz}
+		Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=(v_1,\dots,v_n)\) ein Tupel von Vektoren aus \(V\).
+		(a) Die Gramsche Determinante erfüllt \(G(v_1,\dots,v_n)=det(\Phi(v_i,v_j))_{i,j}\geq 0\).
+		(b) Es gilt: \(G(v_1,\dots,v_n)=0\Leftrightarrow \{v_1,\dots,v_n\}\) linear abhängig.\\
+		\proof
+		"(a)" Sei \(C=(w_1,\dots,w_n)\) eine ONB von \(V\). Für \(i=1,\dots,m\) schreibe \(v_i=a_{i1}w_1+\dots+a_{im}w_m\) mit \(a_{ij}\in \mathbb{R}\).
+		Setze \(A=(a_{ij})\in Mat_{m,n}(\mathbb{R})\). Betrachte den \ul{Fall \(m\leq n\):} Wähle Vektoren \(v_{m+1},\dots,v_n\) von \(V\), die Teil einer ONB von \(<v_1,\dots,v_n>^\bot\) sind.\\
+Betrachte \(\tilde{A}=\begin{pmatrix}
+A\\e_{m+1}\\\vdots\\e_n
+\end{pmatrix}=TODO MATRICES\in Mat_n(\mathbb{R})\) und erhalte \(\tilde{A}\tilde{A}^{tr}=TODO MATRICES\) mit \(\A'=A_2,A''=A_2^{tr}\) für \(A=\underset{\text{quadratisch}}{(A_1|A_2)}\). Es folgt: \(det(AA^{tr})=det(\tilde{A}\tilde{A}^{tr})=det(\tilde{A})\cdot det(\tilde{A}^{tr})=det(\tilde{A})^2\geq 0\). Beachte \(\Phi(v_i,v_j)=0\) für \(i\leq i\leq n\). Dies liefert \(A'=0\) und damit \circled{*}. Nun folgt die Behauptung aus \(G(v_1,\dots,v_m)=det\begin{pmatrix}
+\Phi(v_1,v_1),\dots,\Phi(v_1,v_m)\\
+\vdots
+\Phi(v_m,v_1),\dots,\Phi(v_m,v_n)
+\end{pmatrix}=det(AA^{tr})\geq 0\).
+"(b)" Sind \(v_1,\dots,v_m\) linear abhängig, so sind die Zeilen von \(A\), bzw. \(\tilde{A}\) linear abhängig und es folgt \(G(v_1,\dots,v_n)=det(\tilde{A})^2=0\). Umgekehrt gilt:\\
+\(G(v_1,\dots,v_m)=0\Rightarrow det(\tilde{A})^2=0\Rightarrow det(\tilde{A})=0\Rightarrow \{v_1,\dots,v_m\}\) linear abhängig.
+\qed
+\subsubsection{Definition}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=(v_1,\dots,v_n)\) ein Basistupel von \(V\). Dann heißt \(Vol(v_1,\dots,v_n)=\sqrt{G(v_1,\dots,v_n)}\) das \ul{n-dimensionale Volumen} des von \(\{v_1,\dots,v_n\}\) aufgespannten Parallelepipeds bzgl. \(\Phi\).
 \end{document}
-
 
 
 
