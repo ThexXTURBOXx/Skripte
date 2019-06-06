@@ -15,7 +15,6 @@
 \usepackage{MnSymbol}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
-\usepackage{mathabx}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -29,6 +28,8 @@
 \newcommand*\circled[1]{
   \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
 }
+
+\newcommand*{\obot}{\perp\mkern-20.7mu\bigcirc}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -489,7 +490,7 @@ Genau dann ist \(\phi\) triagonalisierbar, wenn alle Eigenfaktoren von \(\phi\) 
 Sei \(K\) ein Körper und \(V\) ein endlich-dimensionaler \(K\)-Vektorraum mit \(n=dim_K(V)\).
 \subsubsection{Definition}
 (a) Sei \(W\) ein weiterer K-Vektorraum. Eine Abbildung \(\Phi:V\times V\rightarrow W\) heißt \ul{\(K\)-bilinear}, wenn für alle \(v,v_1,v_2,\tilde{v}, \tilde{v_1}, \tilde{v_2} \in V\) und \(a_1, a_2\in K\) gilt:
-(a)\(\Phi(a_1v_1+a_2v_2,\tilde{v})=a_1\cdot\Phi(v_1,\tilde{v})+a_2\cdot\Phi(v_2,\tilde{v})\)
+(a) \(\Phi(a_1v_1+a_2v_2,\tilde{v})=a_1\cdot\Phi(v_1,\tilde{v})+a_2\cdot\Phi(v_2,\tilde{v})\)
 (b) \(\Phi(v,a_1\tilde{v_1}+a_2\tilde{v_2})=a_1\cdot\Phi(v,\tilde{v_1})+a_2\cdot\Phi(v,\tilde{v_2})\).
 (b) Eine bilineare Abbildung \(\Phi:V\times V\rightarrow K\) heißt auch eine \ul{Bilinearform} auf V.
 \subsubsection{Bemerkung (Längenmessung in \(\mathbb{R}^2\))}
@@ -750,7 +751,7 @@ Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=\{v_1,\dots,v_n\}\) eine Ba
 \ul{Endlichkeit:} klar\\
 \ul{Korrektheit:} Wir schließen mit Induktion nach i und zeigen, dass \(\{w_1,\dots,w_i\}\) orthonormal ist.\\
 \ul{\(i=1\):} \(\norm{w_1}=\norm{\frac{v_1}{\norm{v_1}}}=\frac{\norm{v_1}}{\norm{v_1}}=1\).\\
-\ul{\(i>1\):} Nach Konstruktion gilt \(w_i=\frac{v_i-\tilde{v_i}}{\norm{v_i-\tilde{v_i}}}\in  <v_i,w_1,\dots,w_{i-1}>\underset{\text{Induktion}}{=}<v_1,\dots,v_i>\) und es gilt \(v_i\notin <v_1,\dots,v_{i-1}>=<w_1,\dots,w_{i-1}>\). Also folgt \(v_i\neq \tilde{v_i}\) und somit \(\norm{v_i-\tilde{v_i}\neq 0\).\\
+\ul{\(i>1\):} Nach Konstruktion gilt \(w_i=\frac{v_i-\tilde{v_i}}{\norm{v_i-\tilde{v_i}}}\in  <v_i,w_1,\dots,w_{i-1}>\underset{\text{Induktion}}{=}<v_1,\dots,v_i>\) und es gilt \(v_i\notin <v_1,\dots,v_{i-1}>=<w_1,\dots,w_{i-1}>\). Also folgt \(v_i\neq \tilde{v_i}\) und somit \(\norm{v_i-\tilde{v_i}}\neq 0\).\\
 	Für \(j=1,\dots,i-1\) gilt\\
 	\(\Phi(w_j,w_i)=\frac{1}{\norm{v_i-\tilde{v_i}}}\Phi(v_i-\tilde{v_i},w_j)=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot \left[\Phi(v_i,w_j)-\Phi(\Phi(v_i,w_1)\cdot w_1,w_j)-\dots-\Phi(\Phi(v_i,w_{i-1})w_{i-1},w_j)\right]\)\\
 	\(\frac{1}{\norm{v_i-\tilde{v_i}}}\left[\Phi(v_i,w_j)-\Phi(v_i,w_1)\cdot\underbrace{\Phi(w_1,w_j)}_{=0}-\dots-\Phi(w_i,w_{i-1})\cdot \underbrace{\Phi(w_{i-1},w_j)}_{=0}\right]=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot\left[\Phi(v_i,w_j)-\Phi(v_i,w_j)\cdot 1\right]=0\).\\
@@ -785,7 +786,7 @@ Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=\{v_1,\dots,v_n\}\) eine Ba
 			a_1 & b_1 & c_1\\
 			a_2 & b_2 & c_2\\
 			a_3 & b_3 & c_3
-			\end{pmatrix}}_{A}=\abs{det(A)}\)\\
+			\end{pmatrix}}_{A}}=\abs{det(A)}\)\\
 		Sei \(B=(v,w,u)\) eine Basis von \(\mathbb{R}^3\).\\
 		Die Gramsche Matrix des Standardskalarprodukts bzgl. der Basis \(B\) ist \(G_B(\Phi)=A^{tr}G_\xi(\Phi)A=A^{tr}A\) und es folgt \(det(G_B(\Phi))=det(A^{tr}A)=det(A^{tr})det(A)=det(A)^2\geq 0\). Dies liefert \(Vol(v,w,u)=\sqrt{det(G_B(\Phi))}\).
 		\subsubsection{Definition}
@@ -799,9 +800,9 @@ Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=\{v_1,\dots,v_n\}\) eine Ba
 		Setze \(A=(a_{ij})\in Mat_{m,n}(\mathbb{R})\). Betrachte den \ul{Fall \(m\leq n\):} Wähle Vektoren \(v_{m+1},\dots,v_n\) von \(V\), die Teil einer ONB von \(<v_1,\dots,v_n>^\bot\) sind.\\
 Betrachte \(\tilde{A}=\begin{pmatrix}
 A\\e_{m+1}\\\vdots\\e_n
-\end{pmatrix}=TODO MATRICES\in Mat_n(\mathbb{R})\) und erhalte \(\tilde{A}\tilde{A}^{tr}=TODO MATRICES\) mit \(\A'=A_2,A''=A_2^{tr}\) für \(A=\underset{\text{quadratisch}}{(A_1|A_2)}\). Es folgt: \(det(AA^{tr})=det(\tilde{A}\tilde{A}^{tr})=det(\tilde{A})\cdot det(\tilde{A}^{tr})=det(\tilde{A})^2\geq 0\). Beachte \(\Phi(v_i,v_j)=0\) für \(i\leq i\leq n\). Dies liefert \(A'=0\) und damit \circled{*}. Nun folgt die Behauptung aus \(G(v_1,\dots,v_m)=det\begin{pmatrix}
+\end{pmatrix}=TODO MATRICES\in Mat_n(\mathbb{R})\) und erhalte \(\tilde{A}\tilde{A}^{tr}=TODO MATRICES\) mit \(A'=A_2,A''=A_2^{tr}\) für \(A=\underset{\text{quadratisch}}{(A_1|A_2)}\). Es folgt: \(det(AA^{tr})=det(\tilde{A}\tilde{A}^{tr})=det(\tilde{A})\cdot det(\tilde{A}^{tr})=det(\tilde{A})^2\geq 0\). Beachte \(\Phi(v_i,v_j)=0\) für \(i\leq i\leq n\). Dies liefert \(A'=0\) und damit \circled{\(*\)}. Nun folgt die Behauptung aus \(G(v_1,\dots,v_m)=det\begin{pmatrix}
 \Phi(v_1,v_1),\dots,\Phi(v_1,v_m)\\
-\vdots
+\vdots\\
 \Phi(v_m,v_1),\dots,\Phi(v_m,v_n)
 \end{pmatrix}=det(AA^{tr})\geq 0\).
 "(b)" Sind \(v_1,\dots,v_m\) linear abhängig, so sind die Zeilen von \(A\), bzw. \(\tilde{A}\) linear abhängig und es folgt \(G(v_1,\dots,v_n)=det(\tilde{A})^2=0\). Umgekehrt gilt:\\
