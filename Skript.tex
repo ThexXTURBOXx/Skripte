@@ -15,6 +15,7 @@
 \usepackage{MnSymbol}
 \usepackage{stmaryrd}
 \usepackage{mathtools}
+\usepackage{ulem}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -810,6 +811,81 @@ A\\e_{m+1}\\\vdots\\e_n
 \qed
 \subsubsection{Definition}
 Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=(v_1,\dots,v_n)\) ein Basistupel von \(V\). Dann heißt \(Vol(v_1,\dots,v_n)=\sqrt{G(v_1,\dots,v_n)}\) das \ul{n-dimensionale Volumen} des von \(\{v_1,\dots,v_n\}\) aufgespannten Parallelepipeds bzgl. \(\Phi\).
+\subsubsection{Satz (Die Ungleichung von Hadamard)}
+Sei \(B=(v_1,\dots,v_n)\) ein Tupel von Vektoren in \(V\). Dann gilt: \(Vol(v_1,\dots,v_n)\leq \norm{v_1}_\Phi\cdot\dots\cdot\norm{v_n}_\Phi\) mit Gleichheit genau dann, wenn \(B\) eine Orthogonalbasis von \(V\) ist.\\
+\proof
+Ist \(B\) linear abhängig, so gilt \(Vol(v_1,\dots,v_n)=0\) und die Beh. ist klar.\\
+Wegen Sart 26.18 darf man quadrieren und es genügt zu zeigen: \(G(v_1,\dots,v_n)\leq \Phi(v_1,v_1)\cdot\dots\cdot\Phi(v_n,v_n)\).\\
+Mit Induktion zeigen wir, dass es für \(i=1,\dots,n\) eine eindeutig bestimmte Zerlegung \(v_i=v_i'+v_i''\) gibt mit \(v_i'\in<v_1,\dots,v_{i-1}>_\mathbb{R}\) und \(v_i''\bot_\Phi<v_1,\dots,v_{i-1}>_\mathbb{R}\) und dann gilt: \(G(v_1,\dots,v_i)\underset{(1)}{=}G(v_1,\dots,v_{i-1})\cdot\Phi(v_i'',v_i'')\underset{(2)}{\leq}G(v_1,\dots,v_{i-1})\cdot\Phi(v_i,v_i)\). Für \(i=n\) ergibt sich dann die Beh. des Satzes.\\
+\ul{\(i=1\):} klar\\
+\ul{\(i-1\rightarrow i\):} Die Existenz und Eindeutigkeit der Zerlegung \(v_i=v_i'+v_i''\) wurde im Beweis des Schmidtschen Orthogonalisierungsverfahrens gezeigt.\\
+"(2)" Es gilt: \(\Phi(v_i,v_i)=\Phi(v_i'+v_i'',v_i'+v_i'')=\Phi(v_i',v_i')+\Phi(v_i'',v_i'')\geq\Phi(v_i'',v_i'')\), da \(\Phi(v_i',v_i'')=0\).\\
+"(1)" Verwende \(\Phi(v_j,v_i)=\Phi(v_j,v_i')\) für \(j<i\) und \(\Phi(v_i,v_i)=\Phi(v_i',v_i')+\Phi(v_i'',v_i'')\). Es folgt:\\
+\(G(v_1,\dots,v_i)=det\begin{pmatrix}
+\Phi(v_1,v_1) & \hdots & \Phi(v_1,v_{i-1}) & \Phi(v_1,v_i')\\
+\vdots & & \vdots & \vdots\\
+\Phi(v_{i-1},v_1) & \hdots & \Phi(v_{i-1},v_{i-1}) &\Phi(v_{i-1},v_i') \\
+\Phi(v_i',v_1) & \hdots & \Phi(v_{i-1}',v_{i-1}) & \Phi(v_i',v_i')+\Phi(v_i'',v_i'')
+\end{pmatrix}\).TODO Linien vertikal horizontal\\
+Schreibe \(v_i'=c_1v_1+\dots+c_{i-1}v_{i-1}\) mit \(c_k\in\mathbb{R}\) und subtrahiere für \(j=1,\dots,i-1\) das \(c_j\)-fache der \(j\)-ten Spalte von der letzten Spalte. Die neue letzte Spalte ist dann \(\begin{pmatrix}
+0\\
+\vdots\\
+0\\
+\Phi(v_i'',v_i'')
+\end{pmatrix}\). 
+Entwicklung der Determinante nach der letzten Spalte und die Definition von \(G(v_1,\dots,v_{i-1})\) liefern dann die Behauptung.
+\qed
+\subsection{Die Hierarchie der reellen Vektorräume}
+Sei \(V\) ein \(n\)-dimensionaler \(\mathbb{R}\)-Vektorraum.
+\subsubsection{Bemerkung}
+(Wdh.) Ist \((V,\Phi)\) ein euklidischer Vektorraum, so ist \((V,\norm{\cdot}_\Phi)\) ein normierter Vektorraum bzgl. \(\norm{v}_\Phi=\sqrt{\Phi(v,v)}\)
+\subsubsection{Satz}
+(a) (Die Parallelogramm-Gleichung) Ist \(\Phi\) ein Skalarprodukt auf \(V\), so gilt für alle \(v,w\in V\): \(\norm{v+w}_\Phi^2+\norm{v-w}_\Phi^2=2\norm{v}_\Phi^2+2\norm{w}_\Phi^2\).
+(b) Ist \((V,\norm{\cdot})\) ein normierter Vektorraum und erfüllt \(\norm{\cdot}\) die Parallelogrammgleichung, so existiert ein Skalarprodukt \(\Phi\) auf \(V\) mit \(\norm{v}=\norm{v}_\Phi=\sqrt{\Phi(v,v)}\) für alle \(v\in V\).\\
+\proof
+Vgl. Übungen
+\subsubsection{Definition}
+(a) Eine \ul{Metrik} \(d\) auf \(V\) ist eine Abbildung \(d:V\times V\rightarrow \mathbb{R}\) mit folgenden Eigenschaften:
+(1) Für \(v,w\in V\) gilt\(d(v,w)\geq 0\) und \(d(v,w)=0\Leftrightarrow v=w\).
+(2) Für \(v,w\in V\) gilt \(d(v,w)=d(w,v)\)
+(3) (Dreiecksungleichung) Für \(v,w,u\in V\) gilt \(d(v,w)\leq d(v,u)+d(u,w)\)
+(b) Existiert eine Metrik \(d\) auf \(V\), so heißt \((V,d)\) ein \ul{metrischer Vektorraum}.
+\subsubsection{Beispiel}
+Sei \(K=\mathbb{F}_2\) und \(V=\mathbb{F}_2^n\). Definiere für \(v=(a_1,\dots,a_n)\) und \(w=(b_1,\dots,b_n)\) mit \(a_i,b_j\in\{0,1\}\) die Zahl \(d(v,w)=\#\{i\in\{1,\dots,n\}|a_i\neq b_i\}\). Dann ist \(d:V\times V\rightarrow \mathbb{R}\) eine Metrik (Beweis: Übungen). Sie heißt die \ul{Hamming-Metrik} (oder der \ul{Hamming-Abstand}) auf \(V\).
+\subsubsection{Bemerkung}
+Ist \((V,\norm{\cdot})\) ein normierter Vektorraum, so wird durch folgende Abbildung \(d:\underset{(v,w)\mapsto \norm{v-w}}{V\times V\rightarrow \mathbb{R}}\) eine Metrik auf \(V\) definiert. Also ist jeder normierte Vektorraum ein metrischer Vektorraum.
+\subsubsection{Definition}
+Sei \(\mathfrak{U}=\{U_i|i\in I\}\) eine Menge von Teilmengen von \(V\) mit folgenden Eigenschaften:
+(1) \(\varnothing\in \mathfrak{U},V\in\mathfrak{U}\)
+(2) \(U_1,\dots,U_n\in\mathfrak{U}\Rightarrow U_1\cap\dots\cap U_n\in\mathfrak{U}\) (d.h. \(\mathfrak{U}\) ist abgeschlossen bzgl. endlichen Durchschnitten)
+(3) Ist \(J\subseteq I\), so gilt \(\underset{j\in J}{\bigcup}U_j\in\mathfrak{U}\) (d.h. \(\mathfrak{U}\) ist abgeschlossen bzgl. beliebigen Vereinigungen).\\
+Dann heißt \(\mathfrak{U}\) eine \ul{Topologie} auf \(V\) und \((V,\mathfrak{U})\) heißt ein \ul{topologischer Vektorraum}. Die Mengen \(U\in\mathfrak{U}\) heißen \ul{offen} und die Mengen der Form \(V\backslash U\) mit \(U\in\mathfrak{U}\) heißen \ul{abgeschlossen}.
+\subsubsection{Bemerkung}
+(a) Ist \((V,d)\) ein metrischer Vektorraum, so definieren wir für jedes \(V\in V\) und \(\epsilon\in\mathbb{R}_+\) die \ul{offene \(\epsilon\)-Kugel um v} durch \(B_\epsilon(v)=\{w\in V|d(v,w)<\epsilon\}\)
+(b) Eine Teilmenge \(U\subseteq V\) heiße \ul{offen}, wenn sie eine Vereinigung von \(\epsilon\)-Kugeln ist: \(U=\underset{i\in I}{\bigcup}B_{\epsilon_i}(v_i)\)
+(c) Die Menge aller dieser offenen Teilmengen von \(V\) bildet eine Topologie auf \(V\). Somit ist jeder normierte Vektorraum ein topologischer Vektorraum.\\
+\begin{center}
+	\ul{Die Hierarchie reeller Vektorräume:}\\
+	\(V\) euklidischer Vektorraum\\
+	\(\Downarrow\)    \sout{\(\Uparrow\)}\\
+	\(V\) normierter Vektorraum\\
+	\(\Downarrow\)    \sout{\(\Uparrow\)}\\
+	\(V\) metrischer Vektorraum\\
+	\(\Downarrow\)    \sout{\(\Uparrow\)}\\
+	\(V\) topologischer Vektorraum
+\end{center}
+\subsection{Orthogonale Endomorphismen (Buch §5.5)}
+Sei \(V\) ein endlich-dimensionaler reeller Vektorraum mit Skalarprodukt \(\Phi:V\times V\rightarrow \mathbb{R}\).
+\subsubsection{Definition}
+(a) Eine \(\mathbb{R}\)-lineare Abbildung \(\phi:V\rightarrow V\) heißt \ul{orthogonal}, wenn für alle \(v,w\in V\) gilt: \(\Phi(\phi(v),\phi(w))=\Phi(v,w)\).
+(b) Eine Abbildung \(\psi:V\rightarrow V\) heißt \ul{längentreu}, wenn für alle \(v,w\in V\) gilt: \(\norm{\psi(v)-\psi(w)}_\Phi=\norm{v-w}_\Phi\)
+(c) Eine Abbildung \(\psi:V\rightarrow V\) heißt \ul{winkeltreu}, wenn für alle \(v,w\in V\backslash\{0\}\) gilt: \(\psi(v),\psi(w)\neq 0\) und \(\sphericalangle(\psi(v),\psi(w))=\sphericalangle(v,w)\)
+\ul{Wdh.:} \(\sphericalangle(v,w)=arccos\left(\frac{\Phi(v,w)}{\norm{v}_\Phi\cdot\norm{w}_\Phi}\right)\)
+\subsubsection{Bemerkung}
+Eine orthogonale \(\mathbb{R}\)-lineare Abbildung \(\phi:V\rightarrow V\) ist längen- und winkeltreu:
+(a) \ul{Längentreue:} Für \(v,w\in V\) gilt \(\norm{\phi(v)-\phi(w)}_\Phi=\sqrt{\Phi(\phi(v-w),\phi(v-w))}=\sqrt{\Phi(v-w,v-w)}=\norm{v-w}_\Phi\).
+(b) \ul{Winkeltreue:} Für \(v,w\in V\backslash\{0\}\) mit \(\phi(v),\phi(w)\neq 0\) gilt \(\sphericalangle(\phi(v),\phi(w))=arccos\left(\frac{\Phi(\phi(v),\phi(w))}{\norm{\phi(v)}_\Phi\cdot\norm{\phi(w)}_\Phi}\right)=arccos\left(\frac{\Phi(v,w)}{\norm{v}_\Phi\cdot\norm{w}_\Phi}\right)=\sphericalangle(v,w)\).\\
+\ul{Frage:} Wie kann man orthogonale lineare Abbildungen an ihrer Matrix erkennen?
 \end{document}
 
 
