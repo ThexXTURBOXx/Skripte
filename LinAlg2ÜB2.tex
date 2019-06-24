@@ -1,0 +1,133 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage[
+separate-uncertainty = true,
+multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\newcommand*\circled[1]{%
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{Kapitel }
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+
+\title{Lineare Algebra II\\Übungsblatt 1}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\section*{Aufgabe 1)}
+\(\phi\) isomorph \(\Leftrightarrow\) \(\phi\) bijektiv \(\Leftrightarrow\) \(det(\phi)\neq 0\) \(\Leftrightarrow\) \(\chi_\phi(0)\neq 0\) \(\Leftrightarrow\) \(\chi_\phi(x)\) besitzt ein Monom vom Grad 0
+\section*{Aufgabe 2)}
+\(det\begin{pmatrix}
+-x & 0 & \hdots & 0 & -a_0 \\
+1 & -x & \hdots & 0 & -a_1 \\
+0 & 1 & \hdots & 0 & -a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \hdots & 1 & -a_{n-1}-x \\
+\end{pmatrix}\)\\
+\(=(-1)^na_0\cdot det\begin{pmatrix}
+1 & -x & \hdots & 0 \\
+0 & 1 & \hdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \hdots & 1 \\
+\end{pmatrix}+(-1)^{n-1}a_1\cdot det\begin{pmatrix}
+-x & 0 & \hdots & 0 \\
+0 & 1 & \hdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \hdots & 1 \\
+\end{pmatrix}\)\\
+\(+(-1)^{n}a_2\cdot det\begin{pmatrix}
+-x & 0 & 0 & \hdots & 0 \\
+1 & -x & 0 & \hdots & 0 \\
+0 & 0 & 1 & \hdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \hdots & 1 \\
+\end{pmatrix}+\dots+(-1)^{n}(a_{n-1}+x)\cdot det\begin{pmatrix}
+-x & 0 & \hdots & 0 \\
+1 & -x & \hdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \hdots & -x \\
+\end{pmatrix}\)\\
+\(=(-1)^na_0\cdot 1+(-1)^{n-1}a_1\cdot(-x)+(-1)^na_2\cdot x^2 + \dots + (-1)^n(a_{n-1}+x)x^{n-1}\)\\
+\(=(-1)^na_0+(-1)^na_1x+\dots+(-1)^na_{n-1}x^{n-1}+(-1)^nx^n\)\\
+\(=(-1)^n\cdot (x^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0)\)
+\qed
+\section*{Aufgabe 3)}
+\(\chi_A(x)\) besitzt Nullstelle 0 \(\Rightarrow\) \(rk(A)=3-1=2\)\\
+\(\chi_B(x)\) besitzt keine Nullstelle \(\Rightarrow\) \(det(B)\neq 0\) \(\Rightarrow\) \(B\) invertierbar, \(rk(B)=3\) \(\Rightarrow\) \(Ker(B)=\{0\}\)\\
+\(\chi_A(x)=x(-x^2+2x-1)=-x(x-1)^2\)\\
+\(0<dim(Eig(A,0))\leq dim(Gen(A,x))=1\)
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

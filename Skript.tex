@@ -846,7 +846,7 @@ Sei \(V\) ein \(n\)-dimensionaler \(\mathbb{R}\)-Vektorraum.
 Vgl. Übungen
 \subsubsection{Definition}
 (a) Eine \ul{Metrik} \(d\) auf \(V\) ist eine Abbildung \(d:V\times V\rightarrow \mathbb{R}\) mit folgenden Eigenschaften:
-(1) Für \(v,w\in V\) gilt\(d(v,w)\geq 0\) und \(d(v,w)=0\Leftrightarrow v=w\).
+(1) Für \(v,w\in V\) gilt \(d(v,w)\geq 0\) und \(d(v,w)=0\Leftrightarrow v=w\).
 (2) Für \(v,w\in V\) gilt \(d(v,w)=d(w,v)\)
 (3) (Dreiecksungleichung) Für \(v,w,u\in V\) gilt \(d(v,w)\leq d(v,u)+d(u,w)\)
 (b) Existiert eine Metrik \(d\) auf \(V\), so heißt \((V,d)\) ein \ul{metrischer Vektorraum}.
@@ -1028,6 +1028,77 @@ c & d
 0 & cos(\alpha) & -sin(\alpha)\\
 0 & sin(\alpha) & cos(\alpha)
 \end{pmatrix}\) Drehung um die x-Achse um den Winkel \(\alpha\).
+\subsubsection{Definition (Die orthogonale Gruppe)}
+(a) Die bzgl. \(\Phi\) orthogonalen Endomorphismen von \(V\) bilden eine Gruppe \(O_\Phi(V)\), die wir die (bzgl. \(\Phi\)) orthogonale Gruppe von \(V\) nennen.
+(b) \(O_n(\mathbb{R})=\{A\in Mat_n(\mathbb{R})|A\text{ orthogonal}\}\) heißt die \ul{orthogonale Gruppe} (\(n\)-ter Stufe).
+(c) \(SO_N(\mathbb{R})=\{A\in O_n(\mathbb{R})|det(A)=1\}\) heißt die \ul{spezielle orthogonale Gruppe} (\(n\)-ter Stufe).
+(d) Die Elemente von \(SO_n(\mathbb{R})\) heißen auch \ul{Drehungen}.\\
+Die Elemente von \(O_n(\mathbb{R})\backslash SO_n(\mathbb{R})\) heißen \ul{Drehspiegelungen}.
+\subsubsection{Lemma}
+Sei \(f\in \mathbb{R}\left[x\right]\backslash\mathbb{R}\). Dann ist \(f\) in (bis auf die Reihenfolge und skalare Faktoren) eindeutiger Weise ein Produkt aus linearen und irreduziblen quadratischen Polynomen, d.h. \(f=c\cdot l_1^{\alpha_1}\cdot\dots\cdot l_r^{\alpha_r}q_1^{\beta_1}\cdot\dots\cdot q_s^{\beta_s}\) mit \(c\in\mathbb{R}\), \(l_i\) normiertes lineares Polynom, \(\alpha_i\geq 1\), \(q_j\) normiertes irreduzibles Polynom vom Grad 2, \(\beta\geq 1\).\\
+\proof
+\begin{itemize}
+\item Fundamentalsatz der Algebra
+\item komplexe Konjugation liefert, dass die komplexen Nullstellen in Paaren \(a_k+ib_k\) auftreten: \((x-(a_k+ib_k))(x-(a_k-ib_k))\in\mathbb{R}\left[x\right]\).
+\end{itemize}
+\qed
+\subsubsection{Satz (Normalformen orthogonaler Endomorphismen)}
+Zu jeder orthogonalen \(\mathbb{R}\)-linearen Abbildung \(\phi:V\rightarrow V\) gibt es eine ONB \(B\) von \(V\) mit \(M_B(\phi)=TODO MATRIX\) mit \ul{Drehkästchen} \(Q_i=\begin{pmatrix}
+cos(\alpha_i) & -sin(\alpha_i)\\
+sin(\alpha_i) & cos(\alpha_i)
+\end{pmatrix}\), \(\alpha_i\in \left[ 0,2\phi\right[\).\\
+\proof
+Wir schließen mit vollständiger Induktion nach \(n=dim_\mathbb{R}(V)\).\\
+\ul{\(n=1\):} Klar, da \(M_B(\phi)=(\pm 1)\)\\
+\ul{\(n=2\):} vgl. Beispiel 28.5\\
+\ul{\(n>2\):} Schreibe \(\chi_\phi(x)=(-1)^nl_1^{\alpha_1}\cdot\dots\cdot l_s^{\alpha_s}q_1^{\beta_1}\cdot\dots\cdot q_t^{\beta_t}\) mit \(l_i\) linear, \(\alpha_i\geq 1\), \(q_j\) quadratisch, \(\beta_j\geq 1\). Im Fall \(s\geq 1\) sei \(U=Gen(\phi, l_1)\) und im Fall \(s=0, t\geq 1\) sei \(U=Gen(\phi,q_1)\).\\
+Da \(\phi\) mindestens zwei EF besitzt, gilt \(U\subsetneq V\). Ferner ist \(U\) \(\phi\)-invariant, d.h. \(\phi(U)\subseteq U\). Verwende nun \(V=U\obot U^\bot\).\\
+Für \(v\in U^\bot\) und \(w\in U\) gilt: \(\Phi(\phi(v), w)=\Phi(\phi^{-1}\phi(v), \phi^{-1}(w))=\Phi(v, \underbrace{\phi^{-1}(w)}_{\in U})=0\) und somit \(\phi(v)\in U^\bot\).\\
+Also gilt auch \(\phi(U^\bot)\subseteq U^\bot\).\\
+Nun konstruieren wir nach Induktionsvoraussetzung zwei ONB \(B_1\) von \(U\) und \(B_2\) von \(U^\bot\) bzgl. denen \(M_{B_1}(\phi)_U\) (bzw. \(M_{B_2}(\phi)_{U^\bot}\)) die gewünschte Gestalt hat. Dann ist \(B_1\cup B_2\) eine ONB von \(V\) bzgl. der (evtl. nach Umordnung)  die Matrix \(M_{B_1\cup B_2}(\phi)\) die gesuchte Gestalt hat.
+\qed
+\subsubsection{Definition}
+Sei \(V\) ein \(n\)-dimensionaler \(\mathbb{R}\)-Vektorraum und \(\phi:V\rightarrow V\) ein Automorphismus.
+Die Abbildung \(\phi\) heißt \ul{orientierungserhaltend} (oder \ul{orientierungstreu}), wenn \(det(\phi)>0\) gilt. Ansonsten heißte \(\phi\) \ul{orientierungsumkehrend}.
+\subsubsection{Beispiel}
+(a) Sei \(\phi:\mathbb{R}^2\rightarrow \mathbb{R}^2\) mit \(M_\xi(\phi)=\begin{pmatrix}
+-1 & -\frac{1}{4}\\
+1 & -\frac{1}{2}
+\end{pmatrix}\). Dann gilt \(det(\phi)=\frac{3}{4}\). Die Abbildung \(\phi\) ist orientierungserhaltend.
+(b) Betrachte \(\phi:\mathbb{R}^2\rightarrow \mathbb{R}^2\) mit \(M_\xi(\psi)=\begin{pmatrix}
+-\frac{1}{4} & 1\\
+1 & \frac{1}{2}
+\end{pmatrix}\), \(det(\psi)=\frac{-9}{8}\).
+\subsubsection{Bemerkung}
+Für \(\phi\in End_\mathbb{R}(\mathbb{R}^n)\) gilt:\\
+\(\abs{det(\phi)}=\abs{det(\phi(e_1)\phi(e_2)\dots\phi(e_n))}\). Also misst \(\abs{det(\phi)}\) das Volumen des Bilds des Einheitswürfels. Also misst \(\abs{det(\phi)}\) die Volumenänderung unter \(\phi\).
+\subsubsection{Definition}
+Seien \(B=(v_1,\dots,v_n)\) und \(C=w_1, \dots, w_n\) zwei Basen von \(V\). Sei \(\phi:V\rightarrow V\) der Automorphismus mit \(\phi(v_i)=w_i\) für \(i=1,\dots,n\).
+(a) Die Basen \(B\) und \(C\) heißen \ul{gleich orientiert}, wenn \(\phi\) orientierungserhaltend ist, d.h. wenn \(det(\phi)>0\) gilt. In diesem Fall schreiben wir \(B\sim_{OR} C\). Andernfalls heißen \(B\) und \(C\) entgegengesetzt orientiert.
+(b) Offenbar ist \(\sim_{OR}\) eine Äquivalenzrelation. Eine \ul{Orientierung} auf \(V\) ist eine Äquivalenzklasse \(\left[B\right]\) gleichorientierter Basen.
+\subsubsection{Beispiel (Orientierungen im \(\mathbb{R}^2\))}
+(a) Die Äquivalenzklasse \(\left[\xi\right]\) der Standardbasis heißt der \ul{Gegenuhrzeigersinn} (oder der \ul{mathematisch positive Drehsinn})
+(b) Die Äquivalenzklasse \(\left[(e_2,e_1)\right]=\left[(e_1,-e_2)\right]\) heißt der \ul{Uhrzeigersinn}
+\subsubsection{Beispiel (Orientierungen im \(\mathbb{R}^3\))}
+(a) Die Äquivalenzklasse \(\left[\xi\right]\) heißt \ul{Rechte-Hand-Orientierung}
+(b) Die Äquivalenzklasse \(\left[(e_1,e_3,e_2)\right]\) heißt \ul{Linke-Hand-Orientierung}
+\subsubsection{Satz (Der Satz vom Fußball)}
+Bei einem Fußballspiel liegt der Ball am Anfang der 1. Halbzeit und am Anfang der 2. Halbzeit genau am Anstoßpunkt. Dann gibt es 2 Punkte auf der Balloberfläche, die zu beiden Zeitpunkten an exakt derselben Stelle sind.\\
+\proof
+Führe in \(\mathbb{R}^3\) ein kartesisches Koordinatensystem so ein, dass der Mittelpunkt des Balls \(0=(0,0,0)\) ist und sein Radius 1. Die Balloberfläche ist dann die \ul{2-Sphäre} \(S^2=\{(x,y,z)\in\mathbb{R}^3|x^2+y^2+z^2=1\}\).\\
+Sei \(\tilde{\phi}:S^2\rightarrow S^2\) die Abb., die jedem Punkt auf \(S^2\) am Beginn der 1. Halbzeit den zugehörigen Punkt am Beginn der 2. Halbzeit zuordnet. Sei \(\phi:\mathbb{R}^3\rightarrow \mathbb{R}^3\) definiert durch \(\phi(v)=\begin{cases}
+0 & \text{falls } v = 0\\
+\norm{v}\cdot\tilde{\phi}(\frac{v}{\norm{v}}) & \text{sonst}
+\end{cases}\).\\
+(1) \(\phi\) erhält die Norm, denn \(\norm{\phi(v)}=\norm{\norm{v}\cdot\tilde{\phi}(\frac{v}{\norm{v}})}=\norm{v}\cdot\norm{\cdot\tilde{\phi}(\frac{v}{\norm{v}})}=\norm{v}\) für \(v\neq 0\).\\
+(2) \(\tilde{\phi}\) ist winkelerhaltend.\\
+(3) \(\phi\) ist winkelerhaltend, \(cos(\sphericalangle(v,w))=\frac{<v,w>}{\norm{v}\norm{w}}=\langle\frac{v}{\norm{v}},\frac{w}{\norm{w}}\rangle=\frac{<\norm{v}\tilde{\phi}(\frac{v}{\norm{v}}),\norm{w}\tilde{\phi}(\frac{w}{\norm{w}})>}{\norm{v}\cdot\norm{w}}=\frac{<\phi(v),\phi(w)>}{\norm{\phi(v)}\cdot\norm{\phi(w)}}=cos(\sphericalangle(\phi(v),\phi(w)))\)\\
+(4) \(\phi(0)=0\).\\
+Damit ist \(\phi\) \(\mathbb{R}\)-linear und orthogonal (\(\nearrow\) Übungen).\\
+(5) Die Abb. \(\phi\) ist orientierungserhaltend. Also gilt \(det(\phi)=1\).\\
+nach Bsp. 28.7 folgt, dass \(\phi\) den Eigenwert 1 besitzt und \(M_B(\phi)=TODO MATRIX\) gilt mit einem Drehkästchen Q bzgl. einer geeignet gewählten ONB \(B\) von \(\mathbb{R}^3\).\\
+Die normierten Eigenvektoren zum Eigenwert 1 liefern die Behauptung.
+\qed
 \end{document}
 
 
