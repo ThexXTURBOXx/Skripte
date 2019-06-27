@@ -1099,6 +1099,75 @@ Damit ist \(\phi\) \(\mathbb{R}\)-linear und orthogonal (\(\nearrow\) Übungen).
 nach Bsp. 28.7 folgt, dass \(\phi\) den Eigenwert 1 besitzt und \(M_B(\phi)=TODO MATRIX\) gilt mit einem Drehkästchen Q bzgl. einer geeignet gewählten ONB \(B\) von \(\mathbb{R}^3\).\\
 Die normierten Eigenvektoren zum Eigenwert 1 liefern die Behauptung.
 \qed
+\subsection{Symmetrische Matrizen}
+\subsubsection{Theorem}
+Jede symmetrische Matrix \(A\in Mat_n(\mathbb{R})\) besitzt mindestens einen reellen Eigenwert \(\lambda\in\mathbb{R}\).\\
+\ul{Beweis 1:} mit Komplexifizierung\\
+\ul{Beweis 2:} mit reeller Analysis\\
+Betrachte die Abbildung \(q:\underset{(x_1,\dots,x_n)\mapsto (x_1,\dots,x_n)A\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}}{\mathbb{R}^n\rightarrow\mathbb{R}}\). Das ist eine Polynomfunktion vom Grad 2 in \(x_1,\dots,x_n\).\\
+Sei \(S^{n-1}=\{(a_1,\dots,a_n)\in\mathbb{R}^n|a_1^2+\dots+a_n^2=1\}\) die \ul{\(n-1\)-Sphäre}.\\
+Dann ist \(S^{n-1}\) eine kompakte (d.h. abgeschlossener und beschränkte) Teilmenge in \(\mathbb{R}^n\).\\
+Jede stetige Funktion auf einem Kompaktum nimmt ein Minimum und ein Maximum an.\\
+Sei \(v\in S^{n-1}\) so gewählt, dass \(q(v)\) das Maximum von \(q\) auf \(S^{n-1}\) darstellt. Ist also \(w\in S^{n-1}\) ein weiterer Einheitsvektor, so gilt \(q(v)=vAv^{tr}\geq q(w)=wAw^{tr}\).\\
+\ul{Zwischenbeh.:} Ist \(w\in S^{n-1}\) mit \(v\bot w\), so gilt \(w\bot Av^{tr}\).\\
+\proof
+Sei \(0<\lambda<1\) und \(\mu=\sqrt{1-\lambda^2}\) und \(u=\mu v + \lambda w\). Wegen \(v\bot w\) gilt dann \(\norm{u}^2=\norm{\mu v + \lambda w} = <\mu v + \lambda w, \mu v + \lambda w>=\mu^2\norm{v}^2+\lambda^2\norm{w}^2=(1-\lambda^2)+\lambda^2=1\), also \(u\in S^{n-1}\).\\
+Nach Konstruktion gilt: \(vAv^{tr}\geq uAu^{tr}=(\mu v+\lambda w)A(\mu v + \lambda w)=\mu^2vAv^{tr}+\lambda^2wAw^{tr}+\underbrace{\mu\lambda vAw^{tr}+\mu\lambda wAv^{tr}}_{\text{gleich, da } (wAv^{tr})^{tr}=vA^{tr}w^{tr}\underset{A\text{ symm.}}{=}vAw^{tr}}=\mu^2vAv^{tr}+\lambda^2wAw^{tr}+2\mu\lambda wAv^{tr}\).\\
+Dann folgt \(2\mu\lambda wAv^{tr}\leq (1-\mu^2)vAv^{tr}-\lambda^2wAw^{tr}=\lambda^2(\underbrace{vAv^{tr}-wAw^{tr}}_{\geq 0})\) und somit \(2\mu wAv^{tr}\leq \lambda(\underbrace{vAv^{tr}-wAw^{tr}}_{\geq 0})\).\\
+Angenommen, \(<w,Av^{tr}=wAv^{tr}\neq 0\). O.E. sei dann \(wAv^{tr}>0\) (sonst ersetze \(w\) durch \(-w\) \(\lightning\)).\\
+Dann gilt: \(0<\underbrace{2\mu}_{\rightarrow 2}(\underbrace{wAv^{tr}}_{>0})=\leq \underbrace{\lambda}_{\rightarrow 0} (\underbrace{vAv^{tr}-wAw^{tr}}_{>0})\). Nun verwende \(lim_{\lambda\rightarrow 0}\) \(\lightning\).
+\(\Rightarrow \) \ul{Zw.Beh.}\\
+Betrachte nun \(U=(\mathbb{R}\cdot v)^\bot\). Es gilt \(U^\bot=\mathbb{R}\cdot v\) und für alle \(w\in U\) gilt \(w\bot Av^{tr}\), also \(Av^{tr}\bot U\). Dies liefert \(Av^{tr}\bot U\). Dies liefert \(Av^{tr}\in U^{bot}=\mathbb{R}v\). Somit existiert ein \(c\in\mathbb{R}\) mit \(Av^{tr}=cv^{tr}\). Somit ist \(c\) ein Eigenwert von \(A\).
+\qed
+\subsubsection{Korollar}
+Ist \(V\) ein \(n\)-dimensionaler Vektorraum und \(\phi\in ENd_\mathbb{R}(V)\), so dass eine Basis \(B\) von \(V\) existiert, für die \(M_B(\phi)\) symmetrisch ist, so hat \(\phi\) einen reellen Eigenwert.
+\subsubsection{Definition}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(\phi\in End_\mathbb{R}(V)\). Die Abbildung \(\phi\) heißt \ul{selbstadjungiert}, wenn für \(v,w\in V\) gilt: \(\Phi(\phi(v),w)=\Phi(v,\phi(w))\).
+\subsubsection{Satz (Charakterisierung selbstadjungierter Endomorphismen)}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(\phi\in End_\mathbb{R}(V)\). Dann sind die folgenden Bedingungen äquivalent:\\
+(a) \(\phi\) ist selbstadjungiert
+(b) Ist \(B=(v_1,\dots,v_n)\) eine ONB von \(V\), so gilt \(\Phi(\phi(v_i), v_j)=\Phi(v_i,\phi(v_j))\) für \(^\leq i,j\leq n\).
+(c) Für jede ONB \(B\) von \(V\) ist \(M_B(\phi)\) eine symmetrische Matrix
+(d) Es gibt eine ONB \(B\) von \(V\), so dass \(M_B(\phi)\) eine symmetrische Matrix ist.\\
+\proof
+"(a)\(\Rightarrow\)(b)" klar.\\
+"(b)\(\Rightarrow\)(c)" Sei \(B=(v_1,\dots,v_n)\) und \(M_B(\phi)=(a_ij)\). Dann gilt \(\phi(v_j)=a_{1j}v_1+\dots+a_{nj}v_n\) für \(j=1,\dots,n\).\\
+Es folgt: \(\Phi(\phi(v_i), v_j)=\Phi(a_{1i}v_1+\dots+a_{ni}v_n,v_j)=a_{ji}\Phi(v_j,v_j)=a_{ji}\) und \(\Phi(v_i,\phi(v_j))=\Phi(v_i,a_{1j}v_1+\dots+a_{nj}v_n)=a_{ij}\Phi(v_i,v_i)=a_{ij}\). Für \(i,j=1,\dots,n\) gilt also \(a_{ji}=a_{ij}\), d.h. \(M_B(\phi)\) ist symmetrisch.\\
+"(c)\(\Rightarrow\)(d)" klar\\
+"(d)\(\Rightarrow\)(a)" Sei \(M_B(\phi)=(a_{ij})\). Für \(v=b_1v_1+\dots+b_nv_n\) und \(w=c_1v_1+\dots+c_nv_n\) mit \(b_i,c_j\in\mathbb{R}\) gilt, dann \(\Phi(\phi(v),w)=\sum_{i=1}^n\sum_{j=1}^nb_ic_j\cdot \Phi(\phi(v_i),v_j)=\sum_{i=1}^n\sum_{j=1}^nc_ic_ja_{ji}\overset{M_B(\phi)\text{ symm.}}{=}\sum_{i=1}^n\sum_{j=1}^nb_ic_j\cdot \Phi(v_i,\phi(v_j))=\Phi(v,\phi(w))\).
+\qed
+\subsubsection{Theorem (Diagonalisierbarkeit selbstadjungierter Endomorphismen)}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(\phi:V\rightarrow V\) ein selbstadjungierter Endomorphismus.\\
+Dann gibt es eine ONB \(B\) von \(V\), so dass \(M_B(\phi)\) eine Diagonalmatrix ist.\\
+\proof
+Wir schließen mit vollständiger Induktion nach \(n=dim_\mathbb{R}(V)\).\\
+\ul{\(n=1\)}: klar\\
+\ul{\(n>1\)}: Sei \(C\) eine ONB von \(V\). Nach Satz 29.4 ist \(M_C(\phi)\) dann symmetrisch. Nach Theorem 29.1 besitzt \(M_C(\phi)\) einen reellen EW \(\lambda\).\\
+Sei \(v\neq 0\) ein EV zum EW \(\lambda\) und \(U=(\mathbb{R}v)^\bot\). Dann gilt \(V=U\obot \mathbb{R}v\) und \(dim_\mathbb{R}(U)=n-1\).\\
+Für \(u\in U\) gilt \(\Phi(u,v)=0\) und \(\Phi(\phi(u), v)=\Phi(u,\phi(v))=\Phi(u,\lambda v)=\lambda\Phi(u,v)=0\). Das zeigt \(\phi(u)\in U=(\mathbb{R}v)^\bot\) und somit ist \(U\) \(\phi\)-invariant. Also existiert \(\phi|U:U\rightarrow U\). Offensichtlich ist \(\phi|U\) wieder selbstadjungiert.\\
+Somit ist die IV anwendbar und es existiert eine Basis \(\tilde{B}\) von \(U\) so, dass \(M_{\tilde{B}}(\phi|U)\) eine Diagonalmatrix ist. Dann ist \(B=\tilde{B}\cup\{\frac{v}{\norm{V}}\}\) eine ONB von \(V\) und es gilt \(M_B(\phi)=TODO MATRIX\).
+\qed
+\subsubsection{Korollar (Algorithmus zur Berechnung einer ONB aus EV von \(\phi\))}
+Sei \(\phi\in End_\mathbb{R}(V)\) selbstadjungiert. Die folgenden Instruktionen definieren einen Algorithmus, der eine ONB von \(V\) bestehend aus EV von \(\phi\) berechnet.\\
+(1) Faktorisiere \(\chi_\phi(x)=(-1)^n(x-\lambda_1)^{\alpha_1}\cdot\dots\cdot (x-\lambda_m)^{\alpha_m}\) mit paarweise verschiedenen \(\lambda_1,\dots,\lambda_m\in\mathbb{R}\) und \(\alpha_i>0\).\\
+(2) Für \(i=1,\dots,n\) berechne eine ONB \(B\) von \(Eig(\phi,\lambda_i)\).\\
+(3) Gib \(B=B_1\cup\dots\cup B_m\) aus und stoppe.
+\subsubsection{Beispiel}
+Gegeben sei die \(\mathbb{R}\)-lineare Abbildung \(\phi:\mathbb{R}^3\rightarrow\mathbb{R}^3\) mit \(M_\xi(\phi)=TODO MATRIX=: A\). Offenbar ist \(A\) symmetrisch.\\
+Nun wenden wir den Algorithmus aus dem Korollar 29.6 an.\\
+(1) \(\chi_\phi(x)=-x^3-x^2+x+1=(-x^2+1)(x+1)=-(x-1)(x+1)^2\)\\
+(2) \(Eig(\phi,1)=Ker TODO MATRIX=\mathbb{R}\cdot (5,1,2)\)\\
+\(Eig(\phi,-1)=<(0,2,-1),(1,-1,-2)\)\\
+Wir orthonormalisieren beide Basen und erhalten \(B_1=\{(\frac{5}{\sqrt{30}},\frac{1}{\sqrt{30}},\frac{2}{\sqrt{30}})\}\) und \(B_2=\{(0,\frac{2}{\sqrt{5}},\frac{-1}{\sqrt{5}}),(\frac{1}{\sqrt{6}},\frac{-1}{\sqrt{6}},\frac{-2}{\sqrt{6}})\}\).\\
+(3) Also ist \(B=B_1\cup B_2\) eine ONB von \(\mathbb{R}^3\) und \(M_B(\phi)=\begin{pmatrix}
+1 & 0 & 0\\
+0 & -1 & 0\\
+0 & 0 & -1
+\end{pmatrix}\) (Drehung um 180° um die x-Achse)
 \end{document}
 
 
