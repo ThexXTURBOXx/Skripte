@@ -1168,6 +1168,129 @@ Wir orthonormalisieren beide Basen und erhalten \(B_1=\{(\frac{5}{\sqrt{30}},\fr
 0 & -1 & 0\\
 0 & 0 & -1
 \end{pmatrix}\) (Drehung um 180° um die x-Achse)
+\subsubsection{Korollar (Diagonalisierung symmetrischer Matrizen)}
+Sei \(A \in Mat_n(\mathbb{R})\) symmetrisch. Dann gibt es eine orthogonale Matrix \(T\in O_n(\mathbb{R})\), sodass \(T^{tr}AT=T^{-1}AT=\begin{pmatrix}
+\lambda_1 & & 0\\
+ & \ddots & \\
+0 & & \lambda_n
+\end{pmatrix}\) mit \(\lambda_i\in\mathbb{R}\) eine Diagonalmatrix ist.
+\subsubsection{Definition}
+Sei \(A=TODO MATRIX\) eine symmetrische Matrix mit \(a,b,c\in\mathbb{R}\) und \(a\neq 0\).\\
+Führe die folgenden Schritte durch:\\
+(1) Addiere das \(-\frac{b}{a}\)-fache der \(i\)-ten Zeile zur \(j\)-ten Zeile.\\
+(2) Addiere das \(-\frac{b}{a}\)-fache der \(i\)-ten Spalte zur \(j\)-ten Spalte.\\
+Das Ergebnis ist eine Matrix \(\tilde{A}=TODO MATRIX\) mit \(d=c-\frac{b^2}{a}\). Diese Operation heißt eine \ul{simultane Zeilen- und Spaltenoperation}.
+\subsubsection{Bemerkung (Diagonalisierung mit simultanen Zeilen- und Spaltenoperationen)}
+Gegeben sei eine symmetrische Matrix \(A\in Mat_n(\mathbb{R})\). Dann kann man \(A\) wie folgt in Diagonalgestalt bringen:\\
+(1) Gilt \(a_{ii}\neq 0\), so kann man die \(i\)-te Zeile/Spalte mithilfe von \(a_{ii}\) durch simultane Zeilen- und Spaltenoperationen ausräumen.\\
+(2) Gilt \(a_{ii}=a_{jj}=0\) für \(i\neq j\) und \(a_{ij}\neq 0\). Addiere die \(j\)-te Zeile/Spalte zur \(i\)-ten. Danach gilt \(\tilde{a}_{ij}=2a_{ij}\neq 0\).\\
+(3) Fahre so fort mit (1) und (2).\\
+Führe über die Schritte wie folgt im Buch:\\
+TODO WHATEVER\\
+\(\lightning\) Die Transformationsmatrix ist i.A. \ul{nicht} orthogonal!
+\subsubsection{Beispiel}
+Sei \(A=\begin{pmatrix}
+a & b\\
+b & c
+\end{pmatrix}\in Mat_2(\mathbb{R})\) symmetrisch mit \(a,b,c\in\mathbb{R}\) und \(a\neq 0\).\\
+TODO WHATEVER\\
+Dann gilt: \(D=T^{tr}AT\).
+\subsubsection{Beispiel}
+Die Matrix \(A=\begin{pmatrix}
+1 & 2 & 2\\
+2 & 1 & 4\\
+2 & 4 & 4
+\end{pmatrix}\in Mat_3(\mathbb{R})\) soll diag. werden.\\
+TODO WHATEVER\\
+Es folgt: \(D=T^{tr}AT\).
+\subsection{Die Hauptachsentransformation}
+Sei \(V=\mathbb{R}^n\) mit Standardskalarprodukt \(<,>\) und sei \(\Phi:V\times V\rightarrow \mathbb{R}\) eine symmetrische Bilinearform.\\
+\ul{Frage:} Wie kann man die Gramsche Matrix von \(\Phi\) auf möglichst einfache Gestalt bringen?\\
+Was bedeutet dies geometrisch?\\
+Wie kann man algorithmisch feststellen, ob \(\Phi\) ein Skalarprodukt ist?
+\subsubsection{Theorem (Die Hauptachsentransformation symmetrischer Bilinearformen)}
+(a) Es gibt eine \ul{OGB} \(B\) von \(\mathbb{R}^n\), sodass gilt \(G_B(\Phi)=\begin{pmatrix}
+I_k & 0 & 0\\
+0 & -I_l & 0\\
+0 & 0 & 0_m
+\end{pmatrix}\) mit \(k+l+m=n\).\\
+(b) In der OGB \(B=(v_1,\dots,v_n)\) gilt: \(\Phi(v_i,v_i)=\begin{cases}
+1 & \text{, falls }1\leq i \leq k\\
+-1 &\text{, falls }k+1\leq i\leq k+l\\
+0 & \text{, falls }k+l+1\leq i\leq n
+\end{cases}\) und \(\Phi(v_i,v_j)=0\), falls \(i\neq j\).\\
+\proof
+"(a)" Nach Theorem 29.4 existiert eine ONB \(C\) von \(\mathbb{R}^n\) mit \(M_C(\phi)=\tilde{D}=TODO MATRIX\), wobei \(\phi:\mathbb{R}^n\rightarrow\mathbb{R}^n\), die durch \(G_\xi(\Phi)=:A\) definierte, bzgl. \(<,>\) selbstadjungierte \(\mathbb{R}\)-lineare Abbildung ist und \(\lambda_1,\dots,\lambda_k\in\mathbb{R}_+\), \(\lambda_{k+1},\dots,\lambda_{k+l}\in\mathbb{R}_-\) gelte.\\
+Also gilt \(\tilde{D}=T^{tr}AT\) mit \(T\in O_n(\mathbb{R})\). Offenbar gilt auch \(\tilde{D}=G_C(\Phi)\)\\
+Sei \(C=(\tilde{v_1},\dots,\tilde{v_n})\) und für \(i=1,\dots,k+l\) setze \(v_i=\frac{\tilde{v_i}}{\sqrt{\abs{\lambda_i}}}\).\\
+Für \(i=k+l+1,\dots,n\) sei \(v_i=\tilde{v_i}\).\\
+Dann ist \(B=(v_1,\dots,v_n)\) eine \ul{OGB} und für \(i=1,\dots,k+l\) gilt:\\
+\(\Phi(v_i,v_i)=\frac{1}{\abs{\lambda_i}}\Phi(v_i,v_i)=\frac{\lambda_i}{\abs{\lambda_i}}=\begin{cases}
+1 & \text{, falls } 1\leq i\leq k\\
+-1 & \text{, falls } k+1\leq i\leq k+l
+\end{cases}\).\\
+Dies zeigt: \(G_B(\Phi)\) hat die gewünschte Form.
+\qed
+\subsubsection{Beispiel}
+Sei \(\phi:\mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}\) eine symmetrische Bilinearform mit \(G_\xi(\Phi)=A=\begin{pmatrix}
+a & b\\
+b & a
+\end{pmatrix}\) mit \(a,b\in\mathbb{R}\).\\
+(1) \(\chi_A(x)=(a-x)^2-b^2=(x-(a+b))(x-(a-b))\). Also hat \(A\) die Eigenwerte \(a+b\) und \(a-b\).\\
+(2) \(Eig(A,a+b)=Ker\begin{pmatrix}
+a-(a+b) & b\\
+b & a-(a-b)
+\end{pmatrix}=Ker\begin{pmatrix}
+-b & b\\
+b & -b
+\end{pmatrix}=<(1,1)>_\mathbb{R}=<(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})>_\mathbb{R}\).\\
+\(Eig(A,a-b)=<(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})>\).\\
+(3) In der ONB \(B=(v_1,v_2)\) mit \(v_1=(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\), \(v_2=(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\) gilt \(G_B(\Phi)=\begin{pmatrix}
+a+b & 0\\
+0 & a-b
+\end{pmatrix}\).\\
+(4) Betrachte die zu \(\Phi\) gehörige \ul{quadratische Form} \(q:\underset{(x,y)\mapsto\Phi((x,y),(x,y))=(x,y)A\begin{pmatrix}
+x\\y
+\end{pmatrix}=ax^2+2bxy+ay^2}{\mathbb{R}^2\rightarrow\mathbb{R}}\) und die Nullstellenmenge \(C=Z(q-1)=\{(x,y)\in\mathbb{R}^2|q(x,y)-1=0\}\).\\
+\ul{Fall 1 \(a>b>0\):} \(\lambda_1=a+b>0\), \(\lambda_2=a-b>0\)\\
+Die Vektoren \(v_1,v_2\) liefern die \ul{Hauptachsen} der Ellipse \(C\).\\
+Die Zahlen \(\alpha,\beta\) heißen die \ul{Hauptachsenabschnitte}.\\
+\ul{2. Fall \(b>a>0\):} \(\lambda_1=a+b>0\), \(\lambda_2=a-b<0\)\\
+Die Vektoren \(v_1,v_2\) liefern die Hauptachsen der \ul{Hyperbel}.\\
+\(\alpha\), \(\beta\) sind (virtuelle) \ul{Hauptachsenabschnitte}.
+(5) Nun führen wir neue Koordinaten \(z_1,z_2\) ein, die durch eine 45°-Drehung aus \(x,y\) entstehen:\\
+\(\begin{pmatrix}
+x\\
+y
+\end{pmatrix}=\begin{pmatrix}
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\\
+-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{pmatrix}\begin{pmatrix}
+z_1\\
+z_2
+\end{pmatrix}\).\\
+Die Gleichung \(q(x,y)-1=0\) lautet im neuen Koordinatensystem:\\
+\(q(z_1,z_2)-1\)\\
+\(=a(\frac{1}{\sqrt{2}}z_1,\frac{1}{\sqrt{2}}z_2)^2+2b(\frac{1}{\sqrt{2}}z_1-\frac{1}{\sqrt{2}}z_2)(-\frac{1}{\sqrt{2}}z_1+\frac{1}{\sqrt{2}}z_2)+a(-\frac{1}{\sqrt{2}}z_1+\frac{1}{\sqrt{2}}z_2)^2\)\\
+\(=(a+b)z_1^2+(a-b)z_2^2-1\)\\
+(6) Es ergeben sich folgende Fälle:\\
+(i) \(\frac{z_1^2}{\alpha^2}+\frac{z_2^2}{\beta^2}-1=0\) mit \(\alpha=\frac{1}{\sqrt{a+b}}\), \(\beta=\frac{1}{\sqrt{\abs{a-b}}}\) \ul{Ellipse} in Hauptachsenform\\
+Speziell: \(\alpha=\beta=r\), \(z_1^2+z_2^2=r^2\) Kreis mit Radius \(r\)\\
+(ii) \(\frac{z_1^2}{\alpha^2}+\frac{z_2^2}{\beta^2}-1=0\) Hyperbel mit \(\alpha=\frac{1}{\sqrt{a+b}}\), \(\beta=\frac{1}{\sqrt{\abs{a-b}}}\)
+\subsubsection{Satz}
+Eine symmetrische Bilinearform \(\Phi:\mathbb{R}^n\times\mathbb{R}^n\rightarrow\mathbb{R}\) ist genau dann ein Skalarprodukt, wenn alle EW von \(\Phi\) positiv sind.\\
+\proof
+Wähle eine ONB \(B\) von \(\mathbb{R}^n\), so dass \(G_B(\Phi)=\begin{pmatrix}
+\lambda_1 &  & 0\\
+&\ddots&\\
+0 & & \lambda_n
+\end{pmatrix}\) gilt mit \(\lambda_i\in\mathbb{R}\).\\
+Somit gilt \(G_\xi(\Phi)=T^{tr}G_B(\phi)T\) mit \(T\in O_n(\mathbb{R})\).\\
+(Beachte: Wegen \(T^{tr}=T^{-1}\) haben \(G_B(\Phi)\) und \(G_\xi(\phi)\) dieselben EW).\\
+Für einen Vektor \(v=a_1v_1+\dots+a_nv_n\) mit \(a_i\in\mathbb{R}\) gilt \(\Phi(v,v)=a_1^2\Phi(v_1,v_1)+\dots+a_n^2\Phi(v_n,v_n)=a_1^2\lambda_1+\dots+a_n^2\lambda_n\), falls \(B=(v_1,\dots,v_n)\).\\
+Dies liefert: \((\Phi(v,v)>0\text{ falls } v\neq 0)\Leftrightarrow(\lambda_1>0,\dots,\lambda_n>0)\)
+\qed
+
 \end{document}
 
 
