@@ -1099,7 +1099,7 @@ Damit ist \(\phi\) \(\mathbb{R}\)-linear und orthogonal (\(\nearrow\) Übungen).
 nach Bsp. 28.7 folgt, dass \(\phi\) den Eigenwert 1 besitzt und \(M_B(\phi)=TODO MATRIX\) gilt mit einem Drehkästchen Q bzgl. einer geeignet gewählten ONB \(B\) von \(\mathbb{R}^3\).\\
 Die normierten Eigenvektoren zum Eigenwert 1 liefern die Behauptung.
 \qed
-\subsection{Symmetrische Matrizen}
+\subsection{Symmetrische Matrizen (Buch §5.6)}
 \subsubsection{Theorem}
 Jede symmetrische Matrix \(A\in Mat_n(\mathbb{R})\) besitzt mindestens einen reellen Eigenwert \(\lambda\in\mathbb{R}\).\\
 \ul{Beweis 1:} mit Komplexifizierung\\
@@ -1161,6 +1161,7 @@ Gegeben sei die \(\mathbb{R}\)-lineare Abbildung \(\phi:\mathbb{R}^3\rightarrow\
 Nun wenden wir den Algorithmus aus dem Korollar 29.6 an.\\
 (1) \(\chi_\phi(x)=-x^3-x^2+x+1=(-x^2+1)(x+1)=-(x-1)(x+1)^2\)\\
 (2) \(Eig(\phi,1)=Ker TODO MATRIX=\mathbb{R}\cdot (5,1,2)\)\\
+TODO RECHTS UNTEN: -11/15!!!!
 \(Eig(\phi,-1)=<(0,2,-1),(1,-1,-2)\)\\
 Wir orthonormalisieren beide Basen und erhalten \(B_1=\{(\frac{5}{\sqrt{30}},\frac{1}{\sqrt{30}},\frac{2}{\sqrt{30}})\}\) und \(B_2=\{(0,\frac{2}{\sqrt{5}},\frac{-1}{\sqrt{5}}),(\frac{1}{\sqrt{6}},\frac{-1}{\sqrt{6}},\frac{-2}{\sqrt{6}})\}\).\\
 (3) Also ist \(B=B_1\cup B_2\) eine ONB von \(\mathbb{R}^3\) und \(M_B(\phi)=\begin{pmatrix}
@@ -1203,7 +1204,7 @@ Die Matrix \(A=\begin{pmatrix}
 \end{pmatrix}\in Mat_3(\mathbb{R})\) soll diag. werden.\\
 TODO WHATEVER\\
 Es folgt: \(D=T^{tr}AT\).
-\subsection{Die Hauptachsentransformation}
+\subsection{Die Hauptachsentransformation (Buch §5.7, S.318-329)}
 Sei \(V=\mathbb{R}^n\) mit Standardskalarprodukt \(<,>\) und sei \(\Phi:V\times V\rightarrow \mathbb{R}\) eine symmetrische Bilinearform.\\
 \ul{Frage:} Wie kann man die Gramsche Matrix von \(\Phi\) auf möglichst einfache Gestalt bringen?\\
 Was bedeutet dies geometrisch?\\
@@ -1290,7 +1291,89 @@ Somit gilt \(G_\xi(\Phi)=T^{tr}G_B(\phi)T\) mit \(T\in O_n(\mathbb{R})\).\\
 Für einen Vektor \(v=a_1v_1+\dots+a_nv_n\) mit \(a_i\in\mathbb{R}\) gilt \(\Phi(v,v)=a_1^2\Phi(v_1,v_1)+\dots+a_n^2\Phi(v_n,v_n)=a_1^2\lambda_1+\dots+a_n^2\lambda_n\), falls \(B=(v_1,\dots,v_n)\).\\
 Dies liefert: \((\Phi(v,v)>0\text{ falls } v\neq 0)\Leftrightarrow(\lambda_1>0,\dots,\lambda_n>0)\)
 \qed
-
+\subsubsection{Definition}
+Die Menge \(V_0=\{v\in V|\Phi(v,v)=0\}\) heißt der \ul{Ausartungsraum} von \(\Phi\).
+\subsubsection{Satz}
+Sei \(\Phi:V\times V\rightarrow \mathbb{R}\) eine symmetrische Bilinearform und \(W_0\subseteq V\) der Ausartungsraum von \(\Phi\).\\
+Dann ist \(W_0\) ein \(\mathbb{R}\)-Untervektorraum von \(V\) und es gibt \(\mathbb{R}\)-Untervektorräume \(W_+, W_-\) von \(V\) mit folgenden Eigenschaften:\\
+(1) \(V=W_0\oplus W_+ \oplus W_-\) und dies sind orthogonale direkte Summen bzgl. \(<,>\) und bzgl. \(\Phi\).\\
+(2) Für \(v\in W_+\backslash\{0\}\) gilt \(\Phi(v,v)>0\).\\
+(3) Für \(v\in W_-\backslash\{0\}\) gilt \(\Phi(v,v)<0\).\\
+\proof
+Gemäß Theorem 29.4 existiert eine ONB \(B\) von \(V\) bzgl. \(\Phi\) mit \(G_B(\Phi)=\begin{pmatrix}
+\lambda_1 & & 0\\
+& \ddots & \\
+0 & & \lambda_n
+\end{pmatrix}\), wobei \(\lambda_1,\dots,\lambda_k>0\) und \(\lambda_{k+1},\dots,\lambda_{k+l}<0\) und \(\lambda_{k+l+1}=\dots=\lambda_n=0\) gelte.\\
+Nun setze \(W_+=<v_1,\dots,v_k>\), \(W_+=<v_{k+1},\dots,v_{k+l}>\) und zeige \(V_0=<v_{k+l+1},\dots,v_n>\), sowie (1)-(3).\\
+\ul{Beh.:} \(W_0=<v_{k+l+1},\dots,v_n>\)\\
+\ul{Beweis:} "\(\supseteq\)" klar, "\(\subseteq\)" Sei \(v=a_1v_1+\dots+a_nv_n\in V\) mit \(a_i\in\mathbb{R}\) und \(\Phi(v,v_1)=\dots=\Phi(v,v_n)=0\).\\
+Dann folgt \(0=\Phi(v,v_i)=a_1\Phi(v_1,v_i)+\dots+a_n\Phi(v_n,v_i)=a_i\Phi(v_i,v_i)=a_i\lambda_i\) für \(i=1,\dots,n\). Dies liefert \(a_1=\dots=a_{k+l}=0\), da \(\lambda_1=\dots=\lambda_{k+l}=0\) und somit \(v\in<v_{k+l+1},\dots,v_n>\) \(\Rightarrow\) Beh.\\
+"(1)" Nach Konstruktion gilt \(V=W_0\obot W_+\obot W_-\) bzgl. \(<,>\). Bzgl. \(\Phi\) ist \(W\) eine direkte Summe von Eigenräumen \(Eig(\phi, \lambda_i)\) mit \(\lambda_i>0\), wobei \(\phi\) der durch \(\begin{pmatrix}
+\lambda_1 &  & 0\\
+&\ddots&\\
+0 & & \lambda_n
+\end{pmatrix}\) bzgl. der Basis \(B\) gegebene Endomorphismus von \(V\) ist. Ebenso ist \(W_-\) eine direkte Summe von Eigenräumen und \(W_0=Eig(\phi,0)\).\\
+Nun gilt \(Eig(\phi,\lambda_i)\bot_\Phi Eig(\phi,\lambda_j)\) für \(\lambda_i\neq \lambda_j\).\\
+"(2)" Sei \(v=a_1v_1+\dots+a_nv_n\in W_+\backslash\{0\}\) mit \(a_i\in\mathbb{R}\). Dann gilt \(\Phi(v,v)=\sum_{i=1}^n\sum_{j=1}^n a_ia_j\Phi(v_i,v_j)=\sum_{i=1}^na_i^2\Phi(v_i,v_i)=\sum_{i=1}^na_i^2\lambda_i\geq 0\) mit \(\sum_{i=1}^na_i^2\lambda_i=0\Leftrightarrow a_i=\dots=a_k=0\). Dies zeigt \(\Phi(v,v)>0\).\\
+"(3)" folgt analog zu (2).
+\qed
+\subsubsection{Bemerkung}
+In obiger Situation sei \(C_0=\{v\in V|\Phi(v,v)=0\},C_+=\{v\in V|\Phi(v,v)>0\}\cup\{0\}\) und \(C_-=\{v\in V|\Phi(v,v)<0\}\cup \{0\}\).\\
+Dann ist \(C_0=V_0\) ein \(\mathbb{R}\)-Untervektorraum von \(V\), aber \(C_+,C_-\) sind i.A. keine Untervektorräume, sondern \ul{Kegel} (\(v\in C\Rightarrow av\in C\) für alle \(a\in\mathbb{R}\))\\
+In Satz 30.5 gilt \(W_+\subseteq C_+\), \(W_-\subseteq C_-\), aber \(W_+,W_-\) sind i.A. nicht eindeutig bestimmt (Übungen) TODO PFEIL RECHTS OBEN
+\subsubsection{Theorem (Der Trägheitssatz von Sylvester)}
+Sei \(V\) ein \(n\)-dimensionaler \(\mathbb{R}\)-Vektorraum und \(\Phi:V\times V\rightarrow\mathbb{R}\) eine symmetrische Bilinearform. Sei \(V=W_0\oplus W_+\oplus W_-\) eine Zerlegung gemäß Satz 30.5.\\
+Dann hängen die Zahlen \(r_o=dim_\mathbb{R}(W_0),r_+=dim_\mathbb{R}(W_+)\) und \(r_-=dim_\mathbb{R}(W_-)\) nicht ab von der speziellen Wahl von \(W_+,W_-\).\\
+\proof
+\ul{Beh.:} Ist \(U\subseteq V\) ein \(\mathbb{R}\)-Untervektorraum mit \(U\subseteq C_+=\{v\in V|\Phi(v,v)>0\}\cup\{0\}\), so gilt \(U\cap(W_0\oplus W_-)=\{0\}\).\\
+\ul{Beweis:} Sei \(v\in U\backslash\{0\}\). Angenommen, es gilt \(v\in W_0\oplus W_-\). Dann schreibe \(v=w_0+w_-\) mit \(w_0\in W_0\) und \(w_-\in W_-\).\\
+Es folgt \(\Phi(v,v)=\Phi(w_0+w_-,w_0+w_-)=\Phi(w_0,w_0)+\Phi(w_-,w_-)=\Phi(w_-,w_-)<0\lightning\) zu \(\Phi(v,v)>0\).\\
+Analog folgt aus \(\tilde{U}\subseteq C_-\) für einen Untervektorraum \(\tilde{U}\subseteq V\), dass \(\tilde{U}\cap(W_0+W_+)=\{0\}\).\\
+Nach der Dimensionsformel gilt \(dim_\mathbb{R}(V)=dim_\mathbb{R}(W_0)+dim_\mathbb{R}(W_+)+dim_\mathbb{R}(W_-)\).\\
+Angenommen, es gilt \(V=W_0\oplus \tilde{W_+}\oplus \tilde{W_-}\) mit \(\tilde{W_+}\subseteq C_+,\tilde{W_-}\subseteq C_-\).\\
+Wende die Beh. an mit \(I=\tilde{W_+}\) und erhalte \(\tilde{W_+}\cap(W_0\oplus W_-)=\{0\}\) und \(\tilde{W_+}\oplus (W_0\oplus W_-)\subseteq V\) und somit \(dim_\mathbb{R}(\tilde{W_+})+dim_\mathbb{R}(W_0)+dim_\mathbb{R}(W_-)\leq dim_\mathbb{R}(W_0)+dim_\mathbb{R}(W_+)+dim_\mathbb{R}(W_-)\). Dies liefert \(TODO ABSCHREIBEN\)
+\qed
+\ul{Frage:} Wie kann man einer symmetrischen Matrix ansehen, ob die zugehörige Bilinearform positiv definit ist?
+\subsubsection{Satz (Das Hauptminoren-Kriterium für positive Definitheit)}
+Sei \(\Phi:\mathbb{R}^n\times\mathbb{R}^n\rightarrow\mathbb{R}\) eine symmetrische Bilinearform und \(A=G_\xi(\Phi)\). Genau dann ist \(\Phi\) ein Skalarprodukt, wenn gilt:\\
+(1) \(A=(a_ij)\) ist  symmetrisch
+(2) Für \(k=1\dots,n\) ist der \(k\)-te \ul{Hauptminor} \(det(a_{ij})_{i,j=1,\dots,k}\) positiv.\\
+\proof
+"\(\Rightarrow\)" Sei \(\Phi\) ein Skalarprodukt. Da \(\Phi\) symmetrisch ist, ist \(A\) symmetrisch.\\
+Sei \(S\in O_n(\mathbb{R})\) so, dass \(S^{tr}AS=\begin{pmatrix}
+\lambda_1 &  & 0\\
+&\ddots&\\
+0 & & \lambda_n
+\end{pmatrix}\) gilt mit \(\lambda_i\in\mathbb{R}\). Nach Satz 30.3 gilt \(\lambda_1,\dots,\lambda_n\in\mathbb{R}_+\).\\
+Insbesondere gilt \(det(A)=\lambda_1\cdot\dots\cdot \lambda_n>0\). Die Matrix \(A_k=(a_{ij})_{i,j=1,\dots,k}\) ist die Gramsche Matrix der Bilinearform \(\Phi|_{U_k}:U_k\times U_k\rightarrow\mathbb{R}\) mit \(U_k=<e_1,\dots,e_k>\). Die Einschränkung \(\Phi|U\) eines Skalarprodukts ist wieder ein Skalarprodukt. Nach dem Gezeigten folgt \(det(A_k)>0\) für \(k=1,\dots,n\).\\
+"\(\Leftarrow\)" Angenommen, die Matrix \(A\) erfüllt (1) und (2). Da \(A\) symmetrisch ist, ist \(\Phi\) eine symmetrische Bilinearform.\\
+\ul{z.z.:} \(\Phi\) ist positiv definit.\\
+Wir schließen mit vollständiger Induktion nach \(n=dim_\mathbb{R}(\mathbb{R}^n)\).\\
+\ul{\(n=1\):} klar\\
+\ul{\(n>1\):} Sei \(A_{n-1}=(a_{ij})_{i,j=1,\dots,n-1}\). Nach Induktionsvoraussetzung repräsentiert \(A_{n-1}\) ein Skalarprodukt. Wähle \(\tilde{T}\in GL_{n-1}(\mathbb{R})\) mit \(\tilde{T^{tr}}A_{n-1}=\begin{pmatrix}
+\lambda_1 &  & 0\\
+&\ddots&\\
+0 & & \lambda_n
+\end{pmatrix}\) mit \(\lambda_1,\dots,\lambda_{n-1}\in\mathbb{R}_+\). Setze \(T:=TODO MATRIX\in GL_n(\mathbb{R})\) und betrachte \(B=T^{tr}AT=TODO MATRIX\). O.E. gilt \(\lambda_n\neq 0\).\\
+Nach Induktionsvoraussetzung gilt: \(det(B)=det(A)\cdot det(T)^2>0\). Nun setze \(S:= TODO MATRIX\) mit \(\gamma_i=-\frac{\beta_i}{\lambda_i}\) für \(i=1,\dots,n-1\). und erhalten \(S^{tr}BS=TODO MATRIX\) mit \(\lambda_n\in\mathbb{R}\).\\
+Dann folgt \(det(B)\cdot det(S)^2=\lambda_1\dots\lambda_n>0\). Nach Induktionsvoraussetzung gilt \(\lambda_1,\dots,\lambda_n>0\). Also gilt auch \(\lambda_n>0\). Somit ist \(\Phi\) ein Skalarprodukt.
+\qed
+\subsubsection{Beispiel}
+Sei \(\Phi:\mathbb{R}^2\times\mathbb{R}^2\rightarrow\mathbb{R}\) eine Bilinearform mit \(G_\xi(\Phi)=\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}\) mit \(a,b,c,d\in\mathbb{R}\). Genau dann ist \(\Phi\) ein Skalarprodukt, wenn gilt:\\
+(1) \(a > 0\)\\
+(2) \(ac-b^2 > 0\)
+\section{Analytische Geometrie}
+\setcounter{subsection}{30}
+\subsection{Kegelschnitte}
+\subsubsection{Definition}
+\paragraph{Ellipsen}\\
+(a) Sei \((x_0,y_0)\in\mathbb{R}^2\) und \(r>0\). Die Menge der Punkte \(K=\{(x,y)\in\mathbb{R}^2|(x-x_0)^2+(y-y_0)^2=r^2\}\) heißt der \ul{Kreis} mit \ul{Radius} r und \ul{Mittelpunkt} \(x_0,y_0\).\\
+(b) Seien \(a,b\in\mathbb{R}\) mit \(0<b\leq a\). Die Menge der Punkte \(E=\{(x,y)\in\mathbb{R}^2|\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\}\) heißt die \ul{Ellipse} mit den \ul{Halbachsen} \(a\) und \(b\) und den \ul{Scheitelpunkten} \((0,b),(0,-b),(a,0),(-a,0)\).\\
+\ul{Skizze:} TODO SKIZZE
 \end{document}
 
 
