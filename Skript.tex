@@ -26,6 +26,8 @@
 
 \MakeOuterQuote{"}
 
+\setcounter{secnumdepth}{4}
+
 \newcommand*\circled[1]{
   \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
 }
@@ -663,19 +665,19 @@ Dann gilt: \(dim_K(U)+dim_K(U^\bot)=dim_K(V)\).\\
 \proof
 Sei \((u_1,\dots, u_m)\) ein Basistupel für \(U\) und \(C=(w_1,\dots,w_k)\) ein Tupel von Vektoren, so dass \(B\cup C\) ein Basistupel von \(V\) ist. Sei \(v_1,\dots,v_n)\) dieses Basistupel, d.h \(v_i=u_i\) für \(i=1,\dots,m\) und \(v_{m+j}=w_j\) fpr \(j=1,\dots,k\) (mit \(m+k=n\)).\\
 \ul{z.z.:} \(dim_K(U^\bot)=k\).\\
-Fpr \(v=a_1v_1+\dots+a_nv_n=(a_1v_1+\dots+a_mv_m)+(a_{m+1}v_{m+1}+\dots+a_{m+k}v_{m+k})\) gilt: \(v\in U^\bot\) \(\Leftrightarrow\) \(\begin{cases}
-	\Phi(v,v_1)=0\\
-	\vdots\\
-	\Phi(v,v_m)=0
-	\end{cases}\) \(\Leftrightarrow\) \(\begin{cases}
-	a_1\Phi(v_1,v_1)+\dots+a_n\Phi(v_n,v_1)=0\\
-	\vdots\\
-	a_1\Phi(v_1,v_m)+\dots+a_n\Phi(v_n,v_m)=0
-	\end{cases}\)
-	Dies ist ein lineares Gleichungssystem in den Unbestimmten \(a_1,\dots,a_n\) bestehend aus \(m\) Gleichungen.\\
-	\ul{z.z.:} Der Rang der Koeffizientenmatrix ist der maximale, also \(m\).\\
-	DOe Koeffizientenmatrix besteht aus den ersten \(m\) Zeilen von \(G_B(\Phi)^{tr}\). Wegen \(det(G_B(\Phi)^{tr})=det(G_B(\Phi))\neq 0\) sind diese \(m\) Zeilen linear unabhängig.
-	\qed
+Für \(v=a_1v_1+\dots+a_nv_n=(a_1v_1+\dots+a_mv_m)+(a_{m+1}v_{m+1}+\dots+a_{m+k}v_{m+k})\) gilt: \(v\in U^\bot\) \(\Leftrightarrow\) \(\begin{cases}
+\Phi(v,v_1)=0\\
+\vdots\\
+\Phi(v,v_m)=0
+\end{cases}\) \(\Leftrightarrow\) \(\begin{cases}
+a_1\Phi(v_1,v_1)+\dots+a_n\Phi(v_n,v_1)=0\\
+\vdots\\
+a_1\Phi(v_1,v_m)+\dots+a_n\Phi(v_n,v_m)=0
+\end{cases}\)
+Dies ist ein lineares Gleichungssystem in den Unbestimmten \(a_1,\dots,a_n\) bestehend aus \(m\) Gleichungen.\\
+\ul{z.z.:} Der Rang der Koeffizientenmatrix ist der maximale, also \(m\).\\
+Die Koeffizientenmatrix besteht aus den ersten \(m\) Zeilen von \(G_B(\Phi)^{tr}\). Wegen \(det(G_B(\Phi)^{tr})=det(G_B(\Phi))\neq 0\) sind diese \(m\) Zeilen linear unabhängig.
+\qed
 \subsubsection{Korollar}
 Ist \(\Phi:V\times V\rightarrow K\) eine nicht ausgeartete, symmetrische Bilinearform, so gilt: \((U^\bot)^\bot=U\) für jeden \(K\)-Untervektorraum \(U\) von \(V\).\\
 \proof
@@ -706,7 +708,7 @@ Die Standardbilinearform \(\underset{((a_1\dots a_n),(b_1\dots b_n))\mapsto a_1b
 \(\Phi((a_1\dots a_n),(a_1\dots a_n))=a_1^2+\dots+a_n^2\geq 0\) und \(a_1^2+\dots+a_n^2=0\Rightarrow a_1=\dots=a_n=0\).\\
 Es heißt auch das \ul{Standardskalarprodukt}. Wir schreiben auch \(<v,w>\) statt \(\Phi(v,w)\).\\
 \ul{Fragen:} (1) Gibt es weitere Skalarprodukte auf \(\mathbb{R}^n\)?
-(2) Wie kann man anhand von \(G_B(\Phi)\) erkennen, ob \(\Phi\) positiv definiert ist?
+(2) Wie kann man anhand von \(G_B(\Phi)\) erkennen, ob \(\Phi\) positiv definit ist?
 \subsubsection{Definition}
 Sei \(V\) ein reeller Vektorraum.
 (a) Eine \ul{Norm} auf \(V\) ist eine Abbildung \(\norm{\cdot}:V\rightarrow \mathbb{R}\) mit folgenden Eigenschaften:
@@ -753,52 +755,52 @@ Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=\{v_1,\dots,v_n\}\) eine Ba
 \ul{Korrektheit:} Wir schließen mit Induktion nach i und zeigen, dass \(\{w_1,\dots,w_i\}\) orthonormal ist.\\
 \ul{\(i=1\):} \(\norm{w_1}=\norm{\frac{v_1}{\norm{v_1}}}=\frac{\norm{v_1}}{\norm{v_1}}=1\).\\
 \ul{\(i>1\):} Nach Konstruktion gilt \(w_i=\frac{v_i-\tilde{v_i}}{\norm{v_i-\tilde{v_i}}}\in  <v_i,w_1,\dots,w_{i-1}>\underset{\text{Induktion}}{=}<v_1,\dots,v_i>\) und es gilt \(v_i\notin <v_1,\dots,v_{i-1}>=<w_1,\dots,w_{i-1}>\). Also folgt \(v_i\neq \tilde{v_i}\) und somit \(\norm{v_i-\tilde{v_i}}\neq 0\).\\
-	Für \(j=1,\dots,i-1\) gilt\\
-	\(\Phi(w_j,w_i)=\frac{1}{\norm{v_i-\tilde{v_i}}}\Phi(v_i-\tilde{v_i},w_j)=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot \left[\Phi(v_i,w_j)-\Phi(\Phi(v_i,w_1)\cdot w_1,w_j)-\dots-\Phi(\Phi(v_i,w_{i-1})w_{i-1},w_j)\right]\)\\
-	\(\frac{1}{\norm{v_i-\tilde{v_i}}}\left[\Phi(v_i,w_j)-\Phi(v_i,w_1)\cdot\underbrace{\Phi(w_1,w_j)}_{=0}-\dots-\Phi(w_i,w_{i-1})\cdot \underbrace{\Phi(w_{i-1},w_j)}_{=0}\right]=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot\left[\Phi(v_i,w_j)-\Phi(v_i,w_j)\cdot 1\right]=0\).\\
-	Somit folgt \(w_i\bot <w_1,\dots,w_{i-1}>\) und offenbar gilt \(\norm{w_i}=1\).
-	\qed
-	\subsubsection{Beispiel}
-	Sei \(V=\mathbb{R}^2\) und \(\Phi\) das Standardskalarprodukt. Ferner sei \(B=\{v_1,v_2\}\) mit \(v_1=(1,1)\) und \(v_2=(0,3)\).
-	(1) \(w_1=\frac{v_1}{\norm{v_1}}=(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})\).
-	(2) \(\tilde{v_2}=\Phi(v_2,w_1)\cdot w_1=\Phi((0,3),(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}}))\cdot (\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})=(\frac{3}{2},frac{3}{2})\).\\
-	\(w_2=\frac{v_2-\tilde{v_2}}{\norm{v_2-\tilde{v_2}}}=\frac{(\frac{3}{2},\frac{3}{2})}{\norm{(\frac{3}{2},\frac{3}{2})}}=\frac{(-\frac{3}{2},\frac{3}{2})}{\frac{3}{\sqrt{2}}}=(-\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})\).\\
-	Also ist \(\tilde{B}=\{(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\}\) eine ONB von \(\mathbb{R}^2\).
-	\subsubsection{Korollar}
-	Ist \(M=\{v_1,\dots,v_k\}\) eine orthogonale Menge von Vektoren in \(V\), so kann man \(M\) zu einer ONB \(B=\{v_1,\dots,v_k,v_{k+1},\dots,v_n\}\) von \(V\) ergänzen.\\
-	\proof
-	Ergänze \(\{v_1,\dots,v_k\}\) durch \(\{w_{k+1},\dots,w_n\}\) zu einer Basis von \(V\) und wende dann Satz 26.11 an.
-	\qed
-	\subsubsection{Definition}
-	Sei \((V,\Phi)\) ein euklidischer Vektorraum und seien \(U,W\) zwei Untervektorräume von \(V\). Gilt \(V=U\oplus W\) und \(U\bot_\Phi W\), so heißt \(V\) die \ul{orthogonale direkte Summe} von \(U\) und \(W\).\\
-	\ul{Schreibweise:} \(V=U\oplus W\) TODOOPLUS NUR OBEN STRICh
-	\subsubsection{Satz}
-	Seu \((V,\Phi)\) ein euklidischer Vektorraum und \(U\subseteq V\) ein Untervektorraum.\\
-	Dann gilt \(V=U\obot U^\bot\) und für alle \(W\subseteq V\) mit \(V=U\oplus W\) gilt \(W=U^\bot\). In diesem Fall heißt \(U^\bot\) das \ul{orthogonale Komplement} von \(U\).\\
-	\proof
-	Wegen der Dimensionsformel ist nur \(U\cap U^\bot=\{0\}\) zu zeigen. Für \(v\in U\cap U^\bot\) gilt \(\Phi(v,v)=0\Rightarrow v=0\).
-	\qed
-	\subsubsection{Bemerkung}
-	(a) In \(V=\mathbb{R}^2\) betrachte \(v=(a_1,a_2)\) und \(w=(b_1,b_2)\). Dann ist die Fläche des von \(v und w\) aufgespannten Parallelogramms gegeben durch \(Vol(v,w)=\abs{a_1b_2-a_2b_1}=\abs{det\begin{pmatrix}
-		a_1 & b_1\\
-		a_2 & b_2
-		\end{pmatrix}}\).
-	(b) In \(V=\mathbb{R}^3\) betrachte \(v=(a_1,a_2,a_3),w=(b_1,b_2,b_3),u=(c_1,c_2,c_3)\). Dann ist das Volumen des von \(v,w,u\) aufgespannten \ul{Spats} (\ul{Parallelepipeds}) gegeben durch \(Vol(v,w,u)=\abs{det\underbrace{\begin{pmatrix}
-			a_1 & b_1 & c_1\\
-			a_2 & b_2 & c_2\\
-			a_3 & b_3 & c_3
-			\end{pmatrix}}_{A}}=\abs{det(A)}\)\\
-		Sei \(B=(v,w,u)\) eine Basis von \(\mathbb{R}^3\).\\
-		Die Gramsche Matrix des Standardskalarprodukts bzgl. der Basis \(B\) ist \(G_B(\Phi)=A^{tr}G_\xi(\Phi)A=A^{tr}A\) und es folgt \(det(G_B(\Phi))=det(A^{tr}A)=det(A^{tr})det(A)=det(A)^2\geq 0\). Dies liefert \(Vol(v,w,u)=\sqrt{det(G_B(\Phi))}\).
-		\subsubsection{Definition}
-		Sei \(V\) ein reeller Vektorraum und \(\Phi:V\times V\rightarrow \mathbb{R}\) eine Bilinearform auf \(V\). Ist \(B=(v_1,\dots,v_m)\) ein Tupel von Vektoren aus \(V\) mit \(G_B(\Phi)=(\Phi(v_i,v_j))_{i,j}\in Mat_m(\mathbb{R})\), so heißt \(G(v_1,\dots,v_m)=det(G_B(\Phi))\) die \ul{Gramsche Determinante} von \(\Phi\) bzgl. \(B\).
-		\subsubsection{Satz}
-		Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=(v_1,\dots,v_n)\) ein Tupel von Vektoren aus \(V\).
-		(a) Die Gramsche Determinante erfüllt \(G(v_1,\dots,v_n)=det(\Phi(v_i,v_j))_{i,j}\geq 0\).
-		(b) Es gilt: \(G(v_1,\dots,v_n)=0\Leftrightarrow \{v_1,\dots,v_n\}\) linear abhängig.\\
-		\proof
-		"(a)" Sei \(C=(w_1,\dots,w_n)\) eine ONB von \(V\). Für \(i=1,\dots,m\) schreibe \(v_i=a_{i1}w_1+\dots+a_{im}w_m\) mit \(a_{ij}\in \mathbb{R}\).
-		Setze \(A=(a_{ij})\in Mat_{m,n}(\mathbb{R})\). Betrachte den \ul{Fall \(m\leq n\):} Wähle Vektoren \(v_{m+1},\dots,v_n\) von \(V\), die Teil einer ONB von \(<v_1,\dots,v_n>^\bot\) sind.\\
+Für \(j=1,\dots,i-1\) gilt\\
+\(\Phi(w_j,w_i)=\frac{1}{\norm{v_i-\tilde{v_i}}}\Phi(v_i-\tilde{v_i},w_j)=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot \left[\Phi(v_i,w_j)-\Phi(\Phi(v_i,w_1)\cdot w_1,w_j)-\dots-\Phi(\Phi(v_i,w_{i-1})w_{i-1},w_j)\right]\)\\
+\(\frac{1}{\norm{v_i-\tilde{v_i}}}\left[\Phi(v_i,w_j)-\Phi(v_i,w_1)\cdot\underbrace{\Phi(w_1,w_j)}_{=0}-\dots-\Phi(w_i,w_{i-1})\cdot \underbrace{\Phi(w_{i-1},w_j)}_{=0}\right]=\frac{1}{\norm{v_i-\tilde{v_i}}}\cdot\left[\Phi(v_i,w_j)-\Phi(v_i,w_j)\cdot 1\right]=0\).\\
+Somit folgt \(w_i\bot <w_1,\dots,w_{i-1}>\) und offenbar gilt \(\norm{w_i}=1\).
+\qed
+\subsubsection{Beispiel}
+Sei \(V=\mathbb{R}^2\) und \(\Phi\) das Standardskalarprodukt. Ferner sei \(B=\{v_1,v_2\}\) mit \(v_1=(1,1)\) und \(v_2=(0,3)\).
+(1) \(w_1=\frac{v_1}{\norm{v_1}}=(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})\).
+(2) \(\tilde{v_2}=\Phi(v_2,w_1)\cdot w_1=\Phi((0,3),(\frac{1}{sqrt{2}},\frac{1}{sqrt{2}}))\cdot (\frac{1}{sqrt{2}},\frac{1}{sqrt{2}})=(\frac{3}{2},frac{3}{2})\).\\
+\(w_2=\frac{v_2-\tilde{v_2}}{\norm{v_2-\tilde{v_2}}}=\frac{(\frac{3}{2},\frac{3}{2})}{\norm{(\frac{3}{2},\frac{3}{2})}}=\frac{(-\frac{3}{2},\frac{3}{2})}{\frac{3}{\sqrt{2}}}=(-\frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2})\).\\
+Also ist \(\tilde{B}=\{(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),(-\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})\}\) eine ONB von \(\mathbb{R}^2\).
+\subsubsection{Korollar}
+Ist \(M=\{v_1,\dots,v_k\}\) eine orthogonale Menge von Vektoren in \(V\), so kann man \(M\) zu einer ONB \(B=\{v_1,\dots,v_k,v_{k+1},\dots,v_n\}\) von \(V\) ergänzen.\\
+\proof
+Ergänze \(\{v_1,\dots,v_k\}\) durch \(\{w_{k+1},\dots,w_n\}\) zu einer Basis von \(V\) und wende dann Satz 26.11 an.
+\qed
+\subsubsection{Definition}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und seien \(U,W\) zwei Untervektorräume von \(V\). Gilt \(V=U\oplus W\) und \(U\bot_\Phi W\), so heißt \(V\) die \ul{orthogonale direkte Summe} von \(U\) und \(W\).\\
+\ul{Schreibweise:} \(V=U\oplus W\) TODOOPLUS NUR OBEN STRICh
+\subsubsection{Satz}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(U\subseteq V\) ein Untervektorraum.\\
+Dann gilt \(V=U\obot U^\bot\) und für alle \(W\subseteq V\) mit \(V=U\oplus W\) gilt \(W=U^\bot\). In diesem Fall heißt \(U^\bot\) das \ul{orthogonale Komplement} von \(U\).\\
+\proof
+Wegen der Dimensionsformel ist nur \(U\cap U^\bot=\{0\}\) zu zeigen. Für \(v\in U\cap U^\bot\) gilt \(\Phi(v,v)=0\Rightarrow v=0\).
+\qed
+\subsubsection{Bemerkung}
+(a) In \(V=\mathbb{R}^2\) betrachte \(v=(a_1,a_2)\) und \(w=(b_1,b_2)\). Dann ist die Fläche des von \(v und w\) aufgespannten Parallelogramms gegeben durch \(Vol(v,w)=\abs{a_1b_2-a_2b_1}=\abs{det\begin{pmatrix}
+	a_1 & b_1\\
+	a_2 & b_2
+	\end{pmatrix}}\).
+(b) In \(V=\mathbb{R}^3\) betrachte \(v=(a_1,a_2,a_3),w=(b_1,b_2,b_3),u=(c_1,c_2,c_3)\). Dann ist das Volumen des von \(v,w,u\) aufgespannten \ul{Spats} (\ul{Parallelepipeds}) gegeben durch \(Vol(v,w,u)=\abs{det\underbrace{\begin{pmatrix}
+		a_1 & b_1 & c_1\\
+		a_2 & b_2 & c_2\\
+		a_3 & b_3 & c_3
+		\end{pmatrix}}_{A}}=\abs{det(A)}\)\\
+Sei \(B=(v,w,u)\) eine Basis von \(\mathbb{R}^3\).\\
+Die Gramsche Matrix des Standardskalarprodukts bzgl. der Basis \(B\) ist \(G_B(\Phi)=A^{tr}G_\xi(\Phi)A=A^{tr}A\) und es folgt \(det(G_B(\Phi))=det(A^{tr}A)=det(A^{tr})det(A)=det(A)^2\geq 0\). Dies liefert \(Vol(v,w,u)=\sqrt{det(G_B(\Phi))}\).
+\subsubsection{Definition}
+Sei \(V\) ein reeller Vektorraum und \(\Phi:V\times V\rightarrow \mathbb{R}\) eine Bilinearform auf \(V\). Ist \(B=(v_1,\dots,v_m)\) ein Tupel von Vektoren aus \(V\) mit \(G_B(\Phi)=(\Phi(v_i,v_j))_{i,j}\in Mat_m(\mathbb{R})\), so heißt \(G(v_1,\dots,v_m)=det(G_B(\Phi))\) die \ul{Gramsche Determinante} von \(\Phi\) bzgl. \(B\).
+\subsubsection{Satz}
+Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(B=(v_1,\dots,v_n)\) ein Tupel von Vektoren aus \(V\).
+(a) Die Gramsche Determinante erfüllt \(G(v_1,\dots,v_n)=det(\Phi(v_i,v_j))_{i,j}\geq 0\).
+(b) Es gilt: \(G(v_1,\dots,v_n)=0\Leftrightarrow \{v_1,\dots,v_n\}\) linear abhängig.\\
+\proof
+"(a)" Sei \(C=(w_1,\dots,w_n)\) eine ONB von \(V\). Für \(i=1,\dots,m\) schreibe \(v_i=a_{i1}w_1+\dots+a_{im}w_m\) mit \(a_{ij}\in \mathbb{R}\).
+Setze \(A=(a_{ij})\in Mat_{m,n}(\mathbb{R})\). Betrachte den \ul{Fall \(m\leq n\):} Wähle Vektoren \(v_{m+1},\dots,v_n\) von \(V\), die Teil einer ONB von \(<v_1,\dots,v_n>^\bot\) sind.\\
 Betrachte \(\tilde{A}=\begin{pmatrix}
 A\\e_{m+1}\\\vdots\\e_n
 \end{pmatrix}=TODO MATRICES\in Mat_n(\mathbb{R})\) und erhalte \(\tilde{A}\tilde{A}^{tr}=TODO MATRICES\) mit \(A'=A_2,A''=A_2^{tr}\) für \(A=\underset{\text{quadratisch}}{(A_1|A_2)}\). Es folgt: \(det(AA^{tr})=det(\tilde{A}\tilde{A}^{tr})=det(\tilde{A})\cdot det(\tilde{A}^{tr})=det(\tilde{A})^2\geq 0\). Beachte \(\Phi(v_i,v_j)=0\) für \(i\leq i\leq n\). Dies liefert \(A'=0\) und damit \circled{\(*\)}. Nun folgt die Behauptung aus \(G(v_1,\dots,v_m)=det\begin{pmatrix}
@@ -1130,7 +1132,7 @@ Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(\phi\in End_\mathbb{R}(V)\). 
 \subsubsection{Satz (Charakterisierung selbstadjungierter Endomorphismen)}
 Sei \((V,\Phi)\) ein euklidischer Vektorraum und \(\phi\in End_\mathbb{R}(V)\). Dann sind die folgenden Bedingungen äquivalent:\\
 (a) \(\phi\) ist selbstadjungiert
-(b) Ist \(B=(v_1,\dots,v_n)\) eine ONB von \(V\), so gilt \(\Phi(\phi(v_i), v_j)=\Phi(v_i,\phi(v_j))\) für \(^\leq i,j\leq n\).
+(b) Ist \(B=(v_1,\dots,v_n)\) eine ONB von \(V\), so gilt \(\Phi(\phi(v_i), v_j)=\Phi(v_i,\phi(v_j))\) für \(1\leq i,j\leq n\).
 (c) Für jede ONB \(B\) von \(V\) ist \(M_B(\phi)\) eine symmetrische Matrix
 (d) Es gibt eine ONB \(B\) von \(V\), so dass \(M_B(\phi)\) eine symmetrische Matrix ist.\\
 \proof
@@ -1292,7 +1294,7 @@ Für einen Vektor \(v=a_1v_1+\dots+a_nv_n\) mit \(a_i\in\mathbb{R}\) gilt \(\Phi
 Dies liefert: \((\Phi(v,v)>0\text{ falls } v\neq 0)\Leftrightarrow(\lambda_1>0,\dots,\lambda_n>0)\)
 \qed
 \subsubsection{Definition}
-Die Menge \(V_0=\{v\in V|\Phi(v,v)=0\}\) heißt der \ul{Ausartungsraum} von \(\Phi\).
+Die Menge \(W_0=\{v\in V|v\bot_\Phi V\}\) heißt der \ul{Ausartungsraum} von \(\Phi\) und die Menge \(C_0=\{v\in V|\Phi(v,v)=0\}\) isotroper Kegel von \(\Phi\) mit \(W_0\subseteq C_0\).
 \subsubsection{Satz}
 Sei \(\Phi:V\times V\rightarrow \mathbb{R}\) eine symmetrische Bilinearform und \(W_0\subseteq V\) der Ausartungsraum von \(\Phi\).\\
 Dann ist \(W_0\) ein \(\mathbb{R}\)-Untervektorraum von \(V\) und es gibt \(\mathbb{R}\)-Untervektorräume \(W_+, W_-\) von \(V\) mit folgenden Eigenschaften:\\
@@ -1366,14 +1368,76 @@ c & d
 \end{pmatrix}\) mit \(a,b,c,d\in\mathbb{R}\). Genau dann ist \(\Phi\) ein Skalarprodukt, wenn gilt:\\
 (1) \(a > 0\)\\
 (2) \(ac-b^2 > 0\)
+\subsubsection{Nachtrag}
+(1) \(r_+=dim_\mathbb{R}(W_+)\) Trägheitsindex, Positivitätsindex von \(\Phi\)\\
+(2) \(r_-=dim_\mathbb{R}(W_-)\) Negativitätsindex von \(\Phi\)\\
+(3) \(r_++r_-\) Rang von \(\Phi\)\\
+(4) \(r_+-r_-\) Signatur von \(\Phi\)
 \section{Analytische Geometrie}
 \setcounter{subsection}{30}
 \subsection{Kegelschnitte}
+\addcontentsline{toc}{subsubsection}{A.\qquad Ellipsen}
+\textbf{A. Ellipsen}
 \subsubsection{Definition}
-\paragraph{Ellipsen}\\
 (a) Sei \((x_0,y_0)\in\mathbb{R}^2\) und \(r>0\). Die Menge der Punkte \(K=\{(x,y)\in\mathbb{R}^2|(x-x_0)^2+(y-y_0)^2=r^2\}\) heißt der \ul{Kreis} mit \ul{Radius} r und \ul{Mittelpunkt} \(x_0,y_0\).\\
 (b) Seien \(a,b\in\mathbb{R}\) mit \(0<b\leq a\). Die Menge der Punkte \(E=\{(x,y)\in\mathbb{R}^2|\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\}\) heißt die \ul{Ellipse} mit den \ul{Halbachsen} \(a\) und \(b\) und den \ul{Scheitelpunkten} \((0,b),(0,-b),(a,0),(-a,0)\).\\
 \ul{Skizze:} TODO SKIZZE
+\subsubsection{Bemerkung}
+Man kann allgemein Ellipsen definieren durch
+$$\tilde{E}=\{(x,y)\in\mathbb{R}^2|(\frac{c_1x+c_2y}{a})^2+(\frac{c_3x+c_4y}{b})^2=1\} \text{ mit } \begin{pmatrix}
+c_1 & c_2 \\
+c_3 & c_4
+\end{pmatrix}\in GL_2(\mathbb{R})$$
+Wir werden später sehen, wie man Ellipsen durch Koordinatentransformationen in Standardform bringt.
+\subsubsection{Definition}
+(a) Seien \(a,b\in\mathbb{R}\) mit \(a\geq b>0\). Sei \(c=\sqrt{a^2-b^2}\). Dann heißen die Punkte \(F=(c,0)\) und \(F'=(-c,0)\) die \ul{Brennpunkte} der Ellipse \(E\).\\
+(b) Die Zahl \(e=\frac{c}{a}\) erfüllt \(0\leq e<1\). Sie heißt die \ul{Exzentrizität} der Ellipse \(E\). Es ist \(e=0\) genau dann, wenn \(E\) ein Kreis ist.
+\subsubsection{Satz (Die Abstandseigenschaft der Ellipse)}
+Für jeden Punkt \(P\in E\) gilt: \(\norm{P-F}+\norm{P-F'}=2a\).\\
+\proof
+Sei \(P=(x,y)\in E\). Dann gilt \(\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\). Es folgt: \(x^2b^2+y^2a^2-a^2b^2=0\).\\
+Nun gilt: \(\norm{P-F}^2\norm{P-F'}^2=\left[(x-c)^2+y^2\right]\left[(x+c)^2+y^2\right]=\left[x^2+y^2+c^2-2cx\right]\left[x^2+y^2+x^2+2cx\right]=(x^2+y^2+a^2-b^2)-4x^2(a^2-b^2)=x^4+y^4+a^4+b^4+2x^2y^2+2x^2a^2-2x^2b^2+2y^2a^2-2y^2b^2-2a^2b^2-4x^2a^2+4x^2b^2=x^4+y^4+a^4+b^4+2x^2y^2-2x^2a^2-2x^2b^2-2y^2a^2-2y^2b^2+2a^2b^2=(x^2+y^2-a^2-b^2)^2\)\\
+Wegen \(x^2+y^2\leq a^2+b^2\) folgt \(\norm{P-F}\cdot \norm{P-F'}=a^2+b^2-x^2-y^2\) und somit \((\norm{P-F}+\norm{P-F'})^2=\norm{P-F}^2+\norm{P-F'}^2+2\norm{P-F}\cdot\norm{P-F'}=\left[(x-c)^2+y^2\right]+\left[(x+c)^2+y^2\right]+\left[2(a^2+b^2-x^2-y^2)\right]\)\\
+\(=2x^2+2y^2+\underbrace{2c^2}_{2a^2-2b^2}+2a^2+2b^2-2x^2-2y^2=4a^2\).
+\qed
+\subsubsection{Korollar (Die Fadenkonstruktion der Ellipse)}
+Spannt man einen Faden der Länge \(2a\) zwischen den Endpunkten \(F=(c,0)\) und \(F'=(-c,0)\), so ergeben die Spannpunkte des Bands die Ellipse \(E\).
+\subsubsection{Satz (Die Reflexionseigenschaft der Ellipse)}
+Verlässt ein Lichtstrahl einen Brennpunkt der Ellipse und wird er an der Ellipse reflektiert, so geht der reflektierte Strahl durch den anderen Brennpunkt.\\
+\ul{Skizze:} TODO SKIZZE\\
+\proof
+Gegeben sei \(?=(x_0,y_0)\in E\). Die Tangente \(t\) an \(E\) durch \(P\) hat die Gleichung \(t:\frac{x_0}{a^2}x+\frac{y_0}{b^2}y=1\). (vgl. Analysis I/II)\\
+Wir fällen die Lote von \(F\) und \(F'\) auf \(t\) und erhalten\\
+\(d=\frac{b}{b'}(a-ex_0),d'=\frac{b}{b'}(a+ex_0)\) mit \(b'=\sqrt{\frac{x_0^2b^2}{a^2}+\frac{y_0^2a^2}{b^2}}\)\\
+Ferner gilt \(\norm{P-F}=a-ex_0\) und \(\norm{P-F'}=a+ex_0\). Also sind die Dreiecke \(\triangle FQP\) und \(\triangle F'Q'P\) ähnlich, denn \(\frac{d'}{d}=\frac{a-ex_0}{a+ex_0}=\frac{\norm{P-F}}{\norm{P-F'}}\). Dies liefert \(\alpha=\alpha'\)
+\qed
+\addcontentsline{toc}{subsubsection}{B.\qquad Parabeln}
+\textbf{B. Parabeln}
+\subsubsection{Definition}
+Sei \(c>0\). Die Menge der Punkte \(C=\{(x,y)\in\mathbb{R}^2|y^2=4cx\}\) heißt eine \ul{Parabel (in Standardform)} mit \ul{Brennpunkt} \(F=(c,0)\).
+\subsubsection{Bemerkung}
+(a) Wendet man auf \(C\) eine affine Koordinatentransformation an, so entstehen Kurven, die ebenfalls Parabeln heißen, z.B. \(\tilde{C}:y=x^2\)\\
+(b) Die Parabel ist der Grenzfall einer Ellipse mit \(e\rightarrow 1\). Dabei wird ein Brennpunkt \(F\) festgehalten und \(F'\rightarrow \infty\).
+\subsubsection{Satz (Die Abstandseigenschaft der Parabel)}
+Die Parabel \(C\) besteht aus allen Punkten, die von der Geraden \(G=(-c,0)+\mathbb{R}\cdot (0,1)\) und \(F=(c,0)\) gleich weit entfernt sind.\\
+\proof
+Sei \(P=(x_0,y_0)\). Dann gilt \(d(P,G)=x_0+c\) und \(\norm{P-F}=\sqrt{(x_0-c)^2+y^2}=\sqrt{c^2-2cx_0+x_0^2+y_0^2}=\sqrt{c^2-2cx_0+x_0^2+4cx_0}=\sqrt{c^2+2cx_0+x_0^2}=x_0+c\).
+\qed
+\subsubsection{Satz (Die Reflexionseigenschaft der Parabel)}
+Jeder Lichtstrahl, der auf einer Parallelen zur x-Achse aus dem Unendlichen kommt und an der Parabel \(C\) reflektiert wird, verläuft anschließend durch den Brennpunkt \(F\).\\
+\ul{Skizze:} TODO SKIZZE\\
+\proof
+Der Lichtstrahl sei \(L=(0,y_0)+\mathbb{R}\cdot(1,0)\). Sein Auftreffpunkt auf \(C\) sei \(P=(x_0,y_0)\). O.E. gelte \(y_0>0\). Dann ist \(C\) in der Nähe von \(P\) gegeben durch \(y=\sqrt{2cx}\).\\
+\(\Rightarrow\) \(y'=\sqrt{\frac{c}{x}}\). Die Gleichung der Tangente \(t\) an \(C\) durch \(P\) lautet \(t(x)=y_0+\sqrt{\frac{c}{x_0}}(x-x_0)\).\\
+Der Schnittpunkt \(T\) von \(t\) mit der y-Achse ist \(T=(0,y_0-\sqrt{\frac{c}{x_0}})=(0,\frac{1}{2}y_0)\).\\
+Nach Satz 31.9 gilt \(\norm{F-P}=\norm{P-Q}\), also liegt \(T\) auf der Seitenhalbierenden des gleichschenkligen Dreiecks \(\triangle FPQ\). Dies zeigt \(\alpha=\alpha'\).
+\qed
+\subsubsection{Bemerkung}
+Vom Ursprung\(0=(0,0)\) werde im Winkel \(\phi\) zum Boden (\(\hat{=}\) x-Achse) eine Kanonenkugel abgefeuert.\\
+Ohne Luftwiderstand sei \(\alpha\) so zu wählen, dass die erzielte Schussweite \(s\) maximiert wird.\\
+Sei \(v=(v_x,v_y)=(v\cdot cos(\phi), v\cdot sin(\phi))\) der Geschwindigkeitsvektor beim Abschuss. Sei \(t\) die Zeit\\
+\(y''(t)=-g\), \(g= TODO UNGEFAEHR 9,81\frac{m}{s^2} \text{ Gravitationskonstante}\), \(x'(t)=v_x\) \(\Rightarrow\) \(y'(t)=-gt+v_y\), \(y(t)=-\frac{1}{2}gt^2+v_yt\).\\
+\(\Rightarrow\) \(s=\frac{2}{g}v_xv_y\), Zeitpunkt \(t_0=\frac{2v_y}{g}\), \(s=\frac{v^2}{g}sin(2\phi)\) max für \(\phi=45°\).
 \end{document}
 
 
