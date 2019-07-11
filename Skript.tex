@@ -1436,8 +1436,115 @@ Nach Satz 31.9 gilt \(\norm{F-P}=\norm{P-Q}\), also liegt \(T\) auf der Seitenha
 Vom Ursprung\(0=(0,0)\) werde im Winkel \(\phi\) zum Boden (\(\hat{=}\) x-Achse) eine Kanonenkugel abgefeuert.\\
 Ohne Luftwiderstand sei \(\alpha\) so zu wählen, dass die erzielte Schussweite \(s\) maximiert wird.\\
 Sei \(v=(v_x,v_y)=(v\cdot cos(\phi), v\cdot sin(\phi))\) der Geschwindigkeitsvektor beim Abschuss. Sei \(t\) die Zeit\\
-\(y''(t)=-g\), \(g= TODO UNGEFAEHR 9,81\frac{m}{s^2} \text{ Gravitationskonstante}\), \(x'(t)=v_x\) \(\Rightarrow\) \(y'(t)=-gt+v_y\), \(y(t)=-\frac{1}{2}gt^2+v_yt\).\\
-\(\Rightarrow\) \(s=\frac{2}{g}v_xv_y\), Zeitpunkt \(t_0=\frac{2v_y}{g}\), \(s=\frac{v^2}{g}sin(2\phi)\) max für \(\phi=45°\).
+\(y''(t)=-g\), \(g\approx 9,81\frac{m}{s^2} \text{ Gravitationskonstante}\), \(x'(t)=v_x\) \(\Rightarrow\) \(y'(t)=-gt+v_y\), \(y(t)=-\frac{1}{2}gt^2+v_yt\).\\
+\(\Rightarrow\) \(s=\frac{2}{g}v_xv_y\), Zeitpunkt \(t_0=\frac{2v_y}{g}\), \(s=\frac{v^2}{g}sin(2\phi)\) max für \(\phi=45°\).\\\\
+\addcontentsline{toc}{subsubsection}{C.\qquad Hyperbeln}
+\textbf{C. Hyperbeln}
+\subsubsection{Definition}
+Sei \(a,b\in\mathbb{R}_+\). Ferner sei \(c=\sqrt{a^2+b^2}\).\\
+Dann heißt die Menge aller Punkte
+$$H=\{(x,y)\in\mathbb{R}^2|\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\}$$
+eine \ul{Hyperbel} mit den \ul{Brennpunkten} \(F=(c,0)\) und \(F'=(-c, 0)\).\\
+Durch affine Koordinatentransformationen entstehen aus \(H\) weitere Hyperbeln. Wir sagen, dass \(H\) in \ul{Standardform} ist.\\
+\ul{Skizze:} TODO SKIZZE
+\subsubsection{Satz (Die Abstandseigenschaft der Hyperbel)}
+Für jeden Punkt \(P\in H\) gilt: \(\abs{\norm{P-F}-\norm{P-F'}}=2a\)\\
+\proof
+Sei \(P=(x_0,y_0)\in H\). Aus \(\frac{x_0^2}{a^2}-\frac{y_0^2}{b^2}=1\) folgt \(b^2x_0^2-a^2y_0^2=a^2b^2\). Also gilt:\\
+\(\left[(x_0-c)^2+y_0^2\right]\left[(x_0+c)^2+y_0^2\right]=\left[x_0^2+a^2+b^2-2cx_0+y_0^2\right]\left[x_0^2+a^2+b^2+2cx_0+y_0^2\right]=(x_0^2+a^2+b^2+y_0^2)-4c^2x_0^2\)\\
+\(=x_0^4+a^4+b^4+y_0^4-2a^2x_0^2-2b^2x_0^2+2x_0^2y_0^2+2a^2b^2+2a^2y_0^2+2b^2y_0^2-4a^2x_0^2-4b^2x_0^2\)\\
+\(=x_0^4+a^4+b^4+y_0^4-2a^2x_0^2+2x_0^2y_0^2+2b^2y_0^2+2b^2x_0^2-2a^2b^2-2a^2y_0^2\)\\
+\(=(x_0^2+y_0^2-a^2+b^2)^2\)\\
+Hieraus folgt \(\norm{P-F}\norm{P-F'}=(x_0^2+y_0^2-a^2+b^2)\).\\
+\((\norm{P-F}-\norm{P-F'})^2=\norm{P-F}^2-2\norm{P-F}\norm{P-F'}+\norm{P-F'}^2\)\\
+\(=(x_0-c)^2+y^2-2(x_0^2+y_0^2-a^2+b^2)+(x_0+c)^2+y_0^2\)\\
+\(=-2cx_0+c^2+2a^2-2b^2+2cx_0+c^2\)\\
+\(=4a^2\)
+\qed
+\subsubsection{Korollar (Fadenkonstruktion der Hyperbel)}
+Ein Lineal der Länge \(l>>2a\) wird mit einem Kantenende am Punkt \(F'=(-c,0)\) befestigt. Am anderen Ende wird eine Schnur der Länge \(l-2a\) festgemacht. Das zweite Ende der Schnur wird an dem Punkt \(F=(c,0)\) fixiert.\\
+Die Spannpunkte der Schnur, die an der Kante des Lineals liegen, bilden einen Ast der Hyperbel \(H\).\\
+\ul{Skizze:} TODO SKIZZE\\
+\proof
+\(d_1+d_2=l-2a\) und \(\norm{P-F'}=l-d_1\) und \(\norm{P-F}=d_2\). Also folgt \(\norm{P-F'}-\norm{P-F}=l-d_1-d_2=(2a+d_1+d_2)-d_1-d_2=2a\).
+\qed
+\subsubsection{Bemerkung}
+Für \(x\rightarrow \infty\), bzw. \(x\rightarrow -\infty\) gilt \(\frac{x^2}{a^2}-\frac{y^2}{b^2}=1\Rightarrow \frac{y^2}{b^2}=\frac{x^2}{a^2}-1\Rightarrow y=\pm\frac{b}{a}\sqrt{x^2-a^2}\approx \pm\frac{b}{a}x\).\\
+Also nähert sich \(H\) den Geraden \(y=\pm\frac{b}{a}x\) an. Diese sind \ul{Asymptoten}.
+\subsubsection{Satz (Die Reflexionseigenschaft der Hyperbel)}
+Wird ein vom Brennpunkt \(F=(c,0)\) ausgehender Lichtstrahl an einem Punkt \(P\) der Hyperbel \(H\) reflektiert, so scheint der reflektierte Lichtstrahl aus dem anderen Brennpunkt \(F'=(-c,0)\) zu kommen.\\
+\proof
+Sei \(P=(x_0,y_0)\in H\) der Punkt, an dem der Lichtstrahl reflektiert wird. O.E. sei \(y_0>0\). In der Nähe von \(P\) hat \(H\) die Gleichung \(y=\frac{b}{a}\sqrt{x^2-a^2}\). Es folgt \(y'(x_0)=\frac{b}{a}\frac{1}{2\sqrt{x_0^2-a^2}}\cdot 2x_0=\frac{b^2x_0}{a^2y_0}\).\\
+Damit lautet die Gleichung der Tangente \(t\) an \(H\) durch \(P\): \(y=\frac{b^2x_0}{a^2y_0}(x-x_0)+y_0\). Der Durchstoßpunkt von \(Q\) durch die x-Achse erfüllt \(Q=(q,0)\) mit \(\frac{b^2x_0}{a^2y_0}(q-x_0)=-y_0\), also \(\frac{b^2x_0}{a^2y_0}q=\frac{b^2x_0^2}{a^2y_0}-\frac{a^2y_0^2}{a^2y_0}=\frac{b^2x_0^2}{a^2y_0}-\frac{b^2y_0^2}{b^2y_0^2}=\frac{b^2}{y_0}(\frac{x_0^2}{a^2}-\frac{y_0^2}{b^2})=\frac{b^2}{y_0}\) und somit \(q=\frac{a^2}{x_0}\).\\
+Nun wenden wir den Sinussatz an auf die Dreiecke \(\triangle F'QP\) und \(\triangle FPQ\) und erhalten:\\
+\(\frac{q+c}{sin(\alpha')}=\frac{\sqrt{(x_0+c)^2+y_0^2}}{sin(\Pi - \gamma)}=\frac{\sqrt{(x_0+c)^2+y_0^2}}{sin(\gamma)}\) und \(\frac{c-q}{sin(\alpha)}=\frac{\sqrt{(x_0-c)^2+y_0^2}}{sin(\gamma)}\)\\
+\ul{z.z.} \(sin(\alpha)=sin(\alpha')\)\\
+\(\Leftrightarrow\) \(\frac{(c-q)sin(\gamma)}{\sqrt{(x_0-c)^2+y_0^2}}=\frac{(c+q)sin(\gamma)}{\sqrt{(x_0-c)^2+y_0^2}}\)\\
+\(\Leftrightarrow\) \((\sqrt{a^2+b^2}-\frac{a^2}{x_0})\sqrt{(x_0+c)^2+y_0^2}=(\sqrt{a^2+b^2}+\frac{a^2}{x_0})\sqrt{(x_0-c)^2+y_0^2}\)\\
+\(\Leftrightarrow\) \dots \(1=1\).\\
+Somit ist \(\alpha=\alpha'\) bewiesen.
+\qed
+\addcontentsline{toc}{subsubsection}{D.\qquad Kreiskegel}
+\textbf{D. Kreiskegel}
+\subsubsection{Definition}
+Die Menge der Punkte
+$$K=\{(x,y,z)\in\mathbb{R}^3|x^2+y^2=z^2\}$$
+heißt der \ul{Kreiskegel} mit \ul{Spitze} (0,0,0)=0.\\
+\ul{Skizze:} TODO SKIZZE\\
+\subsubsection{Bemerkung}
+(a) Eine invertierbare Matrix \(A\in GL_n(\mathbb{R})\) entspricht einer bijektiven \(\mathbb{R}\)-linearen Abbildung \(\phi:\mathbb{R}^n\rightarrow\mathbb{R}^n\). Das Bild der Standardbasis \(\xi=(e_1,\dots,e_n)\) ist dabei eine andere Basis \(B=(v_1,\dots,v_n)\).\\
+Sei nun \(M\subseteq\mathbb{R}^n\) eine Punktmenge, die definiert ist durch eine Gleichung \(M=\{(x_1,\dots,x_n)=0\}\). Dabei sind \(x_1,\dots,x_n\) die Koordinaten eines Punkts \(P=(x_1,\dots,x_n)\in M\) bzgl. \(\xi\).\\
+Welche Gleichung erfüllen die Koordinaten der Punkte von \(M\) bzgl. der Basis \(B\)?\\
+Es gilt: \(P=(x_1,\dots,x_n)=x_1e_1+\dots,x_ne_n\) und \(v_i=A\cdot e_i\), also \(e_i=A^{-1}v_i\). Dies zeigt \(P=x_1A^{-1}v_1+\dots+x_nA^{-1}v_n=A^{-1}(x_1v_1+\dots+x_nv_n)\).\\
+Also ist \(\begin{pmatrix}
+\tilde{x_1}\\
+\vdots\\
+\tilde{x_n}
+\end{pmatrix}=A^{-1}\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}\) das Koordinatentupel von \(P\) bzgl. der Basis \(B\).\\
+(b) Wir drehen jetzt die Basis \(\xi=(e_1,e_2,e_3)\) von \(\mathbb{R}^3\) um einen Winkel \(\alpha\in\left[0,2\pi\right[\) um die y-Achse:\\
+\(A=\begin{pmatrix}
+cos(\alpha) & 0 & sin(\alpha)\\
+0 & 1 & 0\\
+-sin(\alpha) & 0 & cos(\alpha)
+\end{pmatrix}\) und \(A^{-1}=\begin{pmatrix}
+cos(\alpha) & 0 & -sin(\alpha)\\
+0 & 1 & 0\\
+sin(\alpha) & 0 & cos(\alpha)
+\end{pmatrix}\).\\
+Dies liefert \(\begin{pmatrix}
+\tilde{x}\\
+\tilde{y}\\
+\tilde{z}
+\end{pmatrix}=A^{-1}\begin{pmatrix}
+x\\
+y\\
+z
+\end{pmatrix}\), also\quad \(\begin{matrix}
+\tilde{x}=cos(\alpha)x-sin(\alpha)z & \Leftrightarrow & x=cos(\alpha)\tilde{x}+sin(\alpha)\tilde{z}\\
+\tilde{y}=y & \Leftrightarrow & y=\tilde{y}\\
+\tilde{z}=sin(\alpha)x+cos(\alpha)z & \Leftrightarrow & z=-sin(\alpha)\tilde{x}+cos(\alpha)\tilde{z}
+\end{matrix}\)\\
+Im neuen Koordinatensystem hat \(K\) die Gleichung
+$$\left[cos(\alpha)\tilde{x}+sin(\alpha)\tilde{z}\right]^2+\tilde{y}^2=\left[-sin(\alpha)\tilde{x}+cos(\alpha)\tilde{z}\right]^2$$
+TODO WHATEVER
+\subsubsection{Satz (Die Ebenenschnitte des Kreiskegels)}
+Schneidet man den Kreiskegel \(K\) mit der Ebene \(E=\{(\tilde{x},\tilde{y},\tilde{z})\in\mathbb{R}^3|\tilde{z}=1\}\), so ergibt sich in Abhängigkeit von \(\alpha\) folgende Schnittkurve:\\
+(a) \(0\leq \alpha < \frac{\pi}{4}\): Ellipse\\
+(b) \(\alpha=\frac{\pi}{4}\): Parabel\\
+(c) \(\frac{\pi}{4}<\alpha\leq \frac{\pi}{2}\): Hyperbel\\
+\proof
+"(a)" Für \(0\leq\alpha <\frac{\pi}{4}\) gilt \(l^2=cos^2(\alpha)-sin^2(\alpha)>0\). Nach einer quadratischen Ergänzung lautet die Gleichung von \(K\cap E\)
+$$l^2\tilde{x}^2+4sin(\alpha)cos(\alpha)\tilde{x}+\tilde{y^2}=l^2$$
+$$\Leftrightarrow l^2(\tilde{x}^2+\frac{2}{l^2}sin(\alpha)cos(\alpha))^2+y^2=l^2+\frac{4}{l^2}sin^2(\alpha)cos^2(\alpha)=\dots=\frac{1}{l^2}$$
+Setze \(\overline{x}=\tilde{x}+\frac{2}{l^2}sin(\alpha)cos(\alpha)\), \(\overline{y}=\tilde{y}\), \(\overline{z}=\tilde{z}\), \(a=\frac{1}{l^2}\), \(b=\frac{1}{l}\) und erhalte \(K\cap E\):\\ \(\frac{b^2}{a^2}\overline{x}^2+\overline{y}^2=b^2\)\\
+\(\frac{\overline{x}^2}{a^2}+\frac{\overline{y}^2}{b^2}=1\). Ellipse\\
+"(b)" \(\overline{y}^2=-2\overline{x}\). Parabel\\
+"(c)" \(\frac{\overline{x}^2}{a^2}-\frac{\overline{y}^2}{b^2}=1\). Hyperbel
+\qed
 \end{document}
 
 
