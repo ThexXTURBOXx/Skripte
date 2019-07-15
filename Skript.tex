@@ -1433,7 +1433,7 @@ Der Schnittpunkt \(T\) von \(t\) mit der y-Achse ist \(T=(0,y_0-\sqrt{\frac{c}{x
 Nach Satz 31.9 gilt \(\norm{F-P}=\norm{P-Q}\), also liegt \(T\) auf der Seitenhalbierenden des gleichschenkligen Dreiecks \(\triangle FPQ\). Dies zeigt \(\alpha=\alpha'\).
 \qed
 \subsubsection{Bemerkung}
-Vom Ursprung\(0=(0,0)\) werde im Winkel \(\phi\) zum Boden (\(\hat{=}\) x-Achse) eine Kanonenkugel abgefeuert.\\
+Vom Ursprung \(0=(0,0)\) werde im Winkel \(\phi\) zum Boden (\(\hat{=}\) x-Achse) eine Kanonenkugel abgefeuert.\\
 Ohne Luftwiderstand sei \(\alpha\) so zu wählen, dass die erzielte Schussweite \(s\) maximiert wird.\\
 Sei \(v=(v_x,v_y)=(v\cdot cos(\phi), v\cdot sin(\phi))\) der Geschwindigkeitsvektor beim Abschuss. Sei \(t\) die Zeit\\
 \(y''(t)=-g\), \(g\approx 9,81\frac{m}{s^2} \text{ Gravitationskonstante}\), \(x'(t)=v_x\) \(\Rightarrow\) \(y'(t)=-gt+v_y\), \(y(t)=-\frac{1}{2}gt^2+v_yt\).\\
@@ -1545,7 +1545,147 @@ Setze \(\overline{x}=\tilde{x}+\frac{2}{l^2}sin(\alpha)cos(\alpha)\), \(\overlin
 "(b)" \(\overline{y}^2=-2\overline{x}\). Parabel\\
 "(c)" \(\frac{\overline{x}^2}{a^2}-\frac{\overline{y}^2}{b^2}=1\). Hyperbel
 \qed
+\subsection{Quadriken}
+\ul{Buch:} Gerd Fischer, Analytische Geometrie, §1.4.1-1.4.5 (S.53-65) und §1.4.8 (S. 72-73)\\
+In diesem Abschnitt sei \(K\) ein Körper mit \(char(K)\neq 2\). 
+\subsubsection{Definition}
+(a) Ein \ul{quadratisches Polynom} in \(n\) Unbekannten \(x_1,\dots,x_n\) mit Koeffizienten aus \(K\) ist ein Ausdruck der Form
+$$f=\sum_{1\leq i\leq j\leq n} \alpha_{ij}x_ix_j+\sum_{1\leq k\leq n}\alpha_{0k}x_k+\alpha_{00}$$
+mit \(\alpha_{ij}\in K\) und \(\alpha_{ij}\neq 0\) für ein \((i,j)\) mit \(1\leq i\leq j\leq n\).\\
+(b) Ist \(f\) ein quadratisches Polynom wie in (a), so heißt \(Q=\{(p_1,\dots,p_n)\in K^n|f(p_1,\dots,p_n)=0\}\) die durch \(f\) definierte \ul{Quadrik} in \(K^n\).
+\subsubsection{Bemerkung}
+Sei \(f\) ein quadratisches Polynom wie in Def. 32.1.a. Wir definieren \(\overline{x}=(1,x_1,\dots,x_n)^{tr}\) und eine Matrix \(\overline{A}=\begin{pmatrix}
+a_{00} & \hdots & a_{0n}\\
+a_{10} & \hdots & a_{1n}\\
+\vdots & \ddots & \vdots
+a_{n0} & \hdots & a_{nn}
+\end{pmatrix}\in Mat_{n+1}(K)\) mit \(a_{ii}=\alpha{ii}\) für \(i=0,\dots,n\) und \(a_{ij}=a_{ji}=\frac{1}{2}\alpha_{ij}\) für \(1\leq i< j\leq n\).\\
+Dann ist \(\overline{A}\) eine symmetrische Matrix und es gilt: \(f(x_1,\dots,x_n)=\overline{x}^{tr}\overline{A}\overline{x}=(1,x_1,\dots,x_n)\cdot\overline{A}\cdot \begin{pmatrix}
+1\\
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}\).\\
+Somit ist die durch \(f\) definierte Quadrik \(Q\) gegeben durch \(Q=\{(p_1,\dots,p_n)\in K^n|\overline{p}^{tr}\overline{A}\overline{p}=0\}\) mit \(\overline{p}=(1,p_1,\dots,p_n)^{tr}\). Wir sagen auch, dass \(\overline{A}\) die Quadrik \(Q\) \ul{beschreibt}.\\
+(b) Zu einem Vektor \(x=\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}\) heißt \(\overline{x}=\begin{pmatrix}
+1\\
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}\) der \ul{erweiterte (Spalten-)Vektor} zu \(x\).\\
+(c) Zu \(A=(a_{ij})\in Mat_n(K)\) heißt \(\overline{A}=TODO MATRIX\) eine \ul{erweiterte Matrix} zu \(A\).
+\subsubsection{Beispiel}
+(a) Sei \(K=\mathbb{R}\) und \(a,b\in\mathbb{R}\) mit \(a\geq b > 0\). Die durch das quadratische Polynom \(f=\frac{x^2}{a^2}+\frac{y^2}{b^2}-1\) definierte Quadrik in \(\mathbb{R}^2\) ist eine Ellipse in Standardform.
+$$\text{Erweiterte Matrix: }\overline{A}=\begin{pmatrix}
+-1 & 0 & 0\\
+0 & \frac{1}{a^2} & 0\\
+0 & 0 & \frac{1}{b^2}
+\end{pmatrix}$$
+und es gilt \(f=(1,x,y)\cdot \overline{A}\cdot \begin{pmatrix}
+1\\
+x\\
+y
+\end{pmatrix}\).\\
+(b) Sei \(K=\mathbb{R}\) und \(c>0\). Die durch das quadratische Polynom \(f=y^2-4cx\) definierte Quadrik in \(\mathbb{R}^2\) ist eine Parabel in Standardform.
+$$\text{Erweiterte Matrix: }\overline{A}=\begin{pmatrix}
+0 & -2c & 0\\
+-2c & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix}$$
+(c) Für die Hyperbel gilt \(f=\frac{x^2}{a^2}-\frac{y^2}{b^2}-1\).
+$$\text{Erweiterte Matrix: }\overline{A}=\begin{pmatrix}
+-1 & 0 & 0\\
+0 & \frac{1}{a^2} & 0\\
+0 & 0 & -\frac{1}{b^2}
+\end{pmatrix}$$
+\subsubsection{Definition (Affine Abbildung, Affinität)}
+(a) Sei \(v\in K^n\). Dann heißt \(\tau_v:\underset{x\mapsto x+v}{K^n\rightarrow K^n}\) die \ul{Translation} um \(v\).\\
+(b) Eine Abbildung \(\phi:K^n\rightarrow K^n\) heißt eine \ul{affine Abbildung}, wenn es einen Vektor \(v\in K^n\) und eine lineare Abbildung \(\psi:K^n\rightarrow K^n\) gibt mit \(\phi(x)=(\tau_v\circ \psi)(x)=\psi(x)+v\) für alle \(x\in K^n\). (Beachte: \(v=\psi(0)\))
+(c) Zu einer affinen Abbildung \(\phi:K^n\rightarrow K^n\) kann man wie folgt eine \ul{beschreibende Matrix} definieren. Sei \(A=(a_{ij})=M_\xi(\psi)\) und \(v=\phi(0)=\begin{pmatrix}
+b_1\\
+\vdots\\
+b_n
+\end{pmatrix}\). Dann gilt \(\phi(x_1,\dots,x_n)=A\cdot\begin{pmatrix}
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}+\begin{pmatrix}
+b_1\\
+\vdots\\
+b_n
+\end{pmatrix}\) für alle \((x_1,\dots,x_n)\in K^n\).\\
+Setzt man \(\overline{A}=\begin{pmatrix}
+1 & 0 & \hdots & 0\\
+\begin{matrix}
+b_1\\
+\vdots\\
+b_n
+\end{matrix} & & \Huge A &
+\end{pmatrix}\), so folgt \(\overline{A}\begin{pmatrix}
+1\\
+x_1\\
+\vdots\\
+x_n
+\end{pmatrix}=\begin{pmatrix}
+1\\
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix}\) mit \(\phi(x_1,\dots,x_n)=(y_1,\dots,y_n)\)\\
+(d) Eine affine Abbildung \(\phi=\tau_v\circ \psi:K^n\rightarrow K^n\) heißt \ul{Affinität} wenn \(\phi\) bijektiv ist. (Äquivalent: \(\psi\) bijektiv, bzw. \(A\) invertierbar, bzw. \(\overline{A}\) invertierbar).
+\subsubsection{Satz}
+Sei \(Q\subseteq K^n\) eine Quadrik und \(\phi:K^n\rightarrow K^n\) eine Affinität. Dann ist \(\phi(Q)\) ebenfalls eine Quadrik in \(K^n\).\\
+\proof
+Schreibe \(\phi(v)=B\cdot v + b\) mit \(b\in K^n\) und \(B\in GL_n(K)\). Sei \(\overline{B}=TODO MATRIX\in Mat_{n+1}(K)\). Dann ist \(\phi\) auch gegeben durch \(\phi(\overline{v})=\overline{B}\cdot\overline{v}\).\\
+Somit gilt \(\phi^{-1}(\overline{w})=\overline{C}\cdot\overline{w}\) mit \(\overline{C}=TODO MATRIX\), denn \(\phi(v)=Bv+b\Rightarrow Bv=\phi(v)-b\Rightarrow v=B^{-1}\phi(v)-B^{-1}b=\phi^{-1}(w)\).\\
+Sei \(Q\) beschrieben durch die Matrix \(\overline{A}\in Mat_{n+1}(K)\). Dann gilt: \(w=\phi(v)\in\phi(Q)\Leftrightarrow v\in Q\Leftrightarrow \overline{v}^{tr}\overline{A}\overline{v}=0\Leftrightarrow\underbrace{\overline{w}^{tr}\overline{C}^{tr}}_{=(\overline{C}\overline{w})^{tr}}\overline{A}\overline{C}\overline{w}=0\Leftrightarrow\overline{w}^{tr}\overline{D}\overline{w}=0\) mit \(\overline{D}=\overline{C}^{tr}\overline{A}\overline{C}\)\\
+\(\Leftrightarrow\) \(w\) liegt in der durch \(g\) definierten Quadrik, wobei \(g(x_1,\dots,x_n)=\overline{x}^{tr}\overline{D}\overline{x}\) gilt.
+\qed
+\subsubsection{Beispiel}
+Sei \(Q=\mathbb{R}^2\) die Quadrik, die definiert ist durch \(f(x,y)=x^2+9y^2-6xy+128x-46y-129\)\\
+Um welche Art von Kugelschnitt handelt es sich?\\
+Die Quadrik \(Q\) wird beschrieben durch die Matrix \(\overline{A}=\begin{pmatrix}
+-129 & 64 & -23\\
+64 & 1 & -3\\
+23 & -3 & 9
+\end{pmatrix}\).\\
+Nun führen wir die Koordinatentransformation \(\tilde{x}=x-3y,\tilde{y}=y\) durch.\\
+Die Quadrik \(\phi(Q)=\tilde{Q}\) ist dann definiert durch \(g(\tilde{x},\tilde{y}))\tilde{x}^2+128\tilde{x}+338\tilde{y}-129\).\\
+Als Nächstes führen wir die Affinität \(\psi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) mit \(\hat{x}=\tilde{x}+64\) und \(\hat{y}=^69y-\frac{4225}{2}\) durch.\\
+Dann ist \((\psi\circ\phi)(Q)\) beschrieben durch \(h(\hat{x},\hat{y})=\hat{x}^2-2\hat{y}\) und dies ist eine Parabel in Standardform.\\\\
+\ul{Frage:} Wie kann man systematisch eine Affinität finden, die \(Q\) in eine durch eine möglichst einfache quadratische Gleichung beschriebene Quadrik transformiert?\\
+Im Folgenden sei \(K=\mathbb{R}\). Ferne sei \(Q\subseteq\mathbb{R}^n\) eine Quadrik, die beschrieben sei durch eine symmetrische Matrix \(\overline{A}=TODO MATRIX\) mit \(A\in Mat_n(\mathbb{R})\).
+\subsubsection{Bemerkung}
+Nach der Hauptachsentransformation symmetrischer Matrizen gibt es eine orthogonale Matrix \(T\in O_n(\mathbb{R})\) so, dass \(D=T^{tr}AT=\begin{pmatrix}
+\lambda_1 & & 0\\
+& \ddots & \\
+0 & & \lambda_n
+\end{pmatrix}\) eine Diagonalmatrix ist.\\
+\ul{Beachte:} Es gibt eine Matrix \(S\in GL_n(\mathbb{R})\) so, dass \(\hat{D}=S^{tr}AS\) die Gestalt \(\hat{D}=\begin{pmatrix}
+I_k & 0 & 0\\
+0 & -I_l & 0\\
+0 & 0 & 0
+\end{pmatrix}\) besitzt.\\
+Nun setze \(\overline{S}=\begin{pmatrix}
+1 & \begin{matrix}0 & \hdots & 0\end{matrix}\\
+\begin{matrix}
+0\\
+\vdots\\
+0
+\end{matrix} & \Huge S
+\end{pmatrix}\). Führt man die durch \(S\) definierte Koordinatentransformation durch, so wird \(Q\) beschrieben durch \(g(\tilde{x}_1,\dots,\tilde{x}_n)=\tilde{x}_1^2+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2+2(c_{01}\tilde{x}_1+\dots+c_{0n}\tilde{x}_n)+c_{00}\) mit \(c_{00},\dots,c_{0n}\in\mathbb{R}\). Also wird \(\tilde{Q}=\phi(Q)\) beschrieben durch eine Matrix \(\tilde{D}=\overline{S}^{tr}\overline{A}\overline{S}=TODO MATRIX\).\\\\
+\ul{Frage:} Wie kann man \(c_{01},\dots,c_{0n}\) wegtransformieren?
+\subsubsection{Theorem (Affine Hauptachsentransformation reeller Quadriken)}
+Gegeben sei eine Quadrik \(Q\subseteq \mathbb{R}^n\), die beschrieben sei durch eine symmetrische Matrix \(\overline{A}\in Mat_{n+1}(\mathbb{R})\). Dann gibt es eine Affinitä \(\phi:\mathbb{R}^n\rightarrow\mathbb{R}^n\) so, dass \(\phi(Q)\subseteq\mathbb{R}^n\) eine Quadrik ist, die durch eine \ul{Gleichung in Hauptachsenform} definiert wird, d.h. durch eine Gleichung einer der drei folgenden Anordnungen:\\
+(a) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2=0\)\\
+(b) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2-1=0\)\\
+(c) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2+2\tilde{x}_{k+l+1}=0\)
 \end{document}
+
 
 
 
