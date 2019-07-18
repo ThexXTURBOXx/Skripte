@@ -1554,12 +1554,12 @@ $$f=\sum_{1\leq i\leq j\leq n} \alpha_{ij}x_ix_j+\sum_{1\leq k\leq n}\alpha_{0k}
 mit \(\alpha_{ij}\in K\) und \(\alpha_{ij}\neq 0\) für ein \((i,j)\) mit \(1\leq i\leq j\leq n\).\\
 (b) Ist \(f\) ein quadratisches Polynom wie in (a), so heißt \(Q=\{(p_1,\dots,p_n)\in K^n|f(p_1,\dots,p_n)=0\}\) die durch \(f\) definierte \ul{Quadrik} in \(K^n\).
 \subsubsection{Bemerkung}
-Sei \(f\) ein quadratisches Polynom wie in Def. 32.1.a. Wir definieren \(\overline{x}=(1,x_1,\dots,x_n)^{tr}\) und eine Matrix \(\overline{A}=\begin{pmatrix}
+Sei \(f\) ein quadratisches Polynom wie in Def. 32.1.a. Wir definieren \(\overline{x}^{tr}=(1,x_1,\dots,x_n)\) und eine Matrix \(\overline{A}=\begin{pmatrix}
 a_{00} & \hdots & a_{0n}\\
 a_{10} & \hdots & a_{1n}\\
-\vdots & \ddots & \vdots
+\vdots & \ddots & \vdots\\
 a_{n0} & \hdots & a_{nn}
-\end{pmatrix}\in Mat_{n+1}(K)\) mit \(a_{ii}=\alpha{ii}\) für \(i=0,\dots,n\) und \(a_{ij}=a_{ji}=\frac{1}{2}\alpha_{ij}\) für \(1\leq i< j\leq n\).\\
+\end{pmatrix}\in Mat_{n+1}(K)\) mit \(a_{ii}=\alpha_{ii}\) für \(i=0,\dots,n\) und \(a_{ij}=a_{ji}=\frac{1}{2}\alpha_{ij}\) für \(1\leq i< j\leq n\).\\
 Dann ist \(\overline{A}\) eine symmetrische Matrix und es gilt: \(f(x_1,\dots,x_n)=\overline{x}^{tr}\overline{A}\overline{x}=(1,x_1,\dots,x_n)\cdot\overline{A}\cdot \begin{pmatrix}
 1\\
 x_1\\
@@ -1647,18 +1647,18 @@ Sei \(Q\) beschrieben durch die Matrix \(\overline{A}\in Mat_{n+1}(K)\). Dann gi
 \qed
 \subsubsection{Beispiel}
 Sei \(Q=\mathbb{R}^2\) die Quadrik, die definiert ist durch \(f(x,y)=x^2+9y^2-6xy+128x-46y-129\)\\
-Um welche Art von Kugelschnitt handelt es sich?\\
+Um welche Art von Kegelschnitt handelt es sich?\\
 Die Quadrik \(Q\) wird beschrieben durch die Matrix \(\overline{A}=\begin{pmatrix}
 -129 & 64 & -23\\
 64 & 1 & -3\\
 23 & -3 & 9
 \end{pmatrix}\).\\
 Nun führen wir die Koordinatentransformation \(\tilde{x}=x-3y,\tilde{y}=y\) durch.\\
-Die Quadrik \(\phi(Q)=\tilde{Q}\) ist dann definiert durch \(g(\tilde{x},\tilde{y}))\tilde{x}^2+128\tilde{x}+338\tilde{y}-129\).\\
-Als Nächstes führen wir die Affinität \(\psi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) mit \(\hat{x}=\tilde{x}+64\) und \(\hat{y}=^69y-\frac{4225}{2}\) durch.\\
+Die Quadrik \(\phi(Q)=\tilde{Q}\) ist dann definiert durch \(g(\tilde{x},\tilde{y})=\tilde{x}^2+128\tilde{x}+338\tilde{y}-129\).\\
+Als Nächstes führen wir die Affinität \(\psi:\mathbb{R}^2\rightarrow\mathbb{R}^2\) mit \(\hat{x}=\tilde{x}+64\) und \(\hat{y}=169\tilde{y}-\frac{4225}{2}\) durch.\\
 Dann ist \((\psi\circ\phi)(Q)\) beschrieben durch \(h(\hat{x},\hat{y})=\hat{x}^2-2\hat{y}\) und dies ist eine Parabel in Standardform.\\\\
 \ul{Frage:} Wie kann man systematisch eine Affinität finden, die \(Q\) in eine durch eine möglichst einfache quadratische Gleichung beschriebene Quadrik transformiert?\\
-Im Folgenden sei \(K=\mathbb{R}\). Ferne sei \(Q\subseteq\mathbb{R}^n\) eine Quadrik, die beschrieben sei durch eine symmetrische Matrix \(\overline{A}=TODO MATRIX\) mit \(A\in Mat_n(\mathbb{R})\).
+Im Folgenden sei \(K=\mathbb{R}\). Ferner sei \(Q\subseteq\mathbb{R}^n\) eine Quadrik, die beschrieben sei durch eine symmetrische Matrix \(\overline{A}=TODO MATRIX\) mit \(A\in Mat_n(\mathbb{R})\).
 \subsubsection{Bemerkung}
 Nach der Hauptachsentransformation symmetrischer Matrizen gibt es eine orthogonale Matrix \(T\in O_n(\mathbb{R})\) so, dass \(D=T^{tr}AT=\begin{pmatrix}
 \lambda_1 & & 0\\
@@ -1680,10 +1680,74 @@ Nun setze \(\overline{S}=\begin{pmatrix}
 \end{pmatrix}\). Führt man die durch \(S\) definierte Koordinatentransformation durch, so wird \(Q\) beschrieben durch \(g(\tilde{x}_1,\dots,\tilde{x}_n)=\tilde{x}_1^2+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2+2(c_{01}\tilde{x}_1+\dots+c_{0n}\tilde{x}_n)+c_{00}\) mit \(c_{00},\dots,c_{0n}\in\mathbb{R}\). Also wird \(\tilde{Q}=\phi(Q)\) beschrieben durch eine Matrix \(\tilde{D}=\overline{S}^{tr}\overline{A}\overline{S}=TODO MATRIX\).\\\\
 \ul{Frage:} Wie kann man \(c_{01},\dots,c_{0n}\) wegtransformieren?
 \subsubsection{Theorem (Affine Hauptachsentransformation reeller Quadriken)}
-Gegeben sei eine Quadrik \(Q\subseteq \mathbb{R}^n\), die beschrieben sei durch eine symmetrische Matrix \(\overline{A}\in Mat_{n+1}(\mathbb{R})\). Dann gibt es eine Affinitä \(\phi:\mathbb{R}^n\rightarrow\mathbb{R}^n\) so, dass \(\phi(Q)\subseteq\mathbb{R}^n\) eine Quadrik ist, die durch eine \ul{Gleichung in Hauptachsenform} definiert wird, d.h. durch eine Gleichung einer der drei folgenden Anordnungen:\\
-(a) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2=0\)\\
+Gegeben sei eine Quadrik \(Q\subseteq \mathbb{R}^n\), die beschrieben sei durch eine symmetrische Matrix \(\overline{A}\in Mat_{n+1}(\mathbb{R})\). Dann gibt es eine Affinität \(\phi:\mathbb{R}^n\rightarrow\mathbb{R}^n\) so, dass \(\phi(Q)\subseteq\mathbb{R}^n\) eine Quadrik ist, die durch eine \ul{Gleichung in Hauptachsenform} definiert wird, d.h. durch eine Gleichung einer der drei folgenden Anordnungen:\\
+(a) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2=0\) mit \(k,l\geq 0\) und \(k+l\leq n\)\\
 (b) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2-1=0\)\\
-(c) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2+2\tilde{x}_{k+l+1}=0\)
+(c) \(\tilde{x}_1+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2+2\tilde{x}_{k+l+1}=0\)\\
+\proof
+Wir starten in dem Koordinatensystem gemäß Bem. 32.7, indem \(Q\) durch eine Matrix \(\tilde{D}=TODO MATRIX\) beschrieben wird.\\
+Nun wenden wir die Translation an, die durch folgende Matrix gegeben ist: $$\tilde{U}=TODO MATRIX$$
+Dann ist \(\overline{C}=\overline{U}^{tr}\tilde{D}\overline{U}\in Mat_{n+1}(\mathbb{R})\) eine symmetrische Matrix der Form
+$$\overline{C}=TODO MATRIX$$
+\ul{Fall 1:} \(d_{00}=c_{0k+l+1}=\dots=c_{0n}=0\). In diesem Fall ist \(Q\) definiert durch \((1,\tilde{x}_1,\dots,\tilde{x}_n)\overline{C}\begin{pmatrix}
+1\\
+\tilde{x}_1\\
+\vdots\\
+\tilde{x}_n
+\end{pmatrix}=\tilde{x}_1^2+\dots+\tilde{x}_k^2-\tilde{x}_{k+1}^2-\dots-\tilde{x}_{k+l}^2=0\).\\
+\ul{Fall 2:} \(d_{00}\neq 0\)c \(c_{0k+l+1}=\dots=c_{0n}=0\)\\
+O.E. gilt \(d_{00}<0\) (sonst multipliziere die Gleichung von \(Q\) mit \(-1\) und vertausche \(\{\tilde{x}_1,\dots,\tilde{x}_k\}\leftrightarrow\{\tilde{x}_{k+1},\dots,\tilde{x}_{k+l}\}\)).\\
+Setze \(\varrho=\sqrt{-d_{00}}\), multipliziere die Gleichung von \(Q\) mit \(\frac{1}{\varrho^2}\) und führe die Koordinatentransformation \(\tilde{x}_i=\frac{1}{\varrho}\hat{x}_i\) durch. Dann lautet die neue Gleichung
+$$\hat{x}_1^2+\dots+\hat{x}_k^2-\hat{x}_{k+1}^2-\dots-\hat{x}_{k+l}^2-1=0$$
+\ul{Fall 3:}  Es gebe ein \(r\in\{k+l+1,\dots,n\}\) mit \(c_{0r}\neq 0\). O.E. gelte \(r=k+l+1\).\\
+Führe nun folgende Koordinatentransformation durch: \(\tilde{x}_i\mapsto \hat{x}_i\) für \(i\neq k+l+1\) und \(\hat{x}_{k+l+1}\mapsto c_{0k+l+1}\hat{x}_{k+l+1}+\dots+c_{0n}\hat{x}_n+\frac{d_{00}}{2}\).\\
+Im neuen Koordinatensystem lautet die Gleichung von \(Q\) dann \(\hat{x}_1^2+\dots+\hat{x}_k^2-\hat{x}_{k+1}^2-\dots-\hat{x}_{k+l}+2\hat{x}_{k+l+1}=0\).
+\qed
+\subsubsection{Beispiel}
+Eine Quadrik \(Q\subseteq\mathbb{R}^3\) sei definiert durch \(f(x_1,x_2,x_3)=x_1^2+5x_2^2+9x_3^2+4x_1x_2+2x_1x_3+10x_2x_3-2x_3-2=0\).\\
+Wir bilden die beschreibende Matrix \(\overline{A}\) und transformieren sie in die gewünschte Gestalt: TODO Schritte\\
+Im neuen Koordinatensystem \(\begin{pmatrix}
+1\\
+\tilde{x}_1\\
+\tilde{x}_2\\
+\tilde{x}_3
+\end{pmatrix}=\overline{T}^{-1}\begin{pmatrix}
+1\\
+x_1\\
+x_2\\
+x_3
+\end{pmatrix}\) gilt also
+$$Q=\{(\tilde{x}_1,\tilde{x}_2,\tilde{x}_3)\in\mathbb{R}^3|\tilde{x}_1^2+\tilde{x}_2^2-\tilde{x}_3^2-1=0\}\text{ "Einschaliges Hyperboloid"}$$
+\begin{itemize}
+\item[(1)] \(x^2+y^2-z^2=0\) Kreiskegel
+\item[(2)] \(x^2+y^2-z^2-1=0\) Einschaliges Hyperboloid
+\item[(3)] \(x^2+y^2-2z=0\) Elliptisches Paraboloid
+\item[(4)] \(x^2-y^2-z^2-1=0\) Zweischaliges Hyperboloid
+\end{itemize}
+\subsection{Projektive Räume}
+Sei \(K\) ein Körper mit \(\geq 3\) Elementen und sei \(V\) ein \(n\)-dimensionaler \(K\)-Vektorraum.
+\subsubsection{Definition}
+Die Menge aller 1-dimensionalen \(K\)-Untervektorräume von \(V\) wird mit \(\mathbb{P}(V)\) bezeichnet und heißt der zu \(V\) \ul{assoziierte projektive Raum}.\\
+Die Elemente von \(\mathbb{P}(V)\) heißen \ul{Punkte}. Die \ul{Dimension} von \(\mathbb{P}(V)\) wird definiert als \(dim_K(V)-1\).
+\subsubsection{Bemerkung}
+Man kann \(\mathbb{P}(V)\) alternativ auch wie folgt definieren: Definiere eine Äquivalenzrelation \(\sim\) auf \(V\backslash\{0\}\) durch \(v\sim v'\Leftrightarrow v=\lambda v'\) mit \(\lambda\in K\backslash\{0\}\).\\
+Die Menge der Äquivalenzklassen ist \(\mathbb{P}(V)\). Die Äquivalenzklassen sind genau die Geraden durch 0 in \(V\).
+\subsubsection{Definition}
+Sei \(V=K^{n+1}\) und \(v=(p_0,p_1,\dots,p_n)\in K^{n+1}\backslash\{0\}\). Der Punkt \(K\cdot v\) (bzw. \(\left[v\right]\) in \(\mathbb{P}(K^{n+1})\)) wird auch mit \((p_0:p_1:\dots:p_n)\) bezeichnet. Dieses Tupel heißt auch ein \ul{homogenes Koordinatentupel} von \(p=\left[v\right]\).\\
+Für \(\lambda\in K\backslash\{0\}\) gilt \((p_0:p_1:\dots:p_n)=(\lambda p_0:\lambda p_1:\dots:\lambda p_n)\).
+\subsubsection{Beispiel}
+Sei \(K=\mathbb{R}\) und \(V=\mathbb{R}^2\).\\
+Jeder Punkt von \(\mathbb{P}(\mathbb{R}^2)\) entspricht einem Schnittpunkt mit der Geraden \(y=1\).\\
+Dazu kommt noch ein unendlich ferner Punkt ("Schnittpunkt von \(y=1\) mit \(y=0\)").\\
+Jeder Punkt von \(\mathbb{P}(\mathbb{R}^2)\) entspricht einem Punkt des oberen Halbkreises, wobei aber \((-1,0)\) und \((1,0)\) identifiziert werden müssen.\\
+Topologisch entspricht \(\mathbb{P}(\mathbb{R}^2)\) dem Kreis \(S^1\).\\
+Schreibweise: \(\mathbb{P}^1_\mathbb{R}\)
+\subsubsection{Beispiel}
+Sei \(K=\mathbb{C}\) und \(V=\mathbb{C}^2\). Wende die stereografische Projektion an:\\
+Identifiziere \(\mathbb{C}=\{x+iy|x,y\in\mathbb{R}\}\) mit der (x,y)-Ebene.\\
+Dann entspricht jede Gerade \(\mathbb{C}\cdot (z_1,z_2)\) in \(\mathbb{C}^2\) außer der Geraden \(\mathbb{C}\cdot (0,1)\) einem eindeutigen Punkt \(p\in \mathbb{C}\). Die Zahl \(p\in\mathbb{C}\) entspricht dem Punkt \(\phi(p)\) auf der Kugeloberfläche \(S^2\). Für \(\abs{p}\rightarrow\infty\) nähert sich die Gerade \(\mathbb{C}\cdot (1,p)\) der Geraden \(\mathbb{C}\cdot (0,1)\) an und \(\phi(p)\rightarrow N\). Also gilt \(\mathbb{P}(\mathbb{C}^2)\hat{=}S^2\) als Punktmenge.\\
+Algebraisch: \((p_0,p_1)\in\mathbb{P}_\mathbb{C}^1=\mathbb{P}(\mathbb{C}^2)\) liefert 2 Fälle:\\
+\(p_0\neq 0\): \((p_0:p_1)=(1:\frac{p_1}{p_0})\) und \(p_0=0\), \(p_1\neq 0\): \((0:p_1)=(0:1)\)
 \end{document}
 
 
