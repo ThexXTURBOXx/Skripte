@@ -1747,8 +1747,68 @@ Sei \(K=\mathbb{C}\) und \(V=\mathbb{C}^2\). Wende die stereografische Projektio
 Identifiziere \(\mathbb{C}=\{x+iy|x,y\in\mathbb{R}\}\) mit der (x,y)-Ebene.\\
 Dann entspricht jede Gerade \(\mathbb{C}\cdot (z_1,z_2)\) in \(\mathbb{C}^2\) außer der Geraden \(\mathbb{C}\cdot (0,1)\) einem eindeutigen Punkt \(p\in \mathbb{C}\). Die Zahl \(p\in\mathbb{C}\) entspricht dem Punkt \(\phi(p)\) auf der Kugeloberfläche \(S^2\). Für \(\abs{p}\rightarrow\infty\) nähert sich die Gerade \(\mathbb{C}\cdot (1,p)\) der Geraden \(\mathbb{C}\cdot (0,1)\) an und \(\phi(p)\rightarrow N\). Also gilt \(\mathbb{P}(\mathbb{C}^2)\hat{=}S^2\) als Punktmenge.\\
 Algebraisch: \((p_0,p_1)\in\mathbb{P}_\mathbb{C}^1=\mathbb{P}(\mathbb{C}^2)\) liefert 2 Fälle:\\
-\(p_0\neq 0\): \((p_0:p_1)=(1:\frac{p_1}{p_0})\) und \(p_0=0\), \(p_1\neq 0\): \((0:p_1)=(0:1)\)
+\(p_0\neq 0\): \((p_0:p_1)=(1:\frac{p_1}{p_0})\) und \(p_0=0\), \(p_1\neq 0\): \((0:p_1)=(0:1)\)\\
+\ul{Bsp.:} \(\mathbb{P}_\mathbb{R}^1\): TODO Skizze\\
+Hier müssen \(\bullet=(-1,0)\) und \(\times=(1,0)\) identifiziert werden. Topologisch \(S^1\)
+\subsubsection{Beispiel}
+Sei \(K=\mathbb{R}\) und \(V=\mathbb{R}^3\). Betrachte \(\mathbb{P}_\mathbb{R}^2=\mathbb{P}(\mathbb{R}^3)\)\\
+\ul{Skizze:} TODO SKIZZE\\
+Jede Gerade durch \(0=(0, 0, 0)\), die nicht in der (x,y)-Ebene liegt, schneidet die untere Hälfte der Einheitssphäre \(S^2\) in genau einem Punkt.\\
+Auf dem Rand \(\{(x,y,0)|x^2+y^2=1\}\) müssen gegenüberliegende Punkte identifiziert werden (Der Rand ist eine Version von \(\mathbb{P}_\mathbb{R}^1\)).\\
+Die Menge \(\mathbb{P}_\mathbb{R}^2\) ist nicht ohne Überschneidungen in \(\mathbb{R}^3\) einbettbar.\\
+In \(\mathbb{P}_\mathbb{R}^2\) schneiden sich zwei Geraden stets genau in einem Punkt.
+\subsubsection{Definition}
+(a) Eine Teilmenge \(U\subseteq\mathbb{P}(V)\) heißt ein \ul{projektiver Unterraum}, wenn
+$$\bigcup_{K\cdot v\in U}K\cdot v$$
+ein \(K\)-Untervektorraum von \(V\) ist.\\
+Ist \(W\) dieser Untervektorraum, so schreibe \(U=\mathbb{P}(W)\subseteq\mathbb{P}(V)\).\\
+(b) In der Situation von (a) sei \(dim(\mathbb{P}(W))=dim_K(W)-1\).\\
+Ist \(dim(\mathbb{P}(W))=1\), so heißt diese Menge eine projektive Gerade. Ist \(dim(\mathbb{P}(W))=2\), so heißt diese Menge eine projektive Ebene.
+\subsubsection{Beispiel}
+Sei \(K=\mathbb{F}_q\) ein endlicher Körper (mit \(q=p^e\), \(e>0\), \(p\) prim).\\
+(a) Der \(K\)-Vektorraum \(K^{n+1}\) hat \(q^{n+1}\) Elemente. Jede Gerade durch 0 in \(K^{n+1}\) hat \(q-1\) Punkte \(\neq 0\). Jede solche Menge entspricht genau einem Punkt in \(\mathbb{P}(K^{n+1})\). Also gilt: \(\#\mathbb{P}_K^n=\#\mathbb{P}(K^{n+1})=\frac{q^{n+1}-1}{q-1}=1+q+q^2+\dots+q^n\).\\
+(b) Durch je zwei Punkte in \(\mathbb{P}_K^2\) geht genau eine Gerade. Jede projektive Gerade hat \(q+1\) Punkte. Auf jeder projektiven Gerade gibt es also \(\begin{pmatrix}
+q+1\\
+2
+\end{pmatrix}\) Punktepaare. Insgesamt gibt es also \(\begin{pmatrix}
+1+q+q^2\\
+2
+\end{pmatrix}/\begin{pmatrix}
+q+1\\
+2
+\end{pmatrix}=\dots=1+q+q^2\).
+\subsubsection{Definition}
+Sei \(K\) ein Körper und \(V=K^{n+1}\).\\
+(a) Die Punktmenge \(H_\infty=\{(0:a_1:\dots:a_n)|a_i\in K,(a_1,\dots,a_n)\neq (0,\dots,0)\}\subseteq\mathbb{P}_K^n\) heißt die \ul{unendlich ferne Hyperebene}.\\
+(b) Die Abbildung \(z:\underset{(a_1,\dots,a_n)\mapsto(1:a_1:\dots:a_n)}{\mathbb{A}_K^n\hookrightarrow \mathbb{P}_K^n}\) ist eine Injektion. Sie heißt die \ul{kanonische Einbettung} von \(\mathbb{A}_K^n\) in \(\mathbb{P}_K^n\).
+\subsubsection{Satz}
+(a) Die Abbildung \(\underset{(a_1:\dots:a_n)\mapsto(0:a_1:\dots:a_n)}{\mathbb{P}_K^{n-1}\rightarrow H_\infty}\) ist wohldefiniert und bijektiv.\\
+(b) Die Abbildung \(\zeta\) ist injektiv und \(\mathbb{P}_K^n=H_\infty\cupdot \underbrace{Bild(\zeta)}_{\tilde{=}\mathbb{A}_K^n}\).\\
+\proof
+"(a)" Seien \((a_1,\dots,a_n),(b_1,\dots,b_n)\in K^n\) mit \((a_1:\dots:a_n)=(b_1:\dots:b_n)\). Also gibt es ein \(\lambda\in K\backslash\{0\}\) imt \((b_1,\dots,b_n)=(\lambda a_1,\lambda a_2, \dots,\lambda a_n)\). Dann folgt \((0,b_1,\dots,b_n)=(0,\lambda a_1,\dots,\lambda a_n)=\lambda(0,a_1,\dots,a_n)\) und somit \((0:b_1:\dots:b_n)=(0:a_1:\dots:a_n)\). Daher ist \(\phi\) wohldefiniert. Die Bijektivität von \(\phi\) ist klar.\\
+"(b)" \(\mathbb{P}_K^n=\{(0:a_1:\dots:a_n)|a_i\in K, (a_1,\dots,a_n)\neq 0\}\cupdot\{(b_0:\dots:b_n)\in \mathbb{P}_K^n|b_0\neq 0\}=H_\infty\cupdot\{(1:\frac{b_1}{b_0}:\dots:\frac{b_n}{b_0})|c_1,\dots,c_n\in K\}=H_\infty\cupdot\zeta (\mathbb{A_K^n})\).
+\qed
+\subsubsection{Satz}
+Seien \(V\) ein (\(n+1\))-dimensionaler \(K\)-Vektorraum und \(U_1,U_2\subseteq\mathbb{P}(V)\) projektive Unterräume. Gilt \(dim(U_1)+dim(U_2)\geq n\), so folgt \(U_1\cap U_2\ne\varnothing\).\\
+Genauer ist \(U_1\cap U_2\) in diesem Fall ein projektiver Unterraum von \(V\). Insbesondere schneiden sich zwei Geraden in \(\mathbb{P}_K^2\) stets in genau einem Punkt.\\
+\proof
+Sei \(U_1=\mathbb{P}(W_1)\) und \(U_2=\mathbb{P}(W_2)\) mit Untervektorräumen \(W_1\), \(W_2\) von \(V\). Dann gilt offenbar \(U_1\cap U_2=\mathbb{P}(W_1\cap W_2)\).\\
+Dann gilt: \(dim(U_1)+dim(U_2)=dim_K(W_1)-1+dim_K(W_2)-1\geq n=dim_K(V)-1\), also \(dim_K(W_1)+dim_K(W_2)\geq dim_K(V)+1\).\\
+Offenbar gilt: \(dim_K(W_1+W_2)\leq dim_K(V)\). Nach der Dimensionsformel folgt:\\
+\(dim_K(W_1\cap W_2)=dim_K(W_1)+dim_K(W_2)-dim_K(W_1+W_2)\geq dim_K(V)+1-dim_K(V)=1\). Dies liefert \(dim(U_1\cap U_2)\geq 0\), also \(U_1\cap U_2\neq \varnothing\).\\
+\ul{Zusatz:} Im \(\mathbb{P}_K^2\) schneiden sich zwei Geraden also stets in mindestens einem Punkt. Hätte der Schnitt \(\geq 2\) Punkte, so wären die Geraden gleich.
+\qed
+\subsubsection{Definition}
+Seien \(V,W\) zwei endlich-dimensionale \(K\)-Vektorräume.\\
+(a) Eine Abbildung \(\phi:\mathbb{P}(V)\rightarrow\mathbb{P}(W)\) heißt eine \ul{projektive Abbildung}, wenn es eine injektive \(K\)-lineare Abbildung \(\psi:V\rightarrow W\) gibt mit \(\phi(K\cdot v)=K\cdot\psi(v)\) für alle \(v\in V\backslash\{0\}\). In diesem Fall schreiben wir auch \(\phi=\mathbb{P}(\psi)\).\\
+(b) Eine bijektive projektive Abbildung \(\phi:\mathbb{P}(V)\rightarrow\mathbb{P}(W)\) heißt auch eine \ul{Projektivität}.
+\subsubsection{Bemerkung}
+(a) Existiert eine projektive Abbildung \(\phi:\mathbb{P}(V)\rightarrow\mathbb{P}(W)\), so gilt \(dim_K(V)\leq dim_K(W)\).\\
+(b) Zwei \(K\)-lineare Abbildungen \(\psi\), \(\tilde{\psi}:V\rightarrow W\) erfüllen \(\mathbb{P}(\psi)=\mathbb{P}(\tilde{\psi})\) genau dann, wenn es ein \(\lambda\in K\backslash\{0\}\) gibt mit \(\tilde{\psi}=\lambda\cdot\psi\).
+\subsubsection{Beispiel}
+Gilt \(n\leq m\), so ist \(\underset{(a_0:\dots:a_n)\mapsto(a_0:\dots:a_n:0:\dots:0)}{\mathbb{P}_K^n\hookrightarrow\mathbb{P}_K^m}\) eine projektive Abbildung.
 \end{document}
+
 
 
 
