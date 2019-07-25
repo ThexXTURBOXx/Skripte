@@ -441,9 +441,9 @@ In der Basis \(B'=(\phi^{s-1}(v),\phi^{s-2}(v),\dots,v)\) gilt \(M_{B'}^{B'}(\ph
 Sei \(\delta_s\geq 1\) und \(\{v_1,\dots,v_\delta\}\) eine Basis von \(U_s\). Dann ist \(B=\{v_1,\phi(v_1),\dotsm\phi^{s-1}(v_1)\}\cup\dots\cup\{v_\delta,\phi(v_\delta),\dotsm\phi^{s-1}(v_\delta)\}\) eine Basis von \(W=U_s\oplus\phi(U_s)\oplus\dots\oplus\phi^{s-1}(U_s)\). Die Matrix von \(\phi|W\) bzgl. \(B\) ist blockdiagonal mit \(\delta_s\) Jordan-Kästchen auf der Hauptdiagonalen \(M_B^B(\phi|W)\)=TODO MATRIX  TODO CAPREV u.\\
 \subsubsection{Satz (Die Jordansche Normalform)}
 Sei \(\phi\in End_K(V)\) mit linearen Eigenfaktoren, also mit \(\chi_\phi(x)=(x-\lambda_1)^{a_1}\cdot\dots\cdot(x-\lambda_s)^{a_s}\). Dann gibt es eine Basis \(B\) in \(V\), so dass gilt: \(M_B^B(\phi)=\begin{pmatrix}
-\lambda_1 I_{a_1}N_1 & & 0 \\
+\lambda_1 I_{a_1}+N_1 & & 0 \\
  & \ddots & \\
-0 & & \lambda_s I_{a_s}N_s
+0 & & \lambda_s I_{a_s}+N_s
 \end{pmatrix}\) mit \(\lambda_i\cdot I_{a_i}+N_i=\begin{pmatrix}
 \mbox{\fbox{\(\begin{matrix}
 		\lambda_i & 1 & & 0\\
@@ -1807,8 +1807,104 @@ Seien \(V,W\) zwei endlich-dimensionale \(K\)-Vektorräume.\\
 (b) Zwei \(K\)-lineare Abbildungen \(\psi\), \(\tilde{\psi}:V\rightarrow W\) erfüllen \(\mathbb{P}(\psi)=\mathbb{P}(\tilde{\psi})\) genau dann, wenn es ein \(\lambda\in K\backslash\{0\}\) gibt mit \(\tilde{\psi}=\lambda\cdot\psi\).
 \subsubsection{Beispiel}
 Gilt \(n\leq m\), so ist \(\underset{(a_0:\dots:a_n)\mapsto(a_0:\dots:a_n:0:\dots:0)}{\mathbb{P}_K^n\hookrightarrow\mathbb{P}_K^m}\) eine projektive Abbildung.
+\subsection{Klassifikation projektiver reeller Quadriken}
+\subsubsection{Definition}
+Ein \ul{homogenes Polynom zweiten Grades} in \(\mathbb{R}\left[x_0,c_1,\dots,x_n\right]\) ist eine Linearkombination der Form
+$$f=\sum_{0\leq i<j\leq n}a_{ij}x_ix_j\text{ mit }a_{ij}\in\mathbb{R}.$$
+\subsubsection{Beispiel}
+(a) Ein homogenes Polynom vom Grad 2 in \(\mathbb{R}\left[x_0,x_1\right]\) ist von der Form \(f=a_{00}x_0^2+a_{01}x_ox_1+a_{11}x_1^2\) mit \(a_{ij}\in\mathbb{R}\).\\
+(b) Die Gleichung \(x_1^2+x_2^2-x_3^2\) ist ein homogenes Polynom vom Grad 2 in \(\mathbb{R}\left[x_0,x_1,x_2,x_3\right]\).
+\subsubsection{Bemerkung}
+Für ein homogenes Polynom vom Grad 2 und \((a_0,a_1,\dots,a_n)\in\mathbb{R}^n\) und \(\lambda\in\mathbb{R}\backslash\{0\}\) gilt
+$$f(\lambda p_0,\lambda p_1,\dots,\lambda p_n)=\sum_{0\leq i < j\leq n}a_{ij}\lambda p_i \lambda p_j=\lambda^2\cdot f(p_0,\dots,p_n).$$
+Also ist wohldefiniert, ob \(f\) an einem Punkt \((p_0:p_1:\dots:p_n)\in\mathbb{P}_\mathbb{R}^n\) eine Nullstelle besitzt.\\
+Schreibweise: \((p_0:\dots:p_n)\in Z(f)\)
+\subsubsection{Definition}
+(a) Eine Teilmenge \(K\subseteq \mathbb{R}^{n+1}\) heißt ein \ul{Kegel}, wenn für \((p_0,\dots,p_n)\in K\) und \(\lambda\in\mathbb{R}\backslash\{0\}\) auch \((\lambda p_0,\dots,\lambda p_n)\in K\) gilt.\\
+(b) Eine Teilmenge \(Q\subseteq\mathbb{P}_\mathbb{R}^n\) heißt eine \ul{primitive Quadrik}, wenn es ein homogenes Polynom \(f\in\mathbb{R}\left[x_0,\dots,x_n\right]\) vom Grad 2 gibt mit \(Q=Z(f)\), bzw. \(Q=\mathbb{P}(C)\) mit \(C=Z(f)\subseteq\mathbb{R}^{n+1}\) (Kegel).
+\subsubsection{Beispiel}
+(a) Sei \(f=x_0^2-x_1^2-x_2^2\in\mathbb{R}\left[x_0,x_1,x_2\right]\). Dann ist \(C=Z(f)\subseteq\mathbb{P}_\mathbb{R}^2\) der Kreis, denn:\\
+\(\mathbb{A}_\mathbb{R}^2=D_+(x_0)\): \(Z(f|_{x_0=1})TODO EINGESCHR=Z(1-x_1^2-x_2^2)\) Einheitskreis (im affinen Teil von \(\mathbb{P}_\mathbb{R}^2\)).\\
+\(H_\infty=Z(x_0)\): \(x_1^2+x_2^2=0\Rightarrow x_1=x_2=0\). Also gilt \(C\cap H_\infty=\varnothing\).
+\subsubsection{Bemerkung (Homogene Polynome vom Grad 2 und Bilinearformen)}
+Sei \(f=\sum_{0\leq i<j\leq n}a_{ij}x_ix_j\in\mathbb{R}\left[x_0,\dots,x_n\right]\) ein homogenes Polynom vom Grad 2.\\
+Setze \(c_{ij}=\begin{cases}
+a_{ij} & \text{falls }i=j\\
+\frac{1}{2}a_{ij} & \text{falls }i<j\\
+\frac{1}{2}a_{ji} & \text{falls }i>j
+\end{cases}\).\\
+Dann ist \(A=(c_{ij})\in Mat_{n+1}(\mathbb{R})\) symmetrisch und \(f(x_0,\dots,x_n)=(x_0,\dots,x_n)A\begin{pmatrix}
+x_0\\
+\vdots\\
+x_n
+\end{pmatrix}\).\\
+Umgekehrt liefert jede symmetrische Bilinearform \(\Phi:\mathbb{R}^{n+1}\times \mathbb{R}^{n+1}\rightarrow\mathbb{R}\) mit Gramscher Matrix \(B=G_\xi(\Phi)\) ein homogenes Polynom vom Grad 2 durch \(q(x_0,\dots,x_n)=\Phi(v,v)=(x_0,\dots,x_n)\cdot B\cdot \begin{pmatrix}
+x_0\\
+\vdots\\
+x_n
+\end{pmatrix}\) für \(v=(x_0,\dots,x_n)\).\\
+Das Polynom \(q\) heißt auch die zu \(\Phi\) assoziierte \ul{quadratische Form}.\\
+\ul{Wdh.:} Eine Abbildung \(\phi:\mathbb{P}_\mathbb{R}^n\rightarrow\mathbb{P}_\mathbb{R}^n\) heißt eine \ul{Projektivität}, wenn es eine bijektive \(\mathbb{R}\)-lineare Abbildung \(\psi:\mathbb{R}^{n+1}\rightarrow\mathbb{R}^{n+1}\) gibt mit \(\phi(\mathbb{R}\cdot v)=\mathbb{R}\cdot\psi(v)\) für \(v\in \mathbb{R}^{n+1}\backslash\{0\}\).
+\subsubsection{Satz}
+Sei \(Q\subseteq \mathbb{P}_\mathbb{R}^n\) eine Quadrik und \(\phi:\mathbb{P}_\mathbb{R}^n\rightarrow\mathbb{P}_\mathbb{R}^n\) eine Projektivität. Dann ist \(\phi(Q)\subseteq\mathbb{P}_\mathbb{R}^n\) wieder eine Quadrik.
+\subsubsection{Beispiel}
+Sei \(C=Z(x_0^2-x_1^2-x_2^2)\subseteq\mathbb{P}_\mathbb{R}^2\) und \(\phi:\mathbb{P}_\mathbb{R}^2\rightarrow\mathbb{P}_\mathbb{R}^2\) gegeben durch \(M_\xi(\psi)=\begin{pmatrix}
+0 & 2 & 0\\
+1 & 0 & 1\\
+2 & 1 & 0
+\end{pmatrix}\) (mit \(det = 4\)).\\
+Dann gilt: \(C=\{(x_0:x_1:x_2)\in\mathbb{P}_mathbb{R}^2|(x_0,x_1,x_2)\begin{pmatrix}
+1 & 0 & 0\\
+0 & -1 & 0\\
+0 & 0 & -1
+\end{pmatrix}\begin{pmatrix}
+x_0\\
+x_1\\
+x_2
+\end{pmatrix}=0\}\) und \(T^{-1}=\begin{pmatrix}
+-\frac{1}{4} & 0 & \frac{1}{2}\\
+\frac{1}{2} & 0 & 0\\
+\frac{1}{4} & 1 & -\frac{1}{2}
+\end{pmatrix}\).\\
+Es folgt: \((T^{-1})^{tr}AT=\begin{pmatrix}
+-\frac{1}{8} & -\frac{1}{4} & 0\\
+-\frac{1}{4} & -1 & \frac{1}{2}\\
+0 & \frac{1}{2} & 0
+\end{pmatrix}\) und \(\phi(C)=\{(x_0:x_1:x_2)\in\mathbb{P}_\mathbb{R}^2|\}\)TODO WHATEVER\\
+\ul{Affiner Teil:} \(\phi(C)\cap D_+(x_0)=\{(x_1,x_2)\in\mathbb{R}^2|8x_1^2+4x_1-8x_1x_2+1=0\}\)\\
+\(=\{(x_1,x_2)\in\mathbb{R}^2|x_1^2-x_1x_2+\frac{1}{2}x_1+\frac{1}{8}=0\}\) (Hyperbel)\\
+TODO WHATEVER\\
+\ul{Unendlich ferner Teil:} \(\phi(C)\cap H_\infty: 8x_1^2-8x_1x_2=0\)\\
+\(x_1(x_1-x_2)=0\)\\
+\(\phi(c)\cap H_\infty=\{(0:0:1),(0:1:1)\}\)
+\subsubsection{Definition}
+Zwei Quadriken \(Q,\tilde{Q}\subseteq\mathbb{P}_\mathbb{R}^n\) heißen \ul{geometrisch äquivalent}, wenn es eine Projektivität \(\phi:\mathbb{P}_\mathbb{R}^n\rightarrow\mathbb{P}_\mathbb{R}^n\) gibt mit \(\phi(Q)=\tilde{Q}\).
+\subsubsection{Beispiel}
+Ein Kreis in \(\mathbb{P}_\mathbb{R}^2\) kann geometrisch äquivalent sein zu einer Hyperbel.\\
+Ein Kreis ist \ul{nicht} geometrisch äquivalent zu eine Geradenkreuz.
+\subsubsection{Theorem (Die projektive Hauptachsentransformation)}
+Zu jeder Quadrik \(Q\subseteq\mathbb{P}_\mathbb{R}^n\) gibt es eine Quadrik \(\tilde{Q}\subseteq\mathbb{P}_\mathbb{R}^n\), die zu \(Q\) geometrisch äquivalent ist und von der Form \(\tilde{Q}=Z(x_0^2+x_1^2+\dots+x_k^2-x_{k+1}^2-\dots-x_{k+l}^2)\) mit \(-1\leq k\leq k+l\leq n\), wobei \(\tilde{Q}\) eine Quadrik in Hauptachsenform.
+\subsubsection{Beispiel}
+Sei \(Q=Z(x_1^2-x_2^2-2x_0x_3)\subseteq \mathbb{P}_\mathbb{R}^3\).Wir bringen die Matrix \(A=\begin{pmatrix}
+0 & 0 & 0 & -1\\
+0 & 1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+-1 & 0 & 0 & 0
+\end{pmatrix}\) auf Hauptachsenform:\\
+\(B=\begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & -1 & 0\\
+0 & 0 & 0 & -1
+\end{pmatrix}\), \(T=\begin{pmatrix}
+1 & 0 & 0 & 1\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+-\frac{1}{2} & 0 & 0 & \frac{1}{2}
+\end{pmatrix}\).\\
+Sei \(\phi:\mathbb{P}_\mathbb{R}^3\) def. durch \(T^{-1}\).\\
+Dann gilt \(\phi(Q)=Z(x_0^2+x_1^2-x_2^2-x_3^2)\)
 \end{document}
-
 
 
 
