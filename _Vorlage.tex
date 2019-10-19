@@ -16,6 +16,9 @@
 \usepackage{stmaryrd}
 \usepackage{mathtools}
 \usepackage{ulem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{scalerel}
+\usepackage{stackengine}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -27,6 +30,9 @@
 \MakeOuterQuote{"}
 
 \setcounter{secnumdepth}{4}
+
+\renewcommand\hateq{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
 
 \newcommand*\circled[1]{
   \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!

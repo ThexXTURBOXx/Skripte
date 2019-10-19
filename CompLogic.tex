@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 \documentclass[a4paper]{article}
 
 \usepackage[english]{babel}
@@ -85,17 +86,42 @@
 \newpage
 
 \section{What is logic?}
-TODO Rest\\
+\ul{Logical Statement:} Sentence/proposition, which evaluates to $TRUE$ or $FALSE$\\
+\ul{Logical connectives:} If $A$ and $B$ are logical statements, then $A\wedge B$ is another one\\
+\ul{Logical system:}
+\begin{enumerate}[(1)]
+	\item \ul{Syntax:}
+	\begin{itemize}
+		\item Atomic formulas are connected by operations
+		\item There is a set of rules, which tell you, if the formula is well-formed
+	\end{itemize}
+	\item \ul{Semantics:}
+	\begin{itemize}
+		\item There is a set of rules, which tell you, how to assign truth values to formulas, given the values of the atomic formulas
+	\end{itemize}
+	\item \ul{Logical calculus:}
+	\begin{itemize}
+		\item Always $TRUE$: Tautology
+		\item Always $FALSE$: Unsatisfiable
+		\item Sometimes $TRUE$: Satisfiable
+		\item There is a set of rules such that, given a formula $F$ and an assignment for the truth values of the atomic formulas, it calculates the truth value of $F$.
+		\item The algorithm should be able to decide if $F$ is a tautology/satisfiable
+	\end{itemize}
+\end{enumerate}
 \section{Propositional Logic}
 \ul{Syntax}:
+Atomic formulas are called \ul{propositions} denoted by $A_0,A_1,\dots$ (or $A,B,C,\dots$)\\
+A \ul{formula} in propositional logic is obtained by recursively applying the following rules:
+\begin{enumerate}[(1)]
+	\item An atomic formula is a formula
+	\item Given a formula $F$, also $^\neg F$ is a formula ("not $F$")
+	\item Given two formulas $F,G$, also $F\wedge G$ ("$F$ and $G$") and $F\vee G$ ("$F$ or $G$") are formulas
+\end{enumerate}
+Let $F,G$ be formulas.
 \begin{enumerate}[(a)]
-	\item Atomic formulas are propositions: $A_0,A_1,\dots$ or $A,B,\dots$
-	\item A formula is obtained by repeatedly applying the following rules:
-	\begin{enumerate}[(1)]
-		\item An atomic formula is a formula
-		\item Given a formula $F$, also $^\neg F$ is a formula ("not $F$")
-		\item Given two formulas $F,G$, also $F\wedge G$ and $F\vee G$ are formulas
-	\end{enumerate}
+	\item Instead of $^\neg F\vee G$, we also write $F\Rightarrow G$ ("$F$ implies $G$")
+	\item Instead of $(^\neg F\vee G)\wedge (F\vee ^\neg G)$ we also write $F\Leftrightarrow G$ ("$F$ is equivalent to $G$")
+	\item Instead of $F_1\wedge\dots\wedge F_n$ we also write $\bigwedge_{i=1}^n F_i$ and instead of $F_1\vee\dots\vee F_n$ also $\bigvee_{i=1}^n F_i$
 \end{enumerate}
 \ul{Semantics}:
 \begin{enumerate}[(a)]
@@ -105,7 +131,7 @@ TODO Rest\\
 	Then we define $\hat{\alpha}:\hat{M}\rightarrow\{0,1\}$ recursively as follows:
 	\begin{enumerate}[(1)]
 		\item If $A\in M$, then we let $\hat{\alpha}(A)=\alpha(A)$
-		\item If $\alpha(F)$ is defined, then we let $\hat{\alpha}(^\neq F)=1-\hat{\alpha}(F)$
+		\item If $\alpha(F)$ is defined, then we let $\hat{\alpha}(^\neg F)=1-\hat{\alpha}(F)$
 		\item Given formulas $F,G$ for which $\hat{\alpha}(F),\hat{\alpha}(G)$ have been defined, we let $\hat{\alpha}(F\wedge G)=\begin{cases}
 		1 & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1\\
 		0 & \text{otherwise}
@@ -162,8 +188,8 @@ Let $F$ be a formula. Consider the following sequence of instructions:
 \begin{enumerate}[(1)]
 	\item Replace all occurrences of "$\Rightarrow$" and "$\Leftrightarrow$" by their definition
 	\item Replace each subformula of the form $^\neg$$^\neg G$ by $G$.
-	\item Replace in $F$ every subformula of the form $^\neg (G\vee H)$ by $^\neg G\wedge ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply Step (2).
-	\item Replace in $F$ every subformula of the form $^\neg (G\wedge H)$ by $^\neg G\vee ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply Step (2).
+	\item Replace in $F$ every subformula of the form $^\neg (G\vee H)$ by $^\neg G\wedge ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply step (2).
+	\item Replace in $F$ every subformula of the form $^\neg (G\wedge H)$ by $^\neg G\vee ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply step (2).
 	\item Repeat (3) and (4) as often as possible.
 	\item Replace in $F$ every subformula of the form $G\vee (H\wedge K)$ by $(G\vee H)\wedge (G\vee K)$
 	\item Replace in $F$ every subformula of the form $(G\wedge H)\vee K$ by $(G\vee K)\wedge (H\vee K)$

@@ -84,7 +84,7 @@
 \tableofcontents
 \newpage
 
-\section{Grundbegriffe}
+\section{Formale Sprachen}
 \begin{tabular}{c|l}
 $\Sigma$ & Alphabet: endliche, nicht-leere Menge von Zeichen/Symbolen\\
 $w$ & Wort über Alphabet $\Sigma$: endliche Folge von Zeichen aus $\Sigma$ \\
@@ -106,10 +106,30 @@ $L\subseteq\Sigma^*$ formale Sprache\\
 $L_1L_2=\{w_1w_2\ |\ w_1\in L_1,\ w_2\in L_2\}$\\
 $L^n=\underbrace{LLL\dots L}_n$\\
 Seien $L,\ L_1,\ L_2\subseteq \Sigma^*$\\
-
-TODO NACHHOLEN
-
-\section{TODO Überschrift Folie}
+$L^*:=\bigcup_{i\geq 0}L^i$\\
+$L^+:=\bigcup_{i\geq 1}L^i$\\
+$L^c:=\Sigma^*\backslash L$\\
+$L_1\backslash L_2:=\{w\in\Sigma^*\vert\exists z\in L_2:wz\in L_1\}$\\
+auch: $\cup,\cap,\backslash$\\
+$L$ regulär, wenn eine der folgenden Punkte gilt:
+\begin{itemize}
+	\item Verankerung:
+	\begin{itemize}
+		\item $L=\{a\}$ mit $a\in\Sigma$ oder
+		\item $L=\varnothing$ oder
+		\item $L=\{\epsilon\}$ oder
+	\end{itemize}
+	\item Induktion:
+	\begin{itemize}
+		\item $L=L_1\cup L_2$ oder
+		\item $L=L_1\cdot L_2$ oder
+		\item $L=L_1^*$
+	\end{itemize}
+	für zwei Sprachen $L_1,L_2$
+\end{itemize}
+$\epsilon=\{\epsilon\},\ a=\{a\}$\\
+$^*$ vor $\cdot$ vor $\cup$
+\section{Deterministische endliche Automaten}
 Zustand: Momentaufnahme eines Systems zu einem Zeitpunkt\\
 Übergang: Änderung des Zustands - spontan/aufgrund externer Eingaben\\
 Ein (deterministischer) endlicher Automat (DEA) ist ein Tupel $$M=\left(Q,\Sigma,\delta,s,F\right)$$
@@ -128,7 +148,7 @@ $\hat{\delta}(q,xa)=\delta(\hat{\delta}(q,x),a)$\\
 Jede reguläre Sprache wird von einem DEA akzeptiert.\\
 $L_1\cup L_2,\ L_1L_2,\ L_1^*$ werden von einem DEA akzeptiert.\\\\
 Sei $M=\left(Q,\Sigma,\delta,s,F\right)$ ein Automat mit $L(M)=A$.\\
-Dann akzeptiert der Automat $M'=\left(Q,\Sigma,\delta,s,Q\backslash F\right)$ die Sprache $L(M')=A^C$.\\\\
+Dann akzeptiert der Automat $M'=\left(Q,\Sigma,\delta,s,Q\backslash F\right)$ die Sprache $L(M')=A^c$.\\\\
 $L(M_3)=L(M_1)\cap L(M_2)$
 \end{document}
 

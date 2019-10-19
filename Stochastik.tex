@@ -19,6 +19,8 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{scalerel}
 \usepackage{stackengine}
+\usepackage{mathrsfs}
+\usepackage{eufrak}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -89,20 +91,20 @@ Die Menge aller möglichen Ausgänge/Ergebnisse $\omega$ eines Zufallsexperiment
 Eine Teilmenge $A\subseteq \Omega$, welcher eine Wahrscheinlichkeit zugeordnet werden soll, heißt \ul{Ereignis}.\\
 "A tritt ein", falls $\omega\in A$\\
 Für $\omega\in\Omega$ heißt $\{\omega\}\subseteq\Omega$ Elementarereignis.\\
-Ereignisraum $\mathcal{A}$: Menge aller Ereignisse in $\Omega$, d.h. $\mathcal{A}\subseteq\mathcal{P}$.\\
+Ereignisraum $\mathcal{A}$: Menge aller Ereignisse in $\Omega$, d.h. $\mathcal{A}\subseteq\mathcal{P}(\Omega)$.\\
 Seien $A$, $B$ Ereignisse.\\
 \begin{tabular}{ll}
 $A\cup B$ & "oder"\\
 $A\cap B$ & "und"\\
-$A^C=\overline{A}=\Omega\backslash A$ & "nicht"
+$A^c=\overline{A}=\Omega\backslash A$ & "nicht"
 \end{tabular}\\
 Sei $\Omega$ eine Menge. Ein Teilmengensystem $\mathcal{A}\subseteq\mathcal{P}(\Omega)$ heißt \ul{$\sigma$-Algebra} (in $\Omega$), falls
 \begin{enumerate}[1)]
 	\item $\Omega\in\mathcal{A}$
-	\item $A\in\mathcal{A}\Rightarrow A^C\in\mathcal{A}$
+	\item $A\in\mathcal{A}\Rightarrow A^c\in\mathcal{A}$
 	\item $A_1,A_2,\dots\in \mathcal{A}\Rightarrow \bigcup_{i=1}^\infty A_i\in\mathcal{A}$
 \end{enumerate}
-$(\Omega,\mathcal{A})$ heißt \ul{messbarer Raum}, Elemente $A\in\mathcal{A}$ heißen $\mathcal{A}$-messbare Teilmengen.\\
+$(\Omega,\mathcal{A})$ mit $\mathcal{A}$ $\sigma$-Algebra heißt \ul{messbarer Raum}, Elemente $A\in\mathcal{A}$ heißen $\mathcal{A}$-messbare Teilmengen.\\
 $\Omega$ beliebig $\Rightarrow$ $\mathcal{A}_1=\{\Omega,\varnothing\}$ ist die \ul{gröbste $\sigma$-Algebra}.\\
 $\mathcal{A}_2=\mathcal{P}(\Omega)$ ist die \ul{feinste $\sigma$-Algebra}.\\
 In einem höchstens abzählbaren Grundraum $\Omega$ betrachtet man in der Regel die feinste $\sigma$-Algebra $\mathcal{A}=\mathcal{P}(\Omega)$. Für überabzählbares $\Omega$ ist dies i.A. nicht sinnvoll (s. Kapitel 4).\\

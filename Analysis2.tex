@@ -1,0 +1,191 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{scalerel}
+\usepackage{stackengine}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\setcounter{secnumdepth}{4}
+
+\renewcommand\hateq{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+\newcommand*\circled[1]{
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\newcommand*{\obot}{\perp\mkern-20.7mu\bigcirc}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{Kapitel }
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\proof}{\ul{Beweis:}\\}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+\let\origepsilon\epsilon
+\let\epsilon\varepsilon
+
+\title{Analysis 2}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Metrik \& Topologie}
+Sei $X$ eine Menge.\\
+\ul{Metrik}: $d:X\times X\rightarrow\mathbb{R}_+$ Metrik, wenn:
+\begin{enumerate}[1)]
+	\item $d(x,y)=0\Leftrightarrow x=y$
+	\item $d(x,y)=d(y,x)$
+	\item $d(x,y)\leq d(x,z)+d(z,y)$
+\end{enumerate}
+\ul{Norm:} $\norm{\cdot}:X\rightarrow\mathbb{R}$ Norm, wenn:
+\begin{enumerate}[1)]
+	\item $\norm{x}\geq 0$ und $\norm{x}=0\Leftrightarrow x=0$
+	\item $\norm{cx}=\abs{x}\cdot\norm{x},\ c\in\mathbb{R}$
+	\item $\norm{x+y}\leq\norm{x}+\norm{y},\ x,y\in X$
+\end{enumerate}
+$\norm{\cdot}$ Norm $\Rightarrow$ $d(x,y)=\norm{x-y}$ induzierte Metrik
+\begin{tabbing}
+	\ul{Kugel}: \= $x\in X,\ r\in\mathbb{R}_+$\\
+	\> abgeschlossene Kugel: \=$B_{\leq r}(x):=\{y\in X:d(x,y)\leq r\}$ (mit Rand)\\
+	\> offene Kugel: \>$B_{<r}(x):=\{y\in X:d(x,y)<r\}$ (ohne Rand)
+\end{tabbing}
+\ul{Mengen}:
+\begin{enumerate}[1)]
+	\item $Y\subseteq X$ \ul{offen}, wenn $\forall y\in Y:\exists \epsilon>0:B_{<\epsilon}(y)\subseteq Y$
+	\item $Y$ \ul{abgeschlossen}, wenn $X\backslash Y$ offen
+\end{enumerate}
+Offene Kugel = offene Menge\\
+Abgeschlossene Kugel = abgeschlossene Menge\\
+$X$ metrischer Raum $\Rightarrow$
+\begin{enumerate}[1)]
+	\item $X$ und $\varnothing$ offen
+	\item Jede \ul{abzählbare} Vereinigung von offenen Mengen ist offen
+	\item Jeder \ul{endliche} Durchschnitt ist offen
+	\item $X$ und $\varnothing$ abgeschlossen
+	\item $\bigcup_{<\infty}\text{abg}=\text{abg}$
+	\item $\bigcap_{\infty}\text{abg}=\text{abg}$
+\end{enumerate}
+\ul{Umgebung}: $U\subseteq X$ von $x$: $\exists\epsilon>0:B_{<\epsilon}(x)\subseteq U$\\
+\ul{Abschluss}:
+\begin{enumerate}[1)]
+	\item $x\in X$ \ul{Berührpunkt}/\ul{Kontaktpunkt} zu $Y\subseteq X$, wenn $\forall \text{Umgebung }U\text{ von }x:U\cap Y\neq\varnothing$
+	\item \ul{Abschluss} von $Y$: $\overline{Y}=\{\text{Kontaktpunkte an }Y\}$
+\end{enumerate}
+$Y,Y'\subseteq X$ $\Rightarrow$
+\begin{enumerate}[1)]
+	\item $Y\subseteq\overline{Y},\ \overline{\overline{Y}}=\overline{Y}$
+	\item $\overline{Y\cup Y'}=\overline{Y}\cup\overline{Y'}$
+	\item $\overline{Y}$ abgeschlossen
+\end{enumerate}
+\ul{Randpunkt:} $x\in X$ Randpunkt zu $Y\subseteq X$, wenn $\forall \text{Umgebung }U\text{ von }x:U\cap Y\neq\varnothing\neq U\cap(X\backslash Y)$\\
+\ul{Rand}: $\partial Y=\{\text{Randpunkte von }Y\}$\\
+$Y\subseteq X$ $\Rightarrow$ Rand $\partial Y$ erfüllt
+\begin{enumerate}[1)]
+	\item $Y\backslash\partial Y$ offen
+	\item $Y\cup\partial Y$ abgeschlossen
+	\item $\partial Y$ abgeschlossen
+\end{enumerate}
+\ul{Topologie}: $\mathcal{T}$ System von Teilmengen von $X$ ($\mathcal{T}\subseteq 2^X=\{0,1\}^X=\mathcal{P}(X)$)\\
+Topologie, wenn
+\begin{enumerate}[1)]
+	\item $X,\varnothing\in\mathcal{T}$
+	\item $T,T'\in\mathcal{T}\Rightarrow T\cap T'\in\mathcal{T}$
+	\item $T_z\in\mathcal{T},\ z\in I\Rightarrow\bigcup_{i\in I}T_i\in\mathcal{T}$
+\end{enumerate}
+$X$ topologischer Raum, $\mathcal{T}$ auf $X$\\
+$T\in\mathcal{T}$ "offene Menge"\\
+$U\subseteq X$ Umgebung von $x$, wenn $x\in T\subseteq U$\\
+$Y\subseteq X$ "offen" $\Leftrightarrow$ $\forall y\in Y:\exists\text{Umgebung }U\text{ von }Y:U\subseteq Y$\\
+$Y$ abgeschlossen $\Leftrightarrow$ $X\backslash Y$ offen\\
+\begin{tabbing}
+	\ul{Hausdorffraum}: \=topologischer Raum\\
+	\>$x\neq x'\Rightarrow U,U'$ mit $x\in U,x'\in U'$ und $U\cap U'=\varnothing$ "punkttrennend"
+\end{tabbing}
+Metrischer Raum $\Rightarrow$ Hausdorffraum\\
+$X$ topologischer Raum und $Y\subseteq X$ $\Rightarrow$ $\overline{Y}$ abgeschlossen
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
