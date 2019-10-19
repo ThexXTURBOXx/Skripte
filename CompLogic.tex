@@ -1,0 +1,203 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{scalerel}
+\usepackage{stackengine}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\setcounter{secnumdepth}{4}
+
+\renewcommand\hateq{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+\newcommand*\circled[1]{
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\newcommand*{\obot}{\perp\mkern-20.7mu\bigcirc}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{§\arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{§}
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\proof}{\ul{Beweis:}\\}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+\let\origepsilon\epsilon
+\let\epsilon\varepsilon
+
+\title{Computational Logic}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{What is logic?}
+TODO Rest\\
+\section{Propositional Logic}
+\ul{Syntax}:
+\begin{enumerate}[(a)]
+	\item Atomic formulas are propositions: $A_0,A_1,\dots$ or $A,B,\dots$
+	\item A formula is obtained by repeatedly applying the following rules:
+	\begin{enumerate}[(1)]
+		\item An atomic formula is a formula
+		\item Given a formula $F$, also $^\neg F$ is a formula ("not $F$")
+		\item Given two formulas $F,G$, also $F\wedge G$ and $F\vee G$ are formulas
+	\end{enumerate}
+\end{enumerate}
+\ul{Semantics}:
+\begin{enumerate}[(a)]
+	\item The set of truth values is $\{0,1\}$, where 0 is $FALSE$ and 1 is $TRUE$
+	\item Let $M$ be a set of atomic formulas. A map $\alpha:M\rightarrow\{0,1\}$ is called a \ul{truth assignment}
+	\item Let $\hat{M}$ be the set of all formulas in which only propositions of $M$ appear.\\
+	Then we define $\hat{\alpha}:\hat{M}\rightarrow\{0,1\}$ recursively as follows:
+	\begin{enumerate}[(1)]
+		\item If $A\in M$, then we let $\hat{\alpha}(A)=\alpha(A)$
+		\item If $\alpha(F)$ is defined, then we let $\hat{\alpha}(^\neq F)=1-\hat{\alpha}(F)$
+		\item Given formulas $F,G$ for which $\hat{\alpha}(F),\hat{\alpha}(G)$ have been defined, we let $\hat{\alpha}(F\wedge G)=\begin{cases}
+		1 & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1\\
+		0 & \text{otherwise}
+		\end{cases}$ and $\hat{\alpha}(F\vee G)=\begin{cases}
+		1 & \text{if } \hat{\alpha}(F)=1 \text{ or } \hat{\alpha}(G)=1 \text{ or both}\\
+		0 & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1
+		\end{cases}$
+	\end{enumerate}
+\end{enumerate}
+\begin{tabular}{ll}
+$F$ "if" $G$ & $\hateq$ $G\Rightarrow F$\\
+$F$ "only if" $G$ & $\hateq$ $F\Rightarrow G$\\
+$F$ "if and only if" $G$ & $\hateq$ $F\Leftrightarrow G$\\
+\end{tabular}\\
+Let $F$ be a (propositional logic) formula, $M$ a set of propositions and $\alpha:M\rightarrow\{0,1\}$ a truth assignment.
+\begin{enumerate}[(a)]
+	\item The formula $F$ \ul{fits} with $\alpha$ or $\alpha$ is \ul{suitable} for $F$ if in $F$ only the propositions from $M$ appear.
+	\item If $\alpha(F)=1$, then $F$ is called a \ul{model} for $\alpha$. We write $\alpha\models F$.
+	\item Given a set of formulas $\mathcal{F}$, we write $\alpha\models \mathcal{F}$ if $\alpha\models F$ for every $F\in\mathcal{F}$.
+	\item We say that $F$ is \ul{satisfiable} if there exists a truth assignment $\alpha$, which is suitable for $F$ and if $\alpha(F)=1$. Otherwise, we say that $F$ is \ul{unsatisfiable}.
+	\item A formula $F$ is called a \ul{tautology} (or \ul{valid}) if $\alpha(F)=1$ for every suitable truth assignment $\alpha$.
+\end{enumerate}
+A formula $F$ is a \ul{tautology} if and only if $^\neg F$ is unsatisfiable.\\
+Two formulas $F,G$ are called \ul{(semantically) equivalent}, if for all truth assignments $\alpha$, which are suitable for both $F$ and $G$, we have $\alpha(F)=\alpha(G)$. Notation: $F\equiv G$\\
+\ul{The Fundamental Equivalences:}
+Let $F,G,H$ be formulas.
+\begin{enumerate}[(a)]
+	\item $F\wedge F\equiv F$ and $F\vee F\equiv F$ (idempotency)
+	\item $F\wedge G\equiv G\wedge F$ and $F\vee G\equiv G\vee F$ (commutativity)
+	\item $(F\wedge G)\wedge H\equiv F\wedge(G\wedge H)$ and\\
+	$(F\vee G)\vee H\equiv F\vee (G\vee H)$ (associativity)\\
+	Hence we write $F_1\wedge\dots\wedge F_n$ or $F_1\vee \dots\vee F_n$.
+	\item $F\wedge(F\vee G)\equiv F$ and $F\vee(F\wedge G)\equiv F$ (absorption)
+	\item $F\wedge(G\vee H)\equiv (F\wedge G)\vee(F\wedge H)$ and\\
+	$F\vee(G\wedge H)\equiv (F\vee G)\wedge(F\vee H)$ (distributive law)
+	\item $^\neg$$^\neg F\equiv F$
+	\item $^\neg(F\wedge G)\equiv ^\neg F\vee ^\neg G$ and\\
+	$^\neg(F\vee G)\equiv ^\neg F\wedge ^\neg G$ (de Morgan's rules)
+	\item If $F$ is a tautology, then $F\vee G\equiv F$ and $F\wedge G\equiv G$
+	\item If $F$ is unsatisfiable, then $F\vee G\equiv G$ and $F\wedge G\equiv F$
+\end{enumerate}
+\ul{Substitution Theorem}:\\
+Let $F_1,F_2$ be two equivalent formulas.\\
+Let $G$ be a formula, which contains $F_1$ as a subformula.\\
+Let $\tilde{G}$ be the formula obtained by replacing $F_1$ in $G$ by $F_2$.\\
+Then we have $G\equiv \tilde{G}$.
+\begin{enumerate}[(a)]
+	\item A \ul{literal} is an atomic formula or the negation of an atomic formula ($A_i$ or $^\neg A_i$)
+	\item A formula $F$ is said to be in \ul{conjunctive normal form} (CNF), if it is of the form $$F=(L_{11}\vee L_{12}\vee\dots\vee L_{1n_1})\wedge\dots\wedge(L_{k1}\vee L_{k2}\vee\dots\vee L_{kn_k})$$ where the $L_{ij}$ are literals ("$F$ is a conjunction of disjunctions of literals").
+	\item We say that $F$ is in \ul{disjunctive normal form} (DNF) if $$F=(L_{11}\wedge L_{12}\wedge\dots\wedge L_{1n_1})\vee\dots\vee(L_{k1}\wedge L_{k2}\wedge\dots\wedge L_{kn_k})$$ with literals $L_{ij}$.
+\end{enumerate}
+\ul{Algorithm:}\\
+Let $F$ be a formula. Consider the following sequence of instructions:
+\begin{enumerate}[(1)]
+	\item Replace all occurrences of "$\Rightarrow$" and "$\Leftrightarrow$" by their definition
+	\item Replace each subformula of the form $^\neg$$^\neg G$ by $G$.
+	\item Replace in $F$ every subformula of the form $^\neg (G\vee H)$ by $^\neg G\wedge ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply Step (2).
+	\item Replace in $F$ every subformula of the form $^\neg (G\wedge H)$ by $^\neg G\vee ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply Step (2).
+	\item Repeat (3) and (4) as often as possible.
+	\item Replace in $F$ every subformula of the form $G\vee (H\wedge K)$ by $(G\vee H)\wedge (G\vee K)$
+	\item Replace in $F$ every subformula of the form $(G\wedge H)\vee K$ by $(G\vee K)\wedge (H\vee K)$
+	\item Repeat (6) and (7) as often as possible. Then return $F$ and stop.
+\end{enumerate}
+This is an algorithm, which returns a formula $\tilde{F}$ in CNF, such that $\tilde{F}\equiv F$.
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

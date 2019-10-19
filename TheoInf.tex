@@ -1,0 +1,163 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{scalerel}
+\usepackage{stackengine}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\setcounter{secnumdepth}{4}
+
+\renewcommand\hateq{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+\newcommand*\circled[1]{
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\newcommand*{\obot}{\perp\mkern-20.7mu\bigcirc}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{Kapitel }
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\proof}{\ul{Beweis:}\\}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+\let\origepsilon\epsilon
+\let\epsilon\varepsilon
+
+\title{Vorlage}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Grundbegriffe}
+\begin{tabular}{c|l}
+$\Sigma$ & Alphabet: endliche, nicht-leere Menge von Zeichen/Symbolen\\
+$w$ & Wort über Alphabet $\Sigma$: endliche Folge von Zeichen aus $\Sigma$ \\
+$\epsilon$ & leeres Wort\\
+$\Sigma^*$ & Menge aller Wörter über $\Sigma$\\
+$\Sigma^+$ & $\Sigma^*\backslash\{\epsilon\}$\\
+$\Sigma^n$ & Menge aller Wörter über $\Sigma$ der Länge \(n\)
+\end{tabular}\\
+$w_1,\ w_2$ Wörter $\Rightarrow$ $w_1\cdot w_2$ oder $w_1 w_2$ Konkatenation\\
+$w^n=\underbrace{www\dots w}_n$\\
+$\abs{w}$=Anzahl der Zeichen von $w$\\
+$w=uvx$ $\Rightarrow$
+$\begin{cases}
+u & \text{Präfix}\\
+v & \text{Teilwort}\\
+w & \text{Suffix}
+\end{cases}$\\
+$L\subseteq\Sigma^*$ formale Sprache\\
+$L_1L_2=\{w_1w_2\ |\ w_1\in L_1,\ w_2\in L_2\}$\\
+$L^n=\underbrace{LLL\dots L}_n$\\
+Seien $L,\ L_1,\ L_2\subseteq \Sigma^*$\\
+
+TODO NACHHOLEN
+
+\section{TODO Überschrift Folie}
+Zustand: Momentaufnahme eines Systems zu einem Zeitpunkt\\
+Übergang: Änderung des Zustands - spontan/aufgrund externer Eingaben\\
+Ein (deterministischer) endlicher Automat (DEA) ist ein Tupel $$M=\left(Q,\Sigma,\delta,s,F\right)$$
+wobei gilt:
+\begin{itemize}
+\item $Q$ ist eine endliche Menge von Zuständen
+\item $\Sigma$ ist ein endliches Eingabealphabet
+\item $\delta:Q\times \Sigma \rightarrow Q$ ist die Zustandsübergangsfunktion
+\item $s\in Q$ ist der Startzustand
+\item $F\subseteq Q$ ist eine Menge von akzeptierenden Zuständen oder Finalzuständen
+\end{itemize}
+Schreibweise:\\
+Definiere $\hat{\delta}:Q\times\Sigma^*\rightarrow Q$ induktiv über die Länge des Wortes $x$:\\
+$\hat{\delta}(q,\epsilon)=q$\\
+$\hat{\delta}(q,xa)=\delta(\hat{\delta}(q,x),a)$\\
+Jede reguläre Sprache wird von einem DEA akzeptiert.\\
+$L_1\cup L_2,\ L_1L_2,\ L_1^*$ werden von einem DEA akzeptiert.\\\\
+Sei $M=\left(Q,\Sigma,\delta,s,F\right)$ ein Automat mit $L(M)=A$.\\
+Dann akzeptiert der Automat $M'=\left(Q,\Sigma,\delta,s,Q\backslash F\right)$ die Sprache $L(M')=A^C$.\\\\
+$L(M_3)=L(M_1)\cap L(M_2)$
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

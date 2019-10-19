@@ -1,0 +1,170 @@
+\documentclass[a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz,tkz-euclide}
+\usepackage{titlesec}
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage[titles]{tocloft}
+\usepackage{csquotes}
+\usepackage[babel]{microtype}
+\usepackage{MnSymbol}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{scalerel}
+\usepackage{stackengine}
+\usepackage[
+  separate-uncertainty = true,
+  multi-part-units = repeat
+]{siunitx}
+
+\usetkzobj{all}
+\usetikzlibrary{shapes.misc}
+
+\MakeOuterQuote{"}
+
+\setcounter{secnumdepth}{4}
+
+\renewcommand\hateq{\mathrel{\stackon[1.5pt]{=}{\stretchto{%
+				\scalerel*[\widthof{=}]{\wedge}{\rule{1ex}{3ex}}}{0.5ex}}}}
+
+\newcommand*\circled[1]{
+  \tikz[baseline=(C.base)]\node[draw,circle,inner sep=0.75pt](C) {#1};\!
+}
+
+\newcommand*{\obot}{\perp\mkern-20.7mu\bigcirc}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
+\renewcommand{\cftsubsecpresnum}{§}
+\newlength\mylength
+\settowidth\mylength{\cftsubsecpresnum}
+\settowidth\mylength{\cftsubsecaftersnum}
+\addtolength\cftsubsecnumwidth{\mylength}
+\renewcommand{\cftsecpresnum}{Kapitel }
+\renewcommand{\cftsecaftersnum}{: }
+\settowidth\mylength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\mylength}
+
+\newcommand{\ul}{\underline}
+\renewcommand{\proof}{\ul{Beweis:}\\}
+\renewcommand{\qed}{\begin{flushright}
+\ul{\(q.e.d.\)}
+\end{flushright}}
+\let\origphi\phi
+\let\phi\varphi
+\let\origepsilon\epsilon
+\let\epsilon\varepsilon
+
+\title{Stochastik}
+\author{Nico Mexis}
+\date{\today}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Wahrscheinlichkeitsräume}
+Die Menge aller möglichen Ausgänge/Ergebnisse $\omega$ eines Zufallsexperiments heißt \ul{Ergebnisraum}/\ul{Stichprobenraum}/\ul{Grundmenge} $\Omega$\\
+Eine Teilmenge $A\subseteq \Omega$, welcher eine Wahrscheinlichkeit zugeordnet werden soll, heißt \ul{Ereignis}.\\
+"A tritt ein", falls $\omega\in A$\\
+Für $\omega\in\Omega$ heißt $\{\omega\}\subseteq\Omega$ Elementarereignis.\\
+Ereignisraum $\mathcal{A}$: Menge aller Ereignisse in $\Omega$, d.h. $\mathcal{A}\subseteq\mathcal{P}$.\\
+Seien $A$, $B$ Ereignisse.\\
+\begin{tabular}{ll}
+$A\cup B$ & "oder"\\
+$A\cap B$ & "und"\\
+$A^C=\overline{A}=\Omega\backslash A$ & "nicht"
+\end{tabular}\\
+Sei $\Omega$ eine Menge. Ein Teilmengensystem $\mathcal{A}\subseteq\mathcal{P}(\Omega)$ heißt \ul{$\sigma$-Algebra} (in $\Omega$), falls
+\begin{enumerate}[1)]
+	\item $\Omega\in\mathcal{A}$
+	\item $A\in\mathcal{A}\Rightarrow A^C\in\mathcal{A}$
+	\item $A_1,A_2,\dots\in \mathcal{A}\Rightarrow \bigcup_{i=1}^\infty A_i\in\mathcal{A}$
+\end{enumerate}
+$(\Omega,\mathcal{A})$ heißt \ul{messbarer Raum}, Elemente $A\in\mathcal{A}$ heißen $\mathcal{A}$-messbare Teilmengen.\\
+$\Omega$ beliebig $\Rightarrow$ $\mathcal{A}_1=\{\Omega,\varnothing\}$ ist die \ul{gröbste $\sigma$-Algebra}.\\
+$\mathcal{A}_2=\mathcal{P}(\Omega)$ ist die \ul{feinste $\sigma$-Algebra}.\\
+In einem höchstens abzählbaren Grundraum $\Omega$ betrachtet man in der Regel die feinste $\sigma$-Algebra $\mathcal{A}=\mathcal{P}(\Omega)$. Für überabzählbares $\Omega$ ist dies i.A. nicht sinnvoll (s. Kapitel 4).\\
+Sei $\mathcal{A}$ eine $\sigma$-Algebra. Dann gilt:
+\begin{enumerate}[1)]
+	\item $\varnothing\in\mathcal{A}$
+	\item $A,B\in\mathcal{A}\Rightarrow A\cup B\in\mathcal{A},A\cap B\in\mathcal{A},A\backslash B\in\mathcal{A}$
+	\item $A_1,A_2,\dots\in\mathcal{A}\Rightarrow\bigcap_{i=1}^\infty A_i\in\mathcal{A}$
+\end{enumerate}
+Sei $E\subseteq\mathcal{P}(\Omega)$. Dann gibt es (bzgl. Inklusion) eine \ul{kleinste} $\sigma$-Algebra, welche $E$ enthält.\\
+Mit anderen Worten: Es gibt eine sparsamste $\sigma$-Algebra, für die jedes $A\in E$ ein Ereignis ist.\\
+Man nennt $\mathcal{A}=\bigcap_{k\in I}\mathcal{A}_k$, wobei $(A_k)_{k\in I}$ das System \ul{aller} $\sigma$-Algebren in $\Omega$ mit $\forall k\in I:E\subseteq A_k$ ist, die \ul{von $E$ erzeugte $\sigma$-Algebra}.\\
+Notation: $\mathcal{A}=\sigma(E)$\\
+Wir wollen jetzt jedem Ereignis $A\in\mathcal{A}$ eine Wahrscheinlichkeit $\mathbb{P}(A)$ zuordnen.\\
+Notation: Mengen $A_1,A_2,\dots\subseteq\Omega$ heißen \ul{paarweise disjunkt} (p.d.), falls $\forall i,j\in\mathbb{N}:i\neq j,A_i\cap A_j=\varnothing$.\\
+Sei $\mathcal{A}$ eine $\sigma$-Algebra in $\Omega$ (d.h. $(\Omega,\mathcal{A})$ messbarer Raum). Eine Abbildung $\mathbb{P}:\mathcal{A}\rightarrow\left[0,1\right]$ heißt \ul{Wahrscheinlichkeitsmaß}/\ul{Wahrscheinlichkeitsverteilung} auf $\mathcal{A}$, falls
+\begin{enumerate}[1)]
+	\item $\mathbb{P}(\Omega)=1$ ($\hateq 100\%$)
+	\item $A_1,A_2,\dots\in\mathcal{A}$ p.d.\\
+	$\Rightarrow\mathbb{P}(\bigcupdot_{i=1}^\infty A_i)=\sum_{i=1}^\infty\mathbb{P}(A_i)$ ($\sigma$-Additivität)
+\end{enumerate}
+Es folgen sofort:
+\begin{enumerate}[1)]
+	\item $\mathbb{P}(\varnothing)=0$
+	\item \ul{Additivität}: Falls $A_1,\dots,A_n\in\mathcal{A}$ p.d.\\
+	$\Rightarrow\mathbb{P}(\bigcupdot_{i=1}^n A_i)=\sum_{i=1}^n\mathbb{P}(A_i)$
+\end{enumerate}
+Sei $(\Omega,\mathcal{A})$ ein messbarer Raum und $\mathbb{P}:\mathcal{A}\rightarrow\left[0,1\right]$ ein Wahrscheinlichkeitsmaß auf $\mathcal{A}$. Dann heißt $(\Omega,\mathcal{A},\mathbb{P})$ ein \ul{Wahrscheinlichkeitsraum}.\\
+Sei $\Omega\neq\varnothing$ endlich, $\mathcal{A}=\mathcal{P}(\Omega)$, $A\subseteq\Omega$\\
+\ul{Gleichverteilung auf $\Omega$}: $\mathbb{P}(A)=\frac{\abs{A}}{\abs{\Omega}}$ (\ul{uniforme Verteilung})\\
+\ul{Speziell für $\omega\in\Omega$}: $\mathbb{P}(\{\omega\})=\frac{1}{\abs{\Omega}}$\\
+d.h. jeder Ausgang des Experiments ist gleich wahrscheinlich (Laplace-Annahme).\\
+$\mathbb{P}$ ist Wahrheitsmaß auf $\mathcal{A}$.\\
+$(\Omega,\mathcal{A},\mathbb{P})$ heißt \ul{Laplace-Raum}.\\
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
