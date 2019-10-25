@@ -49,20 +49,6 @@
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
 
-\renewcommand{\thesubsection}{\arabic{subsection}}
-\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
-\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
-\renewcommand{\cftsubsecpresnum}{§}
-\newlength\mylength
-\settowidth\mylength{\cftsubsecpresnum}
-\settowidth\mylength{\cftsubsecaftersnum}
-\addtolength\cftsubsecnumwidth{\mylength}
-\renewcommand{\cftsecpresnum}{Kapitel }
-\renewcommand{\cftsecaftersnum}{: }
-\settowidth\mylength{\cftsecpresnum}
-\addtolength\cftsecnumwidth{\mylength}
-
 \newcommand{\ul}{\underline}
 \renewcommand{\proof}{\ul{Beweis:}\\}
 \renewcommand{\qed}{\begin{flushright}
@@ -84,6 +70,11 @@
 \tableofcontents
 \newpage
 
+\setcounter{section}{-1}
+\section{Wiederholung}
+\ul{Satz von Taylor:}\\
+Sei $f\in C^{n+1}(I)$, $x,x_0\in I$. Dann gilt:
+$$f(x)=\sum_{k=0}^n\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+\frac{1}{n!}\int_{x_0}^{x}(x-t)^nf^{(n+1)}(t)\text{d}t$$
 \section{Metrik \& Topologie}
 Sei $X$ eine Menge.\\
 \ul{Metrik}: $d:X\times X\rightarrow\mathbb{R}_+$ Metrik, wenn:
@@ -157,7 +148,50 @@ $Y$ abgeschlossen $\Leftrightarrow$ $X\backslash Y$ offen\\
 	\>$x\neq x'\Rightarrow U,U'$ mit $x\in U,x'\in U'$ und $U\cap U'=\varnothing$ "punkttrennend"
 \end{tabbing}
 Metrischer Raum $\Rightarrow$ Hausdorffraum\\
-$X$ topologischer Raum und $Y\subseteq X$ $\Rightarrow$ $\overline{Y}$ abgeschlossen
+$X$ topologischer Raum und $Y\subseteq X$ $\Rightarrow$ $\overline{Y}$ abgeschlossen\\
+\ul{Diskret}: $\mathcal{T}=\{T\subseteq X\}$\\
+\ul{Indiskret}: $\mathcal{T}=\{\varnothing,X\}$\\
+$y\in Y\subseteq X$ \ul{innerer Punkt}, wenn es Umgebung $U$ von $y$ gibt mit $U\subseteq Y$\\
+\ul{Inneres} von $Y$: $Y^\circ=\{\text{innere Punkte von }Y\}$\\
+Sei $Y\subseteq X$: $\partial Y=\overline{Y}\backslash Y^\circ$\\
+Die Folge $a=(a_n:n\in\mathbb{N})$ heißt \ul{konvergent} mit Grenzwert $a^*\in X$, wenn es zu jeder Umgebung $U$ von $a^*$ ein $n_0$ gibt, mit $a_n\in U$, $u\geq u_0$.\\
+$a^*$ Häufungspunkt: $\#\{n:a_n\in U\}=\infty$ für alle $U(a^*)$\\
+$Y\subseteq X$ $\Rightarrow$
+\begin{enumerate}[1)]
+	\item $Y$ abgeschlossen, $a$ konvergente Folge in $Y$ $\Rightarrow$ $a^*\in Y$
+	\item $a$ konvergent $\Rightarrow$ $a^*\in \overline{Y}$
+	\item $X$ metrisch: $Y$ abgeschlossen $\Leftrightarrow$ $a^*\in Y$
+\end{enumerate}
+Hausdorffraum $\Rightarrow$ Grenzwert eindeutig\\
+$f:X\rightarrow X'$ heißt "\ul{stetig}", wenn für alle $x_n\rightarrow x^*$ auch $f(x_n)\rightarrow f(x^*)$ gilt.\\
+$f:X\rightarrow X'$, $Y'\subseteq X'$: $f^{-1}(X'):=\{x\in X\ \vert\ f(x)\in Y'\}$ \ul{Urbild}\\
+$f:X\rightarrow X'$ stetig $\Leftrightarrow$ Urbilder abgeschlossener Mengen sind abgeschlossen\\
+$f:X\rightarrow X'$ stetig $\Leftrightarrow$ Urbilder offener Mengen sind offen\\
+$a=(a_n:n\in\mathbb{N})$ Cauchy-Folge, wenn es zu $\epsilon>0$ ein $n_0$ gibt, sodass $d(x_n,x_m)<\epsilon$, $n,m\geq n_0$\\
+$X$ vollständig, wenn Cauchy $\Rightarrow$ Konvergenz\\
+Vervollständigung: $\{\text{Cauchy-Folgen}\}$\\
+$a\sim a'\Leftrightarrow \lim_{n\rightarrow 0}d(a_n,a_n')=0$\\
+$Y\subset X$ \ul{dicht}, wenn $\overline{Y}=X$\\
+$X$ ist vollständig $\Leftrightarrow$ jede Folge $B_{\leq \epsilon_1}(x_1)\supset B_{\leq \epsilon_2}(x_2)$ mit $\epsilon_1>\epsilon_2>\dots$ und $\epsilon_n\rightarrow 0$ erfüllt:
+$$\bigcap_{j=1}^\infty B_{\leq \epsilon_j}(x_j)\neq\varnothing$$\\
+\ul{Kontraktion}: $f:X\rightarrow X$, $d(f(x),f(x'))\leq \rho\cdot d(x,x')$, $0<\rho<1$\\
+$f:X\rightarrow X$ Kontraktion mit $X$ vollständig $\Rightarrow$ $f$ hat \ul{genau einen} Fixpunkt $f(x^*)=x^*\in X$\\\\
+$Y\subseteq X$
+\begin{enumerate}[1)]
+	\item \ul{Überdeckungskompakt}: Für jede Überdeckung $Y\subseteq\bigcup_{U\in \mathcal{U}}U$ von offenen Umgebungen gibt es $U_1,\dots,U_n$ mit $Y\subseteq U_1\cup\dots\cup U_n$
+	\item \ul{Folgenkompakt}: Jede Folge in $Y$ enthält konvergente Teilfolge
+\end{enumerate}
+$Y\subseteq X$ metrisch ist überdeckungskompakt $\Leftrightarrow$ $Y$ folgenkompakt\\
+\begin{enumerate}[1)]
+	\item $A\subseteq Y$ heißt ein $\epsilon$-Netz für $Y$, wenn $Y\ni y\in B_{<\epsilon}(a)$, $a\in A$
+	\item $Y$ \ul{total beschränkt}: $\exists \text{endliches }\epsilon\text{-Netz }A\text{ für jedes }\epsilon>0$
+	\item $Y$ \ul{beschränkt}: $d(y,y')<M$, $y,y'\in Y$\\
+	\ul{Durchmesser}: $d(Y):=\sup_{y,y'}d(y,y')$\\
+	\ul{Radius}: $r(Y):=\inf_y\sup_{y'}d(y,y')$
+\end{enumerate}
+Jede total beschränkte Menge ist beschränkt.\\
+$Y\subset X$, $Y$ abgeschlossen, $X$ vollständig, dann: $Y$ folgenkompakt $\Leftrightarrow$ $Y$ total beschränkt\\
+$Y\subset X$ metrisch, $Y$ überdeckungskompakt $\Rightarrow$ $Y$ abgeschlossen, beschränkt
 \end{document}
 
 

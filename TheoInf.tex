@@ -49,20 +49,6 @@
 \def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
 \makeatother
 
-\renewcommand{\thesubsection}{\arabic{subsection}}
-\titleformat{\section}{\normalfont\Large\bfseries}{Kapitel \arabic{section}: }{0em}{}
-\titleformat{\subsection}{\normalfont\large\bfseries}{§\arabic{subsection} }{0em}{}
-\titleformat{\subsubsection}{\normalfont\bfseries}{\arabic{subsection}.\arabic{subsubsection} }{0em}{}
-\renewcommand{\cftsubsecpresnum}{§}
-\newlength\mylength
-\settowidth\mylength{\cftsubsecpresnum}
-\settowidth\mylength{\cftsubsecaftersnum}
-\addtolength\cftsubsecnumwidth{\mylength}
-\renewcommand{\cftsecpresnum}{Kapitel }
-\renewcommand{\cftsecaftersnum}{: }
-\settowidth\mylength{\cftsecpresnum}
-\addtolength\cftsecnumwidth{\mylength}
-
 \newcommand{\ul}{\underline}
 \renewcommand{\proof}{\ul{Beweis:}\\}
 \renewcommand{\qed}{\begin{flushright}
@@ -103,13 +89,13 @@ v & \text{Teilwort}\\
 w & \text{Suffix}
 \end{cases}$\\
 $L\subseteq\Sigma^*$ formale Sprache\\
-$L_1L_2=\{w_1w_2\ |\ w_1\in L_1,\ w_2\in L_2\}$\\
+$L_1L_2=\{w_1w_2\ \vert\ w_1\in L_1,\ w_2\in L_2\}$\\
 $L^n=\underbrace{LLL\dots L}_n$\\
 Seien $L,\ L_1,\ L_2\subseteq \Sigma^*$\\
 $L^*:=\bigcup_{i\geq 0}L^i$\\
 $L^+:=\bigcup_{i\geq 1}L^i$\\
 $L^c:=\Sigma^*\backslash L$\\
-$L_1\backslash L_2:=\{w\in\Sigma^*\vert\exists z\in L_2:wz\in L_1\}$\\
+$L_1\backslash L_2:=\{w\in\Sigma^*\ \vert\ \exists z\in L_2:wz\in L_1\}$\\
 auch: $\cup,\cap,\backslash$\\
 $L$ regulär, wenn eine der folgenden Punkte gilt:
 \begin{itemize}
@@ -149,7 +135,33 @@ Jede reguläre Sprache wird von einem DEA akzeptiert.\\
 $L_1\cup L_2,\ L_1L_2,\ L_1^*$ werden von einem DEA akzeptiert.\\\\
 Sei $M=\left(Q,\Sigma,\delta,s,F\right)$ ein Automat mit $L(M)=A$.\\
 Dann akzeptiert der Automat $M'=\left(Q,\Sigma,\delta,s,Q\backslash F\right)$ die Sprache $L(M')=A^c$.\\\\
-$L(M_3)=L(M_1)\cap L(M_2)$
+$L(M_3)=L(M_1)\cap L(M_2)$ wird von einem DEA mit $M_i=(Q_i,\Sigma,\delta_i,s_i,F_i)$ akzeptiert.\\
+$Q_3=Q_1\times Q_2$\\
+$\delta_3((p,q),a)=(\delta_1(p,a),\delta_2(q,a))$\\
+$s_3=(s_1,s_2)$\\
+$F_3=F_1\times F_2$\\\\
+$L_1\cup L_2=(L_1^c\cap L_2^c)^c$\\
+oder einfacher: $F_3=(F_1\times Q_2)\cup (Q_1\times F_2)$, Rest wie bei Durchschnitt
+\section{Nichtdeterministische endliche Automaten}
+$L_1\cdot L_2$ wird von einem NEA akzeptiert, bei dem man die Finalzustände von $L_1$ mit dem Startzustand von $L_2$ verschmilzt.\\
+Sei $M=(Q,\Sigma,\Delta,S,F)$ ein NEA mit Überführungsfunktion $\Delta:Q\times\Sigma\rightarrow\mathcal{P}(Q)$\\
+Definiere $\hat{\Delta}:\mathcal{P}(Q)\times\Sigma^*\rightarrow\mathcal{P}(Q)$:\\
+$\hat{\Delta}(A,\epsilon):=A$\\
+$\hat{Delta}(A,xa)=\bigcup_{q\in\hat{\Delta}(A,x)}\Delta(q,a)$\\
+Die vom NEA $M$ akzeptierte Sprache ist $L(M)=\{x\in\Sigma^*\ \vert\ \hat{\Delta}(S,x)\cap F\neq\varnothing\}$\\\\
+Für $x,y\in\Sigma^*$ und $A\subseteq Q$ gilt $\hat{\Delta}(A,xy)=\hat{\Delta}(\hat{\Delta}(A,x),y)$\\
+Für jede indizierte Familie von Mengen $A_i\subseteq Q$ gilt $\hat{\Delta}(\bigcup_iA_i,x)=\bigcup_i\hat{\Delta}(A_i,x)$\\
+Zwei endliche Automaten heißen \ul{äquivalent}, wenn sie dieselbe Sprache akzeptieren\\
+\ul{Satz von Rabin, Scott}: Zu jedem NEA gibt es einen äquivalenten DEA\\
+Sei $N=\{Q_N,\Sigma,\Delta_N,S_N,F_N\}$ NEA und $M=\{Q_M,\Sigma,\delta_M,s_M,F_M\}$ äquivalenter DEA, wobei gilt:\\
+$Q_M=\mathcal{P}(Q_N)$\\
+$\delta_M(A,a)=\hat{\Delta}(A,a)$\\
+$s_M=S_N$\\
+$F_M=\{A\subseteq Q_N\ \vert\ A\cap F_N\neq\varnothing\}$
+\section{Automatensprachen und Regularität}
+Erlaube auch Spontanübergänge in NEAs (einlesen von $\epsilon$)\\
+Zu jedem NEA mit $\epsilon$-Übergänge gibt es einen NEA ohne, der dieselbe Sprache akzeptiert und nicht mehr Zustände hat.\\
+VNEA wie NEA, aber Übergänge sind Regex
 \end{document}
 
 

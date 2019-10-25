@@ -19,8 +19,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{scalerel}
 \usepackage{stackengine}
-\usepackage{mathrsfs}
-\usepackage{eufrak}
+\usepackage{dsfont}
 \usepackage[
   separate-uncertainty = true,
   multi-part-units = repeat
@@ -139,7 +138,55 @@ Sei $\Omega\neq\varnothing$ endlich, $\mathcal{A}=\mathcal{P}(\Omega)$, $A\subse
 d.h. jeder Ausgang des Experiments ist gleich wahrscheinlich (Laplace-Annahme).\\
 $\mathbb{P}$ ist Wahrheitsmaß auf $\mathcal{A}$.\\
 $(\Omega,\mathcal{A},\mathbb{P})$ heißt \ul{Laplace-Raum}.\\
-
+\ul{Beachte}: Eine Wahrscheinlichkeit von 0 heißt nicht, dass das Ereignis nicht eintreten kann!\\
+\ul{Dirac-Wahrscheinlichkeit}:\\
+$\delta_\omega(A):=\mathds{1}_A(\omega)=\begin{cases}
+1, & \text{falls } \omega\in A\\
+0, & \text{falls } \omega\notin A
+\end{cases}$\\
+$\delta_\omega:\mathcal{A}\rightarrow\left[0,1\right]$ ist Wahrscheinlichkeitsmaß\\
+Seien $A,B\in\mathcal{A}$. Es gilt:
+\begin{enumerate}[i)]
+	\item $A\subseteq B$ $\Rightarrow$ $\mathbb{P}(B)=\mathbb{P}(A)+\mathbb{P}(B\backslash A)$
+	\item $A\subseteq B$ $\Rightarrow$ $\mathbb{P}(A)\leq \mathbb{P}(B)$ (Monotonie)
+	\item $\mathbb{P}(A^c)=1-\mathbb{P}(A)$
+	\item $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$
+\end{enumerate}
+Seien $A_1,A_2,\dots\in\mathcal{A}$. Dann gilt:
+\begin{enumerate}[i)]
+	\item $\mathbb{P}(\bigcup_{i=1}^\infty A_i)\leq\sum_{i\geq 1}\mathbb{P}(A_i)\in\left[0,\infty\right]$ (\ul{$\sigma$-Subadditivität})
+	\item Falls $A_1\subseteq A_2\subseteq A_3\subseteq\dots$, dann gilt: $\mathbb{P}(\bigcup_{i=1}^\infty A_i)=\lim_{n\rightarrow\infty}\mathbb{P}(A_n)$ (\ul{$\sigma$-Stetigkeit von unten})
+	\item Falls $A_1\supseteq A_2\supseteq A_3\supseteq\dots$, dann gilt: $\mathbb{P}(\bigcap_{i=1}^\infty A_i)=\lim_{n\rightarrow\infty}\mathbb{P}(A_n)$ (\ul{$\sigma$-Stetigkeit von oben})
+\end{enumerate}
+Ein Ereignis $N\in\mathcal{A}$ mit $\mathbb{P}(N)=0$ heißt \ul{$\mathbb{P}$-Nullmenge}.
+\begin{enumerate}[1)]
+	\item Sei $N$ eine $\mathbb{P}$-Nullmenge. Dann gilt für $A\in\mathcal{A}$
+	\begin{itemize}
+		\item $\mathbb{P}(A\cup N)=\mathbb{P}(A)$
+		\item $\mathbb{P}(A\backslash N)=\mathbb{P}(A)$
+	\end{itemize}
+	\item Sei $M\in\mathcal{A}$ mit $\mathbb{P}(M)=1$ $\Rightarrow$ $\mathbb{P}(A)=\mathbb{P}(A\cap M)$
+\end{enumerate}
+\ul{Siebformeln von Sylvester-Poincaré}:\\
+Seien $A_1,\dots,A_n\in\mathcal{A}$
+\begin{enumerate}[i)]
+	\item $\mathbb{P}(A_1\cup A_2\cup\dots\cup A_n)=-\sum_{j=1}^n(-1)^j\sum_{F\subseteq\{1,\dots,n\},\abs{F}=j}\mathbb{P}(\bigcap_{k\in F}A_k)$
+	\item $\mathbb{P}(A_1\cap A_2\cap\dots\cap A_n)=-\sum_{j=1}^n(-1)^j\sum_{F\subseteq\{1,\dots,n\},\abs{F}=j}\mathbb{P}(\bigcup_{k\in F}A_k)$
+\end{enumerate}
+Sei $\Omega$ endlich oder abzählbar, sei $f:\Omega\rightarrow\left[0,1\right]$ mit $\sum_{\omega\in\Omega}f(\omega)=1$.\\
+Dann gibt es \ul{genau ein} Wahrscheinlichkeitsmaß auf $\mathcal{P}(\Omega)$ mit $\mathbb{P}(\{\omega\})=f(\omega)$ $\forall\omega\in\Omega$\\
+Es gilt dann: $\mathbb{P}(A)=\sum_{\omega\in A}f(\omega)$ $\forall A\subseteq\Omega$, $f$ heißt \ul{Zähldichte}
+\section{Bedingte Wahrscheinlichkeiten \& Stochastische Unabhängigkeit}
+Seien $A,B\in\mathcal{A}$ mit $\mathbb{P}(B)>0$.\\
+\ul{Bedingte Wahrscheinlichkeit von $A$ gegeben $B$}: $$\mathbb{P}(A\vert B):=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$$
+\ul{Interpretation}: $\mathbb{P}(A\vert B)$ ist der relative Anteil von $A$ in $B$\\
+Sei $(\Omega,\mathcal{A},\mathbb{P})$ Wahrscheinlichkeitsraum und $B\in\mathcal{A}$ mit $\mathbb{P}(B)>0$. Dann ist $(\Omega,\mathcal{A},\mathbb{P}(\cdot\vert B))$ ein Wahrscheinlichkeitsraum mit $\mathbb{P}(B\vert B)=1$.\\
+\begin{enumerate}[1)]
+	\item $\forall A\in\mathcal{A}$ mit $B\subseteq A$ gilt $\mathbb{P}(A\vert B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}(B)}{\mathbb{P}(B)}=1$
+	\item $\mathbb{P}(A\cap B)=\mathbb{P}(B)\cdot\mathbb{P}(A\vert B)=\mathbb{P}(A)\mathbb{P}(B\vert A)$\\
+	In den meisten Fällen sind \ul{bedingte} Wahrscheinlichkeiten bekannt und man will die Wahrscheinlichkeiten von Durchschnitten berechnen.
+	\item Bei Berechnung von $\mathbb{P}(A\vert B)$ kann vorausgesetzt werden, dass das Ereignis $B$ eingetreten ist.
+\end{enumerate}
 \end{document}
 
 

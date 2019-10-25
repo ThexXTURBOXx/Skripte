@@ -114,13 +114,13 @@ Atomic formulas are called \ul{propositions} denoted by $A_0,A_1,\dots$ (or $A,B
 A \ul{formula} in propositional logic is obtained by recursively applying the following rules:
 \begin{enumerate}[(1)]
 	\item An atomic formula is a formula
-	\item Given a formula $F$, also $^\neg F$ is a formula ("not $F$")
+	\item Given a formula $F$, also $\neg F$ is a formula ("not $F$")
 	\item Given two formulas $F,G$, also $F\wedge G$ ("$F$ and $G$") and $F\vee G$ ("$F$ or $G$") are formulas
 \end{enumerate}
 Let $F,G$ be formulas.
 \begin{enumerate}[(a)]
-	\item Instead of $^\neg F\vee G$, we also write $F\Rightarrow G$ ("$F$ implies $G$")
-	\item Instead of $(^\neg F\vee G)\wedge (F\vee ^\neg G)$ we also write $F\Leftrightarrow G$ ("$F$ is equivalent to $G$")
+	\item Instead of $\neg F\vee G$, we also write $F\Rightarrow G$ ("$F$ implies $G$")
+	\item Instead of $(\neg F\vee G)\wedge (F\vee \neg G)$ we also write $F\Leftrightarrow G$ ("$F$ is equivalent to $G$")
 	\item Instead of $F_1\wedge\dots\wedge F_n$ we also write $\bigwedge_{i=1}^n F_i$ and instead of $F_1\vee\dots\vee F_n$ also $\bigvee_{i=1}^n F_i$
 \end{enumerate}
 \ul{Semantics}:
@@ -131,13 +131,13 @@ Let $F,G$ be formulas.
 	Then we define $\hat{\alpha}:\hat{M}\rightarrow\{0,1\}$ recursively as follows:
 	\begin{enumerate}[(1)]
 		\item If $A\in M$, then we let $\hat{\alpha}(A)=\alpha(A)$
-		\item If $\alpha(F)$ is defined, then we let $\hat{\alpha}(^\neg F)=1-\hat{\alpha}(F)$
+		\item If $\alpha(F)$ is defined, then we let $\hat{\alpha}(\neg F)=1-\hat{\alpha}(F)$
 		\item Given formulas $F,G$ for which $\hat{\alpha}(F),\hat{\alpha}(G)$ have been defined, we let $\hat{\alpha}(F\wedge G)=\begin{cases}
-		1 & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1\\
-		0 & \text{otherwise}
+		1, & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1\\
+		0, & \text{otherwise}
 		\end{cases}$ and $\hat{\alpha}(F\vee G)=\begin{cases}
-		1 & \text{if } \hat{\alpha}(F)=1 \text{ or } \hat{\alpha}(G)=1 \text{ or both}\\
-		0 & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1
+		1, & \text{if } \hat{\alpha}(F)=1 \text{ or } \hat{\alpha}(G)=1 \text{ or both}\\
+		0, & \text{if } \hat{\alpha}(F)=\hat{\alpha}(G)=1
 		\end{cases}$
 	\end{enumerate}
 \end{enumerate}
@@ -154,7 +154,7 @@ Let $F$ be a (propositional logic) formula, $M$ a set of propositions and $\alph
 	\item We say that $F$ is \ul{satisfiable} if there exists a truth assignment $\alpha$, which is suitable for $F$ and if $\alpha(F)=1$. Otherwise, we say that $F$ is \ul{unsatisfiable}.
 	\item A formula $F$ is called a \ul{tautology} (or \ul{valid}) if $\alpha(F)=1$ for every suitable truth assignment $\alpha$.
 \end{enumerate}
-A formula $F$ is a \ul{tautology} if and only if $^\neg F$ is unsatisfiable.\\
+A formula $F$ is a \ul{tautology} if and only if $\neg F$ is unsatisfiable.\\
 Two formulas $F,G$ are called \ul{(semantically) equivalent}, if for all truth assignments $\alpha$, which are suitable for both $F$ and $G$, we have $\alpha(F)=\alpha(G)$. Notation: $F\equiv G$\\
 \ul{The Fundamental Equivalences:}
 Let $F,G,H$ be formulas.
@@ -167,9 +167,9 @@ Let $F,G,H$ be formulas.
 	\item $F\wedge(F\vee G)\equiv F$ and $F\vee(F\wedge G)\equiv F$ (absorption)
 	\item $F\wedge(G\vee H)\equiv (F\wedge G)\vee(F\wedge H)$ and\\
 	$F\vee(G\wedge H)\equiv (F\vee G)\wedge(F\vee H)$ (distributive law)
-	\item $^\neg$$^\neg F\equiv F$
-	\item $^\neg(F\wedge G)\equiv ^\neg F\vee ^\neg G$ and\\
-	$^\neg(F\vee G)\equiv ^\neg F\wedge ^\neg G$ (de Morgan's rules)
+	\item $\neg$$\neg F\equiv F$
+	\item $\neg(F\wedge G)\equiv \neg F\vee \neg G$ and\\
+	$\neg(F\vee G)\equiv \neg F\wedge \neg G$ (de Morgan's rules)
 	\item If $F$ is a tautology, then $F\vee G\equiv F$ and $F\wedge G\equiv G$
 	\item If $F$ is unsatisfiable, then $F\vee G\equiv G$ and $F\wedge G\equiv F$
 \end{enumerate}
@@ -179,7 +179,7 @@ Let $G$ be a formula, which contains $F_1$ as a subformula.\\
 Let $\tilde{G}$ be the formula obtained by replacing $F_1$ in $G$ by $F_2$.\\
 Then we have $G\equiv \tilde{G}$.
 \begin{enumerate}[(a)]
-	\item A \ul{literal} is an atomic formula or the negation of an atomic formula ($A_i$ or $^\neg A_i$)
+	\item A \ul{literal} is an atomic formula or the negation of an atomic formula ($A_i$ or $\neg A_i$)
 	\item A formula $F$ is said to be in \ul{conjunctive normal form} (CNF), if it is of the form $$F=(L_{11}\vee L_{12}\vee\dots\vee L_{1n_1})\wedge\dots\wedge(L_{k1}\vee L_{k2}\vee\dots\vee L_{kn_k})$$ where the $L_{ij}$ are literals ("$F$ is a conjunction of disjunctions of literals").
 	\item We say that $F$ is in \ul{disjunctive normal form} (DNF) if $$F=(L_{11}\wedge L_{12}\wedge\dots\wedge L_{1n_1})\vee\dots\vee(L_{k1}\wedge L_{k2}\wedge\dots\wedge L_{kn_k})$$ with literals $L_{ij}$.
 \end{enumerate}
@@ -187,15 +187,98 @@ Then we have $G\equiv \tilde{G}$.
 Let $F$ be a formula. Consider the following sequence of instructions:
 \begin{enumerate}[(1)]
 	\item Replace all occurrences of "$\Rightarrow$" and "$\Leftrightarrow$" by their definition
-	\item Replace each subformula of the form $^\neg$$^\neg G$ by $G$.
-	\item Replace in $F$ every subformula of the form $^\neg (G\vee H)$ by $^\neg G\wedge ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply step (2).
-	\item Replace in $F$ every subformula of the form $^\neg (G\wedge H)$ by $^\neg G\vee ^\neg H$. If a subformula $^\neg$$^\neg K$ results, apply step (2).
+	\item Replace each subformula of the form $\neg$$\neg G$ by $G$.
+	\item Replace in $F$ every subformula of the form $\neg (G\vee H)$ by $\neg G\wedge \neg H$. If a subformula $\neg$$\neg K$ results, apply step (2).
+	\item Replace in $F$ every subformula of the form $\neg (G\wedge H)$ by $\neg G\vee \neg H$. If a subformula $\neg$$\neg K$ results, apply step (2).
 	\item Repeat (3) and (4) as often as possible.
 	\item Replace in $F$ every subformula of the form $G\vee (H\wedge K)$ by $(G\vee H)\wedge (G\vee K)$
 	\item Replace in $F$ every subformula of the form $(G\wedge H)\vee K$ by $(G\vee K)\wedge (H\vee K)$
 	\item Repeat (6) and (7) as often as possible. Then return $F$ and stop.
 \end{enumerate}
-This is an algorithm, which returns a formula $\tilde{F}$ in CNF, such that $\tilde{F}\equiv F$.
+This is an algorithm, which returns a formula $\tilde{F}$ in CNF, such that $\tilde{F}\equiv F$.\\\\
+\ul{Compactness Theorem}:\\
+Let $\mathcal{F}$ be a countably infinite set of formulas. Then $\mathcal{F}$ is satisfiable iff every finite subset of $\mathcal{F}$ is satisfiable.\\\\
+\ul{The Resolution Calculus}:\\
+Assume, that $F$ is given in CNF. Write $F\equiv (L_{11}\vee\dots\vee L_{1n_1})\wedge\dots\wedge(L_{k1}\vee\dots\vee L_{kn_k})$ with literals $L_{ij}$.
+\begin{enumerate}[(a)]
+	\item The sets $\{L_{i1},L_{i2},\dots,L_{in_i}\}$ is called a \ul{clause} of $F$.
+	\item The set $\mathcal{K}(F)=\{\{L_{11},\dots,L_{1n_1}\},\dots,\{L_{k1},\dots,L_{kn_k}\}\}$ is called the \ul{set of clauses} of $F$.
+	\item Let $C_1,C_2$ be clauses. We say that a clause $C_3$ is a \ul{resolvent} of $C_1$ and $C_2$ if:
+	\begin{enumerate}[(1)]
+		\item There exists a literal $L\in C_1$ such that $\neg L\in C_2$ (Assume $\neg L\notin C_1,L\notin C_2$)
+		\item $C_3=(C_1\backslash\{L\})\cup (C_2\backslash\{\neg L\})$
+	\end{enumerate}
+\end{enumerate}
+$\lightning$ We may \ul{not} cancel two literals simultaneously!!!\\
+\ul{Note}: If $C_3=\varnothing$ (i.e. if $C_1=\{L\}$ and $C_2=\{\neg L\}$), then $F$ is unsatisfiable.\\
+A set of clauses $S$ is called unsatisfiable iff $\varnothing\in S$\\\\
+\ul{The Resolution Lemma}\\
+Let $\mathcal{K}(F)$ be the set of clauses of a formula $F$ in CNF. Let $C_1,C_2\in\mathcal{K}(F)$ and let $C_3$ be a resolvent of $C_1$ and $C_2$. Then $F$ is equivalent to every formula $\tilde{F}$ with $\mathcal{K}(\tilde{F})=\mathcal{K}(F)\cup\{C_3\}$.\\
+Let $\mathcal{K}$ be a set of clauses.
+\begin{enumerate}[(a)]
+	\item We set $Res^0(\mathcal{K})=\mathcal{K}$\\
+	$Res^1(\mathcal{K})=\mathcal{K}\cup\{C\ \vert\ C\text{ is a resolvent of two clauses in }\mathcal{K}\}$\\
+	For $n\geq 2$ we let $Res^n(\mathcal{K})=Res^1(Res^{n-1}(\mathcal{K}))$
+	\item We let $Res^\infty(\mathcal{K})=\bigcup_{n\geq 0}Res^n(\mathcal{K})$\\
+	This is in fact a finite union since with finitely many atomic formulas $A_1,\dots,A_n$ in $\mathcal{K}$ we can format at most $4^n$ clauses.
+\end{enumerate}
+\ul{Resolution Theorem}:\\
+A formula $F$ in CNF is unsatisfiable iff $\varnothing\in Res^\infty(\mathcal{K}(F))$.\\
+Given a formula $F$, perform the following steps:
+\begin{enumerate}[(1)]
+	\item Bring $F$ into CNF and form $\mathcal{K}(F)$
+	\item Calculate $Res^\infty (\mathcal{K}(F))$ by computing $Res^n(\mathcal{K}(F))$ until $Res^n(\mathcal{K}(F))=Res^{n+1}(\mathcal{K}(F))$. Then $F$ is unsatisfiable iff $\varnothing\in Res^\infty (\mathcal{K}(F))$.
+\end{enumerate}
+\section{Horn Logic}
+Let $F$ be a propositional logic formula in CNF.\\
+Write $F(L_{11}\vee\dots\vee L_{1m_1})\wedge\dots\wedge(L_{k1}\vee\dots\vee L_{km_k})$ with literals $L_{ij}$.
+\begin{enumerate}[(a)]
+	\item $F$ is called a \ul{Horn formula} if every disjunction $L_{i1}\vee\dots\vee L_{im}$ contains \ul{at most} one positive literal.
+	\item A clause $\{L_{i1},\dots,L_{im_i}\}$ is called a \ul{Horn clause} if it contains at most one positive literal.
+	\item The syntax of \ul{Horn logic} is the same as the syntax of propositional logic, except that we only allow Horn formulas.
+\end{enumerate}
+\begin{enumerate}[(a)]
+	\item A Horn clause of the form $\{A_i\}$ is called a \ul{fact}.
+	\item A Horn clause with positive and at least one negative literal is called a \ul{procedural clause} or a \ul{rule}.
+	\item A negative Horn clause (i.e. a Horn clause with no positive literal) is called a \ul{goal clause} or \ul{question clause}.
+	\item A Horn clause containing a positive literal is called a \ul{program clause} or a \ul{definite clause}.
+	\item A set of Horn clauses is called a \ul{logic program} or \ul{Horn clause program}.
+\end{enumerate}
+\ul{Marking algorithm}:\\
+Suppose we are given a Horn formula $F$ (in CNF)
+\begin{enumerate}[(1)]
+	\item For every atomic formula $A$ which is in $\mathcal{K}(F)$ as a fact, we mark all appearances of $A$ and $\neg A$ in $F$.
+	\item If $A_1,\dots,A_n$ have already been marked, then we check whether $F$ contains a clause of the following form: $\neg A_1\vee\neg A_2\vee\dots\vee\neg A_n\vee B$. In this case, we mark every occurrence of $B$ or $\neg B$ in $F$.
+	\item Repeat (2) as often as possible.
+	\item Check if $F$ contains a subformula $G$ of the form $\neg A_1\vee\dots\vee\neg A_l$ where all $A_1,\dots,A_l$ have been marked. In this case, we return "unsatisfiable" and stop the algorithm.
+	\item Otherwise return "satisfiable".
+\end{enumerate}
+\ul{Then}:
+\begin{enumerate}[(a)]
+	\item This is an algorithm which decides whether $F$ is satisfiable or unsatisfiable
+	\item If $F$ is satisfiable then we get a satisfying truth assignment by letting $\alpha(A_i)=\begin{cases}
+	1, & \text{if }A_i\text{ has been marked}\\
+	0, & \text{otherwise}
+	\end{cases}$
+	\item If $F$ contains $n$ atomic formulas, the algorithm stops after at most $n$ iterations of (2).
+\end{enumerate}
+The clause $\varnothing$ has a \ul{linear resolution} from a set of clauses $\mathcal{K}$ if there exists a clause $K_0\in\mathcal{K}(F)$ and a sequence of clauses $K_1,\dots,K_n$ with the following properties:
+\begin{enumerate}[(a)]
+	\item TODO GRAPH\\
+	where the \ul{side clause} $B_{i-1}$ is either an element of $\mathcal{K}(F)$ or $B_{i-1}=K_0$ for some $j<i-1$
+	\item $K_n=\varnothing$
+\end{enumerate}
+Then the sequence $K_0,K_1,\dots,K_n$ is called a \ul{linear resolution} of $F$.\\
+Let $F$ be a formula in CNF. A linear resolution $K_0,K_1,\dots,K_n$ of $F$ is called an \ul{input resolution} if $B_i\in\mathcal{K}(F)$ for $i=0,1,\dots,n-1$\\
+Let $F$ be a formula in CNF. An \ul{SLD-resolution} (linear resolution with unrestricted selection function for definite clauses) is an input resolution of the following form:
+\begin{enumerate}[(a)]
+	\item $K_0$ is a negative clause, it is called a \ul{goal clause}
+	\item For each resolution step, one of the parent clauses is a non-negative Horn clause, i.e. program clause
+\end{enumerate}
+Hence an SLD-resolution has the following shape:\\
+Let $\mathcal{K}(F)=\{\underbrace{P_1,\dots,P_n}_{\text{program clauses}},\underbrace{N_1,\dots,N_K}_{\text{negative clauses (goals)}}\}$\\
+TODO GRAPH\\
+Notice: An SLD-resolution needs a \ul{selection function}. The choice is a key component of logic programming.
 \end{document}
 
 
