@@ -178,15 +178,61 @@ Dann gibt es \ul{genau ein} Wahrscheinlichkeitsmaß auf $\mathcal{P}(\Omega)$ mi
 Es gilt dann: $\mathbb{P}(A)=\sum_{\omega\in A}f(\omega)$ $\forall A\subseteq\Omega$, $f$ heißt \ul{Zähldichte}
 \section{Bedingte Wahrscheinlichkeiten \& Stochastische Unabhängigkeit}
 Seien $A,B\in\mathcal{A}$ mit $\mathbb{P}(B)>0$.\\
-\ul{Bedingte Wahrscheinlichkeit von $A$ gegeben $B$}: $$\mathbb{P}(A\vert B):=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$$
+\ul{Bedingte Wahrscheinlichkeit} von $A$ gegeben $B$: $$\mathbb{P}(A\vert B):=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}$$
 \ul{Interpretation}: $\mathbb{P}(A\vert B)$ ist der relative Anteil von $A$ in $B$\\
-Sei $(\Omega,\mathcal{A},\mathbb{P})$ Wahrscheinlichkeitsraum und $B\in\mathcal{A}$ mit $\mathbb{P}(B)>0$. Dann ist $(\Omega,\mathcal{A},\mathbb{P}(\cdot\vert B))$ ein Wahrscheinlichkeitsraum mit $\mathbb{P}(B\vert B)=1$.\\
+Sei $(\Omega,\mathcal{A},\mathbb{P})$ Wahrscheinlichkeitsraum und $B\in\mathcal{A}$ mit $\mathbb{P}(B)>0$. Dann ist $(\Omega,\mathcal{A},\mathbb{P}(\cdot\vert B))$ ein Wahrscheinlichkeitsraum mit $\mathbb{P}(B\vert B)=1$.
 \begin{enumerate}[1)]
 	\item $\forall A\in\mathcal{A}$ mit $B\subseteq A$ gilt $\mathbb{P}(A\vert B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}=\frac{\mathbb{P}(B)}{\mathbb{P}(B)}=1$
 	\item $\mathbb{P}(A\cap B)=\mathbb{P}(B)\cdot\mathbb{P}(A\vert B)=\mathbb{P}(A)\mathbb{P}(B\vert A)$\\
 	In den meisten Fällen sind \ul{bedingte} Wahrscheinlichkeiten bekannt und man will die Wahrscheinlichkeiten von Durchschnitten berechnen.
 	\item Bei Berechnung von $\mathbb{P}(A\vert B)$ kann vorausgesetzt werden, dass das Ereignis $B$ eingetreten ist.
 \end{enumerate}
+TODO VL
+Sei $(\Omega,\mathcal{A},\mathbb{P})$ ein Wahrscheinlichkeitsraum.\\
+Bei einem Zufallsexperiment ist oft nur ein gewisser Aspekt (Eigenschaft) von $\omega\in\Omega$ von Interesse.\\
+Sei $M$ eine Menge, $U\subseteq M$ $\Rightarrow$ \ul{Indikatorfunktion von $U$ (auf $M$)}:
+$$\mathds{1}_U:M\rightarrow\mathbb{R}:\mathds{1}_U(x)=\begin{cases}
+1, & \text{falls }x\in U\\
+0, & \text{falls }x\notin U
+\end{cases}$$
+Menge aller reellen Intervalle $L:=\{I\subseteq\mathbb{R}\ \vert\ I\text{ Intervall}\}$, also $(a,b),\left(a,b\right],\dots\in J$\\
+Sei $(\Omega,\mathcal{A},\mathbb{P})$ ein Wahrscheinlichkeitsraum.\\
+Eine Abbildung $X:\Omega\rightarrow\mathbb{R}$ heißt \ul{(reellwertige) Zufallsvariable} (ZV) auf $(\Omega,\mathcal{A},\mathbb{P})$, falls $\forall I\in J:\{\omega\in\Omega\ \vert\ X(\omega)\in I\}\in\mathcal{A}$\\
+Eine $\mathbb{R}^d$-wertige Abbildung $X=(X_1,\dots,X_d):\Omega\rightarrow\mathbb{R}^d$ heißt \ul{$d$-dimensionaler Zufallsvektor} (auf $(\Omega,\mathcal{A},\mathbb{P})$), falls alle Komponenten $X_i:\Omega\rightarrow\mathbb{R}$ ZVen sind.\\
+\begin{enumerate}[i)]
+	\item Zufallsvariablen/Zufallsvektoren sind Abbildungen
+	\item Für Zufallsvariablen sind die Wahrscheinlichkeiten $\mathbb{P}(\{\omega\in\Omega\ \vert\ X(\omega)\in I\})$ und $\mathbb{P}(\{\omega\in\Omega\ \vert\ X(\omega)\notin I\})$ wohldefiniert
+	\item Falls $A=\mathcal{P}(\Omega)$ ist \ul{jede} Abbildung $\Omega\rightarrow\mathbb{R}$ eine ZV und für alle $B\subseteq\mathbb{R}$ ist $\mathbb{P}(\{\omega\in\Omega\ \vert\ X(\omega)\in B\})$ wohldefiniert
+	\item Allgemeine Definition einer ZV: Sei $(\Omega',\mathcal{A}')$ messbarer Raum. Eine Abbildung $X:\Omega\rightarrow\Omega'$ ist eine ZV, falls $\forall A'\in \mathcal{A}':\{\omega\in\Omega\ \vert\ X(\omega)\in A'\}\in \mathcal{A}$
+\end{enumerate}
+Schreibweisen für Urbilder:\\
+$\{X\in B\}:=\{\omega\in\Omega\ \vert\ X(\omega)\in B\}=X^{-1}(B)=:\left[X\in B\right]$ für $X:\Omega\rightarrow\mathbb{R}^d$, $B\subseteq\mathbb{R}^d$, $d\geq 1$\\
+\ul{Fall $d=1$}: $x\in\mathbb{R}$\\
+$\{X\leq x\}=\{\omega\in\Omega\ \vert\ X(\omega)\in B\}=X^{-1}(\left(-\infty,x\right])$\\
+TODO Notation fertig\\
+Sei $(\Omega,\mathcal{A})$ messbarer Raum, $\Omega\neq\varnothing$ und $X:\Omega\rightarrow\mathbb{R}$ Abbildung. Dann sind folgende Aussagen äquivalent:
+\begin{enumerate}[(i)]
+	\item $\forall x\in\mathbb{R}:\{X\leq x\}\in\mathcal{A}$
+	\item $\forall I\in J:\{X\in I\}\in\mathcal{A}$ (d.h. $X$ ist ZV)
+\end{enumerate}
+Im Folgenden: $I=\{1,\dots,n\}$ oder $I=\mathbb{N}$\\
+Seien $(\Omega_1,\mathcal{A}_1,\mathbb{P}_1)$ und $(\Omega_2,\mathcal{A}_2,\mathbb{P}_2)$ Wahrscheinlichkeitsräume, $X_i:\Omega_i\rightarrow\mathbb{R}$, $i=1,2$, ZVen\\
+Dann heißen $X_1$ und $X_2$ \ul{identisch verteilt}, falls $\forall I\in J:\mathbb{P}_1(\{X_1\in I\})=\mathbb{P}_2(\{X_2\in I\})$\\
+Eine Folge $(X_i)_{i\in I}$, $X_i$ ZV auf Wahrscheinlichkeitsraum $(\Omega_i,\mathcal{A}_i,\mathbb{P}_i)$, von ZVen heißt \ul{identisch verteilt}, falls für alle $i,j\in I$ die ZVen $X_i$ und $X_j$ identisch verteilt sind.\\
+\ul{Schreibweise}: $X_1,X_2,\dots$ identisch verteilt\\
+Seien $(\Omega_1,\mathcal{A}_1,\mathbb{P}_1)$, $(\Omega_2,\mathcal{A}_2,\mathbb{P}_2)$ W'räume, $X_i:\Omega_1\rightarrow\mathbb{R}$, $i=1,2$, ZVen $\Rightarrow$ Äquivalent:
+\begin{enumerate}[(i)]
+	\item $\forall x\in\mathbb{R}:\mathbb{P}_1(\{X_1\leq x\})=\mathbb{P}_2(\{X_2\leq x\})$
+	\item $\forall I\in J:\mathbb{P}_1(\{X_1\in I\})=\mathbb{P}_2(\{X_2\in I\})$
+\end{enumerate}
+Sei $X:\Omega\rightarrow\mathbb{R}$ ZV auf $(\Omega,\mathcal{A},\mathbb{P})$. Die Abbildung $F_X:\mathbb{R}\rightarrow\left[0,1\right]:x\mapsto F_X(x):=\mathbb{P}(\{X\leq x\})$ heißt \ul{Verteilungsfunktion} von $X$.\\
+Die ZVen $X_1$, $X_2$ identisch verteilt $\Leftrightarrow$ $F_{X_1}=F_{X_2}$\\
+\ul{Verteilungsfunktion einer diskreten ZV}:\\
+Sei $I=\{1,\dots,n\}$, $n\in\mathbb{N}$ oder $I=\mathbb{N}$, sei $(a_i)_{i\in I}$ Folge in $\mathbb{R}$, paarweise verschieden. Sei $\Omega=\{a_i\ \vert\ i\in I\}\subseteq\mathbb{R}$, $f:I\rightarrow\left[0,1\right]$ Abbildung mit $\sum_{i\in I}f(a_i)=1$, ZV: $X:\Omega\rightarrow\Omega$, $\omega\mapsto X(\omega):=\omega$ $\Rightarrow$ $F_X(x)=\sum_{i\in I,a_i\leq x}f(x)$, $\mathbb{P}(\{X=a_i\})=f(a_i)$\\
+TODO Satz 3.19\\
+Es gilt für alle $x\in\mathbb{R}$: $F_X$ stetig in $x$ $\Leftrightarrow$ $\mathbb{P}\left[X=x\right]=0$\\
+TODO Def 3.22\\
+
 \end{document}
 
 

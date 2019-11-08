@@ -187,11 +187,127 @@ $Y\subseteq X$ metrisch ist überdeckungskompakt $\Leftrightarrow$ $Y$ folgenkom
 	\item $Y$ \ul{total beschränkt}: $\exists \text{endliches }\epsilon\text{-Netz }A\text{ für jedes }\epsilon>0$
 	\item $Y$ \ul{beschränkt}: $d(y,y')<M$, $y,y'\in Y$\\
 	\ul{Durchmesser}: $d(Y):=\sup_{y,y'}d(y,y')$\\
-	\ul{Radius}: $r(Y):=\inf_y\sup_{y'}d(y,y')$
+	\ul{Radius}: $r(Y):=\inf\sup_{y,y'}d(y,y')$
 \end{enumerate}
 Jede total beschränkte Menge ist beschränkt.\\
 $Y\subset X$, $Y$ abgeschlossen, $X$ vollständig, dann: $Y$ folgenkompakt $\Leftrightarrow$ $Y$ total beschränkt\\
-$Y\subset X$ metrisch, $Y$ überdeckungskompakt $\Rightarrow$ $Y$ abgeschlossen, beschränkt
+$Y\subset X$ metrisch, $Y$ überdeckungskompakt $\Rightarrow$ $Y$ abgeschlossen, beschränkt\\
+$Y$ kompakt $\Rightarrow$ abgeschlossen + beschränkt\\
+abgeschlossen $Y'\subseteq Y$ kompakt $\Rightarrow$ $Y'$ kompakt\\
+$f:X\rightarrow X'$, $Y\subseteq X$ kompakt $\Rightarrow$ $f(Y)=:Y'\subseteq X'$ kompakt\\
+$f:X\rightarrow X'$ gleichmäßig stetig, wenn es zu jedem $\epsilon>0$ ein $\delta>0$ gibt, sodass $d(x,x')<\delta\ \Rightarrow\ d(f(x),f(x'))<\epsilon$\\
+$f:X\rightarrow X'$ stetig, $Y\subseteq X$ kompakt $\Rightarrow$ $f:Y\rightarrow X'$ gleichmäßig stetig\\
+$\mathbb{R}^n$ endlich-dimensionaler, vollständiger, normierter Raum\\
+$\norm{x}_p=(\sum_{j=1}^n\abs{x_j}^p)1\frac{1}{p}$ "$p$-Norm"\\
+$\norm{x}_1=\sum_{j=1}^n\abs{x_j}$, $\norm{x}_2=\sqrt{\sum_{j=1}^n\abs{x_j}^2}$, $\norm{x}_\infty=\max_{j=1,\dots,n}\abs{x_j}$\\
+Einheitskugeln: $\{x:\norm{x}\leq 1\}$\\
+\ul{Quader}: $\left[a,b\right]=\left[a_1,b_1\right]\times\dots\times\left[a_n,b_n\right]$\\
+$\Omega\subset\mathbb{R}^n$ beschränkt: $x\in\Omega$: $\{\norm{x-y}:y\in\Omega\}\leq M$\\
+Abgeschlossene Quader im $\mathbb{R}^n$ sind kompakt\\
+$\Omega\subset\mathbb{R}^n$: kompakt $\Leftrightarrow$ abgeschlossen + beschränkt
+\section{Kurven}
+\ul{Kurve}: $f:I\mathbb{R}^d$ stetig\\
+$f(I)\subseteq\mathbb{R}^d$, $f$ \ul{Parametrisierung}\\
+$f$ als "Vektor": $f=(f_j:j=1,\dots,d)$\\
+Polynomiale Kurven: $f(x)=\begin{pmatrix}
+f_1(x)\\
+\vdots\\
+f_d(x)
+\end{pmatrix}=\begin{pmatrix}
+\sum_{k=0}^n a_{1k}x^k\\
+\vdots\\
+\sum_{k=0}^n a_{dk}x^k
+\end{pmatrix}=\sum_{k=0}^n\begin{pmatrix}
+a_{1k}\\
+\vdots\\
+a_{dk}
+\end{pmatrix}x^k=\sum_{k=0}^na_kx^k$\\
+$f$ differenzierbar, wenn alle $f_j$ differenzierbar sind\\
+\ul{Tangente}: $f'=\begin{pmatrix}
+f_1'\\
+\vdots\\
+f_d'
+\end{pmatrix}$\\
+$x$ \ul{singulär}, wenn $f'(x)=0$. $f$ heißt "regulär", wenn $f'(x)\neq 0$, $x\in I$\\
+\ul{Bogenlänge}: $f:I=\left[a,b\right]\rightarrow\mathbb{R}^d$, $x_0<\dots<x_N$, $x_0=a$, $x_N=b$, $Lf(x_1,\dots,x_N)=\sum_{k=1}^N\norm{f(x_k)-f(x_{k-1})}_2$\\
+$f:I\rightarrow\mathbb{R}^d$ "\ul{rektifizierbar}" mit Länge $L$, wenn $\forall\epsilon > 0:\exists\delta>0:\forall a=x_0<\dots<x_N=b:\abs{x_{j+1}-x_j}<\delta$\\
+$\Rightarrow$ $\abs{Lf(x_0,\dots,x_N)-L}<\epsilon$\\
+$f\in C^1(I)$ $\Rightarrow$ $f$ rektifizierbar und $L=\int_a^b\norm{f'(x)}_2dx$\\
+$\int_a^b\norm{\begin{pmatrix}
+\cos(x)\\
+\sin(x)
+\end{pmatrix}}_2dx=\int_a^b\sqrt{\sin^2x+\cos^2x}dx=b-a$\\
+$f\in C^1(I)$ $\Rightarrow$ $\int_a^b\sqrt{1+(f'(x))^2}dx=L$\\
+$\forall f:I\rightarrow\mathbb{R}^d$ stetig diff'bar, $I$ kompakt, $\epsilon>0:\exists\delta >0:x\neq x',\abs{x-x'}<\delta\Rightarrow\norm{\frac{f(x)-f(x')}{x-x'}-f'(x)}_2<\epsilon$\\
+$\phi:I'\rightarrow I$ \ul{Reparametrisierung}, wenn $\phi$ stetig+bijektiv\\
+$\phi$ \ul{regulär}, wenn $\phi\in C^1(I')$, $\phi'(x)\neq 0$\\
+\ul{Tangente}:\\
+$(f\circ\phi)'=f'(\phi(x))\phi'(x)$\\
+$\phi'>0$: orientierungstreu\\
+$f$ regulär + $\phi$ regulär $\Rightarrow$ $(f\circ\phi)$ regulär\\
+$x\in I$ $\Rightarrow$ $l(x)=Lf(x)=\int_a^x\norm{f'(t)}_2dt$\\
+$l'(x)=\norm{f'(t)}_2>0$\\
+$l:I\rightarrow\left[0,L\right]$ $\Rightarrow$ ex. $l^{-1}=:\phi=Lf^{-1}:\left[0,L\right]\rightarrow I$\\
+$\left[0,L\right]\ni S=\int_a^{\phi(S)}\norm{f'(t)}_2dt$\\
+$\phi'(x)=\frac{1}{l'(\phi(x))}=\norm{f'(\phi(x))}_2^{-1}$\\
+$f_\phi=f\circ\phi:\left[0,L\right]\rightarrow\mathbb{R}^d$\\
+$f$ heißt \ul{bogenparametrisiert}, wenn $I=\left[0,L\right]$ und $Lf(x)=x$\\
+$f\in C^1$ bogenlängenparametrisiert $\Leftrightarrow$ $\norm{f'(x)}=1$\\
+$f\phi(x)=(f\circ\phi)(x)$
+\section{Differentialrechnung in mehreren Variablen}
+$\frac{\partial f}{\partial x_j}:=f(x_1,\dots,x_{j-1},\cdot,x_{j+1},\dots,x_n)'$ partielle Ableitung\\
+\begin{enumerate}[1)]
+	\item $e_j\in\mathbb{R}^n: (e_j)_k=\delta_{jk},j,k=1,\dots,n$ j-ter Einheitsvektor im $\mathbb{R}^n$
+	\item $f:U\rightarrow\mathbb{R}$, $U\subseteq\mathbb{R}^n$ offen, heißt \ul{"partiell differenzierbar"} nach $x_j$ an $x\in U$, wenn $\frac{\partial f}{\partial x_j}(x):=\lim_{h\rightarrow 0} \frac{f(x+he_j)-f(x)}{h}$ existiert.
+	\item Partielle Ableitung stetig $\hateq$ \ul{stetig partiell diff'bar}
+	\item $C^1(U)=\{\text{stetig partiell diff'bar}\}$
+	\item $\nabla f(x)=\begin{pmatrix}
+	\frac{\partial f}{\partial x_1}\\
+	\vdots\\
+	\frac{\partial f}{\partial x_n}
+	\end{pmatrix}(x)=(\frac{\partial f}{\partial x_j}(x):j=1,\dots,n)$ \ul{"Gradient"}
+\end{enumerate}
+$f:U\rightarrow\mathbb{R}$ "richtungsdiff'bar" an x in \ul{Richtung} $y\in\mathbb{R}^n$, wenn $D_yf(x):=\lim_{h\rightarrow 0}\frac{f(x+h)-f(x)}{h}$ existiert $\Rightarrow$ \ul{Richtungsableitung}\\
+$x,y\in\mathbb{R}^n:\left[x,y\right]=\{\alpha x+(1-\alpha)y:0\leq\alpha\leq 1\}$ \ul{"konvexe Hülle"}\\
+$f:U\rightarrow\mathbb{R}$, $x\in U$, $y\in U$, $\left[x,y\right]\subset U$
+\begin{enumerate}[1)]
+	\item $f(y)-f(x)=\int_0^1 D_{y-x}f(x+t(y-x))dt$
+	\item $f(y)-f(x)=D_{y-x}f(\xi)$, $\xi\in\left[x,y\right]$
+\end{enumerate}
+$D_{\lambda y}f(x)=\lambda D_yf(x),\lambda\in\mathbb{R}$\\
+$\frac{\partial^2}{\partial x\partial y}f:=\frac{\partial f}{\partial x}\frac{\partial f}{\partial y}f$\\
+Existieren $\frac{\partial^2 f}{\partial x_j\partial x_k}$ und $\frac{\partial^2 f}{\partial x_k\partial x_j}$ von $f$ in $U\ni x$ und sind stetig in $x$ $\Rightarrow$ $\frac{\partial^2 f}{\partial x_j\partial x_k}=\frac{\partial^2 f}{\partial x_k\partial x_j}$\\
+$$Hf(x)=\left(\frac{\partial^2f}{\partial x_j\partial x_k}:j,k=1,\dots,n\right)=\begin{pmatrix}
+\frac{\partial^2f}{\partial x_1\partial x_1} & \hdots & \frac{\partial^2f}{\partial x_1\partial x_n}\\
+\vdots & \ddots & \vdots\\
+\frac{\partial^2f}{\partial x_n\partial x_1} & \hdots & \frac{\partial^2f}{\partial x_n\partial x_n}
+\end{pmatrix} \text{ (Hesse'sche Matrix)}$$
+\ul{Multiindex}:
+\begin{itemize}
+	\item $\alpha=(\alpha_1,\dots,\alpha_n)\in\mathbb{N}_0^n$, $\abs{\alpha}=\sum_{j=1}^n\alpha_j$
+	\item $\epsilon_j=(\delta_{jk}:k=1,\dots,n)\in\mathbb{N}_0^n$
+	\item $\alpha!=\alpha_1!\cdot\dots\cdot\alpha_n!$
+\end{itemize}
+$$\frac{\partial^{\abs{\alpha}}}{\partial x^\alpha}=\frac{\partial^{\abs{\alpha}}}{\partial x_1^{\alpha_1}\partial x_n^{\alpha_n}}=\left(\frac{\partial}{\partial x_1}\right)^{\alpha_1}\cdot\dots\cdot\left(\frac{\partial}{\partial x_n}\right)^{\alpha_n}$$
+$C^k(D)$, $D\subseteq\mathbb{R}^n$ $:=$ Menge aller Funktionen, für die $\frac{\partial^k f}{\partial x_{j_1}\cdot\dots\cdots\partial x_{j_k}}$, $j_1,\dots,j_k\in\{1,\dots,n\}$ stetig sind.\\
+$p(x)=\sum_\alpha p_\alpha x^\alpha$ $\rightarrow$ $p(D)=p(\frac{\partial}{\partial x})=\sum p_\alpha\frac{\partial^{\abs{\alpha}}}{\partial x^\alpha}$\\
+$\langle p,q\rangle=(p(D)q)(0)$ Skalarprodukt\\
+\ul{Satz von Schwarz}: Für allee $f\in C^k(D)$ sind alle partielle Ableitungen von der Reihenfolge unabhängig.
+\begin{enumerate}[1)]
+	\item $f:\mathbb{R}^n\rightarrow\mathbb{R}$ linear, $f(x)=a^Tx$\\
+	affin, $f(x)=a^Tx+b$, $a\in\mathbb{R}^n$, $b\in\mathbb{R}$
+	\item $f:U\rightarrow\mathbb{R}$, $x\in U\subset\mathbb{R}^n$, wenn es $l(x):=a^Tx$ gibt, sodass $\lim_{\norm{h}\rightarrow 0}\frac{\abs{f(x+h)-f(x)-l(h)}}{\norm{h}}=0$
+	\item \ul{Ableitung} von $f$ an $x$: $f'=Df=l$
+\end{enumerate}
+$f:U\rightarrow\mathbb{R}$ sei in $x\in U$ diff'bar.
+\begin{enumerate}[1)]
+	\item $f$ ist stetig
+	\item $Df$ ist eindeutig
+	\item $f$ ist partiell diff'bar
+	\item $Df(x)$ hat die Form: $y\mapsto y^T\nabla f(x)$
+	\item $f$ ist in \ul{jede Richtung} richtungsdiff'bar: $D_yf(x)=y^T\nabla f(x)=(Df(x))(y)$
+\end{enumerate}
+
 \end{document}
 
 

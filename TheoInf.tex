@@ -161,7 +161,88 @@ $F_M=\{A\subseteq Q_N\ \vert\ A\cap F_N\neq\varnothing\}$
 \section{Automatensprachen und Regularität}
 Erlaube auch Spontanübergänge in NEAs (einlesen von $\epsilon$)\\
 Zu jedem NEA mit $\epsilon$-Übergänge gibt es einen NEA ohne, der dieselbe Sprache akzeptiert und nicht mehr Zustände hat.\\
-VNEA wie NEA, aber Übergänge sind Regex
+VNEA wie NEA, aber Übergänge sind Regex\\\\
+\ul{Pumping Lemma}: Sei $L$ eine reguläre Sprache. Dann existiert eine Zahl $n\in\mathbb{N}$, sodass für jedes Wort $w\in L$ mit $\abs{w}>n$ eine Darstellung $w=uvx$ mit $\abs{uv}\leq n$, $v\neq\epsilon$ existiert, für die auch $uv^ix\in L$ ist für alle $i\in\mathbb{N}_0$.
+\section{Minimierung von Automaten}
+Gegeben: DEA $M=(Q,\Sigma,\delta,s,F)$ für Sprache $A$. Minimierung in 2 Schritten:
+\begin{enumerate}[(1)]
+	\item Entferne überflüssige Zustände\\
+	Zustand $q$ ist überflüssig, wenn es kein Wort $x\in\Sigma^*$ gibt mit $\hat\delta(s,x)=q$ (via Breitensuche beginnend bei $s$, entferne alle übrigen Zustände)
+	\item Identifiziere äquivalente Zustände
+\end{enumerate}
+\ul{Äquivalenz}: $p\approx q\Leftrightarrow\forall x\in\Sigma^*:\hat\delta(p,x)\in F\Leftrightarrow\hat\Delta(q,x)\in F$\\
+$M/\approx\ =(Q',\Sigma,\delta',s',F')$ mit
+\begin{itemize}
+	\item $Q'=\{\left[p\right]\ \vert\ p\in Q\}$
+	\item $\delta'(\left[p\right],a)=\left[\delta(p,a)\right]$
+	\item $s'=\left[s\right]$
+	\item $F'=\{\left[p\right]\ \vert\ p\in F\}$
+\end{itemize}
+\section{Myhill-Nerode-Relationen}
+Automat $M$ induziert Äquivalenzrelation $\equiv_M$ auf $\Sigma^*$ durch: $x\equiv_M y:\Leftrightarrow\hat{\delta}(s,x)=\hat{\delta}(s,y)$\\
+Eine Äquivalenzrelation $\equiv$ auf $\Sigma*$ heißt \ul{Myhill-Nerode-Relation} für eine reguläre Sprache $R$, wenn sie folgende Eigenschaften erfüllt:
+\begin{enumerate}[(i)]
+	\item Rechts-Kongruenz: $x\equiv y$ $\Rightarrow$ $xa\equiv ya\ \forall a\in\Sigma$
+	\item Verfeinerung von $R$: $x\equiv x$ $\Rightarrow$ $(x\in R\Leftrightarrow y\in R)$
+	\item $\equiv$ hat einen endlichen Index
+\end{enumerate}
+Definiere DEA $M_\equiv=(Q,\Sigma,\delta,s,F)$ mit
+\begin{itemize}
+	\item $Q:=\{\left[x\right]\ \vert\ x\in\Sigma^*\}$
+	\item $s:=\left[\epsilon\right]$
+	\item $F:=\{\left[x\right]\ \vert\ x\in R\}$
+	\item $\delta(\left[x\right],a):=\left[xa\right]$
+\end{itemize}
+$M\mapsto \equiv_M$ und $\equiv\mapsto M_\equiv$ sind invers:
+\begin{itemize}
+	\item Ist $\equiv$ eine Myhill-Nerode-Relation für $R$, so ist $\equiv_{M_\equiv}$ identisch zu $\equiv$
+	\item Ist $M$ DEA für $R$ ohne überflüssige Zustände, so ist $M_{\equiv_M}$ isomorph zu $M$.
+\end{itemize}
+Für eine beliebige Sprache $R$ definiere Äquivalenzrelation $\equiv_R$ auf $\Sigma^*$: $$x\equiv_R y\ :\Leftrightarrow\ \forall z\in\Sigma^*(xz\in R\Leftrightarrow yz\in R)$$
+Diese erfüllt die Eigenschaften (i) und (ii).\\
+Sei $R\subseteq\Sigma^*$. Dann sind die folgenden Aussagen äquivalent:
+\begin{enumerate}[(a)]
+	\item $R$ ist regulär
+	\item Es existiert eine Myhill-Nerode-Relation für $R$
+	\item Die Relation $\equiv_R$ hat endlichen Index
+\end{enumerate}
+Jede Myhill-Nerode-Relation hat mindestens so viele Äquivalenzklassen wie $\equiv_R$. Insbesondere ist der Automat $M_{\equiv_R}$ minimal.
+\section{Formale Sprachen und Grammatiken}
+Eine Grammatik ist ein 4-Tupel $G=(V,\Sigma,P,S)$\\
+\begin{itemize}
+	\item $V$ ist endliche Menge von \textit{Variablen}
+	\item $\Sigma$ ist endliche Menge von \textit{Terminalsymbolen}
+	\item $P$ ist endliche Menge von \textit{Regeln} oder \textit{Produktionen}\\
+	Formal: $P\subseteq (V\cup\Sigma)^+\times(V\cup\Sigma)^*$, $P$ endlich\\
+	Für $(I,r)\in P$ schreibe $I\rightarrow r$
+	\item $S\in V$ ist die Startvariable
+\end{itemize}
+Wenn ein Wort $w$ das Teilwort $I$ enthält, darf $I$ in $w$ durch $r$ ersetzt werden.\\
+Schreibe $w\underset{G}{\rightarrow} z$, wenn $w$ durch Anwendung \textit{einer} Ableitungsregel in z verwandelt wird.\\
+Schreibe $w\overset{*}{\underset{G}{\rightarrow}} z$, wenn $w$ durch Anwendung \textit{beliebig vieler} Ableitungsregeln in z verwandelt wird.\\
+Wort $w\in (V\cup\Sigma)^*$, das noch Variablen enthält, heißt Satzform.\\
+Zu Grammatik $G$ gehörige Sprache: $L(G)=\{w\in\Sigma^*\ \vert\ S\overset{*}{\underset{G}{\rightarrow}} w\}$\\
+In jedem Ableitungsschritt am weitesten links stehende Variable ersetzt: "Linksableitung"\\
+\ul{Die Chomsky-Hierarchie}:
+\begin{itemize}
+	\item[Typ 0] Jede Grammatik ist automatisch vom Typ 0.
+	\item[Typ 1] Eine Grammatik ist vom Typ 1 oder \textit{kontextsensitiv}, wenn für alle Regeln $w_1\rightarrow w_2\in P$ gilt: $\abs{w_1}\leq\abs{w_2}$
+	\item[Typ 2] Eine Typ 1-Grammatik ist vom Typ 2 oder \textit{kontextfrei}, wenn für alle Regeln $w_1\rightarrow w_2\in P$ gilt: $w_1\in V$ ist eine einzelne Variable
+	\item[Typ 3] Eine Typ 2-Grammatik ist vom Typ 3 oder \textit{regulär}, wenn zusätzlich für alle Regeln $w_1\rightarrow w_2\in P$ gilt: $w_2\in\Sigma\cup\Sigma V$
+\end{itemize}
+Sonderregel für $\epsilon$: Falls $\epsilon\in L(G)$ erwünscht die Regel $S\rightarrow\epsilon$ aber dann darf $S$ auf keiner rechten Seite einer Produktion vorkommen (Ersetze $S$ immer durch $S'$ und füge $S\rightarrow\epsilon\ \vert\ \textit{andere Regeln}$ hinzu)\\
+Wenn $A\rightarrow\epsilon$ in Typ 2 oder Typ3:
+\begin{enumerate}[1.]
+	\item Partitioniere $V$ in $V_1=\{A\in V\ \vert\ A\overset{*}{\underset{G}{\rightarrow}}\epsilon\}$ und $V_2=V\backslash V_1$
+	\item Entferne alle Regeln der Form $A\rightarrow\epsilon$
+	\item Für jede Regel $B\rightarrow xAy$ mit $B\in V$, $A\in V_1$, $xy\in (V\cup\Sigma)^+$ füge Regel $B\rightarrow xy$ hinzu
+	\item Füge Regel für $\epsilon$ ggf. wieder hinzu (mit vorheriger Sonderregel)
+\end{enumerate}
+TODO linear Folie\\
+Typ 3 $\subsetneq$ Typ 2 $\subsetneq$ Typ 1 $\subsetneq$ Typ 0\\
+Nicht jede Sprache besitzt Grammatik\\
+\ul{Wortproblem}: Ist ein Wort in Grammatik? Für Typ 1 entscheidbar\\
+Die Menge der Typ 3-Sprachen ist genau die der regulären Sprachen
 \end{document}
 
 
