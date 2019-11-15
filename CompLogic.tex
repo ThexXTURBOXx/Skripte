@@ -405,7 +405,57 @@ Let $F$ be a formula, let $x$ be a variable which appears in $F$, and let $t$ be
 	\item If $x$ appears freely in $F$, we replace every occurrence of $x$ by $t$ we get a new formula $F\vert_{x\mapsto t}$ which is called the \ul{substitution} of $x$ by $t$
 	\item We can also substitute bound variables $x$, but only by other variables. $\forall x:F\rightarrow \forall y:F\vert_{x\mapsto y}$. This is called a \ul{bound substitution} or \ul{bound variable renaming}
 \end{enumerate}
-\ul{Cleaned form of a Predicate Logic Formula}: Given a formula $F$, the following step brings it to \ul{cleaned form:} Use bound substitutions to make the names of bound variables pairwise distinct with free variables. The result is called the \ul{cleaned form} of $F$.
+\ul{Cleaned form of a Predicate Logic Formula}: Given a formula $F$, the following step brings it to \ul{cleaned form:} Use bound substitutions to make the names of bound variables pairwise distinct with free variables. The result is called the \ul{cleaned form} of $F$.\\
+Using bound renamings $\forall x : F\equiv \forall y : F\vert_{x\mapsto y}$, we can make all bound variables pairwise distinct and distinct with the free variable names.\\
+\ul{Transformation to Prenex Form}: The following instructions define an algorithm which transforms a given formula $F$ to an equivalent formula $G$ such that $G$ is in cleaned Prenex form.
+\begin{enumerate}[(1)]
+	\item Replace $F$ by an equivalent formula in cleaned form
+	\item If $F$ is an atomic formula then return $F$ and stop
+	\item If $F$ is of the form $F=\neg \tilde F$, then apply the algorithm to $\tilde F$ and get $\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:H$ with quantifiers $\tilde Q_1,\dots,\tilde Q_k$ and a quantifier-free formula $H$. Then return $\hat Q_1x_{i_1}:\dots:\hat Q_{i_k}:\neg H$ where $\hat Q_i=\exists$ if $\tilde Q_i=\forall$ and $\hat Q_i=\forall$ if $\tilde Q_i=\exists$
+	\item If $F$ is of the form $F=G\vee H$ then apply the algorithm to $G$ and $H$ and get $G\equiv \tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\tilde G$ and $H\equiv \hat Q_1y_1\dots \hat Q_ly_l:\tilde H$ where $\tilde Q_i,\hat Q_j$ are quantifiers and $\tilde G, \tilde H$ are quantifier-free. Then return $\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\hat Q_1y_1:\dots\hat Q_ly_l:(\tilde G\vee \tilde H)$
+	\item If $F=G\wedge H$ then apply the algorithm as in step (4) and return $\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\hat Q_1y_1:\dots\hat Q_ly_l:(\tilde G\wedge \tilde H)$
+	\item If $F=\forall x:G$ resp. $F=\exists x:G$ then apply the algorithm to $G$ and get $G\equiv\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\tilde G$ where $\tilde Q_1,\dots,\tilde Q_k$ are quantifiers and $\tilde G$ is quantifier-free. Then return $\forall x:\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\tilde G$ (resp. $\exists x:\tilde Q_1x_{i_1}:\dots:\tilde Q_kx_{i_k}:\tilde G$) and stop.
+\end{enumerate}
+Two formulas $F,G$ are called \ul{satisfiability equivalent} if ($F$ is satisfiable iff $G$ is satisfiable)\\
+\ul{The Skolem Form of a Prenex Formula}: Let $F$ be a formula in prenex form: $F=Q_1x_1:\dots:Q_kx_k:G$ where $Q_i$ are quantifiers and $G$ is quantifier free. The following algorithm produces a formula $G$ in prenex form such that $G$ is satisfiability equivalent to $F$ and $G$ contains only universal quantifiers:
+\begin{enumerate}[(1)]
+	\item If there exists an existential quantifier in $F$ then we write $\forall x_1:\forall x_2:\dots:\forall x_l:\exists x_{l+1}:H$ where $l\geq 0$ and $H$ is in prenex form. Let $f_i^{(k)}$ be a $k$-ary function symbol not used in $F$. Then replace $F$ by the formula $\forall x_1:\dots:x_l:H$, $x_{l+1}\mapsto f_i^{(l)}(x_1,\dots,x_l)$
+	\item Repeat Step (1) as often as possible
+	\item Return the resulting formula $G$. It is said to be in Skolem form or a \ul{Skolemization} of $F$.
+\end{enumerate}
+\ul{Löwenhain-Skolem}: Every cleaned prenex formula is satisfiability equivalent to one having only universal quantifiers. More precisely, for $F=\forall x_1:\dots:\forall x_l:\exists x_{l+1}:H$, where $H$ is in cleaned prenex form, we let $f_1^{(l)}$ be a new function symbol. Then $F$ is satisfiability equivalent to  $G=\forall x_1:\dots:\forall x_l:H\vert_{x_{l+1}\mapsto f_i^{(l)}(x_1,\dots,x_l)}$\\
+\ul{Matrix Clause Form}: Let $F$ be a predicate logic formula. Apply the following instructions:
+\begin{enumerate}[(1)]
+	\item Transform $F$ into an equivalent formula $G$ in cleaned prenex form
+	\item Let $y_1,\dots,y_m$ be the free variables in $G$. Replace $G$ by $\tilde G=\exists y_1:\exists y_2:\dots:\exists y_m:G$
+	\item Compute the Skolem form of $\tilde G$ and get $H=\forall x_1:\dots:\forall x_l:H^*$, $H^*$ matrix formula of $H$ (quantifier-free, no free variables)
+	\item Calculate the CNF of $H^*$ where we consider atomic formulas like "propositions". Call the result $\tilde F$.
+	\item Return the set $\mathcal{K}(\tilde F)$
+\end{enumerate}
+Then $F$ is satisfiability equivalent to $\tilde F$ and $\mathcal{K}(\tilde F)$ is satisfiable \ul{iff} $F$ is satisfiable.\\
+\ul{Church's Theorem}: There is no algorithm which decides in finitely many steps whether a given predicate logic formula is satisfiable or not.\\
+\ul{Goals}:
+\begin{enumerate}[(1)]
+	\item Find the "smallest" universe in which $F$ could have a model
+	\item If $F$ is unsatisfiable, can we prove it in finitely many steps?
+\end{enumerate}
+Assume, that $F$ is in matrix-clause form.
+Let $D(F)$ be the set of all variable-free terms in the function symbols appearing in $F$. If $F$ contains no constant, then introduce the constant $a$. This set $D(F)$ can be constructed recursively as follows:
+\begin{enumerate}[(1)]
+	\item All constants are in $D(F)$.
+	\item If $f_i^{(k)}$ is a $k$-ary function symbol and $t_1,\dots,t_k\in D(F)$, then $f_i^{(k)}(t_1,\dots,t_k)\in D(F)$.\\
+	The set $D(F)$ is called the \ul{Herbrand universe} of $F$
+\end{enumerate}
+A structure $\alpha=(U,\phi,\psi,\xi)$ is called a \ul{Herbrand structure} if:
+\begin{enumerate}[(1)]
+	\item $U=D(F)$
+	\item If $f_i^{(k)}$ is a $k$-ary function symbol in $F$ and $t_1,\dots,t_k\in D(F)$, then $\phi(f_i^{(k)}):\underset{(t_1,\dots,t_k)\mapsto f_i^{(k)}(t_1,\dots,t_k)}{U^k\rightarrow U=D(F)}$\\
+	Hence $\alpha(f_i^{(k)}(t_1,\dots,t_k))=f_i^{(k)}(t_1,\dots,t_k)\in U$
+\end{enumerate}
+A Herbrand structure $\alpha=(U,\phi,\psi,\xi)$ for $F$ s.t. $\alpha\models F$ is called a \ul{Herbrand model} for $F$.\\
+\ul{Löwenhain-Skolem}: Let $F$ be in matrix clause form. Then $F$ is satisfiable iff $F$ has a Herbrand model. In particular, if $F$ has a model, then it has a model with a countable universe.\\
+Let $F$ be in matrix clause form: $F=\forall x_1:\dots:\forall x_n:F^*$. The \ul{Herbrand expansion} of $F$ is the following countably infinite set of formulas: $E(F)=\{F^*\vert_{x_1\mapsto t_1,\dots,x_n\mapsto t_n}:t_1,\dots,t_n\in D(F)\}$\\
+\ul{Herbrand-Skolem-Gödel}: A closed formula $F$ in Skolem form is satisfiable, iff $E(F)$ is satisfiable (in the sense of propositional logic).
 \end{document}
 
 

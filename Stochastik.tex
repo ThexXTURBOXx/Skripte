@@ -232,7 +232,37 @@ Sei $I=\{1,\dots,n\}$, $n\in\mathbb{N}$ oder $I=\mathbb{N}$, sei $(a_i)_{i\in I}
 TODO Satz 3.19\\
 Es gilt für alle $x\in\mathbb{R}$: $F_X$ stetig in $x$ $\Leftrightarrow$ $\mathbb{P}\left[X=x\right]=0$\\
 TODO Def 3.22\\
-
+Seien $X,y:\Omega_1\rightarrow\Omega_2$ ZVen. Dann sind $X$ und $X$ unabhängig, falls für alle $A,B\in\mathcal{A_2}$ gilt: $$\mathbb{P}\left[X\in A,Y\in B\right]=\mathbb{P}\left[X\in A\right]\cdot\mathbb{P}\left[Y\in B\right]$$\\
+Sei $(X_i)_{i\in I}$ eine Folge von ZVen. Dann ist $(X_i)_{i\in I}$ genau dann unabhängig, wenn $$\mathbb{P}\left(\bigcap_{i\in\tilde I}\{X_i\leq x_i\}\right)=\prod_{i\in\tilde I}\mathbb{P}\left[X_i\leq x_i\right]$$ für alle endlichen Mengen $\varnothing\neq \tilde I\subseteq I$ und alle Folgen $(x_i)_{i\in I}$ in $\mathbb{R}$ gilt.
+\section{Diskrete Modelle}
+Ein Wahrscheinlichkeitsraum $(\Omega,\mathcal{A},\mathbb{P})$ heißt \ul{diskret}, falls $\Omega$ höchstens abzählbar ist und $\mathcal{A}=\mathcal{P}(\Omega)$.\\
+TODO Kapitel 3 Folien\\
+Laplace-Raum $(\Omega,\mathcal{A},\mathbb{P})$ mit $\Omega$ endlich, $\mathcal{A}=\mathcal{P}(\Omega)$ und $\mathbb{P}(A)=\frac{\abs{A}}{\abs{\Omega}}$ $\forall A\subset\Omega$\\
+\ul{Binomialkoeffizient}: Sei $n\in\mathbb{N}_0$, $k\in\{0,\dots,n\}$.\\
+$\begin{pmatrix}n\\k\end{pmatrix}:=\frac{n!}{k!(n-k)!}$ "$k$ aus $n$"\\
+Es gilt für $k\neq 0$: $\begin{pmatrix}
+n\\k-1
+\end{pmatrix}+\begin{pmatrix}
+n\\k
+\end{pmatrix}=\begin{pmatrix}
+n+1\\k
+\end{pmatrix}$\\
+Sei $k\in\mathbb{N}$ und $N,N_1,\dots,N_k$ endliche, nicht-leere Mengen. Dann gilt $$\abs{N_1\times\dots\times N_k}=\abs{N_1}\cdot\abs{N_2}\cdots\dots\cdot\abs{N_k}$$
+Insbesondere: $\abs{N^k}=\abs{N}^k$ ($k$-Variation mit Wiederholung)\\
+Sei $N$ eine nicht-leere, endliche Menge mit $\abs{N}=n\in\mathbb{N}$. Dann gilt für alle $k\in\{1,\dots,n\}$: $Q_k(N):=\abs{\{(w_1,\dots,w_k)\in N^k\ \vert\ w_1,\dots,w_k \text{ p.w. verschieden}\}}=\frac{n!}{(n-k)!}=n\cdot(n-1)\cdot\dots(n-k+1)$ ($k$-Variation ohne Wiederholung)\\
+Insbesondere für $k=n$: Anzahl der Permutationen der Elemente von $N$ beträgt $n!$\\
+Sei $N$ nicht-leere, endliche Menge mit $n=\abs{N}$. Für $k\in\{0,\dots,n\}$ gilt: $\abs{\{K\subseteq N\\ \vert\ \abs{K}=k\}}=\begin{pmatrix}
+n\\K
+\end{pmatrix}$\\
+Es gilt für $n\in\mathbb{N}$ und $k\in\{1,\dots,n\}$: $$\abs{\{(w_1,\dots,w_k)\in\{1,\dots,n\}^k\ \vert\ 1\leq w_1< w_2<\dots<w_k\leq n\}}=\begin{pmatrix}
+n\\k
+\end{pmatrix}$$
+Für $k,n\in\mathbb{N}$ gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}^k\ \vert\ 1\leq w_1\leq \dots\leq w_k\leq n\}}=\begin{pmatrix}
+n+k-1\\k
+\end{pmatrix}$$
+Es gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}_0^k\ \vert\ w_1+\dots+w_k=n\}}=\begin{pmatrix}
+n+k-1\\n
+\end{pmatrix}$$
 \end{document}
 
 

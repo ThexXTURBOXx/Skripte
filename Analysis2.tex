@@ -307,7 +307,36 @@ $f:U\rightarrow\mathbb{R}$ sei in $x\in U$ diff'bar.
 	\item $Df(x)$ hat die Form: $y\mapsto y^T\nabla f(x)$
 	\item $f$ ist in \ul{jede Richtung} richtungsdiff'bar: $D_yf(x)=y^T\nabla f(x)=(Df(x))(y)$
 \end{enumerate}
-
+$f:U\rightarrow\mathbb{R}$, $x\in U'\subseteq U$, $f$ partiell diff'bar an $X$ und $\frac{\partial f}{\partial x_j}$ stetig in $x$ $\Rightarrow$ $f$ ist an $x$ diff'bar.\\
+stetig diff'bar ($\Rightarrow\ \nabla f(x)$ stetig $\Rightarrow$ $y\mapsto y^T\nabla f(x)$ stetig in $x$) $\Rightarrow$ stetig partiell diff'bar $\Rightarrow$ diff'bar $\Rightarrow$ partiell diff'bar\\
+$f:U\rightarrow\mathbb{R}$ heißt \ul{$k$-mal stetig diff'bar}, wenn $\frac{\partial^{\abs{\alpha}}}{\partial x^\alpha}f$, $\abs{\alpha}\leq k$, existieren + stetig sind\\
+$f:U\rightarrow\mathbb{R}$, $k$-mal stetig diff'bar an $x$ $$\Rightarrow\ D_y^kf(x)=\sum_{\abs{\alpha}=k}\frac{k!}{\alpha!}\frac{\partial^kf}{\partial x^\alpha}(x)y^\alpha$$
+$f:U\rightarrow\mathbb{R}$, $k$-mal stetig diff'bar, $y\in\mathbb{R}^n$ mit $\left[x,x+y\right]\subset U$. Dann gilt für $g:t\rightarrow f(x+ty)$, $t\in\left[0,1\right]$ $\Rightarrow$ $g^{(j)}(t)=D_y^j f(x+ty)$\\
+$f\in C^{k+1}(\Omega)$, $x,y\in\Omega$ mit $\left[x,x+y\right]\subseteq\Omega$. Es gibt $\xi\in\left[x,y\right]$ mit $$f(x+y)=\sum_{\abs{\alpha}\leq k}\frac{1}{\alpha!}\frac{\partial^{\abs{\alpha}}}{\partial x^\alpha}f(x)y^\alpha+\sum_{\abs{\alpha}=k+1}\frac{1}{\alpha!}\frac{\partial^{\abs{\alpha}}f}{\partial x^\alpha}(\xi)y^\alpha$$
+$f$ an $x$ $k$-mal stetig differenzierbar $\Rightarrow$
+\begin{enumerate}[1)]
+	\item $D^kf$ symmetrisch: $D^kf(x)(y^{(1)},\dots,y^{(k)})=D^kf(x)(y^{\sigma(1)},\dots,y^{\sigma(k)})$ mit $\sigma$ Permutation
+	\item $D^kf$ linear in jeder Variablen: $D^kf(x)(\dots,\alpha y^{(j)}+\beta z^{(j)},\dots)=\alpha D^kf(x)(\dots,y^{(j)},\dots)+\beta D^kf(x)(\dots,z^{(j)},\dots)$ (Multilinearform, $k$-Linearform)
+	\item Diagonale: $D^kf(x)=(y,\dots,y)$ ist $k$-homogen in $y$
+	\item $D^kf(x)(\underbrace{e_1,\dots,e_1}_{\alpha_1},\dots,\underbrace{e_n,\dots,e_n}_{\alpha_n})=\frac{\partial^kf}{\partial x^\alpha}$, $\abs{\alpha}=k$
+\end{enumerate}
+$D^kf(x)$ ist eine symmetrische Multilinearform\\
+1-Linearform: $y\mapsto a^Ty$\\
+Bilinearform: $(y,z)\mapsto y^TAz$\\
+\ul{Polarisierungsformel/Blossoming}: Zu jedem $k$-homogenen Polynom $p:\mathbb{R}^n\rightarrow\mathbb{R}$ gibt es genau eine $k$-Linearform $P$ mit $p(x)=P(x,\dots,x)$ und umgekehrt.
+\begin{enumerate}[1)]
+	\item $k$-tes Taylorpolynom an $x$: $T_kf:y\mapsto\sum_{\abs{\alpha}\leq k}\frac{1}{\alpha}\frac{\partial^\alpha f}{\partial x^\alpha}(x)(y-x)^\alpha=\sum_{j=0}^k\sum_{\abs{\alpha}=j}p_\alpha x^\alpha=: \sum_{j=0}^k p_j(x)$
+	\item $p$ hat Totalgrad $k$: $p(x)=\sum_{\abs{\alpha}\leq k}p_\alpha x^\alpha=\sum_{j=0}^kp_j(x)$
+\end{enumerate}
+$f:U\rightarrow\mathbb{R}$ $k$-mal diff'bar an $x\in U$, wenn es $p=p_x$ vom Grad $k$ gibt, sodass $$\lim_{h\rightarrow 0}\frac{\abs{f(x+h)-p_x(h)}}{\norm{h}_2^k}=0$$
+$$\frac{\abs{f(x+h)-f(x)-l(h)}}{\norm{h}_2}\rightarrow 0$$
+Leitform von $p$ $\rightarrow$ $\sum_{\abs{\alpha} = k}p_\alpha x^\alpha$ $\rightarrow$ $D^kf(x)$\\
+$f:U\rightarrow\mathbb{R}$, $k$-mal diff'bar an $x$
+\begin{enumerate}[1)]
+	\item $f$ ist $j$-mal diff'bar ($0\leq j \leq k$)
+	\item $p_x$ ist eindeutig
+	\item $f\in C^k(\Omega)$ $\Rightarrow$ $p_x=T_kf$
+\end{enumerate}
 \end{document}
 
 

@@ -241,8 +241,18 @@ Wenn $A\rightarrow\epsilon$ in Typ 2 oder Typ3:
 TODO linear Folie\\
 Typ 3 $\subsetneq$ Typ 2 $\subsetneq$ Typ 1 $\subsetneq$ Typ 0\\
 Nicht jede Sprache besitzt Grammatik\\
-\ul{Wortproblem}: Ist ein Wort in Grammatik? Für Typ 1 entscheidbar\\
-Die Menge der Typ 3-Sprachen ist genau die der regulären Sprachen
+Die Menge der Typ 3-Sprachen ist genau die der regulären Sprachen\\
+\begin{tabular}{|r|c|c|c|c|}\hline
+	& Typ 0 & Typ 1 & Typ 2 & Typ 3\\\hline
+	Wortproblem & & & \ & $\times$\\\hline
+	Endlichkeitsproblem & & & & $\times$\\\hline
+	Schnittproblem & & & & $\times$\\\hline
+	Äquivalenzproblem & & & & $\times$\\\hline
+\end{tabular}\\
+Eine kontextfreie Grammatik $G=(V,\Sigma,P,S)$ ist in \ul{Chomsky-Normalform}, wenn alle Produktionen von der Form $A\rightarrow BC$ oder $A\rightarrow a$ sind mit $A,B,C\in V$, $a\in\Sigma$.\\
+Eine kontextfreie Grammatik $G=(V,\Sigma,P,S)$ ist in \ul{Greibach-Normalform}, wenn alle Produktionen von der Form $A\rightarrow aB_1B_2\dots B_k$ sind mit $k \geq 0$, $A,B_1,\dots,B_k\in V$, $a\in \Sigma$.\\
+Für jede kontextfreie Grammatik (KFG) existiert eine KFG $G'$ in Chomsky-Normalform und eine KFG $G''$ in Greibach-Normalform, sodass $L(G'')=L(G')=L(G)\backslash\{\epsilon\}$.\\
+\ul{Pumping-Lemma für kontextfreie Sprachen}: Für jede kontextfreie Sprache $L$ existiert ein $K\geq 0$, sodass für jedes $z\in L$ der Länge mindestens $k$ gilt: Es existiert Zerlegung $z=uvwxy$ mit $vx\neq\epsilon$, $\abs{vwx}\leq k$ und für alle $i\geq 0$ gilt $uv^iwx^iy\in L$.
 \end{document}
 
 
