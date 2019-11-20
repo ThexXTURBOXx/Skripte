@@ -455,7 +455,17 @@ A structure $\alpha=(U,\phi,\psi,\xi)$ is called a \ul{Herbrand structure} if:
 A Herbrand structure $\alpha=(U,\phi,\psi,\xi)$ for $F$ s.t. $\alpha\models F$ is called a \ul{Herbrand model} for $F$.\\
 \ul{Löwenhain-Skolem}: Let $F$ be in matrix clause form. Then $F$ is satisfiable iff $F$ has a Herbrand model. In particular, if $F$ has a model, then it has a model with a countable universe.\\
 Let $F$ be in matrix clause form: $F=\forall x_1:\dots:\forall x_n:F^*$. The \ul{Herbrand expansion} of $F$ is the following countably infinite set of formulas: $E(F)=\{F^*\vert_{x_1\mapsto t_1,\dots,x_n\mapsto t_n}:t_1,\dots,t_n\in D(F)\}$\\
-\ul{Herbrand-Skolem-Gödel}: A closed formula $F$ in Skolem form is satisfiable, iff $E(F)$ is satisfiable (in the sense of propositional logic).
+\ul{Herbrand-Skolem-Gödel}: A closed formula $F$ in Skolem form is satisfiable, iff $E(F)$ is satisfiable (in the sense of propositional logic).\\
+\ul{Basic Resolution Algorithm}: Given a predicate logic formula $F$, perform the following steps:
+\begin{enumerate}[(1)]
+	\item Transform $F$ (using satisfiability equivalence) to the form $F=\forall x_1:\dots:\forall x_n:G$ (as above)
+	\item Let $M=\varnothing$ and $i=0$
+	\item Increase $i$ by 1. Compute the next element $H_i$ of $E(F)$.\\
+	Let $M=\{H_1,\dots,H_i\}$.
+	\item Consider $M$ as a set of propositional logic formulas. Check if $M$ is unsatisfiable. If "True", then return "$F$ is unsatisfiable" and stop. Otherwise continue with (3).
+\end{enumerate}
+This is a procedure. If $F$ is unsatisfiable, it stops after finitely many steps and returns "$F$ is unsatisfiable". If $F$ is satisfiable, it produces an infinite loop.\\
+
 \end{document}
 
 

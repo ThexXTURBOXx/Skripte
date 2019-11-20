@@ -252,7 +252,25 @@ Die Menge der Typ 3-Sprachen ist genau die der regulären Sprachen\\
 Eine kontextfreie Grammatik $G=(V,\Sigma,P,S)$ ist in \ul{Chomsky-Normalform}, wenn alle Produktionen von der Form $A\rightarrow BC$ oder $A\rightarrow a$ sind mit $A,B,C\in V$, $a\in\Sigma$.\\
 Eine kontextfreie Grammatik $G=(V,\Sigma,P,S)$ ist in \ul{Greibach-Normalform}, wenn alle Produktionen von der Form $A\rightarrow aB_1B_2\dots B_k$ sind mit $k \geq 0$, $A,B_1,\dots,B_k\in V$, $a\in \Sigma$.\\
 Für jede kontextfreie Grammatik (KFG) existiert eine KFG $G'$ in Chomsky-Normalform und eine KFG $G''$ in Greibach-Normalform, sodass $L(G'')=L(G')=L(G)\backslash\{\epsilon\}$.\\
-\ul{Pumping-Lemma für kontextfreie Sprachen}: Für jede kontextfreie Sprache $L$ existiert ein $K\geq 0$, sodass für jedes $z\in L$ der Länge mindestens $k$ gilt: Es existiert Zerlegung $z=uvwxy$ mit $vx\neq\epsilon$, $\abs{vwx}\leq k$ und für alle $i\geq 0$ gilt $uv^iwx^iy\in L$.
+\ul{Pumping-Lemma für kontextfreie Sprachen}: Für jede kontextfreie Sprache $L$ existiert ein $K\geq 0$, sodass für jedes $z\in L$ der Länge mindestens $k$ gilt: Es existiert Zerlegung $z=uvwxy$ mit $vx\neq\epsilon$, $\abs{vwx}\leq k$ und für alle $i\geq 0$ gilt $uv^iwx^iy\in L$.\\
+TODO VL\\
+Ein \ul{nichtdeterministischer Kellerautomat} (NPDA) ist ein Tupel $M=(Q,\Sigma,\Gamma,\delta,s,\bot,F)$. Dabei ist
+\begin{itemize}
+	\item $A$ endliche Zustandsmenge
+	\item $\Sigma$ endliches Alphabet
+	\item $\Gamma$ endliches Stack-Alphabet
+	\item $s\in Q$ Startzustand
+	\item $\bot\in\Gamma$ Initialisierung des Stack
+	\item $\delta:Q\times (\Sigma\cup\{\epsilon\})\times\Gamma\rightarrow 2^{Q\times\Gamma^*}$
+	\item $F\subseteq Q$ Menge der akzeptierenden Endzustände, $F=\varnothing$ möglich
+\end{itemize}
+Eine \ul{Konfiguration eines PDA} ist ein Tripel $(q,w,\alpha)\in Q\times\Sigma^*\times\Gamma^*$, $w\in\Sigma^*$ noch nicht gelesener Teil der Eingabe, $\alpha\in\Gamma^*$ der Stack-Inhalt.\\
+$M$ akzeptiert $x$ durch akzeptierenden Endzustand, wenn $(s,x,\bot)\overset{*}{\underset{M}{\rightarrow}}(q,\epsilon,\gamma)$ mit $q\in F,\gamma\in\Gamma^*$\\
+$M$ akzeptiert $x$ durch leeren Stack, wenn $(s,x,\bot)\overset{*}{\underset{M}{\rightarrow}}(q,\epsilon,\epsilon)$ mit $q\in Q$ beliebig\\
+Beide Varianten sind äquivalent (Umbauen des Automaten möglich)\\
+Ein PDA ist deterministisch (DPDA), wenn $\abs{\delta(q,a,Z)}+\abs{\delta(q,\epsilon,Z)}\leq 1$ für alle $q\in Q,a\in\Sigma,Z\in\Gamma$.\\
+PDAs sind echt mächtiger als DPDAs\\
+Eine Sprache ist genau dann kontextfrei, wenn es einen Kellerautomaten gibt, der sie akzeptiert.
 \end{document}
 
 
