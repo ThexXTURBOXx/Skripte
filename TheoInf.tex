@@ -58,6 +58,7 @@
 \let\phi\varphi
 \let\origepsilon\epsilon
 \let\epsilon\varepsilon
+\let\blank\sqcup
 
 \title{Vorlage}
 \author{Nico Mexis}
@@ -271,7 +272,65 @@ Beide Varianten sind äquivalent (Umbauen des Automaten möglich)\\
 Ein PDA ist deterministisch (DPDA), wenn $\abs{\delta(q,a,Z)}+\abs{\delta(q,\epsilon,Z)}\leq 1$ für alle $q\in Q,a\in\Sigma,Z\in\Gamma$.\\
 PDAs sind echt mächtiger als DPDAs\\
 Eine Sprache ist genau dann kontextfrei, wenn es einen Kellerautomaten gibt, der sie akzeptiert.
+\section{Berechenbarkeit und Turingmaschinen}
+Eine (partielle) Funktion $f:\mathbb{N}^k\rightarrow\mathbb{N}$ soll als \ul{berechenbar} angesehen werden, wenn es ein Rechenverfahren/einen Algorithmus gibt, der $f$ berechnet. D.h., Gestartet mit Eingabe $(n_1,\dots,n_k)\in\mathbb{N}^k$ soll der Algorithmus nach endlich vielen Schritten mit Ausgabe von $f(n_1,\dots,n_k)$ stoppen.\\
+\ul{Partielle Funktion}: Funktion ist an manchen Stellen undefiniert, schreibe: $f(n_1,\dots,n_k)=\bot$. Bei TODO\\
+Eine Turingmaschine ist gegeben durch ein 7-Tupel $M=(Q,\Sigma,\Gamma,\delta,s,\blank,F)$ mit:
+\begin{itemize}
+	\item $Q$ eine endliche Zustandsmenge
+	\item $\Sigma$ ein endliches Eingabealphabet
+	\item $s\in Q$ der Startzustand
+	\item $\blank$ ein Blanksymbol mit $\blank\notin\Sigma$
+	\item $\Gamma$ ein endliches Bandalphabet mit $\Sigma\cup\{\blank\}\subseteq\Gamma$
+	\item $\delta:Q\times\Gamma\rightarrow Q\times\Gamma\times\{L,R,N\}$ die Überführungsfunktion (deterministisch)\\
+	$\delta:Q\times\Gamma\rightarrow\mathcal{P}(Q\times\Gamma\times\{L,R,N\})$ (nicht-deterministisch)
+	\item $F\subseteq Q$ die Menge der Endzustände
+\end{itemize}
+Eine \ul{Konfiguration} einer Turingmaschine ist ein Wort $k\in\Gamma^*Q\Gamma^*$, welches eine "Momentaufnahme" der Turingmaschine beschreibt.\\
+$k=\alpha q\beta$ bedeutet:
+\begin{itemize}
+	\item nicht-leerer bzw. schon besuchter Bandinhalt ist $\alpha\beta$
+	\item Maschine befindet sich in Zustand $q$
+	\item Schreib-/Lesekopf befindet sich auf erstem Zeichen von $\beta$
+\end{itemize}
+Start der Turingmaschine: Eingabe $x\in\Sigma^*$ steht auf dem Band, Lese-/Schreibkopf steht auf erstem Zeichen von $x$ $\rightarrow$ Startkonfiguration: $sx$\\
+Definiere Übergangsrelation $\vdash$ auf Konfigurationen
+$$a_1\dots a_mqb_1\dots b_n\vdash\begin{cases}
+a_1\dots a_mq'cb_2\dots b_n & \delta(q,b_1)=(q',c,N),m\geq 0,n\geq 1\\
+a_1\dots a_mcq'b_2\dots b_n & \delta(q,b_1)=(q',c,R),m\geq 0,n\geq 2\\
+a_1\dots a_{m-1}q'a_mcb_2\dots b_n & \delta(q,b_1)=(q',c,L),m\geq 1,n\geq 1
+\end{cases}$$
+Zwei Sonderfälle:\\
+$a_1\dots a_mqb_1\vdash a_1\dots a_mcq'\blank$ falls $\delta(q,b_1)=(q',c,R)$\\
+$qb_1\dots b_n\vdash cq'\blank b_1\dots a_n$ falls $\delta(q,b_1)=(q',c,L)$\\
+Sei $M=(Q,\Sigma,\Gamma,\delta,s,\blank,F)$ eine Turingmaschine.\\
+$M$ akzeptiert ein Wort $x\in\Sigma^*$, wenn sie bei Eingabe $x$ in einem Zustand aus $F$ stoppt, d.h. wenn $sx\vdash^*\alpha z\beta$ mit $z\in F$\\
+Die von $M$ akzeptierte Sprache $L(M)$ ist definiert als $L(M)=\{x\in\Sigma^*\ \vert\ sx\vdash^*\alpha e\beta\text{ mit }e\in F\}$\\
+Turingmaschine hält genau auf den Wörtern aus $L(M)$ in einem Endzustand\\
+Für alle anderen kann sie halten (dann in einem Zustand, der kein Endzustand ist), oder auch gar nicht halten.\\
+Turingmaschine, die bei jeder Eingabe hält, heißt \ul{total}.\\
+Eine Sprache $L\subseteq\Sigma^*$ heißt \ul{semi-entscheidbar}, wenn es eine Turingmaschine $M$ gibt mit $L=L(M)$.\\
+Eine Sprache $L\subseteq\Sigma^*$ heißt \ul{rekursiv} oder \ul{entscheidbar}, wenn es eine totale Turingmaschine M gibt mit $L=L(M)$.\\
+Die von allgemeinen Turingmaschinen akzeptierbaren Sprachen sind genau die Typ-0-Sprachen (egal ob nicht-/deterministisch).\\
+Die von linear beschränkten Turingmaschinen (nur nicht-deterministisch, verlässt den Bandbereich, auf dem die Eingabe steht, nicht, LBA) akzeptierbaren Sprachen sind genau die Typ-1-Sprachen.\\
+TODO Berechenbarkeit\\
+Eine Sprache $A$ ist genau dann \ul{entscheidbar}, wenn die charakteristische Funktion $\chi_A$ von $A$ \ul{berechenbar} ist mit $$\chi_A:\Sigma^*\rightarrow\{0,1\}, \chi_A(w)=\begin{cases}
+1 & w\in A\\
+0 & w\notin A
+\end{cases}$$
+Eine Sprache $A$ ist genau dann \ul{semi-entscheidbar}, wenn die "halbe" charakteristische Funktion $\chi_A'$ von $A$ \ul{berechenbar} ist mit $$\chi_A':\Sigma^*\rightarrow\{0,1\}, \chi_A'(w)=\begin{cases}
+1 & w\in A\\
+\bot & w\notin A
+\end{cases}$$
+\ul{Church'sche These}: Die Menge der (Turing-)berechenbaren Funktionen ist genau die Menge der im intuitiven Sinne überhaupt berechenbaren Funktionen.\\
+Zu jeder Mehrband-Turingmaschine $M$ gibt es eine Einband-Turingmaschine $M'$ mit $L(M)=L(M')$ bzw. so, dass $M'$ dieselbe Funktion berechnet wie $M$.\\
+TODO Maschinen hintereinander
+Eine Typ-1-Grammatik ist in Kuroda-Normalform, wenn alle Regeln eine der folgenden Formen haben:\\
+$A\rightarrow a$, $A\rightarrow B$, $A\rightarrow BC$, $AB\rightarrow CD$\\
+Für jede Typ-1-Grammatik gibt es eine Grammatik $G'$ in Kuroda-Normalform mit $L(G')=L(G)\backslash\{\epsilon\}$\\
+
 \end{document}
+
 
 
 

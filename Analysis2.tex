@@ -344,7 +344,52 @@ $f:U\subseteq\mathbb{R}^n\rightarrow\mathbb{R}^d$ heißt
 	\item richtungsdiff'bar: $D_yf(x)=\lim_{h\rightarrow0}\frac{f(x+hy)-f(x)}{h}\in\mathbb{R}^d$
 	\item diff'bar, wenn $y\mapsto D_yf(x)$ linear
 \end{enumerate}
-TODO VL
+TODO VL\\
+\ul{Minimum/Minimalstelle} $x$ von $f(x)$.\\
+Es gibt $U\ni x$ mit $f(x)\leq f(y)$, $y\in U$.\\
+Strikt: $f(x)<f(y)$, $x\neq y\in U$\\
+$f'(x)=0$\\
+$x$ ist Minimalstelle von $f$ $\Leftrightarrow$ $x$ ist Maximalstelle von $-f$\\
+$f:U\rightarrow\mathbb{R}$, $U\subseteq\mathbb{R}^n$ offen, partiell diff'bar, $x$ lokales Extremum $\Rightarrow$ $\nabla f(x)=0$\\
+$A\in\mathbb{R}^{n\times n}$ positiv definit, wenn $y^TAy>0$, $y\in\mathbb{R}^n\backslash\{0\}$ (positiv semidefinit "$\geq$").\\
+\ul{indefinit}, wenn es zwei EW gibt mit $\lambda_1<0$ und $\lambda_2>0$.\\
+$A\in\mathbb{R}^{n\times n}$ ist positiv (semi-)definit $\Leftrightarrow$ $\det\begin{bmatrix}
+a_{11} & \hdots & a_{1k}\\
+\vdots & \ddots & \vdots\\
+a_{k1} & \hdots & a_{kk}
+\end{bmatrix}>0$ (oder $\geq$)\\
+$f\in\mathcal{C}^2(D)$, $x\in U\subset D$, $U$ offen,
+\begin{enumerate}[1)]
+	\item $f$ an $x$ \ul{lokales Minimum} $\Rightarrow$ $\nabla f(x)=0$, $Hf(x)$ positiv semidefinit
+	\item $\nabla f(x)=0$, $Hf(x)$ positiv definit $\Rightarrow$ $f$ hat an $x$ ein striktes lokales Minimum
+\end{enumerate}
+$f\in\mathcal{C}^2(D),\dots,\nabla f(x)=0$
+\begin{enumerate}
+	\item $Hf(x)$ hat $\lambda>0$ $\Rightarrow$ $x$ \ul{kein} lokales Maximum
+	\item $HF(x)$ hat $\lambda<0$ $\Rightarrow$ $x$ \ul{kein} lokales Minimum
+\end{enumerate}
+\ul{Konvexität}:
+\begin{enumerate}
+	\item $\Omega\subseteq\mathbb{R}^n$ \ul{konvex}, wenn $x,x'\in\Omega$ $\Rightarrow$ $\Omega\supset\left[x,x'\right]=\{(1-\alpha)x+\alpha x'\ \vert\ \alpha\in\left[0,1\right]\}$
+	\item $f:\Omega\rightarrow\mathbb{R}$, $f((1-\alpha)x+\alpha x)\leq (1-\alpha)f(x)+\alpha f(x')$, $\alpha\in\left[0,1\right]$, strikt: "<" für $\alpha\in(0,1)$
+\end{enumerate}
+$\Omega\subseteq\mathbb{R}^n$ konvex + offen, $f:\Omega\rightarrow\mathbb{R}$ $\Rightarrow$ $Hf(x)$ positiv semidefinit, $x\in\Omega$\\
+Einheitskreis: $\mathbb{S}^2=\{(x,y)\ \vert\ x^2+y^2=1\}$\\
+Einheitsscheibe: $\mathbb{D}^2=\{(x,y)\ \vert\ x^2+y^2\leq1\}$\\
+$\nabla f(x)=\begin{pmatrix}
+a\\b
+\end{pmatrix}\neq0$\\
+\ul{Tangentialkegel}: $\Omega\subset\mathbb{R}^n$, $x\in\Omega$. Menge aller $y\in\mathbb{R}^n$ mit: $\exists x_k\rightarrow x,\alpha_k\in\mathbb{R}_+:\lim_{k\rightarrow\infty}\alpha_k(x_k-x)=y$\\
+$f\in\mathcal{C}^1(\Omega)$, $\Omega\subseteq\mathbb{R}^n$, lokales Minimum/Maximum $x\in\Omega$. Dann: $D_yf(x)=y^T\nabla f(x)\geq 0\ / \leq 0$, $y\in T(\Omega,x)$\\
+$g:\mathbb{R}^n\rightarrow\mathbb{R}^p$, $h:\mathbb{R}^n\rightarrow\mathbb{R}^q$, $g,h\in\mathcal{C}^1$, $\Omega=\{x:g(x)=0,h(x)\geq 0\}$\\
+$h(x)\geq 0$ $\Leftrightarrow$ $h_1(x)\geq 0,\dots,h_q(x)\geq 0$.\\
+$u\leq v$ $\Leftrightarrow$ $u_j\leq v_j$\\
+\ul{Aktive Nebenbedingungen}: $A_k(x)=\{j\ \vert\ k_j(x)=0\}$\\
+\ul{Farkas-Lemma}: Für $A\in\mathbb{R}^{k\times l}$ und $b\in\mathbb{R}^k$ gibt es genau dann ein $0\leq x\in\mathbb{R}^l$ mit $Ax=b$ wenn $A^Ty\geq 0$ $\Rightarrow$ $b^Ty\geq 0$\\
+$L(x)=\{y\in\mathbb{R}^n\ \vert\ (\nabla g_j(x)y\geq 0 \wedge j=k,\dots,p)\vee(\nabla h_j(x)y\geq 0\wedge j\in A_k(x))\}$\\
+$x\in\Omega$ Minimalstelle von $f\in\mathcal{C}^1(\Omega')$, $\Omega'\supseteq\Omega$ offen $\{y\ \vert\ y^Tz\geq 0,z\in Z(\Omega,x)\}=\{y\ \vert\ y^Tz\geq 0,z\in L(x)\}$. Dann existieren $\lambda\in\mathbb{R}^p$, $\mu\in\mathbb{R}_+^q$ mit $f'(x)-\lambda^Tg'(x)-\mu^Th'(x)=0$\\
+\ul{Lagrangefunktion}: $F(x)=f(x)-\lambda^Tg(x)-\mu^Th(x)$\\
+$\lambda,\mu$ Lagrangemultiplikatoren
 \end{document}
 
 

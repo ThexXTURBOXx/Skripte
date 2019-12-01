@@ -239,30 +239,82 @@ Ein Wahrscheinlichkeitsraum $(\Omega,\mathcal{A},\mathbb{P})$ heißt \ul{diskret
 TODO Kapitel 3 Folien\\
 Laplace-Raum $(\Omega,\mathcal{A},\mathbb{P})$ mit $\Omega$ endlich, $\mathcal{A}=\mathcal{P}(\Omega)$ und $\mathbb{P}(A)=\frac{\abs{A}}{\abs{\Omega}}$ $\forall A\subset\Omega$\\
 \ul{Binomialkoeffizient}: Sei $n\in\mathbb{N}_0$, $k\in\{0,\dots,n\}$.\\
-$\begin{pmatrix}n\\k\end{pmatrix}:=\frac{n!}{k!(n-k)!}$ "$k$ aus $n$"\\
-Es gilt für $k\neq 0$: $\begin{pmatrix}
-n\\k-1
-\end{pmatrix}+\begin{pmatrix}
-n\\k
-\end{pmatrix}=\begin{pmatrix}
-n+1\\k
-\end{pmatrix}$\\
+$\binom{n}{k}:=\frac{n!}{k!(n-k)!}$ "$k$ aus $n$"\\
+Es gilt für $k\neq 0$: $\binom{n}{k-1}+\binom{n}{k}=\binom{n+1}{k}$\\
 Sei $k\in\mathbb{N}$ und $N,N_1,\dots,N_k$ endliche, nicht-leere Mengen. Dann gilt $$\abs{N_1\times\dots\times N_k}=\abs{N_1}\cdot\abs{N_2}\cdots\dots\cdot\abs{N_k}$$
 Insbesondere: $\abs{N^k}=\abs{N}^k$ ($k$-Variation mit Wiederholung)\\
 Sei $N$ eine nicht-leere, endliche Menge mit $\abs{N}=n\in\mathbb{N}$. Dann gilt für alle $k\in\{1,\dots,n\}$: $Q_k(N):=\abs{\{(w_1,\dots,w_k)\in N^k\ \vert\ w_1,\dots,w_k \text{ p.w. verschieden}\}}=\frac{n!}{(n-k)!}=n\cdot(n-1)\cdot\dots(n-k+1)$ ($k$-Variation ohne Wiederholung)\\
 Insbesondere für $k=n$: Anzahl der Permutationen der Elemente von $N$ beträgt $n!$\\
-Sei $N$ nicht-leere, endliche Menge mit $n=\abs{N}$. Für $k\in\{0,\dots,n\}$ gilt: $\abs{\{K\subseteq N\\ \vert\ \abs{K}=k\}}=\begin{pmatrix}
-n\\K
-\end{pmatrix}$\\
-Es gilt für $n\in\mathbb{N}$ und $k\in\{1,\dots,n\}$: $$\abs{\{(w_1,\dots,w_k)\in\{1,\dots,n\}^k\ \vert\ 1\leq w_1< w_2<\dots<w_k\leq n\}}=\begin{pmatrix}
-n\\k
-\end{pmatrix}$$
-Für $k,n\in\mathbb{N}$ gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}^k\ \vert\ 1\leq w_1\leq \dots\leq w_k\leq n\}}=\begin{pmatrix}
-n+k-1\\k
-\end{pmatrix}$$
-Es gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}_0^k\ \vert\ w_1+\dots+w_k=n\}}=\begin{pmatrix}
-n+k-1\\n
-\end{pmatrix}$$
+Sei $N$ nicht-leere, endliche Menge mit $n=\abs{N}$. Für $k\in\{0,\dots,n\}$ gilt: $\abs{\{K\subseteq N\\ \vert\ \abs{K}=k\}}=\binom{n}{K}$\\
+Es gilt für $n\in\mathbb{N}$ und $k\in\{1,\dots,n\}$: $$\abs{\{(w_1,\dots,w_k)\in\{1,\dots,n\}^k\ \vert\ 1\leq w_1< w_2<\dots<w_k\leq n\}}=\binom{n}{k}$$
+Für $k,n\in\mathbb{N}$ gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}^k\ \vert\ 1\leq w_1\leq \dots\leq w_k\leq n\}}=\binom{n+k-1}{k}$$
+Es gilt: $$\abs{\{(w_1,\dots,w_k)\in\mathbb{N}_0^k\ \vert\ w_1+\dots+w_k=n\}}=\binom{n+k-1}{n}$$
+Seien $(\Omega_1,\mathcal{A}_1,\mathbb{P}_1),\dots,(\Omega_n,\mathcal{A}_N,\mathbb{P}_n)$ W'räume.\\
+$\Omega = \Omega_1\times\Omega_2\times\dots\times\Omega_n$, $\mathcal{A}=\mathcal{P}(\Omega)$, $\forall\omega=\{\omega_1,\dots,\omega_n\}\in\Omega:\mathbb{P}(\{\omega\})=\mathbb{P}_1(\{\omega_1\})\cdot\dots\cdot\mathbb{P}_n(\{\omega_n\})$, bzw. $f(\omega)=f_1(\omega_1)\cdot\dots\cdots f_n(\omega_n)$ mit $f_i:\Omega\rightarrow\left[0,1\right]$ W'funktion zu $\mathbb{P}$.
+\begin{enumerate}[i)]
+	\item $f$ ist eine W'funktion auf $\Omega$
+	\item Für das durch $f$ definierte W'maß $\mathbb{P}$ auf $\mathcal{A}$ gilt: $\forall A_1\subseteq\Omega_1,\dots,A_n\subseteq\Omega_n:\mathbb{P}(A_1\times\dots\times A_n)=\mathbb{P}_1(A_1)\cdot\times\cdot\mathbb{P}_n(A_n)$
+	\item Es existiert genau ein W'maß auf $\mathcal{A}$ mit Eigenschaft ii)
+\end{enumerate}
+Das durch $f$ definierte W'maß $\mathbb{P}$ auf $\mathcal{A}$ heißt das \ul{Produkt der W'maße $\mathbb{P}_i$} (Produktmaß) und $(\Omega,\mathcal{A},\mathbb{P})$ heißt das \ul{Produkt der W'räume} $(\Omega_i,\mathcal{A}_i,\mathbb{P}_i)$ (\ul{Produktraum})\\
+Seien $A_1\subseteq\Omega_1,\dots,A_n\subseteq\Omega_n$. Dann gilt: $\mathbb{P}(\bigcap_{i=1}^n\{X_i\in A_i\})=\prod_{i=1}^n\mathbb{P}(\{X_i\in A_i\})=\prod_{i=1}^n\mathbb{P}_i(A_i)$\\
+Wir haben folgendes mit dieser Konstruktion erreicht:
+\begin{enumerate}[1)]
+	\item Produktraum-Modell beinhaltet die Modelle der Einzelexperimente durch Projektionen. Darstellung von $A_i\in\mathcal{A}_i$ durch $\{X_i\in A_i\}\in\mathcal{A}$ und $\mathbb{P}(\{X_i\in A_i\})=\mathbb{P}_i(A_i)$
+	\item Die Ereignisse $\{X_1\in A_1\},\dots,\{X-n\in A_n\}$ sind unabhängig für alle $A_i\subseteq\Omega_i$, $i\in\{1,\dots,n\}$\\
+	$\Rightarrow$ Falls $\Omega_1,\dots,\Omega_n\subseteq\mathbb{R}$: $X_1,\dots,X_n$ sind unabhängige ZVen!
+	\item Falls zusätzlich $\mathbb{P}_1=\dots=\mathbb{P}_n$: $X_1,\dots,X_n$ i.i.d.
+\end{enumerate}
+Im Folgenden sind $,X_1,X_2,\dots$ ZVen auf einem W'raum $(\Omega,\mathcal{A},\mathbb{P})$\\
+Eine ZV $X:\Omega\rightarrow\mathbb{R}$ heißt \ul{diskret}, falls es eine höchstens abzählbare Menge $D\subseteq\mathbb{R}$ gibt mit $\mathbb{P}(\{X\in D\})=1$.\\
+ist $D\subseteq\mathbb{R}$ höchstens abzählbar, so gilt $\{X\in D\}=\bigcup_{\omega\in D}\{X=\omega\}\in\mathcal{A}\Rightarrow\mathbb{P}(\{X\in D\})$\\
+$(\Omega,\mathcal{A},\mathbb{P})$ diskret\\
+$\Rightarrow$ $X(\Omega)$ höchstens abzählbar\\
+$\Rightarrow$ $X$ diskret (mit $D=X(\Omega)$)\\
+TODO VL\\
+Seien $X_1,\dots,X_n$ ZVen i.i.d. mit $X_i\sim B(1,p),p\in\left[0,1\right]$ und $X=\sum_{i=1}^n X_i$. Dann gilt für $k\in\{0,\dots,n\}$: $\mathbb{P}(\{X=k\})=\binom{n}{k}\cdot p^k(1-p)^{n-k}$\\
+Eine Zufallsvariable $X:\Omega\rightarrow\{0,\dots,n\}$ heißt "binomialverteilt" mit Parameter $n\in\mathbb{N}$ und $p\in\left[0,1\right]$, falls für alle $k\in\{0,\dots,n\}$ gilt: $\mathbb{P}(\{X=k\})=\binom{n}{k}p^k(1-p)^{n-k}$\\
+\ul{Notation}: $X\sim B(n,p)$\\
+$D_X=\begin{cases}
+\{0,\dots,n\} & \text{falls }p\in(0,1)\\
+\{0\} & \text{falls }p=0\\
+\{n\} & \text{falls }p=1
+\end{cases}$\\
+$\mathbb{P}(\{X\in\{0,n\}\})=\sum_{k=0}^n\mathbb{P}(\{X=k\})=\sum_{k=0}^n\binom{n}{k}p^k(1-p)^{n-k}=(p+(1-p))^n=1^n=1$\\
+Eine Zufallsvariable $X$ heißt \ul{hypergeometrisch-verteilt} mit Parametern $N\in\mathbb{N}$, $N_0\in\{0,\dots,N\}$, $n\in\{1,\dots,N\}$, falls $\mathbb{P}(\{X=l\})=\frac{\binom{N_0}{l}\binom{N-N_0}{n-l}}{\binom{N}{n}}$ für $l\in\{\max\{0,n-(N-N_0)\},\dots,\min\{N_0,n\}\}$\\
+\ul{Notation}: $X\sim H(N,N_0,n)$, $D_X=\{\max\{0,n-(N-N_0)\},\dots,\min\{N_0,n\}\}$\\
+Sei $n\in\mathbb{N}, (N_0(N))_{N\in\mathbb{N}}$ Folge in $\mathbb{N}$ mit $N_0(N)\leq N$ und $\lim_{N\rightarrow\infty}\frac{N_0(N)}{N}=p\in(0,1)$\\
+Sei $(X_N)_{N\geq n}$ Folge von Zufallsvariablen mit $X_N\sim H(N,N_0(N),n)$\\
+Dann gilt $\forall k\in\{0,\dots,n\}:\lim_{N\rightarrow\infty}\mathbb{P}(\{X_N=k\})=\binom{n}{k}p^k(1-p)^{n-k}$\\
+\ul{Interpretation}: Die Binomialverteilung ist gewissermaßen die Grenzverteilung von hypergeometrischen Verteilungen, falls obige Annahmen an $N_0(N)$ und $N$ zutreffen und $N\rightarrow\infty$\\
+Binomialverteilung $\hateq$ Modell \ul{mit} Zurücklegen\\
+Hypergeometrische Verteilung $\hateq$ Modell \ul{ohne} Zurücklegen\\
+Bei großen $N$ ist es "fast egal", ob man mit/ohne Zurücklegen zieht.\\
+Sei $n\in\mathbb{N}$ und $(N_0(N))_{N\in\mathbb{N}}$ Folge mit Werten in $\mathbb{N}$ mit $N_0(N)\leq N$ und $\lim_{N\rightarrow\infty}\frac{N_0(N)}{N}=p\in(0,1)$. Sei $(X_N)_{N\in\mathbb{N}}$ Folge von Zufallsvariablen mit $X_N\sim H(N,N_0(N),n)$, dann gilt für alle $k\in\{0,\dots,n\}$: $\lim_{N\rightarrow\infty}\mathbb{P}(\{X_N=k\})=\binom{n}{k}p^k(1-p)^{n-k}$\\
+TODO Folien\\
+$\sum_{k\geq 0}e^{-\lambda}\frac{\lambda^k}{k!}=e^{-\lambda}\sum_{k\geq 0}\frac{\lambda^k}{k!}=e^{-\lambda}e^{\lambda}=1$\\
+\ul{$\lambda>0$}: $\Rightarrow$ d.h. $f(k):=e^{-\lambda}\frac{\lambda^k}{k!}$ für $k\in\mathbb{N}_0$ definiert eine Wahrscheinlichkeitsfunktion.\\
+Eine Zufallsvariable $X$ heißt \ul{Poisson-verteilt} mit Parameter $\lambda>0$, falls $\forall k\in\mathbb{N}_0:\mathbb{P}(\{X=k\})=e^{-\lambda}\frac{\lambda^k}{k!}$\\
+\ul{Notation}: $X\sim P(\lambda)$, $D_X=\mathbb{N}_0$\\
+Die Poisson-Verteilung wird auch die "Verteilung von der seltenen Ereignissen" genannt.\\
+TODO Folien\\
+Eine Zufallsvariable $X$ heißt \ul{geometrisch verteilt} mit Parameter $p\in\left(0,1\right]$, falls $\forall k\in\mathbb{N}:\mathbb{P}(\{X=k\})=(1-p)^{k-1}\cdot p$\\
+\ul{Notation}: $X\sim G(p)$\\
+$D_X=\begin{cases}
+\mathbb{N} & \text{falls }p\in (0,1)\\
+\{1\} & \text{falls }p=1
+\end{cases}$
+\begin{enumerate}[1)]
+	\item $\mathbb{P}(\{X=1\})=(1-p)^0\cdot p = p$, falls $X\sim G(p)$
+	\item $X\sim G(p)$, bereits gesehen: $\sum_{k\geq0}\mathbb{P}(\{X=k\})=1$\\
+	$G(p)$ ist tatsächlich Verteilung
+	\item \ul{Anwendungen}:
+	\begin{itemize}
+		\item diskrete Wartezeiten: Warteschlangen an einem Schalter, zwischen 2 Anfragen in einem IT-System
+		\item diskrete Lebensdauer von technischen Produkten
+	\end{itemize}
+\end{enumerate}
+\ul{Gedächtnislosigkeit der geometrischen Verteilung}: Sei $X$ eine diskrete Zufallsvariable mit $D_X=\mathbb{N}$. Dann gilt: $X$ geometrisch verteilt $\Leftrightarrow$ $\forall k_1,k_2\in\mathbb{N}:\mathbb{P}(\{X>k_2\}\vert\{X>k_1\})=\mathbb{P}(\{X>k_2-k_1\})$
 \end{document}
 
 
