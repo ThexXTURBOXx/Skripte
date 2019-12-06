@@ -314,7 +314,22 @@ $D_X=\begin{cases}
 		\item diskrete Lebensdauer von technischen Produkten
 	\end{itemize}
 \end{enumerate}
-\ul{Gedächtnislosigkeit der geometrischen Verteilung}: Sei $X$ eine diskrete Zufallsvariable mit $D_X=\mathbb{N}$. Dann gilt: $X$ geometrisch verteilt $\Leftrightarrow$ $\forall k_1,k_2\in\mathbb{N}:\mathbb{P}(\{X>k_2\}\vert\{X>k_1\})=\mathbb{P}(\{X>k_2-k_1\})$
+\ul{Gedächtnislosigkeit der geometrischen Verteilung}: Sei $X$ eine diskrete Zufallsvariable mit $D_X=\mathbb{N}$. Dann gilt: $X$ geometrisch verteilt $\Leftrightarrow$ $\forall k_1,k_2\in\mathbb{N}:\mathbb{P}(\{X>k_2\}\vert\{X>k_1\})=\mathbb{P}(\{X>k_2-k_1\})$\\
+TODO? VL?\\
+Eine Zufallsvariable heißt \ul{negativ-binomialverteilt} mit Parametern $p\in\left(0,1\right]$ und $r\in\mathbb{N}$, falls $\forall k\geq r:\mathbb{P}(\{X=k\})=\binom{k-1}{r-1}p^r(1-p)$.\\
+Notation: $X~NB(r,p)$\\
+$\sum_{k\geq r}\binom{k-1}{r-1}p^r(1-p)^{k-r}=1$, d.h. $f(k)=\binom{k-1}{r-1}p^r(1-p)^{k-r}$, $k\geq n$ ist eine Wahrscheinlichkeitsfunktion.\\
+Ein $n$-dimensionaler Zufallsvektor $X=(X_1,\dots,X_n):\Omega\rightarrow\mathbb{R}^n$ heißt \ul{diskret}, falls es eine höchstens abzählbare Teilmenge $D\subset \mathbb{R}^n$ gibt mit $\mathbb{P}(\{X\in D\})=1$\\
+\begin{enumerate}[1)]
+	\item $D_X=\{x\in\mathbb{R}^n\ \vert\ \mathbb{P}(\{X=x\})>0\}$ ist die kleinste höchstens abzählbare Menge $D$ mit $\mathbb{P}(\{X\in D\})=1$, $X$ Zufallsvektor
+	\item $X=(X_1,\dots,X_n)$ ist diskret genau dann, wenn alle $X_i$ diskret sind. $D_X\subseteq D_{X_1}\times\dots\times D_{X_n}$
+\end{enumerate}
+Sei $\varnothing\neq S\subseteq\mathbb{R}^n$ \ul{endlich} Ein $n$-dimensionaler Zufallsvektor $X:\Omega\rightarrow\mathbb{R}^n$ heißt \ul{gleichverteilt auf $S$}, falls $\forall \in S:\mathbb{P}(\{X=x\})=\frac{1}{\abs{S}}$ (Laplace-Modell für Zufallsvektoren).\\
+Somit ist $X$ diskret ($D_X=S$)\\
+Notation: $X~U(S)$
+\section{Grundlagen allgemeiner Modelle}
+\subsection{Die Borel'sche $\sigma$-Algebra in $\mathbb{R}^d$}
+
 \end{document}
 
 
