@@ -332,6 +332,38 @@ TODO VL Halteproblem\\
 Die universelle Sprache ($L_u=\{wv\ \vert\ v\in L(T_w)\}$) ist semi-entscheidbar.\\
 $L_1,L_2$ entscheidbar $\Rightarrow$ $L_1\cap L_2,L_!\cup L_2,L_1^c$ entscheidbar\\
 $L_1,L_2$ semi-entscheidbar $\Rightarrow$ $L_1\cap L_2,L_1\cup L_2$ semi-entscheidbar\\
+Seien $A\subseteq\Sigma^*$ und $B\subseteq \Delta^*$ zwei Sprachen. Eine \ul{Reduktion} von $A$ auf $B$ ist eine Abbildung $f:\Sigma^*\rightarrow\Delta^*$, die
+\begin{enumerate}[1)]
+	\item total und berechenbar ist, sodass
+	\item $w\in A$ $\Leftrightarrow$ $f(w)\in B$
+\end{enumerate}
+Wir schreiben $A\leq_m B$, wenn es eine Reduktion von $A$ auf $B$ gibt.\\
+Seien $A,B$ zwei Sprachen und $A\leq_m B$.
+\begin{enumerate}[(i)]
+	\item Ist $B$ semi-entscheidbar, so ist $A$ es auch. Äquivalent, ist $A$ nicht semi-entscheidbar, so ist $B$ es auch nicht.
+	\item Ist $B$ entscheidbar, so ist $A$ es auch. Äquivalent, ist $A$ nicht entscheidbar, so ist $B$ es auch nicht.
+\end{enumerate}
+\ul{Satz von Rice}: Jede \ul{nicht-triviale} Eigenschaft der \ul{semi-entscheidbaren Mengen} ist unentscheidbar.\\
+Sei $\Sigma$ ein Alphabet. Eine Eigenschaft der semi-entscheidbaren Mengen ist eine Abbildung $P:\{\text{semi-entscheidbare Teilmengen von }\Sigma^*\}\rightarrow\{T,\bot\}$\\
+Nicht-trivial = ist nicht immer falsch oder immer wahr\\
+Sei $\varnothing\subsetneq\mathcal{S}\subsetneq\mathcal{R}$ eine nicht-triviale Teilmenge der berechenbaren Funktionen. Dann ist $C(\mathcal{S})=\{\langle M\rangle\ \vert\ \text{die von }M\text{ berechnete Funktion liegt in } \mathcal{S}\}$ unentscheidbar.\\
+Eine Eigenschaft $P:\{\text{semi-entscheidbare Mengen}\}\rightarrow\{\top,\bot\}$ heißt \ul{monoton}, wenn für alle semi-entscheidbaren Mengen $A,B$ gilt: $A\subseteq B\Rightarrow P(A)\leq P(B)$ ($\leq$ heißt "kleiner oder gleich" in der Ordnung $\bot\leq \top$)\\
+Keine nicht-monotone Eigenschaft der semi-entscheidbaren Mengen ist semi-entscheidbar\\
+Eine Sprache $L$ ist \ul{rekursiv aufzählbar}, wenn eine surjektive, totale berechenbare Funktion $f:\mathbb{N}\rightarrow L$ existiert.\\
+Eine Sprache ist genau dann rekursiv aufzählbar, wenn sie semi-entscheidbar ist.\\
+TODO Hälfte der VL\\
+Sei $T$ eine Turingmaschine, die eine Funktion $t:\Sigma^*\times\Sigma^*\rightarrow\Sigma^*$ berechnet. Dann existiert eine Turingmaschine $R$, die eine Funktion $r:\Sigma^*\rightarrow\Sigma^*$ berechnet, sodass für jedes $w$ gilt: $r(w)=r(\langle R\rangle, w)$\\
+\ul{Bedeutung}: $R$ arbeitet genauso wie $T$, aber seine Beschreibung $\langle R\rangle$ wird automatisch mit übergeben.\\
+\ul{Beschreibung von $SELF$} (Turingmaschine, die sich selbst baut):
+\begin{enumerate}
+	\item Erlange (via Rekursionssatz) eigene Beschreibung von $\langle SELF\rangle$
+	\item Drucke $\langle SELF\rangle$
+\end{enumerate}
+Rekursionssatz $\Rightarrow$ Programm mit Rekursion kann auch durch normale Turingmaschine erledigt werden\\
+Für eine Turingmaschine $M$ ist die Länge der Beschreibung $\langle M\rangle$ die Anzahl der Symbole von $\langle M\rangle$.\\
+Eine Turingmaschine $M$ ist minimal, wenn es keine äquivalente Turingmaschine mit kürzerer Beschreibung gibt.\\
+Seo $MIN_{TM}=\{\langle M\rangle\ \vert\ M\text{ ist eine minimale TM}\}$ die Menge der minimalen Beschreibungen von Turingmaschinen.\\
+$MIN_{TM}$ ist nicht semi-entscheidbar.\\
 
 \end{document}
 

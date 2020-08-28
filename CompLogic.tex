@@ -590,6 +590,122 @@ Then the following procedure enumerates a set of equations $\tilde M\supseteq M$
 	\item Check if $c_2'>_\tau c_1'$. If this is the case, append $F':c_2'=c_1'$ to $M$ and continue with (1).
 	\item If neither $c_1'>_\tau c_2'$ nor $c_2'>_\tau c_1'$ holds, then return "FAIL" and stop.
 \end{enumerate}
+\ul{Syntax of Modal Logic}:
+\begin{enumerate}[(a)]
+	\item Every propositional logic formula is a modal logic formula.
+	\item Given modal logic formulas $F,G$, also $\not F,\ F\wedge G$ and $F\vee G$ are modal logic formulas.
+	\item Given a modal logic formula $F$, also $\square F$ and $\diamond F$ are modal logic formulas.\\
+	\ul{Ideal}: $\square F=F$ holds necessarily, $\diamond F=F$ holds possibly/eventually
+\end{enumerate}
+\ul{Semantics of Modal Logic}:
+\begin{enumerate}[(a)]
+	\item A modal logic \ul{structure} (or \ul{Kripke structure}) $\alpha$ is a triple $\alpha=(W,R,\xi)$ consisting of the following parts:
+	\begin{enumerate}[(1)]
+		\item $W$ is a non-empty set. It is called the set of possible \ul{words} or the set of \ul{reference points}.
+		\item $R\subseteq W\times W$ is a relation on $W$ called the \ul{reachability} or \ul{accessibility relation}. A reference point $t\in W$ is called \ul{reachable} from $s\in W$ if $(s,t)\in R$.
+		\item Let $M$ be a set of atomic formulas, i.e., propositions. Then $\xi:M\times W\rightarrow\{0,1\},\ (A,s)\mapsto\xi(A,s)$.
+	\end{enumerate}
+	\item Let $\alpha=(W,R,\xi)$ be a structure which is suitable for a formula $F$, i.e. all propositions in $F$ are contained in $M$, and let $s\in W$. Then we define $\alpha(F,s)$ recursively as follows:
+	\begin{enumerate}[(1)]
+		\item If $F=A$ is an atomic formula, we let $\alpha(F,s)=\xi(A,s)$
+		\item If $F=\neg G$, then $\alpha(F,s)=1-\alpha(G,s)$
+		\item If $F=G\vee H$, then $\alpha(F,s)=\begin{cases}
+		1&\text{if }\alpha(G,s)=1\text{ or }\alpha(H,s)=1\\
+		0&\text{otherwise}
+		\end{cases}$
+		\item If $F=G\wedge H$, then $\alpha(F,s)=\begin{cases}
+		1&\text{if }\alpha(G,s)=1=\alpha(H,s)\text{ or }\alpha(H,s)=1\\
+		0&\text{otherwise}
+		\end{cases}$
+		\item If $F=\square G$, then $\alpha(F,s)=\begin{cases}
+		1&\text{if }\alpha(G,t)=1\text{ for all }t\in W\text{ such that }(s,t)\in R\\
+		0&\text{otherwise}
+		\end{cases}$
+		\item If $F=\diamond G$, then $\alpha(F,s)=\begin{cases}
+		1&\text{if }\alpha(G,t)=1\text{ for some }t\in W\text{ such that }(s,t)\in R\\
+		0&\text{otherwise}
+		\end{cases}$
+	\end{enumerate}
+\end{enumerate}
+\ul{Definitions}:
+\begin{enumerate}[(a)]
+	\item If $F$ is a formula and $\alpha=(W,R,\xi)$ a structure such that $\alpha(F,s)=1$, we write $s\vert\models_\alpha F$ and we say "$s$ forces $F$" in the structure $\alpha$. If $\alpha$ is clear, we also write $s\vert\models F$.
+	\item We say that $\alpha=(W,R,\xi)$ is a \ul{model} for $F$ (or $F$ is \ul{valid}/\ul{holds}) in the structure $\alpha$ if $\alpha(F,s)=1$ for all $s\in W$. In this case we write $\alpha\models F$ TODO MODELS UND FORCE SYMBOLE
+	\item Let $W$ be a set and $R\subseteq W\times W$ a relation. Then the pair $(W,R)$ is called a \ul{frame}. We write $\mathcal{R}=(W,R)$.
+	\item If $F$ holds in all structures $\alpha=(W,R,\xi)$ based on a fixed frame $\mathcal{R}=(W,R)$, we say that $F$ \ul{holds} in $\mathcal{R}$ or $F$ is \ul{valid} in $\mathcal{R}$.
+\end{enumerate}
+The \ul{modal rank} $MR(F)$ of a formula $F$ is defined as follows:
+\begin{enumerate}[(a)]
+	\item If $F$ is a proposition then $MR(F)=0$.
+	\item If $F=\neg G$ then $MR(F)=MR(G)$.
+	\item If $F=G\vee H$ or $F=G\wedge H$ then $MR(F)=\max\{MR(G),MR(H)\}$
+	\item If $F=\square G$ or $F=\diamond G$ then $MR(F)=MR(G)+1$
+\end{enumerate}
+For $R\subseteq W\times W$ and $n\geq 2$ we define the \ul{$n-th$ iteration} $R^{(n)}\subseteq W\times W$ as follows:\\
+$(s,t)\in R^{(n)}$ iff $s=t_0\sim_R t_1\sim_R t_2\sim_R\dots\sim_R t_n=t$ for some $t_1,\dots,t_{n-1}\in W$.\\
+\ul{Coincidence Lemma}: For a modal logic formula $F$ and two structures $\alpha=(W,R,\xi)$ and $\beta=(W,R,\tilde\xi)$ based on the same frame $\mathcal{R}=(W,R)$ we have $\alpha(F,s)=\beta(F,s)$ for some $s\in W$ iff $\alpha(A,t)=\beta(A,t)$ for all propositions which appear in $F$ for all $t\in W$ such that $(s,t)\in R^{(n)}$ with $n\leq MR(F)$. In other words, $\alpha(F,s)$ is determined by all $\alpha(A,t)$ with $(s,t)\in R^{(n)}$, $n\leq MR(F)$.\\
+\begin{enumerate}[(a)]
+	\item A formula $F$ is called \ul{valid} or a \ul{tautology} if it is valid in every frame $\mathcal{R}=(W,R)$.\\
+	Equivalently, $\alpha(F,s)=1$ for every structure $\alpha$ which is suitable for $F$ and every $s\in W$.
+	\item Let $M$ be a set of formulas. We say that a formula $F$ is a \ul{(semantic) consequence} of $M$ if $F$ is valid in every structure $\alpha$ s.t. all formulas of $M$ are valid in $\alpha$
+	\item We say that two formulas $F$ and $G$ are \ul{(semantically) equivalent} iff ($\alpha(F,s)=1$ holds iff $\alpha(G,s)=1$ for all structures $\alpha$ suitable for both $F$ and $G$ and for all $s\in W$).\\
+	Notation: $F\equiv G$
+	\item Let $M$ be a set of formulas. We say that $F$ is a \ul{frame consequence} of $M$ iff ($R\vDash G$ for all $G\in M$ then $\mathcal{R}\vDash F$ for every suitable frame $\mathcal{R}$)
+	\item We say that two formulas $F$ and $G$ are \ul{frame equivalent} if ($\mathcal{R}\vDash F$ iff $\mathcal{R}\vDash G$ for every suitable $\mathcal{R}$)
+\end{enumerate}
+If $F,G$ are equivalent then $F,G$ are frame equivalent. The converse is not true in general.\\
+\ul{Fundamental Equivalences of Modal Logic}: Let $F,G$ be two formulas. Then we have all fundamental equivalences of propositional logic plus the following:
+\begin{enumerate}[(a)]
+	\item $\neg\square F\equiv \diamond\neg F$
+	\item $\neg\diamond F\equiv \square\neg F$
+	\item $\square(F\Rightarrow G)$ implies $\square F\Rightarrow\square G$ (semantic consequence)
+	\item $\diamond(F\Rightarrow G)\equiv \square F\Rightarrow\diamond G$
+	\item $\square(F\Rightarrow G)$ implies $\diamond F\Rightarrow\diamond G$
+	\item $\square (F\wedge G)\equiv \square F\wedge \square G$
+	\item $\diamond (F\vee G)\equiv \diamond F\vee \diamond G$
+	\item If $F$ is a tautology then $\square F$ is a tautology (necessitation).
+\end{enumerate}
+A formula $F$ is said to be in \ul{quasi-disjunctive normal form} (QDNF) iff $F=(L_{11}\wedge\dots\wedge L_{1n_1})\vee\dots\vee(L_{k1}\wedge\dots\wedge L_{kn_k})$ where the "literals" are either propositional logic literals \ul{or} of the form $\square G$ or $\diamond G$ with a modal logic formula $G$.\\
+Every modal logic formula is equivalent to a formula in QDNF.\\
+\section{The Tableau Calculus of Propositional Logic}
+\ul{The Tableau Completion Algorithm of Propositional Logic}: Let $F$ be a propositional logic formula. We construct recursively a binary tree $(K,N)$.
+\begin{enumerate}[(1)]
+	\item We put $F$ at the root of the tree. We mark each node which has been treated according to the following rules.
+	\item Choose a node $G$ which has not yet been marked.\\
+	Depending on the structure of $G$, apply one of the following \ul{tableau rules}. Then mark $G$ as treated. If all nodes have been marked, return the tree and stop. (This tree will be called a \ul{complete tableau}).
+	\item If $G=\neg\neg H$ then append TODO at the end of each path starting at $G$.
+	\item If $G=H_1\vee H_2$ then append TODO at the end of each path starting at $G$
+	\item If $G=H_1\wedge H_2$ then append TODO at the end of each path starting at $G$.
+	\item If $G=\neg (H_1\wedge H_2)$ then append TODO
+	\item If $G=\neg (H_1\vee H_2)$ then append TODO
+\end{enumerate}
+Let $T=(K,N)$ be a tableau ($K$= set of nodes, $N$ successor relation)
+\begin{enumerate}[(a)]
+	\item A path in $T$ is called \ul{closed} if it contains both a proposition $A$ and its negation $\neg A$. In this case we mark the end of the path (usually a leaf) with $\lightning$
+	\item The tableau $T$ is called \ul{closed} or \ul{contradictory} if all maximal paths (i.e. all paths starting at the root and ending in a leaf) are closed.
+	\item The tableau $T$ is called \ul{satisfiable} if it is complete and there is a common mode for all nodes of a maximal path in $T$.
+	\item Here the tableau is called \ul{complete} if every node is marked or a literal.
+\end{enumerate}
+Let $T$ be a tableau with root $F$.
+\begin{enumerate}[(a)]
+	\item If $T$ is closed then $F$ is unsatisfiable
+	\item If $T$ is complete and satisfiable then $F$ is satisfiable
+	\item The tableau completion algorithm computes a complete tableau
+\end{enumerate}
+\section{The Tableau Calculus of Modal Logic}
+\ul{Modal Logic Tableau Completion Algorithm}:
+\begin{enumerate}[(1)]
+	\item The root of the tree is $S\Vdash F$ where $F$ is the given formula and $s$ the formal name of a state.
+	\item Choose a node $\tilde s\Vdash G$ which has not yet been marked and where $G$ is not a propositional logic literal. If no such node exists, return the tableau.
+	\item For a node of the form $\tilde s\Vdash \neg\neg G$, append TODO at the end of every path starting at this node. Similarly, treat $\tilde s\Vdash G\vee H$ and $\tilde s\Vdash G\wedge H$ and $\tilde s\Vdash \neg(G\vee H)$ and $\tilde s\Vdash\neg(G\wedge H)$ as in the propositional logic Tableau calculus.
+	\item For a node of the form $\tilde s\Vdash \diamond G$, introduce a new symbol $t$ and append TODO at the end of every path starting at this node.
+	\item For a node of the form $\tilde s\Vdash \square G$, append TODO at the end of every path starting at this node, where $t_1,\dots,t_k$ are all new symbols in this path for which $(\tilde s, t_i)\in R$.
+	\item If the node is of the form $\tilde s\Vdash \neq\square H$, append TODO
+	\item If the node is of the form $\tilde s\Vdash \neq\diamond H$, append TODO
+\end{enumerate}
+A maximal path in a (complete) tableau is \ul{closed} if it contains nodes $\tilde s\Vdash A$ and $\tilde s\Vdash\neg A$. The tableau is called \ul{closed} if all maximal paths are closed. The algorithm returns "UNSAT" if the completed tableau is closed.\\
+\ul{Correctness of the Modal Logic Tableau Calculus}: In a complete tableau for $F$, mark all maximal paths as closed if they contain nodes of the form $\tilde s\Vdash A$ and $\tilde s\Vdash\neg A$. If the tableau is closed, i.e. if all maximal paths are closed, then $F$ is unsatisfiable.\\
+\ul{Completeness of the Modal Logic Tableau Calculus}: If $F$ is unsatisfiable then the modal logic completion algorithm returns a closed tableau.
 \end{document}
 
 

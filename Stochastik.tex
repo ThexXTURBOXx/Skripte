@@ -329,7 +329,51 @@ Somit ist $X$ diskret ($D_X=S$)\\
 Notation: $X~U(S)$
 \section{Grundlagen allgemeiner Modelle}
 \subsection{Die Borel'sche $\sigma$-Algebra in $\mathbb{R}^d$}
+TODO VL
+\subsection{Idfk}
+TODO VL\\
+Sei $G\in B_d$ mit $0<\lambda_d(G)<\infty$. Das durch $\mathbb{P}(A):=\frac{\lambda_d(A)}{\lambda_d(G)}$ für $A\in B_d\cap G=\{b\in B_d\ \vert\ B\subseteq G\}$ definierte Wahrscheinlichkeitsmaß $\mathbb{P}$ auf $B_d\cap G$ heißt \ul{Gleichverteilung auf $G$}.\\
+\ul{Notation}: $\mathbb{P}=U(G)$ ($U\ \hateq$ "uniform")\\
+$\mathbb{B}_1\neq\mathcal{P}(\mathbb{R})$, da $R\neq B_1$
+\subsection{Verteilungen}
+\ul{Im Folgenden}: $(\Omega,\mathcal{A},\mathbb{P})$ ist Wahrscheinlichkeitsraum\\
+Für eine Abbildung $X:\Omega\rightarrow\mathbb{R}^d$ sind äquivalent:
+\begin{enumerate}[(i)]
+	\item $X$ ist $d$-dimensionaler Zufallsvektor
+	\item $\forall B\in B_d:\{X\in B\}\in \mathcal{A}$
+\end{enumerate}
+\ul{Im Folgenden}: $d\in\mathbb{N}$, $X=(X_1,\dots,X_d):\Omega\rightarrow\mathbb{R}^d$ $d$-dimensionaler Zufallsvektor\\
+Die Abbildung $\mathbb{P}_X:B_d\rightarrow\left[0,1\right]:B\mapsto\mathbb{P}(\{X\in B\})$ ist ein Wahrscheinlichkeitsmaß auf $B_d$.\\
+Es heißt die \ul{Verteilung von $X$} bzw. \ul{Bildmaß von $X$ unter $\mathbb{P}$}.\\
+Im Fall $d>1$ heißt $\mathbb{P}_X$ auch die \ul{gemeinsame Verteilung} der Zufallsvariablen $X_1,\dots,X_d$ und $\mathbb{P}_{X_1},\dots,\mathbb{P}_{X_d}$ heißen \ul{eindimensionale Randverteilungen von $X$}.\\
+\ul{Notation}: $X\sim\mathbb{P}_X$\\
+\begin{enumerate}[1)]
+	\item Falls $X\sim B(n,p)$ $\rightarrow$ $\mathbb{P}_X$ wird \ul{Binomialverteilung} mit Parametern $n$ und $p$ genannt.\\
+	$\Rightarrow$ $B(n,p)$ ist also ein Wahrscheinlichkeitsmaß auf $B=B_1$\\
+	Für $A\in B$: $B(n,p)(A)=\sum_{k\in\{0,\dots,n\}\cap A}\binom{n}{k}p^k(1-p)^{n-k}$\\
+	\ul{Analog}: Geometrische Verteilung $G(p)$, Poisson-Verteilung $P(\lambda)$, etc. sind Wahrscheinlichkeitsmaße auf $B_1$
+	\item Jedes Wahrscheinlichkeitsmaß $\mathbb{P}$ auf $B_d$ ist Verteilung eines Zufallsvektors $X$: $(\mathbb{R}^d,B_d,\mathbb{P})$ mit $X(\omega)=\omega$ für $\omega\in\mathbb{R}^d$ $\Rightarrow$ $\mathbb{P}_X=\mathbb{P}$
+\end{enumerate}
+\ul{Im Folgenden}: $(\Omega',\mathcal{A}',\mathbb{P}')$ ist ein weiterer Wahrscheinlichkeitsraum, $X'=(X_1',\dots,X_d'):\Omega'\rightarrow\mathbb{R}^d$ $d$-dimensionaler Zufallsvektor\\
+Sei $d=1$. Seien $X,X'$ Zufallsvariablen\\
+Äquivalent:
+\begin{enumerate}[(i)]
+	\item $X,X'$ identisch verteilt
+	\item $\mathbb{P}_X=\mathbb{P}_{X'}$, d.h. $\forall A\in B:\mathbb{P}(\{X\in A\})=\mathbb{P}(\{X'\in A\})$
+\end{enumerate}
+Die $d$-dimensionalen Zufallsvektoren $X$ und $X'$ heißen \ul{identisch verteilt}, falls $\mathbb{P}_X=\mathbb{P}_{X'}$\\
+Seien $X=(X_1,\dots,X_d),X'=(X_1',\dots,X_d')$ $d$-dimensional identisch verteilte Zufallsvektoren. Dann sind $X_i,X_i'$ identisch verteilt für alle $i\in\{1,\dots,d\}$. Die Umkehrung ist i.A. falsch!\\
+Die Zufallsvariablen $X_1,\dots,X_d$ sind genau dann unabhängig, wenn $\forall B_1,\dots,B_d\in \mathcal{B}_1:\mathbb{P}(\bigcap_{i=1}^d\{X_i\in B_i\})=\prod_{i=1}^d\mathbb{P}(\{X_i\in B_i\})$, d.h. gemeinsame Verteilung $\mathbb{P}_{(X_1\dots X_d)}$ ist Produkt der Randverteilungen $\mathbb{P}_{X_1},\dots,\mathbb{P}_{X_d}$.\\
+Sind $X_1,\dots,X_d$ unabhängige Zufallsvariablen, so ist die gemeinsame Verteilung $\mathbb{P}_{(X_1,\dots,X_d)}$ eindeutig durch die Randverteilungen $\mathbb{P}_{X_1},\dots,\mathbb{P}_{X_d}$ bestimmt.\\
+\subsection{Borel-messbare Funktionen und Lebesgue-Integral}
+TODO Folien\\
+Seien $b_1,\dots,b_n\in\mathbb{R},B_1,\dots,B_n\in\mathcal{B}_d$ paarweise disjunkt. Dann heißt die Abbildung $f:\mathbb{R}^d\rightarrow\mathbb{R}:x=(x_1,\dots,x_d)\mapsto f(x):=\sum_{i=1}^n b_i\mathbb{1}_{B_i}(x)$ \ul{einfach} oder \ul{elementar} oder \ul{Treppenfunktion} ($d=1$).\\
+Es gilt $\mathcal{E}_d\subset \mathcal{F}_d$\\
+Das Lebesgue-Integral einer einfachen nicht-negativen Funktion $f=\sum_{i=1}^nb_i\mathbb{1}_{B_i}\in\mathcal{E}_d^+$ ist gegeben durch $\int fd\lambda_d:=\sum_{i=1}^nb_i\cdot\lambda_d(B_i)\in\left[0,\infty\right]$\\
+Die Definition von $\int fd\lambda_d$ ist unabhängig von der Darstellung von $f$.\\
 
+
+TODO Fix $\mathbb{1}$
 \end{document}
 
 

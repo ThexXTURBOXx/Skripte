@@ -391,7 +391,38 @@ $x\in\Omega$ Minimalstelle von $f\in\mathcal{C}^1(\Omega')$, $\Omega'\supseteq\O
 \ul{Lagrangefunktion}: $F(x)=f(x)-\lambda^Tg(x)-\mu^Th(x)$\\
 $\lambda,\mu$ Lagrangemultiplikatoren\\
 TODO VL\\
-
+\ul{Newton-Verfahren}:\\
+$F(x)=0$ $\Leftrightarrow$ $x=G(x):=x-A^{-1}F(x)$\\
+Voraussetzung: $F:\mathbb{R}^n\rightarrow\mathbb{R}^n$\\
+\ul{Iteration}: $x^{(k+1)}=G(x^{(k)})=x^{(k)}-F'(x^{(k)})^{-1}F(x^{(k)})$\\
+$x^{(k)}\rightarrow x^*$     $G(x^*)=x^*$ $\Rightarrow$ $F(x^*)\rightarrow 0$\\
+$x\in U$ heißt \ul{Nullstelle} von $F:U\rightarrow\mathbb{R}^k$, wenn $F(x)=0$.\\
+\ul{Einfache Nullstelle}: $det F'(x)\neq 0$\\
+Nullstelle von $F$ $\Leftrightarrow$ gemeinsame Nullstelle von $f_1,\dots,f_n$. $F=\begin{pmatrix}
+f_1\\
+\vdots\\
+f_n
+\end{pmatrix}$\\
+$x^*\in U$ einfache Nullstelle von $F$ (zweimal stetig diff'bar) $\Rightarrow$ es gibt $x^*\in U'\subseteq U$ und $\rho\in (0,1)$ mit
+\begin{enumerate}[(i)]
+	\item $G(U')\subseteq U'$
+	\item $\norm{G(x)-G(x')}\leq \rho\norm{x-x'}$
+\end{enumerate}
+$g(x):=x-F'(x^*)^{-1}F(x)$\\
+TODO VL?
+\section{Mannigfaltigkeiten}
+$f:A\rightarrow B$ surjektiv\\
+Surjektion $f:\left[0,1\right]\rightarrow\left[0,1\right]^2$\\
+Es gibt eine \ul{stetige} Surjektion $\left[0,1\right]\rightarrow\left[0,1\right]^2$:\\
+Aufteilen in $9^N$ Quadrate\\
+$\phi:U\rightarrow V$, $U,V\subset\mathbb{R}^n$ heißt \ul{"Diffeomorphismus"}, wenn:
+\begin{itemize}
+	\item $\phi$ Bijektion, stetig diff'bar
+	\item $\phi^{-1}$ Bijektion, stetig diff'bar
+\end{itemize}
+$\phi,\phi^{-1}\in C^k$\\
+$M\subset\mathbb{R}^n$ $k$-Mannigfaltigkeit, $k\leq n$, wenn es zu jedem $x\in M$ eine Umgebung $U\ni x$ (offen) gibt\\
+$V\subset\mathbb{R}^n$, offen + Diffeomorphismus $f:U\rightarrow V$ gibt mit $f(U\cap M)=V\cap(\mathbb{R}^k\times\{0\})$
 \end{document}
 
 
